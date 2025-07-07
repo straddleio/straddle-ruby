@@ -1,0 +1,33 @@
+module Straddle
+  module Models
+    module Embed
+      type capability_v1 =
+        {
+          capability_status: Straddle::Models::Embed::CapabilityV1::capability_status
+        }
+
+      class CapabilityV1 < Straddle::Internal::Type::BaseModel
+        attr_accessor capability_status: Straddle::Models::Embed::CapabilityV1::capability_status
+
+        def initialize: (
+          capability_status: Straddle::Models::Embed::CapabilityV1::capability_status
+        ) -> void
+
+        def to_hash: -> {
+          capability_status: Straddle::Models::Embed::CapabilityV1::capability_status
+        }
+
+        type capability_status = :active | :inactive
+
+        module CapabilityStatus
+          extend Straddle::Internal::Type::Enum
+
+          ACTIVE: :active
+          INACTIVE: :inactive
+
+          def self?.values: -> ::Array[Straddle::Models::Embed::CapabilityV1::capability_status]
+        end
+      end
+    end
+  end
+end

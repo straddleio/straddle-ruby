@@ -1,0 +1,215 @@
+module Straddle
+  module Models
+    module Embed
+      type linked_bank_account_v1 =
+        {
+          data: Straddle::Embed::LinkedBankAccountV1::Data,
+          meta: Straddle::ResponseMetadata,
+          response_type: Straddle::Models::Embed::LinkedBankAccountV1::response_type
+        }
+
+      class LinkedBankAccountV1 < Straddle::Internal::Type::BaseModel
+        attr_accessor data: Straddle::Embed::LinkedBankAccountV1::Data
+
+        attr_accessor meta: Straddle::ResponseMetadata
+
+        attr_accessor response_type: Straddle::Models::Embed::LinkedBankAccountV1::response_type
+
+        def initialize: (
+          data: Straddle::Embed::LinkedBankAccountV1::Data,
+          meta: Straddle::ResponseMetadata,
+          response_type: Straddle::Models::Embed::LinkedBankAccountV1::response_type
+        ) -> void
+
+        def to_hash: -> {
+          data: Straddle::Embed::LinkedBankAccountV1::Data,
+          meta: Straddle::ResponseMetadata,
+          response_type: Straddle::Models::Embed::LinkedBankAccountV1::response_type
+        }
+
+        type data =
+          {
+            id: String,
+            account_id: String?,
+            bank_account: Straddle::Embed::LinkedBankAccountV1::Data::BankAccount,
+            created_at: Time,
+            status: Straddle::Models::Embed::LinkedBankAccountV1::Data::status,
+            status_detail: Straddle::Embed::LinkedBankAccountV1::Data::StatusDetail,
+            updated_at: Time,
+            metadata: ::Hash[Symbol, String?]?,
+            platform_id: String?
+          }
+
+        class Data < Straddle::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor account_id: String?
+
+          attr_accessor bank_account: Straddle::Embed::LinkedBankAccountV1::Data::BankAccount
+
+          attr_accessor created_at: Time
+
+          attr_accessor status: Straddle::Models::Embed::LinkedBankAccountV1::Data::status
+
+          attr_accessor status_detail: Straddle::Embed::LinkedBankAccountV1::Data::StatusDetail
+
+          attr_accessor updated_at: Time
+
+          attr_accessor metadata: ::Hash[Symbol, String?]?
+
+          attr_accessor platform_id: String?
+
+          def initialize: (
+            id: String,
+            account_id: String?,
+            bank_account: Straddle::Embed::LinkedBankAccountV1::Data::BankAccount,
+            created_at: Time,
+            status: Straddle::Models::Embed::LinkedBankAccountV1::Data::status,
+            status_detail: Straddle::Embed::LinkedBankAccountV1::Data::StatusDetail,
+            updated_at: Time,
+            ?metadata: ::Hash[Symbol, String?]?,
+            ?platform_id: String?
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            account_id: String?,
+            bank_account: Straddle::Embed::LinkedBankAccountV1::Data::BankAccount,
+            created_at: Time,
+            status: Straddle::Models::Embed::LinkedBankAccountV1::Data::status,
+            status_detail: Straddle::Embed::LinkedBankAccountV1::Data::StatusDetail,
+            updated_at: Time,
+            metadata: ::Hash[Symbol, String?]?,
+            platform_id: String?
+          }
+
+          type bank_account =
+            {
+              account_holder: String,
+              account_mask: String,
+              institution_name: String,
+              routing_number: String
+            }
+
+          class BankAccount < Straddle::Internal::Type::BaseModel
+            attr_accessor account_holder: String
+
+            attr_accessor account_mask: String
+
+            attr_accessor institution_name: String
+
+            attr_accessor routing_number: String
+
+            def initialize: (
+              account_holder: String,
+              account_mask: String,
+              institution_name: String,
+              routing_number: String
+            ) -> void
+
+            def to_hash: -> {
+              account_holder: String,
+              account_mask: String,
+              institution_name: String,
+              routing_number: String
+            }
+          end
+
+          type status = :created | :onboarding | :active | :rejected | :inactive
+
+          module Status
+            extend Straddle::Internal::Type::Enum
+
+            CREATED: :created
+            ONBOARDING: :onboarding
+            ACTIVE: :active
+            REJECTED: :rejected
+            INACTIVE: :inactive
+
+            def self?.values: -> ::Array[Straddle::Models::Embed::LinkedBankAccountV1::Data::status]
+          end
+
+          type status_detail =
+            {
+              code: String,
+              message: String,
+              reason: Straddle::Models::Embed::LinkedBankAccountV1::Data::StatusDetail::reason,
+              source: Straddle::Models::Embed::LinkedBankAccountV1::Data::StatusDetail::source
+            }
+
+          class StatusDetail < Straddle::Internal::Type::BaseModel
+            attr_accessor code: String
+
+            attr_accessor message: String
+
+            attr_accessor reason: Straddle::Models::Embed::LinkedBankAccountV1::Data::StatusDetail::reason
+
+            attr_accessor source: Straddle::Models::Embed::LinkedBankAccountV1::Data::StatusDetail::source
+
+            def initialize: (
+              code: String,
+              message: String,
+              reason: Straddle::Models::Embed::LinkedBankAccountV1::Data::StatusDetail::reason,
+              source: Straddle::Models::Embed::LinkedBankAccountV1::Data::StatusDetail::source
+            ) -> void
+
+            def to_hash: -> {
+              code: String,
+              message: String,
+              reason: Straddle::Models::Embed::LinkedBankAccountV1::Data::StatusDetail::reason,
+              source: Straddle::Models::Embed::LinkedBankAccountV1::Data::StatusDetail::source
+            }
+
+            type reason =
+              :unverified
+              | :in_review
+              | :pending
+              | :stuck
+              | :verified
+              | :failed_verification
+              | :disabled
+              | :new
+
+            module Reason
+              extend Straddle::Internal::Type::Enum
+
+              UNVERIFIED: :unverified
+              IN_REVIEW: :in_review
+              PENDING: :pending
+              STUCK: :stuck
+              VERIFIED: :verified
+              FAILED_VERIFICATION: :failed_verification
+              DISABLED: :disabled
+              NEW: :new
+
+              def self?.values: -> ::Array[Straddle::Models::Embed::LinkedBankAccountV1::Data::StatusDetail::reason]
+            end
+
+            type source = :watchtower
+
+            module Source
+              extend Straddle::Internal::Type::Enum
+
+              WATCHTOWER: :watchtower
+
+              def self?.values: -> ::Array[Straddle::Models::Embed::LinkedBankAccountV1::Data::StatusDetail::source]
+            end
+          end
+        end
+
+        type response_type = :object | :array | :error | :none
+
+        module ResponseType
+          extend Straddle::Internal::Type::Enum
+
+          OBJECT: :object
+          ARRAY: :array
+          ERROR: :error
+          NONE: :none
+
+          def self?.values: -> ::Array[Straddle::Models::Embed::LinkedBankAccountV1::response_type]
+        end
+      end
+    end
+  end
+end

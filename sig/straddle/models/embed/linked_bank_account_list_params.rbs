@@ -1,0 +1,105 @@
+module Straddle
+  module Models
+    module Embed
+      type linked_bank_account_list_params =
+        {
+          account_id: String,
+          level: Straddle::Models::Embed::LinkedBankAccountListParams::level,
+          page_number: Integer,
+          page_size: Integer,
+          sort_by: String,
+          sort_order: Straddle::Models::Embed::LinkedBankAccountListParams::sort_order,
+          correlation_id: String,
+          request_id: String
+        }
+        & Straddle::Internal::Type::request_parameters
+
+      class LinkedBankAccountListParams < Straddle::Internal::Type::BaseModel
+        extend Straddle::Internal::Type::RequestParameters::Converter
+        include Straddle::Internal::Type::RequestParameters
+
+        attr_reader account_id: String?
+
+        def account_id=: (String) -> String
+
+        attr_reader level: Straddle::Models::Embed::LinkedBankAccountListParams::level?
+
+        def level=: (
+          Straddle::Models::Embed::LinkedBankAccountListParams::level
+        ) -> Straddle::Models::Embed::LinkedBankAccountListParams::level
+
+        attr_reader page_number: Integer?
+
+        def page_number=: (Integer) -> Integer
+
+        attr_reader page_size: Integer?
+
+        def page_size=: (Integer) -> Integer
+
+        attr_reader sort_by: String?
+
+        def sort_by=: (String) -> String
+
+        attr_reader sort_order: Straddle::Models::Embed::LinkedBankAccountListParams::sort_order?
+
+        def sort_order=: (
+          Straddle::Models::Embed::LinkedBankAccountListParams::sort_order
+        ) -> Straddle::Models::Embed::LinkedBankAccountListParams::sort_order
+
+        attr_reader correlation_id: String?
+
+        def correlation_id=: (String) -> String
+
+        attr_reader request_id: String?
+
+        def request_id=: (String) -> String
+
+        def initialize: (
+          ?account_id: String,
+          ?level: Straddle::Models::Embed::LinkedBankAccountListParams::level,
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?sort_by: String,
+          ?sort_order: Straddle::Models::Embed::LinkedBankAccountListParams::sort_order,
+          ?correlation_id: String,
+          ?request_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          account_id: String,
+          level: Straddle::Models::Embed::LinkedBankAccountListParams::level,
+          page_number: Integer,
+          page_size: Integer,
+          sort_by: String,
+          sort_order: Straddle::Models::Embed::LinkedBankAccountListParams::sort_order,
+          correlation_id: String,
+          request_id: String,
+          request_options: Straddle::RequestOptions
+        }
+
+        type level = :account | :platform
+
+        module Level
+          extend Straddle::Internal::Type::Enum
+
+          ACCOUNT: :account
+          PLATFORM: :platform
+
+          def self?.values: -> ::Array[Straddle::Models::Embed::LinkedBankAccountListParams::level]
+        end
+
+        type sort_order = :asc | :desc
+
+        module SortOrder
+          extend Straddle::Internal::Type::Enum
+
+          ASC: :asc
+          DESC: :desc
+
+          def self?.values: -> ::Array[Straddle::Models::Embed::LinkedBankAccountListParams::sort_order]
+        end
+      end
+    end
+  end
+end

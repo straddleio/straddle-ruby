@@ -1,0 +1,122 @@
+module Straddle
+  module Models
+    module Bridge
+      type link_bank_account_params =
+        {
+          account_number: String,
+          account_type: Straddle::Models::Bridge::LinkBankAccountParams::account_type,
+          customer_id: String,
+          routing_number: String,
+          config: Straddle::Bridge::LinkBankAccountParams::Config,
+          metadata: ::Hash[Symbol, String]?,
+          correlation_id: String,
+          request_id: String,
+          straddle_account_id: String
+        }
+        & Straddle::Internal::Type::request_parameters
+
+      class LinkBankAccountParams < Straddle::Internal::Type::BaseModel
+        extend Straddle::Internal::Type::RequestParameters::Converter
+        include Straddle::Internal::Type::RequestParameters
+
+        attr_accessor account_number: String
+
+        attr_accessor account_type: Straddle::Models::Bridge::LinkBankAccountParams::account_type
+
+        attr_accessor customer_id: String
+
+        attr_accessor routing_number: String
+
+        attr_reader config: Straddle::Bridge::LinkBankAccountParams::Config?
+
+        def config=: (
+          Straddle::Bridge::LinkBankAccountParams::Config
+        ) -> Straddle::Bridge::LinkBankAccountParams::Config
+
+        attr_accessor metadata: ::Hash[Symbol, String]?
+
+        attr_reader correlation_id: String?
+
+        def correlation_id=: (String) -> String
+
+        attr_reader request_id: String?
+
+        def request_id=: (String) -> String
+
+        attr_reader straddle_account_id: String?
+
+        def straddle_account_id=: (String) -> String
+
+        def initialize: (
+          account_number: String,
+          account_type: Straddle::Models::Bridge::LinkBankAccountParams::account_type,
+          customer_id: String,
+          routing_number: String,
+          ?config: Straddle::Bridge::LinkBankAccountParams::Config,
+          ?metadata: ::Hash[Symbol, String]?,
+          ?correlation_id: String,
+          ?request_id: String,
+          ?straddle_account_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          account_number: String,
+          account_type: Straddle::Models::Bridge::LinkBankAccountParams::account_type,
+          customer_id: String,
+          routing_number: String,
+          config: Straddle::Bridge::LinkBankAccountParams::Config,
+          metadata: ::Hash[Symbol, String]?,
+          correlation_id: String,
+          request_id: String,
+          straddle_account_id: String,
+          request_options: Straddle::RequestOptions
+        }
+
+        type account_type = :checking | :savings
+
+        module AccountType
+          extend Straddle::Internal::Type::Enum
+
+          CHECKING: :checking
+          SAVINGS: :savings
+
+          def self?.values: -> ::Array[Straddle::Models::Bridge::LinkBankAccountParams::account_type]
+        end
+
+        type config =
+          {
+            sandbox_outcome: Straddle::Models::Bridge::LinkBankAccountParams::Config::sandbox_outcome
+          }
+
+        class Config < Straddle::Internal::Type::BaseModel
+          attr_reader sandbox_outcome: Straddle::Models::Bridge::LinkBankAccountParams::Config::sandbox_outcome?
+
+          def sandbox_outcome=: (
+            Straddle::Models::Bridge::LinkBankAccountParams::Config::sandbox_outcome
+          ) -> Straddle::Models::Bridge::LinkBankAccountParams::Config::sandbox_outcome
+
+          def initialize: (
+            ?sandbox_outcome: Straddle::Models::Bridge::LinkBankAccountParams::Config::sandbox_outcome
+          ) -> void
+
+          def to_hash: -> {
+            sandbox_outcome: Straddle::Models::Bridge::LinkBankAccountParams::Config::sandbox_outcome
+          }
+
+          type sandbox_outcome = :standard | :active | :rejected
+
+          module SandboxOutcome
+            extend Straddle::Internal::Type::Enum
+
+            STANDARD: :standard
+            ACTIVE: :active
+            REJECTED: :rejected
+
+            def self?.values: -> ::Array[Straddle::Models::Bridge::LinkBankAccountParams::Config::sandbox_outcome]
+          end
+        end
+      end
+    end
+  end
+end

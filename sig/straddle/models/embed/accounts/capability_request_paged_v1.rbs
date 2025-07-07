@@ -1,0 +1,153 @@
+module Straddle
+  module Models
+    module Embed
+      module Accounts
+        type capability_request_paged_v1 =
+          {
+            data: ::Array[Straddle::Embed::Accounts::CapabilityRequestPagedV1::Data],
+            meta: Straddle::PagedResponseMetadata,
+            response_type: Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::response_type
+          }
+
+        class CapabilityRequestPagedV1 < Straddle::Internal::Type::BaseModel
+          attr_accessor data: ::Array[Straddle::Embed::Accounts::CapabilityRequestPagedV1::Data]
+
+          attr_accessor meta: Straddle::PagedResponseMetadata
+
+          attr_accessor response_type: Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::response_type
+
+          def initialize: (
+            data: ::Array[Straddle::Embed::Accounts::CapabilityRequestPagedV1::Data],
+            meta: Straddle::PagedResponseMetadata,
+            response_type: Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::response_type
+          ) -> void
+
+          def to_hash: -> {
+            data: ::Array[Straddle::Embed::Accounts::CapabilityRequestPagedV1::Data],
+            meta: Straddle::PagedResponseMetadata,
+            response_type: Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::response_type
+          }
+
+          type data =
+            {
+              id: String,
+              account_id: String,
+              category: Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data::category,
+              created_at: Time,
+              status: Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data::status,
+              type: Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data::type_,
+              updated_at: Time,
+              settings: ::Hash[Symbol, top]?
+            }
+
+          class Data < Straddle::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor account_id: String
+
+            attr_accessor category: Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data::category
+
+            attr_accessor created_at: Time
+
+            attr_accessor status: Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data::status
+
+            attr_accessor type: Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data::type_
+
+            attr_accessor updated_at: Time
+
+            attr_accessor settings: ::Hash[Symbol, top]?
+
+            def initialize: (
+              id: String,
+              account_id: String,
+              category: Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data::category,
+              created_at: Time,
+              status: Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data::status,
+              type: Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data::type_,
+              updated_at: Time,
+              ?settings: ::Hash[Symbol, top]?
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              account_id: String,
+              category: Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data::category,
+              created_at: Time,
+              status: Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data::status,
+              type: Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data::type_,
+              updated_at: Time,
+              settings: ::Hash[Symbol, top]?
+            }
+
+            type category = :payment_type | :customer_type | :consent_type
+
+            module Category
+              extend Straddle::Internal::Type::Enum
+
+              PAYMENT_TYPE: :payment_type
+              CUSTOMER_TYPE: :customer_type
+              CONSENT_TYPE: :consent_type
+
+              def self?.values: -> ::Array[Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data::category]
+            end
+
+            type status =
+              :active
+              | :inactive
+              | :in_review
+              | :rejected
+              | :approved
+              | :reviewing
+
+            module Status
+              extend Straddle::Internal::Type::Enum
+
+              ACTIVE: :active
+              INACTIVE: :inactive
+              IN_REVIEW: :in_review
+              REJECTED: :rejected
+              APPROVED: :approved
+              REVIEWING: :reviewing
+
+              def self?.values: -> ::Array[Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data::status]
+            end
+
+            type type_ =
+              :charges
+              | :payouts
+              | :individuals
+              | :businesses
+              | :signed_agreement
+              | :internet
+
+            module Type
+              extend Straddle::Internal::Type::Enum
+
+              CHARGES: :charges
+              PAYOUTS: :payouts
+              INDIVIDUALS: :individuals
+              BUSINESSES: :businesses
+              SIGNED_AGREEMENT: :signed_agreement
+              INTERNET: :internet
+
+              def self?.values: -> ::Array[Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data::type_]
+            end
+          end
+
+          type response_type = :object | :array | :error | :none
+
+          module ResponseType
+            extend Straddle::Internal::Type::Enum
+
+            OBJECT: :object
+            ARRAY: :array
+            ERROR: :error
+            NONE: :none
+
+            def self?.values: -> ::Array[Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::response_type]
+          end
+        end
+      end
+    end
+  end
+end

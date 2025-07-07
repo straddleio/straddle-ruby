@@ -1,0 +1,52 @@
+module Straddle
+  module Models
+    module Embed
+      type organization_create_params =
+        {
+          name: String,
+          external_id: String?,
+          metadata: ::Hash[Symbol, String?]?,
+          correlation_id: String,
+          request_id: String
+        }
+        & Straddle::Internal::Type::request_parameters
+
+      class OrganizationCreateParams < Straddle::Internal::Type::BaseModel
+        extend Straddle::Internal::Type::RequestParameters::Converter
+        include Straddle::Internal::Type::RequestParameters
+
+        attr_accessor name: String
+
+        attr_accessor external_id: String?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_reader correlation_id: String?
+
+        def correlation_id=: (String) -> String
+
+        attr_reader request_id: String?
+
+        def request_id=: (String) -> String
+
+        def initialize: (
+          name: String,
+          ?external_id: String?,
+          ?metadata: ::Hash[Symbol, String?]?,
+          ?correlation_id: String,
+          ?request_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          name: String,
+          external_id: String?,
+          metadata: ::Hash[Symbol, String?]?,
+          correlation_id: String,
+          request_id: String,
+          request_options: Straddle::RequestOptions
+        }
+      end
+    end
+  end
+end

@@ -1,0 +1,25 @@
+module Straddle
+  module Internal
+    module Type
+      class FileInput
+        extend Straddle::Internal::Type::Converter
+
+        def self.===: (top other) -> bool
+
+        def self.==: (top other) -> bool
+
+        def self.coerce: (
+          StringIO | String | top value,
+          state: Straddle::Internal::Type::Converter::coerce_state
+        ) -> (StringIO | top)
+
+        def self.dump: (
+          Pathname | StringIO | IO | String | top value,
+          state: Straddle::Internal::Type::Converter::dump_state
+        ) -> (Pathname | StringIO | IO | String | top)
+
+        def self.to_sorbet_type: -> top
+      end
+    end
+  end
+end

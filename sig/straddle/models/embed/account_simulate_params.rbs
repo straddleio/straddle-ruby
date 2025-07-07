@@ -1,0 +1,57 @@
+module Straddle
+  module Models
+    module Embed
+      type account_simulate_params =
+        {
+          final_status: Straddle::Models::Embed::AccountSimulateParams::final_status,
+          correlation_id: String,
+          request_id: String
+        }
+        & Straddle::Internal::Type::request_parameters
+
+      class AccountSimulateParams < Straddle::Internal::Type::BaseModel
+        extend Straddle::Internal::Type::RequestParameters::Converter
+        include Straddle::Internal::Type::RequestParameters
+
+        attr_reader final_status: Straddle::Models::Embed::AccountSimulateParams::final_status?
+
+        def final_status=: (
+          Straddle::Models::Embed::AccountSimulateParams::final_status
+        ) -> Straddle::Models::Embed::AccountSimulateParams::final_status
+
+        attr_reader correlation_id: String?
+
+        def correlation_id=: (String) -> String
+
+        attr_reader request_id: String?
+
+        def request_id=: (String) -> String
+
+        def initialize: (
+          ?final_status: Straddle::Models::Embed::AccountSimulateParams::final_status,
+          ?correlation_id: String,
+          ?request_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          final_status: Straddle::Models::Embed::AccountSimulateParams::final_status,
+          correlation_id: String,
+          request_id: String,
+          request_options: Straddle::RequestOptions
+        }
+
+        type final_status = :onboarding | :active
+
+        module FinalStatus
+          extend Straddle::Internal::Type::Enum
+
+          ONBOARDING: :onboarding
+          ACTIVE: :active
+
+          def self?.values: -> ::Array[Straddle::Models::Embed::AccountSimulateParams::final_status]
+        end
+      end
+    end
+  end
+end

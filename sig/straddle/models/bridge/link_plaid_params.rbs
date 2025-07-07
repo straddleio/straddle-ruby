@@ -1,0 +1,101 @@
+module Straddle
+  module Models
+    module Bridge
+      type link_plaid_params =
+        {
+          customer_id: String,
+          plaid_token: String,
+          config: Straddle::Bridge::LinkPlaidParams::Config,
+          metadata: ::Hash[Symbol, String]?,
+          correlation_id: String,
+          request_id: String,
+          straddle_account_id: String
+        }
+        & Straddle::Internal::Type::request_parameters
+
+      class LinkPlaidParams < Straddle::Internal::Type::BaseModel
+        extend Straddle::Internal::Type::RequestParameters::Converter
+        include Straddle::Internal::Type::RequestParameters
+
+        attr_accessor customer_id: String
+
+        attr_accessor plaid_token: String
+
+        attr_reader config: Straddle::Bridge::LinkPlaidParams::Config?
+
+        def config=: (
+          Straddle::Bridge::LinkPlaidParams::Config
+        ) -> Straddle::Bridge::LinkPlaidParams::Config
+
+        attr_accessor metadata: ::Hash[Symbol, String]?
+
+        attr_reader correlation_id: String?
+
+        def correlation_id=: (String) -> String
+
+        attr_reader request_id: String?
+
+        def request_id=: (String) -> String
+
+        attr_reader straddle_account_id: String?
+
+        def straddle_account_id=: (String) -> String
+
+        def initialize: (
+          customer_id: String,
+          plaid_token: String,
+          ?config: Straddle::Bridge::LinkPlaidParams::Config,
+          ?metadata: ::Hash[Symbol, String]?,
+          ?correlation_id: String,
+          ?request_id: String,
+          ?straddle_account_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          customer_id: String,
+          plaid_token: String,
+          config: Straddle::Bridge::LinkPlaidParams::Config,
+          metadata: ::Hash[Symbol, String]?,
+          correlation_id: String,
+          request_id: String,
+          straddle_account_id: String,
+          request_options: Straddle::RequestOptions
+        }
+
+        type config =
+          {
+            sandbox_outcome: Straddle::Models::Bridge::LinkPlaidParams::Config::sandbox_outcome
+          }
+
+        class Config < Straddle::Internal::Type::BaseModel
+          attr_reader sandbox_outcome: Straddle::Models::Bridge::LinkPlaidParams::Config::sandbox_outcome?
+
+          def sandbox_outcome=: (
+            Straddle::Models::Bridge::LinkPlaidParams::Config::sandbox_outcome
+          ) -> Straddle::Models::Bridge::LinkPlaidParams::Config::sandbox_outcome
+
+          def initialize: (
+            ?sandbox_outcome: Straddle::Models::Bridge::LinkPlaidParams::Config::sandbox_outcome
+          ) -> void
+
+          def to_hash: -> {
+            sandbox_outcome: Straddle::Models::Bridge::LinkPlaidParams::Config::sandbox_outcome
+          }
+
+          type sandbox_outcome = :standard | :active | :rejected
+
+          module SandboxOutcome
+            extend Straddle::Internal::Type::Enum
+
+            STANDARD: :standard
+            ACTIVE: :active
+            REJECTED: :rejected
+
+            def self?.values: -> ::Array[Straddle::Models::Bridge::LinkPlaidParams::Config::sandbox_outcome]
+          end
+        end
+      end
+    end
+  end
+end

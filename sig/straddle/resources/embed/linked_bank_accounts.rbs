@@ -1,0 +1,53 @@
+module Straddle
+  module Resources
+    class Embed
+      class LinkedBankAccounts
+        def create: (
+          account_id: String,
+          bank_account: Straddle::Embed::LinkedBankAccountCreateParams::BankAccount,
+          ?metadata: ::Hash[Symbol, String?]?,
+          ?correlation_id: String,
+          ?request_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> Straddle::Embed::LinkedBankAccountV1
+
+        def update: (
+          String linked_bank_account_id,
+          bank_account: Straddle::Embed::LinkedBankAccountUpdateParams::BankAccount,
+          ?metadata: ::Hash[Symbol, String?]?,
+          ?correlation_id: String,
+          ?request_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> Straddle::Embed::LinkedBankAccountV1
+
+        def list: (
+          ?account_id: String,
+          ?level: Straddle::Models::Embed::LinkedBankAccountListParams::level,
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?sort_by: String,
+          ?sort_order: Straddle::Models::Embed::LinkedBankAccountListParams::sort_order,
+          ?correlation_id: String,
+          ?request_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> Straddle::Internal::PageNumberSchema[Straddle::Embed::LinkedBankAccountPagedV1::Data]
+
+        def get: (
+          String linked_bank_account_id,
+          ?correlation_id: String,
+          ?request_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> Straddle::Embed::LinkedBankAccountV1
+
+        def unmask: (
+          String linked_bank_account_id,
+          ?correlation_id: String,
+          ?request_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> Straddle::Embed::LinkedBankAccountUnmaskV1
+
+        def initialize: (client: Straddle::Client) -> void
+      end
+    end
+  end
+end

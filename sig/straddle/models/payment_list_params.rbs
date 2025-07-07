@@ -1,0 +1,391 @@
+module Straddle
+  module Models
+    type payment_list_params =
+      {
+        customer_id: String,
+        default_page_size: Integer,
+        default_sort: Straddle::Models::PaymentListParams::default_sort,
+        default_sort_order: Straddle::Models::PaymentListParams::default_sort_order,
+        external_id: String,
+        funding_id: String,
+        max_amount: Integer,
+        max_created_at: Time,
+        max_effective_at: Time,
+        max_payment_date: Date,
+        min_amount: Integer,
+        min_created_at: Time,
+        min_effective_at: Time,
+        min_payment_date: Date,
+        page_number: Integer,
+        page_size: Integer,
+        paykey: String,
+        paykey_id: String,
+        payment_id: String,
+        payment_status: ::Array[Straddle::Models::PaymentListParams::payment_status],
+        payment_type: ::Array[Straddle::Models::PaymentListParams::payment_type],
+        search_text: String,
+        sort_by: Straddle::Models::PaymentListParams::sort_by,
+        sort_order: Straddle::Models::PaymentListParams::sort_order,
+        status_reason: ::Array[Straddle::Models::PaymentListParams::status_reason],
+        status_source: ::Array[Straddle::Models::PaymentListParams::status_source],
+        correlation_id: String,
+        request_id: String,
+        straddle_account_id: String
+      }
+      & Straddle::Internal::Type::request_parameters
+
+    class PaymentListParams < Straddle::Internal::Type::BaseModel
+      extend Straddle::Internal::Type::RequestParameters::Converter
+      include Straddle::Internal::Type::RequestParameters
+
+      attr_reader customer_id: String?
+
+      def customer_id=: (String) -> String
+
+      attr_reader default_page_size: Integer?
+
+      def default_page_size=: (Integer) -> Integer
+
+      attr_reader default_sort: Straddle::Models::PaymentListParams::default_sort?
+
+      def default_sort=: (
+        Straddle::Models::PaymentListParams::default_sort
+      ) -> Straddle::Models::PaymentListParams::default_sort
+
+      attr_reader default_sort_order: Straddle::Models::PaymentListParams::default_sort_order?
+
+      def default_sort_order=: (
+        Straddle::Models::PaymentListParams::default_sort_order
+      ) -> Straddle::Models::PaymentListParams::default_sort_order
+
+      attr_reader external_id: String?
+
+      def external_id=: (String) -> String
+
+      attr_reader funding_id: String?
+
+      def funding_id=: (String) -> String
+
+      attr_reader max_amount: Integer?
+
+      def max_amount=: (Integer) -> Integer
+
+      attr_reader max_created_at: Time?
+
+      def max_created_at=: (Time) -> Time
+
+      attr_reader max_effective_at: Time?
+
+      def max_effective_at=: (Time) -> Time
+
+      attr_reader max_payment_date: Date?
+
+      def max_payment_date=: (Date) -> Date
+
+      attr_reader min_amount: Integer?
+
+      def min_amount=: (Integer) -> Integer
+
+      attr_reader min_created_at: Time?
+
+      def min_created_at=: (Time) -> Time
+
+      attr_reader min_effective_at: Time?
+
+      def min_effective_at=: (Time) -> Time
+
+      attr_reader min_payment_date: Date?
+
+      def min_payment_date=: (Date) -> Date
+
+      attr_reader page_number: Integer?
+
+      def page_number=: (Integer) -> Integer
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
+
+      attr_reader paykey: String?
+
+      def paykey=: (String) -> String
+
+      attr_reader paykey_id: String?
+
+      def paykey_id=: (String) -> String
+
+      attr_reader payment_id: String?
+
+      def payment_id=: (String) -> String
+
+      attr_reader payment_status: ::Array[Straddle::Models::PaymentListParams::payment_status]?
+
+      def payment_status=: (
+        ::Array[Straddle::Models::PaymentListParams::payment_status]
+      ) -> ::Array[Straddle::Models::PaymentListParams::payment_status]
+
+      attr_reader payment_type: ::Array[Straddle::Models::PaymentListParams::payment_type]?
+
+      def payment_type=: (
+        ::Array[Straddle::Models::PaymentListParams::payment_type]
+      ) -> ::Array[Straddle::Models::PaymentListParams::payment_type]
+
+      attr_reader search_text: String?
+
+      def search_text=: (String) -> String
+
+      attr_reader sort_by: Straddle::Models::PaymentListParams::sort_by?
+
+      def sort_by=: (
+        Straddle::Models::PaymentListParams::sort_by
+      ) -> Straddle::Models::PaymentListParams::sort_by
+
+      attr_reader sort_order: Straddle::Models::PaymentListParams::sort_order?
+
+      def sort_order=: (
+        Straddle::Models::PaymentListParams::sort_order
+      ) -> Straddle::Models::PaymentListParams::sort_order
+
+      attr_reader status_reason: ::Array[Straddle::Models::PaymentListParams::status_reason]?
+
+      def status_reason=: (
+        ::Array[Straddle::Models::PaymentListParams::status_reason]
+      ) -> ::Array[Straddle::Models::PaymentListParams::status_reason]
+
+      attr_reader status_source: ::Array[Straddle::Models::PaymentListParams::status_source]?
+
+      def status_source=: (
+        ::Array[Straddle::Models::PaymentListParams::status_source]
+      ) -> ::Array[Straddle::Models::PaymentListParams::status_source]
+
+      attr_reader correlation_id: String?
+
+      def correlation_id=: (String) -> String
+
+      attr_reader request_id: String?
+
+      def request_id=: (String) -> String
+
+      attr_reader straddle_account_id: String?
+
+      def straddle_account_id=: (String) -> String
+
+      def initialize: (
+        ?customer_id: String,
+        ?default_page_size: Integer,
+        ?default_sort: Straddle::Models::PaymentListParams::default_sort,
+        ?default_sort_order: Straddle::Models::PaymentListParams::default_sort_order,
+        ?external_id: String,
+        ?funding_id: String,
+        ?max_amount: Integer,
+        ?max_created_at: Time,
+        ?max_effective_at: Time,
+        ?max_payment_date: Date,
+        ?min_amount: Integer,
+        ?min_created_at: Time,
+        ?min_effective_at: Time,
+        ?min_payment_date: Date,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?paykey: String,
+        ?paykey_id: String,
+        ?payment_id: String,
+        ?payment_status: ::Array[Straddle::Models::PaymentListParams::payment_status],
+        ?payment_type: ::Array[Straddle::Models::PaymentListParams::payment_type],
+        ?search_text: String,
+        ?sort_by: Straddle::Models::PaymentListParams::sort_by,
+        ?sort_order: Straddle::Models::PaymentListParams::sort_order,
+        ?status_reason: ::Array[Straddle::Models::PaymentListParams::status_reason],
+        ?status_source: ::Array[Straddle::Models::PaymentListParams::status_source],
+        ?correlation_id: String,
+        ?request_id: String,
+        ?straddle_account_id: String,
+        ?request_options: Straddle::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        customer_id: String,
+        default_page_size: Integer,
+        default_sort: Straddle::Models::PaymentListParams::default_sort,
+        default_sort_order: Straddle::Models::PaymentListParams::default_sort_order,
+        external_id: String,
+        funding_id: String,
+        max_amount: Integer,
+        max_created_at: Time,
+        max_effective_at: Time,
+        max_payment_date: Date,
+        min_amount: Integer,
+        min_created_at: Time,
+        min_effective_at: Time,
+        min_payment_date: Date,
+        page_number: Integer,
+        page_size: Integer,
+        paykey: String,
+        paykey_id: String,
+        payment_id: String,
+        payment_status: ::Array[Straddle::Models::PaymentListParams::payment_status],
+        payment_type: ::Array[Straddle::Models::PaymentListParams::payment_type],
+        search_text: String,
+        sort_by: Straddle::Models::PaymentListParams::sort_by,
+        sort_order: Straddle::Models::PaymentListParams::sort_order,
+        status_reason: ::Array[Straddle::Models::PaymentListParams::status_reason],
+        status_source: ::Array[Straddle::Models::PaymentListParams::status_source],
+        correlation_id: String,
+        request_id: String,
+        straddle_account_id: String,
+        request_options: Straddle::RequestOptions
+      }
+
+      type default_sort =
+        :created_at | :payment_date | :effective_at | :id | :amount
+
+      module DefaultSort
+        extend Straddle::Internal::Type::Enum
+
+        CREATED_AT: :created_at
+        PAYMENT_DATE: :payment_date
+        EFFECTIVE_AT: :effective_at
+        ID: :id
+        AMOUNT: :amount
+
+        def self?.values: -> ::Array[Straddle::Models::PaymentListParams::default_sort]
+      end
+
+      type default_sort_order = :asc | :desc
+
+      module DefaultSortOrder
+        extend Straddle::Internal::Type::Enum
+
+        ASC: :asc
+        DESC: :desc
+
+        def self?.values: -> ::Array[Straddle::Models::PaymentListParams::default_sort_order]
+      end
+
+      type payment_status =
+        :created
+        | :scheduled
+        | :failed
+        | :cancelled
+        | :on_hold
+        | :pending
+        | :paid
+        | :reversed
+
+      module PaymentStatus
+        extend Straddle::Internal::Type::Enum
+
+        CREATED: :created
+        SCHEDULED: :scheduled
+        FAILED: :failed
+        CANCELLED: :cancelled
+        ON_HOLD: :on_hold
+        PENDING: :pending
+        PAID: :paid
+        REVERSED: :reversed
+
+        def self?.values: -> ::Array[Straddle::Models::PaymentListParams::payment_status]
+      end
+
+      type payment_type = :charge | :payout
+
+      module PaymentType
+        extend Straddle::Internal::Type::Enum
+
+        CHARGE: :charge
+        PAYOUT: :payout
+
+        def self?.values: -> ::Array[Straddle::Models::PaymentListParams::payment_type]
+      end
+
+      type sort_by = :created_at | :payment_date | :effective_at | :id | :amount
+
+      module SortBy
+        extend Straddle::Internal::Type::Enum
+
+        CREATED_AT: :created_at
+        PAYMENT_DATE: :payment_date
+        EFFECTIVE_AT: :effective_at
+        ID: :id
+        AMOUNT: :amount
+
+        def self?.values: -> ::Array[Straddle::Models::PaymentListParams::sort_by]
+      end
+
+      type sort_order = :asc | :desc
+
+      module SortOrder
+        extend Straddle::Internal::Type::Enum
+
+        ASC: :asc
+        DESC: :desc
+
+        def self?.values: -> ::Array[Straddle::Models::PaymentListParams::sort_order]
+      end
+
+      type status_reason =
+        :insufficient_funds
+        | :closed_bank_account
+        | :invalid_bank_account
+        | :invalid_routing
+        | :disputed
+        | :payment_stopped
+        | :owner_deceased
+        | :frozen_bank_account
+        | :risk_review
+        | :fraudulent
+        | :duplicate_entry
+        | :invalid_paykey
+        | :payment_blocked
+        | :amount_too_large
+        | :too_many_attempts
+        | :internal_system_error
+        | :user_request
+        | :ok
+        | :other_network_return
+        | :payout_refused
+
+      module StatusReason
+        extend Straddle::Internal::Type::Enum
+
+        INSUFFICIENT_FUNDS: :insufficient_funds
+        CLOSED_BANK_ACCOUNT: :closed_bank_account
+        INVALID_BANK_ACCOUNT: :invalid_bank_account
+        INVALID_ROUTING: :invalid_routing
+        DISPUTED: :disputed
+        PAYMENT_STOPPED: :payment_stopped
+        OWNER_DECEASED: :owner_deceased
+        FROZEN_BANK_ACCOUNT: :frozen_bank_account
+        RISK_REVIEW: :risk_review
+        FRAUDULENT: :fraudulent
+        DUPLICATE_ENTRY: :duplicate_entry
+        INVALID_PAYKEY: :invalid_paykey
+        PAYMENT_BLOCKED: :payment_blocked
+        AMOUNT_TOO_LARGE: :amount_too_large
+        TOO_MANY_ATTEMPTS: :too_many_attempts
+        INTERNAL_SYSTEM_ERROR: :internal_system_error
+        USER_REQUEST: :user_request
+        OK: :ok
+        OTHER_NETWORK_RETURN: :other_network_return
+        PAYOUT_REFUSED: :payout_refused
+
+        def self?.values: -> ::Array[Straddle::Models::PaymentListParams::status_reason]
+      end
+
+      type status_source =
+        :watchtower | :bank_decline | :customer_dispute | :user_action | :system
+
+      module StatusSource
+        extend Straddle::Internal::Type::Enum
+
+        WATCHTOWER: :watchtower
+        BANK_DECLINE: :bank_decline
+        CUSTOMER_DISPUTE: :customer_dispute
+        USER_ACTION: :user_action
+        SYSTEM: :system
+
+        def self?.values: -> ::Array[Straddle::Models::PaymentListParams::status_source]
+      end
+    end
+  end
+end

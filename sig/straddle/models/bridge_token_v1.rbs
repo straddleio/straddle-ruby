@@ -1,0 +1,53 @@
+module Straddle
+  module Models
+    type bridge_token_v1 =
+      {
+        data: Straddle::BridgeTokenV1::Data,
+        meta: Straddle::ResponseMetadata,
+        response_type: Straddle::Models::BridgeTokenV1::response_type
+      }
+
+    class BridgeTokenV1 < Straddle::Internal::Type::BaseModel
+      attr_accessor data: Straddle::BridgeTokenV1::Data
+
+      attr_accessor meta: Straddle::ResponseMetadata
+
+      attr_accessor response_type: Straddle::Models::BridgeTokenV1::response_type
+
+      def initialize: (
+        data: Straddle::BridgeTokenV1::Data,
+        meta: Straddle::ResponseMetadata,
+        response_type: Straddle::Models::BridgeTokenV1::response_type
+      ) -> void
+
+      def to_hash: -> {
+        data: Straddle::BridgeTokenV1::Data,
+        meta: Straddle::ResponseMetadata,
+        response_type: Straddle::Models::BridgeTokenV1::response_type
+      }
+
+      type data = { bridge_token: String }
+
+      class Data < Straddle::Internal::Type::BaseModel
+        attr_accessor bridge_token: String
+
+        def initialize: (bridge_token: String) -> void
+
+        def to_hash: -> { bridge_token: String }
+      end
+
+      type response_type = :object | :array | :error | :none
+
+      module ResponseType
+        extend Straddle::Internal::Type::Enum
+
+        OBJECT: :object
+        ARRAY: :array
+        ERROR: :error
+        NONE: :none
+
+        def self?.values: -> ::Array[Straddle::Models::BridgeTokenV1::response_type]
+      end
+    end
+  end
+end

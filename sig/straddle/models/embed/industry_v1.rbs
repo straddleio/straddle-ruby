@@ -1,0 +1,23 @@
+module Straddle
+  module Models
+    module Embed
+      type industry_v1 = { category: String?, mcc: String?, sector: String? }
+
+      class IndustryV1 < Straddle::Internal::Type::BaseModel
+        attr_accessor category: String?
+
+        attr_accessor mcc: String?
+
+        attr_accessor sector: String?
+
+        def initialize: (
+          ?category: String?,
+          ?mcc: String?,
+          ?sector: String?
+        ) -> void
+
+        def to_hash: -> { category: String?, mcc: String?, sector: String? }
+      end
+    end
+  end
+end

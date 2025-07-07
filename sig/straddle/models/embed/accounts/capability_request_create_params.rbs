@@ -1,0 +1,207 @@
+module Straddle
+  module Models
+    module Embed
+      module Accounts
+        type capability_request_create_params =
+          {
+            businesses: Straddle::Embed::Accounts::CapabilityRequestCreateParams::Businesses,
+            charges: Straddle::Embed::Accounts::CapabilityRequestCreateParams::Charges,
+            individuals: Straddle::Embed::Accounts::CapabilityRequestCreateParams::Individuals,
+            internet: Straddle::Embed::Accounts::CapabilityRequestCreateParams::Internet,
+            payouts: Straddle::Embed::Accounts::CapabilityRequestCreateParams::Payouts,
+            signed_agreement: Straddle::Embed::Accounts::CapabilityRequestCreateParams::SignedAgreement,
+            correlation_id: String,
+            request_id: String
+          }
+          & Straddle::Internal::Type::request_parameters
+
+        class CapabilityRequestCreateParams < Straddle::Internal::Type::BaseModel
+          extend Straddle::Internal::Type::RequestParameters::Converter
+          include Straddle::Internal::Type::RequestParameters
+
+          attr_reader businesses: Straddle::Embed::Accounts::CapabilityRequestCreateParams::Businesses?
+
+          def businesses=: (
+            Straddle::Embed::Accounts::CapabilityRequestCreateParams::Businesses
+          ) -> Straddle::Embed::Accounts::CapabilityRequestCreateParams::Businesses
+
+          attr_reader charges: Straddle::Embed::Accounts::CapabilityRequestCreateParams::Charges?
+
+          def charges=: (
+            Straddle::Embed::Accounts::CapabilityRequestCreateParams::Charges
+          ) -> Straddle::Embed::Accounts::CapabilityRequestCreateParams::Charges
+
+          attr_reader individuals: Straddle::Embed::Accounts::CapabilityRequestCreateParams::Individuals?
+
+          def individuals=: (
+            Straddle::Embed::Accounts::CapabilityRequestCreateParams::Individuals
+          ) -> Straddle::Embed::Accounts::CapabilityRequestCreateParams::Individuals
+
+          attr_reader internet: Straddle::Embed::Accounts::CapabilityRequestCreateParams::Internet?
+
+          def internet=: (
+            Straddle::Embed::Accounts::CapabilityRequestCreateParams::Internet
+          ) -> Straddle::Embed::Accounts::CapabilityRequestCreateParams::Internet
+
+          attr_reader payouts: Straddle::Embed::Accounts::CapabilityRequestCreateParams::Payouts?
+
+          def payouts=: (
+            Straddle::Embed::Accounts::CapabilityRequestCreateParams::Payouts
+          ) -> Straddle::Embed::Accounts::CapabilityRequestCreateParams::Payouts
+
+          attr_reader signed_agreement: Straddle::Embed::Accounts::CapabilityRequestCreateParams::SignedAgreement?
+
+          def signed_agreement=: (
+            Straddle::Embed::Accounts::CapabilityRequestCreateParams::SignedAgreement
+          ) -> Straddle::Embed::Accounts::CapabilityRequestCreateParams::SignedAgreement
+
+          attr_reader correlation_id: String?
+
+          def correlation_id=: (String) -> String
+
+          attr_reader request_id: String?
+
+          def request_id=: (String) -> String
+
+          def initialize: (
+            ?businesses: Straddle::Embed::Accounts::CapabilityRequestCreateParams::Businesses,
+            ?charges: Straddle::Embed::Accounts::CapabilityRequestCreateParams::Charges,
+            ?individuals: Straddle::Embed::Accounts::CapabilityRequestCreateParams::Individuals,
+            ?internet: Straddle::Embed::Accounts::CapabilityRequestCreateParams::Internet,
+            ?payouts: Straddle::Embed::Accounts::CapabilityRequestCreateParams::Payouts,
+            ?signed_agreement: Straddle::Embed::Accounts::CapabilityRequestCreateParams::SignedAgreement,
+            ?correlation_id: String,
+            ?request_id: String,
+            ?request_options: Straddle::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            businesses: Straddle::Embed::Accounts::CapabilityRequestCreateParams::Businesses,
+            charges: Straddle::Embed::Accounts::CapabilityRequestCreateParams::Charges,
+            individuals: Straddle::Embed::Accounts::CapabilityRequestCreateParams::Individuals,
+            internet: Straddle::Embed::Accounts::CapabilityRequestCreateParams::Internet,
+            payouts: Straddle::Embed::Accounts::CapabilityRequestCreateParams::Payouts,
+            signed_agreement: Straddle::Embed::Accounts::CapabilityRequestCreateParams::SignedAgreement,
+            correlation_id: String,
+            request_id: String,
+            request_options: Straddle::RequestOptions
+          }
+
+          type businesses = { enable: bool }
+
+          class Businesses < Straddle::Internal::Type::BaseModel
+            attr_accessor enable: bool
+
+            def initialize: (enable: bool) -> void
+
+            def to_hash: -> { enable: bool }
+          end
+
+          type charges =
+            {
+              daily_amount: Float,
+              enable: bool,
+              max_amount: Float,
+              monthly_amount: Float,
+              monthly_count: Integer
+            }
+
+          class Charges < Straddle::Internal::Type::BaseModel
+            attr_accessor daily_amount: Float
+
+            attr_accessor enable: bool
+
+            attr_accessor max_amount: Float
+
+            attr_accessor monthly_amount: Float
+
+            attr_accessor monthly_count: Integer
+
+            def initialize: (
+              daily_amount: Float,
+              enable: bool,
+              max_amount: Float,
+              monthly_amount: Float,
+              monthly_count: Integer
+            ) -> void
+
+            def to_hash: -> {
+              daily_amount: Float,
+              enable: bool,
+              max_amount: Float,
+              monthly_amount: Float,
+              monthly_count: Integer
+            }
+          end
+
+          type individuals = { enable: bool }
+
+          class Individuals < Straddle::Internal::Type::BaseModel
+            attr_accessor enable: bool
+
+            def initialize: (enable: bool) -> void
+
+            def to_hash: -> { enable: bool }
+          end
+
+          type internet = { enable: bool }
+
+          class Internet < Straddle::Internal::Type::BaseModel
+            attr_accessor enable: bool
+
+            def initialize: (enable: bool) -> void
+
+            def to_hash: -> { enable: bool }
+          end
+
+          type payouts =
+            {
+              daily_amount: Float,
+              enable: bool,
+              max_amount: Float,
+              monthly_amount: Float,
+              monthly_count: Integer
+            }
+
+          class Payouts < Straddle::Internal::Type::BaseModel
+            attr_accessor daily_amount: Float
+
+            attr_accessor enable: bool
+
+            attr_accessor max_amount: Float
+
+            attr_accessor monthly_amount: Float
+
+            attr_accessor monthly_count: Integer
+
+            def initialize: (
+              daily_amount: Float,
+              enable: bool,
+              max_amount: Float,
+              monthly_amount: Float,
+              monthly_count: Integer
+            ) -> void
+
+            def to_hash: -> {
+              daily_amount: Float,
+              enable: bool,
+              max_amount: Float,
+              monthly_amount: Float,
+              monthly_count: Integer
+            }
+          end
+
+          type signed_agreement = { enable: bool }
+
+          class SignedAgreement < Straddle::Internal::Type::BaseModel
+            attr_accessor enable: bool
+
+            def initialize: (enable: bool) -> void
+
+            def to_hash: -> { enable: bool }
+          end
+        end
+      end
+    end
+  end
+end

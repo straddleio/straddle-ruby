@@ -1,0 +1,78 @@
+module Straddle
+  module Resources
+    class Payouts
+      def create: (
+        amount: Integer,
+        currency: String,
+        description: String,
+        device: Straddle::DeviceInfoV1,
+        external_id: String,
+        paykey: String,
+        payment_date: Date,
+        ?config: Straddle::PayoutCreateParams::Config,
+        ?metadata: ::Hash[Symbol, String]?,
+        ?correlation_id: String,
+        ?request_id: String,
+        ?straddle_account_id: String,
+        ?request_options: Straddle::request_opts
+      ) -> Straddle::PayoutV1
+
+      def update: (
+        String id,
+        amount: Integer,
+        description: String,
+        payment_date: Date,
+        ?metadata: ::Hash[Symbol, String]?,
+        ?correlation_id: String,
+        ?request_id: String,
+        ?straddle_account_id: String,
+        ?request_options: Straddle::request_opts
+      ) -> Straddle::PayoutV1
+
+      def cancel: (
+        String id,
+        reason: String,
+        ?correlation_id: String,
+        ?request_id: String,
+        ?straddle_account_id: String,
+        ?request_options: Straddle::request_opts
+      ) -> Straddle::PayoutV1
+
+      def get: (
+        String id,
+        ?correlation_id: String,
+        ?request_id: String,
+        ?straddle_account_id: String,
+        ?request_options: Straddle::request_opts
+      ) -> Straddle::PayoutV1
+
+      def hold: (
+        String id,
+        reason: String,
+        ?correlation_id: String,
+        ?request_id: String,
+        ?straddle_account_id: String,
+        ?request_options: Straddle::request_opts
+      ) -> Straddle::PayoutV1
+
+      def release: (
+        String id,
+        reason: String,
+        ?correlation_id: String,
+        ?request_id: String,
+        ?straddle_account_id: String,
+        ?request_options: Straddle::request_opts
+      ) -> Straddle::PayoutV1
+
+      def unmask: (
+        String id,
+        ?correlation_id: String,
+        ?request_id: String,
+        ?straddle_account_id: String,
+        ?request_options: Straddle::request_opts
+      ) -> Straddle::Models::PayoutUnmaskResponse
+
+      def initialize: (client: Straddle::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,109 @@
+module Straddle
+  module Bridge = Straddle::Models::Bridge
+
+  class BridgeInitializeParams = Straddle::Models::BridgeInitializeParams
+
+  class BridgeTokenV1 = Straddle::Models::BridgeTokenV1
+
+  class ChargeCancelParams = Straddle::Models::ChargeCancelParams
+
+  class ChargeCreateParams = Straddle::Models::ChargeCreateParams
+
+  class ChargeGetParams = Straddle::Models::ChargeGetParams
+
+  class ChargeHoldParams = Straddle::Models::ChargeHoldParams
+
+  class ChargeReleaseParams = Straddle::Models::ChargeReleaseParams
+
+  class ChargeUnmaskParams = Straddle::Models::ChargeUnmaskParams
+
+  class ChargeUpdateParams = Straddle::Models::ChargeUpdateParams
+
+  class ChargeV1 = Straddle::Models::ChargeV1
+
+  class CustomerAddressV1 = Straddle::Models::CustomerAddressV1
+
+  class CustomerCreateParams = Straddle::Models::CustomerCreateParams
+
+  class CustomerDeleteParams = Straddle::Models::CustomerDeleteParams
+
+  class CustomerDetailsV1 = Straddle::Models::CustomerDetailsV1
+
+  class CustomerGetParams = Straddle::Models::CustomerGetParams
+
+  class CustomerListParams = Straddle::Models::CustomerListParams
+
+  class CustomerRefreshReviewParams = Straddle::Models::CustomerRefreshReviewParams
+
+  module Customers = Straddle::Models::Customers
+
+  class CustomerSummaryPagedV1 = Straddle::Models::CustomerSummaryPagedV1
+
+  class CustomerUnmaskedParams = Straddle::Models::CustomerUnmaskedParams
+
+  class CustomerUnmaskedV1 = Straddle::Models::CustomerUnmaskedV1
+
+  class CustomerUpdateParams = Straddle::Models::CustomerUpdateParams
+
+  class CustomerV1 = Straddle::Models::CustomerV1
+
+  class DeviceInfoV1 = Straddle::Models::DeviceInfoV1
+
+  class DeviceUnmaskedV1 = Straddle::Models::DeviceUnmaskedV1
+
+  module Embed = Straddle::Models::Embed
+
+  class FundingEventGetParams = Straddle::Models::FundingEventGetParams
+
+  class FundingEventListParams = Straddle::Models::FundingEventListParams
+
+  class FundingEventSummaryItemV1 = Straddle::Models::FundingEventSummaryItemV1
+
+  class FundingEventSummaryPagedV1 = Straddle::Models::FundingEventSummaryPagedV1
+
+  class PagedResponseMetadata = Straddle::Models::PagedResponseMetadata
+
+  class PaykeyCancelParams = Straddle::Models::PaykeyCancelParams
+
+  class PaykeyDetailsV1 = Straddle::Models::PaykeyDetailsV1
+
+  class PaykeyGetParams = Straddle::Models::PaykeyGetParams
+
+  class PaykeyListParams = Straddle::Models::PaykeyListParams
+
+  class PaykeyRevealParams = Straddle::Models::PaykeyRevealParams
+
+  class PaykeySummaryPagedV1 = Straddle::Models::PaykeySummaryPagedV1
+
+  class PaykeyUnmaskedParams = Straddle::Models::PaykeyUnmaskedParams
+
+  class PaykeyUnmaskedV1 = Straddle::Models::PaykeyUnmaskedV1
+
+  class PaykeyV1 = Straddle::Models::PaykeyV1
+
+  class PaymentListParams = Straddle::Models::PaymentListParams
+
+  class PaymentSummaryPagedV1 = Straddle::Models::PaymentSummaryPagedV1
+
+  class PayoutCancelParams = Straddle::Models::PayoutCancelParams
+
+  class PayoutCreateParams = Straddle::Models::PayoutCreateParams
+
+  class PayoutGetParams = Straddle::Models::PayoutGetParams
+
+  class PayoutHoldParams = Straddle::Models::PayoutHoldParams
+
+  class PayoutReleaseParams = Straddle::Models::PayoutReleaseParams
+
+  class PayoutUnmaskParams = Straddle::Models::PayoutUnmaskParams
+
+  class PayoutUpdateParams = Straddle::Models::PayoutUpdateParams
+
+  class PayoutV1 = Straddle::Models::PayoutV1
+
+  class ReportCreateTotalCustomersByStatusParams = Straddle::Models::ReportCreateTotalCustomersByStatusParams
+
+  class ResponseMetadata = Straddle::Models::ResponseMetadata
+
+  class StatusDetailsV1 = Straddle::Models::StatusDetailsV1
+end

@@ -1,0 +1,92 @@
+module Straddle
+  module Models
+    module Embed
+      type organization_list_params =
+        {
+          external_id: String,
+          name: String,
+          page_number: Integer,
+          page_size: Integer,
+          sort_by: String,
+          sort_order: Straddle::Models::Embed::OrganizationListParams::sort_order,
+          correlation_id: String,
+          request_id: String
+        }
+        & Straddle::Internal::Type::request_parameters
+
+      class OrganizationListParams < Straddle::Internal::Type::BaseModel
+        extend Straddle::Internal::Type::RequestParameters::Converter
+        include Straddle::Internal::Type::RequestParameters
+
+        attr_reader external_id: String?
+
+        def external_id=: (String) -> String
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader page_number: Integer?
+
+        def page_number=: (Integer) -> Integer
+
+        attr_reader page_size: Integer?
+
+        def page_size=: (Integer) -> Integer
+
+        attr_reader sort_by: String?
+
+        def sort_by=: (String) -> String
+
+        attr_reader sort_order: Straddle::Models::Embed::OrganizationListParams::sort_order?
+
+        def sort_order=: (
+          Straddle::Models::Embed::OrganizationListParams::sort_order
+        ) -> Straddle::Models::Embed::OrganizationListParams::sort_order
+
+        attr_reader correlation_id: String?
+
+        def correlation_id=: (String) -> String
+
+        attr_reader request_id: String?
+
+        def request_id=: (String) -> String
+
+        def initialize: (
+          ?external_id: String,
+          ?name: String,
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?sort_by: String,
+          ?sort_order: Straddle::Models::Embed::OrganizationListParams::sort_order,
+          ?correlation_id: String,
+          ?request_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          external_id: String,
+          name: String,
+          page_number: Integer,
+          page_size: Integer,
+          sort_by: String,
+          sort_order: Straddle::Models::Embed::OrganizationListParams::sort_order,
+          correlation_id: String,
+          request_id: String,
+          request_options: Straddle::RequestOptions
+        }
+
+        type sort_order = :asc | :desc
+
+        module SortOrder
+          extend Straddle::Internal::Type::Enum
+
+          ASC: :asc
+          DESC: :desc
+
+          def self?.values: -> ::Array[Straddle::Models::Embed::OrganizationListParams::sort_order]
+        end
+      end
+    end
+  end
+end

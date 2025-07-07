@@ -1,0 +1,80 @@
+module Straddle
+  module Models
+    type report_create_total_customers_by_status_response =
+      {
+        data: Straddle::Models::ReportCreateTotalCustomersByStatusResponse::Data,
+        meta: Straddle::ResponseMetadata,
+        response_type: Straddle::Models::ReportCreateTotalCustomersByStatusResponse::response_type
+      }
+
+    class ReportCreateTotalCustomersByStatusResponse < Straddle::Internal::Type::BaseModel
+      attr_accessor data: Straddle::Models::ReportCreateTotalCustomersByStatusResponse::Data
+
+      attr_accessor meta: Straddle::ResponseMetadata
+
+      attr_accessor response_type: Straddle::Models::ReportCreateTotalCustomersByStatusResponse::response_type
+
+      def initialize: (
+        data: Straddle::Models::ReportCreateTotalCustomersByStatusResponse::Data,
+        meta: Straddle::ResponseMetadata,
+        response_type: Straddle::Models::ReportCreateTotalCustomersByStatusResponse::response_type
+      ) -> void
+
+      def to_hash: -> {
+        data: Straddle::Models::ReportCreateTotalCustomersByStatusResponse::Data,
+        meta: Straddle::ResponseMetadata,
+        response_type: Straddle::Models::ReportCreateTotalCustomersByStatusResponse::response_type
+      }
+
+      type data =
+        {
+          inactive: Integer,
+          pending: Integer,
+          rejected: Integer,
+          review: Integer,
+          verified: Integer
+        }
+
+      class Data < Straddle::Internal::Type::BaseModel
+        attr_accessor inactive: Integer
+
+        attr_accessor pending: Integer
+
+        attr_accessor rejected: Integer
+
+        attr_accessor review: Integer
+
+        attr_accessor verified: Integer
+
+        def initialize: (
+          inactive: Integer,
+          pending: Integer,
+          rejected: Integer,
+          review: Integer,
+          verified: Integer
+        ) -> void
+
+        def to_hash: -> {
+          inactive: Integer,
+          pending: Integer,
+          rejected: Integer,
+          review: Integer,
+          verified: Integer
+        }
+      end
+
+      type response_type = :object | :array | :error | :none
+
+      module ResponseType
+        extend Straddle::Internal::Type::Enum
+
+        OBJECT: :object
+        ARRAY: :array
+        ERROR: :error
+        NONE: :none
+
+        def self?.values: -> ::Array[Straddle::Models::ReportCreateTotalCustomersByStatusResponse::response_type]
+      end
+    end
+  end
+end

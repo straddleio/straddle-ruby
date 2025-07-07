@@ -1,0 +1,9 @@
+module Straddle
+  module Internal
+    extend Straddle::Internal::Util::SorbetRuntimeSupport
+
+    type file_input = Pathname | StringIO | IO | String | Straddle::FilePart
+
+    OMIT: Object
+  end
+end

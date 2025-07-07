@@ -1,0 +1,75 @@
+module Straddle
+  module Models
+    module Embed
+      type business_profile_v1 =
+        {
+          name: String,
+          website: String,
+          address: Straddle::Embed::AddressV1?,
+          description: String?,
+          industry: Straddle::Embed::IndustryV1,
+          legal_name: String?,
+          phone: String?,
+          support_channels: Straddle::Embed::SupportChannelsV1,
+          tax_id: String?,
+          use_case: String?
+        }
+
+      class BusinessProfileV1 < Straddle::Internal::Type::BaseModel
+        attr_accessor name: String
+
+        attr_accessor website: String
+
+        attr_accessor address: Straddle::Embed::AddressV1?
+
+        attr_accessor description: String?
+
+        attr_reader industry: Straddle::Embed::IndustryV1?
+
+        def industry=: (
+          Straddle::Embed::IndustryV1
+        ) -> Straddle::Embed::IndustryV1
+
+        attr_accessor legal_name: String?
+
+        attr_accessor phone: String?
+
+        attr_reader support_channels: Straddle::Embed::SupportChannelsV1?
+
+        def support_channels=: (
+          Straddle::Embed::SupportChannelsV1
+        ) -> Straddle::Embed::SupportChannelsV1
+
+        attr_accessor tax_id: String?
+
+        attr_accessor use_case: String?
+
+        def initialize: (
+          name: String,
+          website: String,
+          ?address: Straddle::Embed::AddressV1?,
+          ?description: String?,
+          ?industry: Straddle::Embed::IndustryV1,
+          ?legal_name: String?,
+          ?phone: String?,
+          ?support_channels: Straddle::Embed::SupportChannelsV1,
+          ?tax_id: String?,
+          ?use_case: String?
+        ) -> void
+
+        def to_hash: -> {
+          name: String,
+          website: String,
+          address: Straddle::Embed::AddressV1?,
+          description: String?,
+          industry: Straddle::Embed::IndustryV1,
+          legal_name: String?,
+          phone: String?,
+          support_channels: Straddle::Embed::SupportChannelsV1,
+          tax_id: String?,
+          use_case: String?
+        }
+      end
+    end
+  end
+end
