@@ -1,0 +1,52 @@
+module Straddle
+  module Internal
+    class PageNumberSchema[Elem]
+      include Straddle::Internal::Type::BasePage[Elem]
+
+      attr_accessor data: ::Array[Elem]?
+
+      attr_accessor meta: Meta
+
+      def inspect: -> String
+
+      type meta =
+        {
+          max_page_size: Integer,
+          page_number: Integer,
+          page_size: Integer,
+          total_items: Integer
+        }
+      class Meta < Straddle::Internal::Type::BaseModel
+        attr_reader max_page_size: Integer?
+
+        def max_page_size=: (Integer) -> Integer
+
+        attr_reader page_number: Integer?
+
+        def page_number=: (Integer) -> Integer
+
+        attr_reader page_size: Integer?
+
+        def page_size=: (Integer) -> Integer
+
+        attr_reader total_items: Integer?
+
+        def total_items=: (Integer) -> Integer
+
+        def initialize: (
+          ?max_page_size: Integer,
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?total_items: Integer
+        ) -> void
+
+        def to_hash: -> {
+          max_page_size: Integer,
+          page_number: Integer,
+          page_size: Integer,
+          total_items: Integer
+        }
+      end
+    end
+  end
+end

@@ -1,0 +1,104 @@
+module Straddle
+  module Models
+    type status_details_v1 =
+      {
+        changed_at: Time,
+        message: String,
+        reason: Straddle::Models::StatusDetailsV1::reason,
+        source: Straddle::Models::StatusDetailsV1::source,
+        code: String?
+      }
+
+    class StatusDetailsV1 < Straddle::Internal::Type::BaseModel
+      attr_accessor changed_at: Time
+
+      attr_accessor message: String
+
+      attr_accessor reason: Straddle::Models::StatusDetailsV1::reason
+
+      attr_accessor source: Straddle::Models::StatusDetailsV1::source
+
+      attr_accessor code: String?
+
+      def initialize: (
+        changed_at: Time,
+        message: String,
+        reason: Straddle::Models::StatusDetailsV1::reason,
+        source: Straddle::Models::StatusDetailsV1::source,
+        ?code: String?
+      ) -> void
+
+      def to_hash: -> {
+        changed_at: Time,
+        message: String,
+        reason: Straddle::Models::StatusDetailsV1::reason,
+        source: Straddle::Models::StatusDetailsV1::source,
+        code: String?
+      }
+
+      type reason =
+        :insufficient_funds
+        | :closed_bank_account
+        | :invalid_bank_account
+        | :invalid_routing
+        | :disputed
+        | :payment_stopped
+        | :owner_deceased
+        | :frozen_bank_account
+        | :risk_review
+        | :fraudulent
+        | :duplicate_entry
+        | :invalid_paykey
+        | :payment_blocked
+        | :amount_too_large
+        | :too_many_attempts
+        | :internal_system_error
+        | :user_request
+        | :ok
+        | :other_network_return
+        | :payout_refused
+
+      module Reason
+        extend Straddle::Internal::Type::Enum
+
+        INSUFFICIENT_FUNDS: :insufficient_funds
+        CLOSED_BANK_ACCOUNT: :closed_bank_account
+        INVALID_BANK_ACCOUNT: :invalid_bank_account
+        INVALID_ROUTING: :invalid_routing
+        DISPUTED: :disputed
+        PAYMENT_STOPPED: :payment_stopped
+        OWNER_DECEASED: :owner_deceased
+        FROZEN_BANK_ACCOUNT: :frozen_bank_account
+        RISK_REVIEW: :risk_review
+        FRAUDULENT: :fraudulent
+        DUPLICATE_ENTRY: :duplicate_entry
+        INVALID_PAYKEY: :invalid_paykey
+        PAYMENT_BLOCKED: :payment_blocked
+        AMOUNT_TOO_LARGE: :amount_too_large
+        TOO_MANY_ATTEMPTS: :too_many_attempts
+        INTERNAL_SYSTEM_ERROR: :internal_system_error
+        USER_REQUEST: :user_request
+        OK: :ok
+        OTHER_NETWORK_RETURN: :other_network_return
+        PAYOUT_REFUSED: :payout_refused
+
+        def self?.values: -> ::Array[Straddle::Models::StatusDetailsV1::reason]
+      end
+
+      type source =
+        :watchtower | :bank_decline | :customer_dispute | :user_action | :system
+
+      module Source
+        extend Straddle::Internal::Type::Enum
+
+        WATCHTOWER: :watchtower
+        BANK_DECLINE: :bank_decline
+        CUSTOMER_DISPUTE: :customer_dispute
+        USER_ACTION: :user_action
+        SYSTEM: :system
+
+        def self?.values: -> ::Array[Straddle::Models::StatusDetailsV1::source]
+      end
+    end
+  end
+end

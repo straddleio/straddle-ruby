@@ -1,0 +1,252 @@
+module Straddle
+  module Models
+    type payment_summary_paged_v1 =
+      {
+        data: ::Array[Straddle::PaymentSummaryPagedV1::Data],
+        meta: Straddle::PaymentSummaryPagedV1::Meta,
+        response_type: Straddle::Models::PaymentSummaryPagedV1::response_type
+      }
+
+    class PaymentSummaryPagedV1 < Straddle::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Straddle::PaymentSummaryPagedV1::Data]
+
+      attr_accessor meta: Straddle::PaymentSummaryPagedV1::Meta
+
+      attr_accessor response_type: Straddle::Models::PaymentSummaryPagedV1::response_type
+
+      def initialize: (
+        data: ::Array[Straddle::PaymentSummaryPagedV1::Data],
+        meta: Straddle::PaymentSummaryPagedV1::Meta,
+        response_type: Straddle::Models::PaymentSummaryPagedV1::response_type
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Straddle::PaymentSummaryPagedV1::Data],
+        meta: Straddle::PaymentSummaryPagedV1::Meta,
+        response_type: Straddle::Models::PaymentSummaryPagedV1::response_type
+      }
+
+      type data =
+        {
+          id: String,
+          amount: Integer,
+          created_at: Time,
+          currency: String,
+          description: String,
+          external_id: String,
+          funding_ids: ::Array[String],
+          paykey: String,
+          payment_date: Date,
+          payment_type: Straddle::Models::PaymentSummaryPagedV1::Data::payment_type,
+          status: Straddle::Models::PaymentSummaryPagedV1::Data::status,
+          status_details: Straddle::StatusDetailsV1,
+          updated_at: Time,
+          customer_details: Straddle::CustomerDetailsV1,
+          effective_at: Time?,
+          funding_id: String?,
+          paykey_details: Straddle::PaykeyDetailsV1
+        }
+
+      class Data < Straddle::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor amount: Integer
+
+        attr_accessor created_at: Time
+
+        attr_accessor currency: String
+
+        attr_accessor description: String
+
+        attr_accessor external_id: String
+
+        attr_accessor funding_ids: ::Array[String]
+
+        attr_accessor paykey: String
+
+        attr_accessor payment_date: Date
+
+        attr_accessor payment_type: Straddle::Models::PaymentSummaryPagedV1::Data::payment_type
+
+        attr_accessor status: Straddle::Models::PaymentSummaryPagedV1::Data::status
+
+        attr_accessor status_details: Straddle::StatusDetailsV1
+
+        attr_accessor updated_at: Time
+
+        attr_reader customer_details: Straddle::CustomerDetailsV1?
+
+        def customer_details=: (
+          Straddle::CustomerDetailsV1
+        ) -> Straddle::CustomerDetailsV1
+
+        attr_accessor effective_at: Time?
+
+        attr_accessor funding_id: String?
+
+        attr_reader paykey_details: Straddle::PaykeyDetailsV1?
+
+        def paykey_details=: (
+          Straddle::PaykeyDetailsV1
+        ) -> Straddle::PaykeyDetailsV1
+
+        def initialize: (
+          id: String,
+          amount: Integer,
+          created_at: Time,
+          currency: String,
+          description: String,
+          external_id: String,
+          funding_ids: ::Array[String],
+          paykey: String,
+          payment_date: Date,
+          payment_type: Straddle::Models::PaymentSummaryPagedV1::Data::payment_type,
+          status: Straddle::Models::PaymentSummaryPagedV1::Data::status,
+          status_details: Straddle::StatusDetailsV1,
+          updated_at: Time,
+          ?customer_details: Straddle::CustomerDetailsV1,
+          ?effective_at: Time?,
+          ?funding_id: String?,
+          ?paykey_details: Straddle::PaykeyDetailsV1
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          amount: Integer,
+          created_at: Time,
+          currency: String,
+          description: String,
+          external_id: String,
+          funding_ids: ::Array[String],
+          paykey: String,
+          payment_date: Date,
+          payment_type: Straddle::Models::PaymentSummaryPagedV1::Data::payment_type,
+          status: Straddle::Models::PaymentSummaryPagedV1::Data::status,
+          status_details: Straddle::StatusDetailsV1,
+          updated_at: Time,
+          customer_details: Straddle::CustomerDetailsV1,
+          effective_at: Time?,
+          funding_id: String?,
+          paykey_details: Straddle::PaykeyDetailsV1
+        }
+
+        type payment_type = :charge | :payout
+
+        module PaymentType
+          extend Straddle::Internal::Type::Enum
+
+          CHARGE: :charge
+          PAYOUT: :payout
+
+          def self?.values: -> ::Array[Straddle::Models::PaymentSummaryPagedV1::Data::payment_type]
+        end
+
+        type status =
+          :created
+          | :scheduled
+          | :failed
+          | :cancelled
+          | :on_hold
+          | :pending
+          | :paid
+          | :reversed
+
+        module Status
+          extend Straddle::Internal::Type::Enum
+
+          CREATED: :created
+          SCHEDULED: :scheduled
+          FAILED: :failed
+          CANCELLED: :cancelled
+          ON_HOLD: :on_hold
+          PENDING: :pending
+          PAID: :paid
+          REVERSED: :reversed
+
+          def self?.values: -> ::Array[Straddle::Models::PaymentSummaryPagedV1::Data::status]
+        end
+      end
+
+      type meta =
+        {
+          api_request_id: String,
+          api_request_timestamp: Time,
+          max_page_size: Integer,
+          page_number: Integer,
+          page_size: Integer,
+          sort_by: String,
+          sort_order: Straddle::Models::PaymentSummaryPagedV1::Meta::sort_order,
+          total_items: Integer,
+          total_pages: Integer
+        }
+
+      class Meta < Straddle::Internal::Type::BaseModel
+        attr_accessor api_request_id: String
+
+        attr_accessor api_request_timestamp: Time
+
+        attr_accessor max_page_size: Integer
+
+        attr_accessor page_number: Integer
+
+        attr_accessor page_size: Integer
+
+        attr_accessor sort_by: String
+
+        attr_accessor sort_order: Straddle::Models::PaymentSummaryPagedV1::Meta::sort_order
+
+        attr_accessor total_items: Integer
+
+        attr_accessor total_pages: Integer
+
+        def initialize: (
+          api_request_id: String,
+          api_request_timestamp: Time,
+          max_page_size: Integer,
+          page_number: Integer,
+          page_size: Integer,
+          sort_by: String,
+          sort_order: Straddle::Models::PaymentSummaryPagedV1::Meta::sort_order,
+          total_items: Integer,
+          total_pages: Integer
+        ) -> void
+
+        def to_hash: -> {
+          api_request_id: String,
+          api_request_timestamp: Time,
+          max_page_size: Integer,
+          page_number: Integer,
+          page_size: Integer,
+          sort_by: String,
+          sort_order: Straddle::Models::PaymentSummaryPagedV1::Meta::sort_order,
+          total_items: Integer,
+          total_pages: Integer
+        }
+
+        type sort_order = :asc | :desc
+
+        module SortOrder
+          extend Straddle::Internal::Type::Enum
+
+          ASC: :asc
+          DESC: :desc
+
+          def self?.values: -> ::Array[Straddle::Models::PaymentSummaryPagedV1::Meta::sort_order]
+        end
+      end
+
+      type response_type = :object | :array | :error | :none
+
+      module ResponseType
+        extend Straddle::Internal::Type::Enum
+
+        OBJECT: :object
+        ARRAY: :array
+        ERROR: :error
+        NONE: :none
+
+        def self?.values: -> ::Array[Straddle::Models::PaymentSummaryPagedV1::response_type]
+      end
+    end
+  end
+end

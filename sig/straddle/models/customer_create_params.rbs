@@ -1,0 +1,235 @@
+module Straddle
+  module Models
+    type customer_create_params =
+      {
+        device: Straddle::DeviceUnmaskedV1,
+        email: String,
+        name: String,
+        phone: String,
+        type: Straddle::Models::CustomerCreateParams::type_,
+        address: Straddle::CustomerAddressV1?,
+        compliance_profile: Straddle::Models::CustomerCreateParams::compliance_profile?,
+        config: Straddle::CustomerCreateParams::Config,
+        external_id: String?,
+        metadata: ::Hash[Symbol, String]?,
+        correlation_id: String,
+        request_id: String,
+        straddle_account_id: String
+      }
+      & Straddle::Internal::Type::request_parameters
+
+    class CustomerCreateParams < Straddle::Internal::Type::BaseModel
+      extend Straddle::Internal::Type::RequestParameters::Converter
+      include Straddle::Internal::Type::RequestParameters
+
+      attr_accessor device: Straddle::DeviceUnmaskedV1
+
+      attr_accessor email: String
+
+      attr_accessor name: String
+
+      attr_accessor phone: String
+
+      attr_accessor type: Straddle::Models::CustomerCreateParams::type_
+
+      attr_accessor address: Straddle::CustomerAddressV1?
+
+      attr_accessor compliance_profile: Straddle::Models::CustomerCreateParams::compliance_profile?
+
+      attr_reader config: Straddle::CustomerCreateParams::Config?
+
+      def config=: (
+        Straddle::CustomerCreateParams::Config
+      ) -> Straddle::CustomerCreateParams::Config
+
+      attr_accessor external_id: String?
+
+      attr_accessor metadata: ::Hash[Symbol, String]?
+
+      attr_reader correlation_id: String?
+
+      def correlation_id=: (String) -> String
+
+      attr_reader request_id: String?
+
+      def request_id=: (String) -> String
+
+      attr_reader straddle_account_id: String?
+
+      def straddle_account_id=: (String) -> String
+
+      def initialize: (
+        device: Straddle::DeviceUnmaskedV1,
+        email: String,
+        name: String,
+        phone: String,
+        type: Straddle::Models::CustomerCreateParams::type_,
+        ?address: Straddle::CustomerAddressV1?,
+        ?compliance_profile: Straddle::Models::CustomerCreateParams::compliance_profile?,
+        ?config: Straddle::CustomerCreateParams::Config,
+        ?external_id: String?,
+        ?metadata: ::Hash[Symbol, String]?,
+        ?correlation_id: String,
+        ?request_id: String,
+        ?straddle_account_id: String,
+        ?request_options: Straddle::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        device: Straddle::DeviceUnmaskedV1,
+        email: String,
+        name: String,
+        phone: String,
+        type: Straddle::Models::CustomerCreateParams::type_,
+        address: Straddle::CustomerAddressV1?,
+        compliance_profile: Straddle::Models::CustomerCreateParams::compliance_profile?,
+        config: Straddle::CustomerCreateParams::Config,
+        external_id: String?,
+        metadata: ::Hash[Symbol, String]?,
+        correlation_id: String,
+        request_id: String,
+        straddle_account_id: String,
+        request_options: Straddle::RequestOptions
+      }
+
+      type type_ = :individual | :business | :unknown
+
+      module Type
+        extend Straddle::Internal::Type::Enum
+
+        INDIVIDUAL: :individual
+        BUSINESS: :business
+        UNKNOWN: :unknown
+
+        def self?.values: -> ::Array[Straddle::Models::CustomerCreateParams::type_]
+      end
+
+      type compliance_profile =
+        Straddle::CustomerCreateParams::ComplianceProfile::IndividualComplianceProfile
+        | Straddle::CustomerCreateParams::ComplianceProfile::BusinessComplianceProfile
+
+      module ComplianceProfile
+        extend Straddle::Internal::Type::Union
+
+        type individual_compliance_profile = { dob: Date?, ssn: String? }
+
+        class IndividualComplianceProfile < Straddle::Internal::Type::BaseModel
+          attr_accessor dob: Date?
+
+          attr_accessor ssn: String?
+
+          def initialize: (dob: Date?, ssn: String?) -> void
+
+          def to_hash: -> { dob: Date?, ssn: String? }
+        end
+
+        type business_compliance_profile =
+          {
+            ein: String?,
+            legal_business_name: String?,
+            representatives: ::Array[Straddle::CustomerCreateParams::ComplianceProfile::BusinessComplianceProfile::Representative]?,
+            website: String?
+          }
+
+        class BusinessComplianceProfile < Straddle::Internal::Type::BaseModel
+          attr_accessor ein: String?
+
+          attr_accessor legal_business_name: String?
+
+          attr_accessor representatives: ::Array[Straddle::CustomerCreateParams::ComplianceProfile::BusinessComplianceProfile::Representative]?
+
+          attr_accessor website: String?
+
+          def initialize: (
+            ein: String?,
+            legal_business_name: String?,
+            ?representatives: ::Array[Straddle::CustomerCreateParams::ComplianceProfile::BusinessComplianceProfile::Representative]?,
+            ?website: String?
+          ) -> void
+
+          def to_hash: -> {
+            ein: String?,
+            legal_business_name: String?,
+            representatives: ::Array[Straddle::CustomerCreateParams::ComplianceProfile::BusinessComplianceProfile::Representative]?,
+            website: String?
+          }
+
+          type representative = { name: String, email: String?, phone: String? }
+
+          class Representative < Straddle::Internal::Type::BaseModel
+            attr_accessor name: String
+
+            attr_accessor email: String?
+
+            attr_accessor phone: String?
+
+            def initialize: (
+              name: String,
+              ?email: String?,
+              ?phone: String?
+            ) -> void
+
+            def to_hash: -> { name: String, email: String?, phone: String? }
+          end
+        end
+
+        def self?.variants: -> ::Array[Straddle::Models::CustomerCreateParams::compliance_profile]
+      end
+
+      type config =
+        {
+          processing_method: Straddle::Models::CustomerCreateParams::Config::processing_method,
+          sandbox_outcome: Straddle::Models::CustomerCreateParams::Config::sandbox_outcome
+        }
+
+      class Config < Straddle::Internal::Type::BaseModel
+        attr_reader processing_method: Straddle::Models::CustomerCreateParams::Config::processing_method?
+
+        def processing_method=: (
+          Straddle::Models::CustomerCreateParams::Config::processing_method
+        ) -> Straddle::Models::CustomerCreateParams::Config::processing_method
+
+        attr_reader sandbox_outcome: Straddle::Models::CustomerCreateParams::Config::sandbox_outcome?
+
+        def sandbox_outcome=: (
+          Straddle::Models::CustomerCreateParams::Config::sandbox_outcome
+        ) -> Straddle::Models::CustomerCreateParams::Config::sandbox_outcome
+
+        def initialize: (
+          ?processing_method: Straddle::Models::CustomerCreateParams::Config::processing_method,
+          ?sandbox_outcome: Straddle::Models::CustomerCreateParams::Config::sandbox_outcome
+        ) -> void
+
+        def to_hash: -> {
+          processing_method: Straddle::Models::CustomerCreateParams::Config::processing_method,
+          sandbox_outcome: Straddle::Models::CustomerCreateParams::Config::sandbox_outcome
+        }
+
+        type processing_method = :inline | :background | :skip
+
+        module ProcessingMethod
+          extend Straddle::Internal::Type::Enum
+
+          INLINE: :inline
+          BACKGROUND: :background
+          SKIP: :skip
+
+          def self?.values: -> ::Array[Straddle::Models::CustomerCreateParams::Config::processing_method]
+        end
+
+        type sandbox_outcome = :standard | :verified | :rejected | :review
+
+        module SandboxOutcome
+          extend Straddle::Internal::Type::Enum
+
+          STANDARD: :standard
+          VERIFIED: :verified
+          REJECTED: :rejected
+          REVIEW: :review
+
+          def self?.values: -> ::Array[Straddle::Models::CustomerCreateParams::Config::sandbox_outcome]
+        end
+      end
+    end
+  end
+end

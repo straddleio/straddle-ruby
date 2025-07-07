@@ -1,0 +1,182 @@
+module Straddle
+  module Models
+    type customer_list_params =
+      {
+        created_from: Time,
+        created_to: Time,
+        email: String,
+        external_id: String,
+        name: String,
+        page_number: Integer,
+        page_size: Integer,
+        search_text: String,
+        sort_by: Straddle::Models::CustomerListParams::sort_by,
+        sort_order: Straddle::Models::CustomerListParams::sort_order,
+        status: ::Array[Straddle::Models::CustomerListParams::status],
+        types: ::Array[Straddle::Models::CustomerListParams::type_],
+        correlation_id: String,
+        request_id: String,
+        straddle_account_id: String
+      }
+      & Straddle::Internal::Type::request_parameters
+
+    class CustomerListParams < Straddle::Internal::Type::BaseModel
+      extend Straddle::Internal::Type::RequestParameters::Converter
+      include Straddle::Internal::Type::RequestParameters
+
+      attr_reader created_from: Time?
+
+      def created_from=: (Time) -> Time
+
+      attr_reader created_to: Time?
+
+      def created_to=: (Time) -> Time
+
+      attr_reader email: String?
+
+      def email=: (String) -> String
+
+      attr_reader external_id: String?
+
+      def external_id=: (String) -> String
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader page_number: Integer?
+
+      def page_number=: (Integer) -> Integer
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
+
+      attr_reader search_text: String?
+
+      def search_text=: (String) -> String
+
+      attr_reader sort_by: Straddle::Models::CustomerListParams::sort_by?
+
+      def sort_by=: (
+        Straddle::Models::CustomerListParams::sort_by
+      ) -> Straddle::Models::CustomerListParams::sort_by
+
+      attr_reader sort_order: Straddle::Models::CustomerListParams::sort_order?
+
+      def sort_order=: (
+        Straddle::Models::CustomerListParams::sort_order
+      ) -> Straddle::Models::CustomerListParams::sort_order
+
+      attr_reader status: ::Array[Straddle::Models::CustomerListParams::status]?
+
+      def status=: (
+        ::Array[Straddle::Models::CustomerListParams::status]
+      ) -> ::Array[Straddle::Models::CustomerListParams::status]
+
+      attr_reader types: ::Array[Straddle::Models::CustomerListParams::type_]?
+
+      def types=: (
+        ::Array[Straddle::Models::CustomerListParams::type_]
+      ) -> ::Array[Straddle::Models::CustomerListParams::type_]
+
+      attr_reader correlation_id: String?
+
+      def correlation_id=: (String) -> String
+
+      attr_reader request_id: String?
+
+      def request_id=: (String) -> String
+
+      attr_reader straddle_account_id: String?
+
+      def straddle_account_id=: (String) -> String
+
+      def initialize: (
+        ?created_from: Time,
+        ?created_to: Time,
+        ?email: String,
+        ?external_id: String,
+        ?name: String,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?search_text: String,
+        ?sort_by: Straddle::Models::CustomerListParams::sort_by,
+        ?sort_order: Straddle::Models::CustomerListParams::sort_order,
+        ?status: ::Array[Straddle::Models::CustomerListParams::status],
+        ?types: ::Array[Straddle::Models::CustomerListParams::type_],
+        ?correlation_id: String,
+        ?request_id: String,
+        ?straddle_account_id: String,
+        ?request_options: Straddle::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        created_from: Time,
+        created_to: Time,
+        email: String,
+        external_id: String,
+        name: String,
+        page_number: Integer,
+        page_size: Integer,
+        search_text: String,
+        sort_by: Straddle::Models::CustomerListParams::sort_by,
+        sort_order: Straddle::Models::CustomerListParams::sort_order,
+        status: ::Array[Straddle::Models::CustomerListParams::status],
+        types: ::Array[Straddle::Models::CustomerListParams::type_],
+        correlation_id: String,
+        request_id: String,
+        straddle_account_id: String,
+        request_options: Straddle::RequestOptions
+      }
+
+      type sort_by = :name | :created_at
+
+      module SortBy
+        extend Straddle::Internal::Type::Enum
+
+        NAME: :name
+        CREATED_AT: :created_at
+
+        def self?.values: -> ::Array[Straddle::Models::CustomerListParams::sort_by]
+      end
+
+      type sort_order = :asc | :desc
+
+      module SortOrder
+        extend Straddle::Internal::Type::Enum
+
+        ASC: :asc
+        DESC: :desc
+
+        def self?.values: -> ::Array[Straddle::Models::CustomerListParams::sort_order]
+      end
+
+      type status = :pending | :review | :verified | :inactive | :rejected
+
+      module Status
+        extend Straddle::Internal::Type::Enum
+
+        PENDING: :pending
+        REVIEW: :review
+        VERIFIED: :verified
+        INACTIVE: :inactive
+        REJECTED: :rejected
+
+        def self?.values: -> ::Array[Straddle::Models::CustomerListParams::status]
+      end
+
+      type type_ = :individual | :business | :unknown
+
+      module Type
+        extend Straddle::Internal::Type::Enum
+
+        INDIVIDUAL: :individual
+        BUSINESS: :business
+        UNKNOWN: :unknown
+
+        def self?.values: -> ::Array[Straddle::Models::CustomerListParams::type_]
+      end
+    end
+  end
+end

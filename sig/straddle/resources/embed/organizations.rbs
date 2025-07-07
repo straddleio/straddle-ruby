@@ -1,0 +1,37 @@
+module Straddle
+  module Resources
+    class Embed
+      class Organizations
+        def create: (
+          name: String,
+          ?external_id: String?,
+          ?metadata: ::Hash[Symbol, String?]?,
+          ?correlation_id: String,
+          ?request_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> Straddle::Embed::OrganizationV1
+
+        def list: (
+          ?external_id: String,
+          ?name: String,
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?sort_by: String,
+          ?sort_order: Straddle::Models::Embed::OrganizationListParams::sort_order,
+          ?correlation_id: String,
+          ?request_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> Straddle::Internal::PageNumberSchema[Straddle::Embed::OrganizationPagedV1::Data]
+
+        def get: (
+          String organization_id,
+          ?correlation_id: String,
+          ?request_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> Straddle::Embed::OrganizationV1
+
+        def initialize: (client: Straddle::Client) -> void
+      end
+    end
+  end
+end

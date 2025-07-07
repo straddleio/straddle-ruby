@@ -1,0 +1,87 @@
+module Straddle
+  module Models
+    module Embed
+      type organization_v1 =
+        {
+          data: Straddle::Embed::OrganizationV1::Data,
+          meta: Straddle::ResponseMetadata,
+          response_type: Straddle::Models::Embed::OrganizationV1::response_type
+        }
+
+      class OrganizationV1 < Straddle::Internal::Type::BaseModel
+        attr_accessor data: Straddle::Embed::OrganizationV1::Data
+
+        attr_accessor meta: Straddle::ResponseMetadata
+
+        attr_accessor response_type: Straddle::Models::Embed::OrganizationV1::response_type
+
+        def initialize: (
+          data: Straddle::Embed::OrganizationV1::Data,
+          meta: Straddle::ResponseMetadata,
+          response_type: Straddle::Models::Embed::OrganizationV1::response_type
+        ) -> void
+
+        def to_hash: -> {
+          data: Straddle::Embed::OrganizationV1::Data,
+          meta: Straddle::ResponseMetadata,
+          response_type: Straddle::Models::Embed::OrganizationV1::response_type
+        }
+
+        type data =
+          {
+            id: String,
+            created_at: Time,
+            name: String,
+            updated_at: Time,
+            external_id: String?,
+            metadata: ::Hash[Symbol, String?]?
+          }
+
+        class Data < Straddle::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor created_at: Time
+
+          attr_accessor name: String
+
+          attr_accessor updated_at: Time
+
+          attr_accessor external_id: String?
+
+          attr_accessor metadata: ::Hash[Symbol, String?]?
+
+          def initialize: (
+            id: String,
+            created_at: Time,
+            name: String,
+            updated_at: Time,
+            ?external_id: String?,
+            ?metadata: ::Hash[Symbol, String?]?
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            created_at: Time,
+            name: String,
+            updated_at: Time,
+            external_id: String?,
+            metadata: ::Hash[Symbol, String?]?
+          }
+        end
+
+        type response_type = :object | :array | :error | :none
+
+        module ResponseType
+          extend Straddle::Internal::Type::Enum
+
+          OBJECT: :object
+          ARRAY: :array
+          ERROR: :error
+          NONE: :none
+
+          def self?.values: -> ::Array[Straddle::Models::Embed::OrganizationV1::response_type]
+        end
+      end
+    end
+  end
+end

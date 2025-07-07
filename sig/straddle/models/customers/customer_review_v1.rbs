@@ -1,0 +1,1001 @@
+module Straddle
+  module Models
+    class CustomerReviewV1 = Customers::CustomerReviewV1
+
+    module Customers
+      type customer_review_v1 =
+        {
+          data: Straddle::Customers::CustomerReviewV1::Data,
+          meta: Straddle::ResponseMetadata,
+          response_type: Straddle::Models::Customers::CustomerReviewV1::response_type
+        }
+
+      class CustomerReviewV1 < Straddle::Internal::Type::BaseModel
+        attr_accessor data: Straddle::Customers::CustomerReviewV1::Data
+
+        attr_accessor meta: Straddle::ResponseMetadata
+
+        attr_accessor response_type: Straddle::Models::Customers::CustomerReviewV1::response_type
+
+        def initialize: (
+          data: Straddle::Customers::CustomerReviewV1::Data,
+          meta: Straddle::ResponseMetadata,
+          response_type: Straddle::Models::Customers::CustomerReviewV1::response_type
+        ) -> void
+
+        def to_hash: -> {
+          data: Straddle::Customers::CustomerReviewV1::Data,
+          meta: Straddle::ResponseMetadata,
+          response_type: Straddle::Models::Customers::CustomerReviewV1::response_type
+        }
+
+        type data =
+          {
+            customer_details: Straddle::Customers::CustomerReviewV1::Data::CustomerDetails,
+            identity_details: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails
+          }
+
+        class Data < Straddle::Internal::Type::BaseModel
+          attr_accessor customer_details: Straddle::Customers::CustomerReviewV1::Data::CustomerDetails
+
+          attr_reader identity_details: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails?
+
+          def identity_details=: (
+            Straddle::Customers::CustomerReviewV1::Data::IdentityDetails
+          ) -> Straddle::Customers::CustomerReviewV1::Data::IdentityDetails
+
+          def initialize: (
+            customer_details: Straddle::Customers::CustomerReviewV1::Data::CustomerDetails,
+            ?identity_details: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails
+          ) -> void
+
+          def to_hash: -> {
+            customer_details: Straddle::Customers::CustomerReviewV1::Data::CustomerDetails,
+            identity_details: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails
+          }
+
+          type customer_details =
+            {
+              id: String,
+              created_at: Time,
+              email: String,
+              name: String,
+              phone: String,
+              status: Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::status,
+              type: Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::type_,
+              updated_at: Time,
+              address: Straddle::CustomerAddressV1?,
+              compliance_profile: Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::compliance_profile?,
+              config: Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::Config,
+              device: Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::Device,
+              external_id: String?,
+              metadata: ::Hash[Symbol, String]?
+            }
+
+          class CustomerDetails < Straddle::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor created_at: Time
+
+            attr_accessor email: String
+
+            attr_accessor name: String
+
+            attr_accessor phone: String
+
+            attr_accessor status: Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::status
+
+            attr_accessor type: Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::type_
+
+            attr_accessor updated_at: Time
+
+            attr_accessor address: Straddle::CustomerAddressV1?
+
+            attr_accessor compliance_profile: Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::compliance_profile?
+
+            attr_reader config: Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::Config?
+
+            def config=: (
+              Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::Config
+            ) -> Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::Config
+
+            attr_reader device: Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::Device?
+
+            def device=: (
+              Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::Device
+            ) -> Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::Device
+
+            attr_accessor external_id: String?
+
+            attr_accessor metadata: ::Hash[Symbol, String]?
+
+            def initialize: (
+              id: String,
+              created_at: Time,
+              email: String,
+              name: String,
+              phone: String,
+              status: Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::status,
+              type: Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::type_,
+              updated_at: Time,
+              ?address: Straddle::CustomerAddressV1?,
+              ?compliance_profile: Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::compliance_profile?,
+              ?config: Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::Config,
+              ?device: Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::Device,
+              ?external_id: String?,
+              ?metadata: ::Hash[Symbol, String]?
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              created_at: Time,
+              email: String,
+              name: String,
+              phone: String,
+              status: Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::status,
+              type: Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::type_,
+              updated_at: Time,
+              address: Straddle::CustomerAddressV1?,
+              compliance_profile: Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::compliance_profile?,
+              config: Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::Config,
+              device: Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::Device,
+              external_id: String?,
+              metadata: ::Hash[Symbol, String]?
+            }
+
+            type status = :pending | :review | :verified | :inactive | :rejected
+
+            module Status
+              extend Straddle::Internal::Type::Enum
+
+              PENDING: :pending
+              REVIEW: :review
+              VERIFIED: :verified
+              INACTIVE: :inactive
+              REJECTED: :rejected
+
+              def self?.values: -> ::Array[Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::status]
+            end
+
+            type type_ = :individual | :business | :unknown
+
+            module Type
+              extend Straddle::Internal::Type::Enum
+
+              INDIVIDUAL: :individual
+              BUSINESS: :business
+              UNKNOWN: :unknown
+
+              def self?.values: -> ::Array[Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::type_]
+            end
+
+            type compliance_profile =
+              Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::ComplianceProfile::IndividualComplianceProfile
+              | Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::ComplianceProfile::BusinessComplianceProfile
+
+            module ComplianceProfile
+              extend Straddle::Internal::Type::Union
+
+              type individual_compliance_profile = { dob: Date?, ssn: String? }
+
+              class IndividualComplianceProfile < Straddle::Internal::Type::BaseModel
+                attr_accessor dob: Date?
+
+                attr_accessor ssn: String?
+
+                def initialize: (dob: Date?, ssn: String?) -> void
+
+                def to_hash: -> { dob: Date?, ssn: String? }
+              end
+
+              type business_compliance_profile =
+                {
+                  ein: String?,
+                  legal_business_name: String?,
+                  representatives: ::Array[Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::ComplianceProfile::BusinessComplianceProfile::Representative]?,
+                  website: String?
+                }
+
+              class BusinessComplianceProfile < Straddle::Internal::Type::BaseModel
+                attr_accessor ein: String?
+
+                attr_accessor legal_business_name: String?
+
+                attr_accessor representatives: ::Array[Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::ComplianceProfile::BusinessComplianceProfile::Representative]?
+
+                attr_accessor website: String?
+
+                def initialize: (
+                  ein: String?,
+                  legal_business_name: String?,
+                  ?representatives: ::Array[Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::ComplianceProfile::BusinessComplianceProfile::Representative]?,
+                  ?website: String?
+                ) -> void
+
+                def to_hash: -> {
+                  ein: String?,
+                  legal_business_name: String?,
+                  representatives: ::Array[Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::ComplianceProfile::BusinessComplianceProfile::Representative]?,
+                  website: String?
+                }
+
+                type representative =
+                  { name: String, email: String?, phone: String? }
+
+                class Representative < Straddle::Internal::Type::BaseModel
+                  attr_accessor name: String
+
+                  attr_accessor email: String?
+
+                  attr_accessor phone: String?
+
+                  def initialize: (
+                    name: String,
+                    ?email: String?,
+                    ?phone: String?
+                  ) -> void
+
+                  def to_hash: -> {
+                    name: String,
+                    email: String?,
+                    phone: String?
+                  }
+                end
+              end
+
+              def self?.variants: -> ::Array[Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::compliance_profile]
+            end
+
+            type config =
+              {
+                processing_method: Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::Config::processing_method,
+                sandbox_outcome: Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::Config::sandbox_outcome
+              }
+
+            class Config < Straddle::Internal::Type::BaseModel
+              attr_reader processing_method: Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::Config::processing_method?
+
+              def processing_method=: (
+                Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::Config::processing_method
+              ) -> Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::Config::processing_method
+
+              attr_reader sandbox_outcome: Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::Config::sandbox_outcome?
+
+              def sandbox_outcome=: (
+                Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::Config::sandbox_outcome
+              ) -> Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::Config::sandbox_outcome
+
+              def initialize: (
+                ?processing_method: Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::Config::processing_method,
+                ?sandbox_outcome: Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::Config::sandbox_outcome
+              ) -> void
+
+              def to_hash: -> {
+                processing_method: Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::Config::processing_method,
+                sandbox_outcome: Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::Config::sandbox_outcome
+              }
+
+              type processing_method = :inline | :background | :skip
+
+              module ProcessingMethod
+                extend Straddle::Internal::Type::Enum
+
+                INLINE: :inline
+                BACKGROUND: :background
+                SKIP: :skip
+
+                def self?.values: -> ::Array[Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::Config::processing_method]
+              end
+
+              type sandbox_outcome = :standard | :verified | :rejected | :review
+
+              module SandboxOutcome
+                extend Straddle::Internal::Type::Enum
+
+                STANDARD: :standard
+                VERIFIED: :verified
+                REJECTED: :rejected
+                REVIEW: :review
+
+                def self?.values: -> ::Array[Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::Config::sandbox_outcome]
+              end
+            end
+
+            type device = { ip_address: String }
+
+            class Device < Straddle::Internal::Type::BaseModel
+              attr_accessor ip_address: String
+
+              def initialize: (ip_address: String) -> void
+
+              def to_hash: -> { ip_address: String }
+            end
+          end
+
+          type identity_details =
+            {
+              breakdown: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::Breakdown,
+              created_at: Time,
+              decision: Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::decision,
+              review_id: String,
+              updated_at: Time,
+              kyc: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::KYC,
+              messages: ::Hash[Symbol, String]?,
+              network_alerts: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::NetworkAlerts,
+              reputation: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::Reputation,
+              watch_list: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList
+            }
+
+          class IdentityDetails < Straddle::Internal::Type::BaseModel
+            attr_accessor breakdown: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::Breakdown
+
+            attr_accessor created_at: Time
+
+            attr_accessor decision: Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::decision
+
+            attr_accessor review_id: String
+
+            attr_accessor updated_at: Time
+
+            attr_reader kyc: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::KYC?
+
+            def kyc=: (
+              Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::KYC
+            ) -> Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::KYC
+
+            attr_accessor messages: ::Hash[Symbol, String]?
+
+            attr_reader network_alerts: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::NetworkAlerts?
+
+            def network_alerts=: (
+              Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::NetworkAlerts
+            ) -> Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::NetworkAlerts
+
+            attr_reader reputation: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::Reputation?
+
+            def reputation=: (
+              Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::Reputation
+            ) -> Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::Reputation
+
+            attr_reader watch_list: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList?
+
+            def watch_list=: (
+              Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList
+            ) -> Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList
+
+            def initialize: (
+              breakdown: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::Breakdown,
+              created_at: Time,
+              decision: Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::decision,
+              review_id: String,
+              updated_at: Time,
+              ?kyc: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::KYC,
+              ?messages: ::Hash[Symbol, String]?,
+              ?network_alerts: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::NetworkAlerts,
+              ?reputation: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::Reputation,
+              ?watch_list: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList
+            ) -> void
+
+            def to_hash: -> {
+              breakdown: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::Breakdown,
+              created_at: Time,
+              decision: Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::decision,
+              review_id: String,
+              updated_at: Time,
+              kyc: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::KYC,
+              messages: ::Hash[Symbol, String]?,
+              network_alerts: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::NetworkAlerts,
+              reputation: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::Reputation,
+              watch_list: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList
+            }
+
+            type breakdown =
+              {
+                address: Straddle::Customers::IdentityVerificationBreakdownV1,
+                business_evaluation: Straddle::Customers::IdentityVerificationBreakdownV1,
+                business_identification: Straddle::Customers::IdentityVerificationBreakdownV1,
+                business_validation: Straddle::Customers::IdentityVerificationBreakdownV1,
+                email: Straddle::Customers::IdentityVerificationBreakdownV1,
+                fraud: Straddle::Customers::IdentityVerificationBreakdownV1,
+                phone: Straddle::Customers::IdentityVerificationBreakdownV1,
+                synthetic: Straddle::Customers::IdentityVerificationBreakdownV1
+              }
+
+            class Breakdown < Straddle::Internal::Type::BaseModel
+              attr_reader address: Straddle::Customers::IdentityVerificationBreakdownV1?
+
+              def address=: (
+                Straddle::Customers::IdentityVerificationBreakdownV1
+              ) -> Straddle::Customers::IdentityVerificationBreakdownV1
+
+              attr_reader business_evaluation: Straddle::Customers::IdentityVerificationBreakdownV1?
+
+              def business_evaluation=: (
+                Straddle::Customers::IdentityVerificationBreakdownV1
+              ) -> Straddle::Customers::IdentityVerificationBreakdownV1
+
+              attr_reader business_identification: Straddle::Customers::IdentityVerificationBreakdownV1?
+
+              def business_identification=: (
+                Straddle::Customers::IdentityVerificationBreakdownV1
+              ) -> Straddle::Customers::IdentityVerificationBreakdownV1
+
+              attr_reader business_validation: Straddle::Customers::IdentityVerificationBreakdownV1?
+
+              def business_validation=: (
+                Straddle::Customers::IdentityVerificationBreakdownV1
+              ) -> Straddle::Customers::IdentityVerificationBreakdownV1
+
+              attr_reader email: Straddle::Customers::IdentityVerificationBreakdownV1?
+
+              def email=: (
+                Straddle::Customers::IdentityVerificationBreakdownV1
+              ) -> Straddle::Customers::IdentityVerificationBreakdownV1
+
+              attr_reader fraud: Straddle::Customers::IdentityVerificationBreakdownV1?
+
+              def fraud=: (
+                Straddle::Customers::IdentityVerificationBreakdownV1
+              ) -> Straddle::Customers::IdentityVerificationBreakdownV1
+
+              attr_reader phone: Straddle::Customers::IdentityVerificationBreakdownV1?
+
+              def phone=: (
+                Straddle::Customers::IdentityVerificationBreakdownV1
+              ) -> Straddle::Customers::IdentityVerificationBreakdownV1
+
+              attr_reader synthetic: Straddle::Customers::IdentityVerificationBreakdownV1?
+
+              def synthetic=: (
+                Straddle::Customers::IdentityVerificationBreakdownV1
+              ) -> Straddle::Customers::IdentityVerificationBreakdownV1
+
+              def initialize: (
+                ?address: Straddle::Customers::IdentityVerificationBreakdownV1,
+                ?business_evaluation: Straddle::Customers::IdentityVerificationBreakdownV1,
+                ?business_identification: Straddle::Customers::IdentityVerificationBreakdownV1,
+                ?business_validation: Straddle::Customers::IdentityVerificationBreakdownV1,
+                ?email: Straddle::Customers::IdentityVerificationBreakdownV1,
+                ?fraud: Straddle::Customers::IdentityVerificationBreakdownV1,
+                ?phone: Straddle::Customers::IdentityVerificationBreakdownV1,
+                ?synthetic: Straddle::Customers::IdentityVerificationBreakdownV1
+              ) -> void
+
+              def to_hash: -> {
+                address: Straddle::Customers::IdentityVerificationBreakdownV1,
+                business_evaluation: Straddle::Customers::IdentityVerificationBreakdownV1,
+                business_identification: Straddle::Customers::IdentityVerificationBreakdownV1,
+                business_validation: Straddle::Customers::IdentityVerificationBreakdownV1,
+                email: Straddle::Customers::IdentityVerificationBreakdownV1,
+                fraud: Straddle::Customers::IdentityVerificationBreakdownV1,
+                phone: Straddle::Customers::IdentityVerificationBreakdownV1,
+                synthetic: Straddle::Customers::IdentityVerificationBreakdownV1
+              }
+            end
+
+            type decision = :accept | :reject | :review
+
+            module Decision
+              extend Straddle::Internal::Type::Enum
+
+              ACCEPT: :accept
+              REJECT: :reject
+              REVIEW: :review
+
+              def self?.values: -> ::Array[Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::decision]
+            end
+
+            type kyc =
+              {
+                validations: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::KYC::Validations,
+                codes: ::Array[String]?,
+                decision: Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::KYC::decision
+              }
+
+            class KYC < Straddle::Internal::Type::BaseModel
+              attr_accessor validations: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::KYC::Validations
+
+              attr_accessor codes: ::Array[String]?
+
+              attr_reader decision: Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::KYC::decision?
+
+              def decision=: (
+                Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::KYC::decision
+              ) -> Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::KYC::decision
+
+              def initialize: (
+                validations: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::KYC::Validations,
+                ?codes: ::Array[String]?,
+                ?decision: Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::KYC::decision
+              ) -> void
+
+              def to_hash: -> {
+                validations: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::KYC::Validations,
+                codes: ::Array[String]?,
+                decision: Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::KYC::decision
+              }
+
+              type validations =
+                {
+                  address: bool,
+                  city: bool,
+                  dob: bool,
+                  email: bool,
+                  first_name: bool,
+                  last_name: bool,
+                  phone: bool,
+                  ssn: bool,
+                  state: bool,
+                  zip: bool
+                }
+
+              class Validations < Straddle::Internal::Type::BaseModel
+                attr_reader address: bool?
+
+                def address=: (bool) -> bool
+
+                attr_reader city: bool?
+
+                def city=: (bool) -> bool
+
+                attr_reader dob: bool?
+
+                def dob=: (bool) -> bool
+
+                attr_reader email: bool?
+
+                def email=: (bool) -> bool
+
+                attr_reader first_name: bool?
+
+                def first_name=: (bool) -> bool
+
+                attr_reader last_name: bool?
+
+                def last_name=: (bool) -> bool
+
+                attr_reader phone: bool?
+
+                def phone=: (bool) -> bool
+
+                attr_reader ssn: bool?
+
+                def ssn=: (bool) -> bool
+
+                attr_reader state: bool?
+
+                def state=: (bool) -> bool
+
+                attr_reader zip: bool?
+
+                def zip=: (bool) -> bool
+
+                def initialize: (
+                  ?address: bool,
+                  ?city: bool,
+                  ?dob: bool,
+                  ?email: bool,
+                  ?first_name: bool,
+                  ?last_name: bool,
+                  ?phone: bool,
+                  ?ssn: bool,
+                  ?state: bool,
+                  ?zip: bool
+                ) -> void
+
+                def to_hash: -> {
+                  address: bool,
+                  city: bool,
+                  dob: bool,
+                  email: bool,
+                  first_name: bool,
+                  last_name: bool,
+                  phone: bool,
+                  ssn: bool,
+                  state: bool,
+                  zip: bool
+                }
+              end
+
+              type decision = :accept | :reject | :review
+
+              module Decision
+                extend Straddle::Internal::Type::Enum
+
+                ACCEPT: :accept
+                REJECT: :reject
+                REVIEW: :review
+
+                def self?.values: -> ::Array[Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::KYC::decision]
+              end
+            end
+
+            type network_alerts =
+              {
+                alerts: ::Array[String]?,
+                codes: ::Array[String]?,
+                decision: Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::NetworkAlerts::decision
+              }
+
+            class NetworkAlerts < Straddle::Internal::Type::BaseModel
+              attr_accessor alerts: ::Array[String]?
+
+              attr_accessor codes: ::Array[String]?
+
+              attr_reader decision: Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::NetworkAlerts::decision?
+
+              def decision=: (
+                Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::NetworkAlerts::decision
+              ) -> Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::NetworkAlerts::decision
+
+              def initialize: (
+                ?alerts: ::Array[String]?,
+                ?codes: ::Array[String]?,
+                ?decision: Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::NetworkAlerts::decision
+              ) -> void
+
+              def to_hash: -> {
+                alerts: ::Array[String]?,
+                codes: ::Array[String]?,
+                decision: Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::NetworkAlerts::decision
+              }
+
+              type decision = :accept | :reject | :review
+
+              module Decision
+                extend Straddle::Internal::Type::Enum
+
+                ACCEPT: :accept
+                REJECT: :reject
+                REVIEW: :review
+
+                def self?.values: -> ::Array[Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::NetworkAlerts::decision]
+              end
+            end
+
+            type reputation =
+              {
+                codes: ::Array[String]?,
+                decision: Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::Reputation::decision,
+                insights: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::Reputation::Insights,
+                risk_score: Float?
+              }
+
+            class Reputation < Straddle::Internal::Type::BaseModel
+              attr_accessor codes: ::Array[String]?
+
+              attr_reader decision: Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::Reputation::decision?
+
+              def decision=: (
+                Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::Reputation::decision
+              ) -> Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::Reputation::decision
+
+              attr_reader insights: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::Reputation::Insights?
+
+              def insights=: (
+                Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::Reputation::Insights
+              ) -> Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::Reputation::Insights
+
+              attr_accessor risk_score: Float?
+
+              def initialize: (
+                ?codes: ::Array[String]?,
+                ?decision: Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::Reputation::decision,
+                ?insights: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::Reputation::Insights,
+                ?risk_score: Float?
+              ) -> void
+
+              def to_hash: -> {
+                codes: ::Array[String]?,
+                decision: Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::Reputation::decision,
+                insights: Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::Reputation::Insights,
+                risk_score: Float?
+              }
+
+              type decision = :accept | :reject | :review
+
+              module Decision
+                extend Straddle::Internal::Type::Enum
+
+                ACCEPT: :accept
+                REJECT: :reject
+                REVIEW: :review
+
+                def self?.values: -> ::Array[Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::Reputation::decision]
+              end
+
+              type insights =
+                {
+                  accounts_active_count: Integer?,
+                  accounts_closed_count: Integer?,
+                  accounts_closed_dates: ::Array[Date]?,
+                  accounts_count: Integer?,
+                  accounts_fraud_count: Integer?,
+                  accounts_fraud_labeled_dates: ::Array[Date]?,
+                  accounts_fraud_loss_total_amount: Float?,
+                  ach_fraud_transactions_count: Integer?,
+                  ach_fraud_transactions_dates: ::Array[Date]?,
+                  ach_fraud_transactions_total_amount: Float?,
+                  ach_returned_transactions_count: Integer?,
+                  ach_returned_transactions_dates: ::Array[Date]?,
+                  ach_returned_transactions_total_amount: Float?,
+                  applications_approved_count: Integer?,
+                  applications_count: Integer?,
+                  applications_dates: ::Array[Date]?,
+                  applications_declined_count: Integer?,
+                  applications_fraud_count: Integer?,
+                  card_disputed_transactions_count: Integer?,
+                  card_disputed_transactions_dates: ::Array[Date]?,
+                  card_disputed_transactions_total_amount: Float?,
+                  card_fraud_transactions_count: Integer?,
+                  card_fraud_transactions_dates: ::Array[Date]?,
+                  card_fraud_transactions_total_amount: Float?,
+                  card_stopped_transactions_count: Integer?,
+                  card_stopped_transactions_dates: ::Array[Date]?,
+                  user_active_profile_count: Integer?,
+                  user_address_count: Integer?,
+                  user_closed_profile_count: Integer?,
+                  user_dob_count: Integer?,
+                  user_email_count: Integer?,
+                  user_institution_count: Integer?,
+                  user_mobile_count: Integer?
+                }
+
+              class Insights < Straddle::Internal::Type::BaseModel
+                attr_accessor accounts_active_count: Integer?
+
+                attr_accessor accounts_closed_count: Integer?
+
+                attr_accessor accounts_closed_dates: ::Array[Date]?
+
+                attr_accessor accounts_count: Integer?
+
+                attr_accessor accounts_fraud_count: Integer?
+
+                attr_accessor accounts_fraud_labeled_dates: ::Array[Date]?
+
+                attr_accessor accounts_fraud_loss_total_amount: Float?
+
+                attr_accessor ach_fraud_transactions_count: Integer?
+
+                attr_accessor ach_fraud_transactions_dates: ::Array[Date]?
+
+                attr_accessor ach_fraud_transactions_total_amount: Float?
+
+                attr_accessor ach_returned_transactions_count: Integer?
+
+                attr_accessor ach_returned_transactions_dates: ::Array[Date]?
+
+                attr_accessor ach_returned_transactions_total_amount: Float?
+
+                attr_accessor applications_approved_count: Integer?
+
+                attr_accessor applications_count: Integer?
+
+                attr_accessor applications_dates: ::Array[Date]?
+
+                attr_accessor applications_declined_count: Integer?
+
+                attr_accessor applications_fraud_count: Integer?
+
+                attr_accessor card_disputed_transactions_count: Integer?
+
+                attr_accessor card_disputed_transactions_dates: ::Array[Date]?
+
+                attr_accessor card_disputed_transactions_total_amount: Float?
+
+                attr_accessor card_fraud_transactions_count: Integer?
+
+                attr_accessor card_fraud_transactions_dates: ::Array[Date]?
+
+                attr_accessor card_fraud_transactions_total_amount: Float?
+
+                attr_accessor card_stopped_transactions_count: Integer?
+
+                attr_accessor card_stopped_transactions_dates: ::Array[Date]?
+
+                attr_accessor user_active_profile_count: Integer?
+
+                attr_accessor user_address_count: Integer?
+
+                attr_accessor user_closed_profile_count: Integer?
+
+                attr_accessor user_dob_count: Integer?
+
+                attr_accessor user_email_count: Integer?
+
+                attr_accessor user_institution_count: Integer?
+
+                attr_accessor user_mobile_count: Integer?
+
+                def initialize: (
+                  ?accounts_active_count: Integer?,
+                  ?accounts_closed_count: Integer?,
+                  ?accounts_closed_dates: ::Array[Date]?,
+                  ?accounts_count: Integer?,
+                  ?accounts_fraud_count: Integer?,
+                  ?accounts_fraud_labeled_dates: ::Array[Date]?,
+                  ?accounts_fraud_loss_total_amount: Float?,
+                  ?ach_fraud_transactions_count: Integer?,
+                  ?ach_fraud_transactions_dates: ::Array[Date]?,
+                  ?ach_fraud_transactions_total_amount: Float?,
+                  ?ach_returned_transactions_count: Integer?,
+                  ?ach_returned_transactions_dates: ::Array[Date]?,
+                  ?ach_returned_transactions_total_amount: Float?,
+                  ?applications_approved_count: Integer?,
+                  ?applications_count: Integer?,
+                  ?applications_dates: ::Array[Date]?,
+                  ?applications_declined_count: Integer?,
+                  ?applications_fraud_count: Integer?,
+                  ?card_disputed_transactions_count: Integer?,
+                  ?card_disputed_transactions_dates: ::Array[Date]?,
+                  ?card_disputed_transactions_total_amount: Float?,
+                  ?card_fraud_transactions_count: Integer?,
+                  ?card_fraud_transactions_dates: ::Array[Date]?,
+                  ?card_fraud_transactions_total_amount: Float?,
+                  ?card_stopped_transactions_count: Integer?,
+                  ?card_stopped_transactions_dates: ::Array[Date]?,
+                  ?user_active_profile_count: Integer?,
+                  ?user_address_count: Integer?,
+                  ?user_closed_profile_count: Integer?,
+                  ?user_dob_count: Integer?,
+                  ?user_email_count: Integer?,
+                  ?user_institution_count: Integer?,
+                  ?user_mobile_count: Integer?
+                ) -> void
+
+                def to_hash: -> {
+                  accounts_active_count: Integer?,
+                  accounts_closed_count: Integer?,
+                  accounts_closed_dates: ::Array[Date]?,
+                  accounts_count: Integer?,
+                  accounts_fraud_count: Integer?,
+                  accounts_fraud_labeled_dates: ::Array[Date]?,
+                  accounts_fraud_loss_total_amount: Float?,
+                  ach_fraud_transactions_count: Integer?,
+                  ach_fraud_transactions_dates: ::Array[Date]?,
+                  ach_fraud_transactions_total_amount: Float?,
+                  ach_returned_transactions_count: Integer?,
+                  ach_returned_transactions_dates: ::Array[Date]?,
+                  ach_returned_transactions_total_amount: Float?,
+                  applications_approved_count: Integer?,
+                  applications_count: Integer?,
+                  applications_dates: ::Array[Date]?,
+                  applications_declined_count: Integer?,
+                  applications_fraud_count: Integer?,
+                  card_disputed_transactions_count: Integer?,
+                  card_disputed_transactions_dates: ::Array[Date]?,
+                  card_disputed_transactions_total_amount: Float?,
+                  card_fraud_transactions_count: Integer?,
+                  card_fraud_transactions_dates: ::Array[Date]?,
+                  card_fraud_transactions_total_amount: Float?,
+                  card_stopped_transactions_count: Integer?,
+                  card_stopped_transactions_dates: ::Array[Date]?,
+                  user_active_profile_count: Integer?,
+                  user_address_count: Integer?,
+                  user_closed_profile_count: Integer?,
+                  user_dob_count: Integer?,
+                  user_email_count: Integer?,
+                  user_institution_count: Integer?,
+                  user_mobile_count: Integer?
+                }
+              end
+            end
+
+            type watch_list =
+              {
+                codes: ::Array[String]?,
+                decision: Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList::decision,
+                matched: ::Array[String]?,
+                matches: ::Array[Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList::Match]?
+              }
+
+            class WatchList < Straddle::Internal::Type::BaseModel
+              attr_accessor codes: ::Array[String]?
+
+              attr_reader decision: Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList::decision?
+
+              def decision=: (
+                Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList::decision
+              ) -> Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList::decision
+
+              attr_accessor matched: ::Array[String]?
+
+              attr_accessor matches: ::Array[Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList::Match]?
+
+              def initialize: (
+                ?codes: ::Array[String]?,
+                ?decision: Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList::decision,
+                ?matched: ::Array[String]?,
+                ?matches: ::Array[Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList::Match]?
+              ) -> void
+
+              def to_hash: -> {
+                codes: ::Array[String]?,
+                decision: Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList::decision,
+                matched: ::Array[String]?,
+                matches: ::Array[Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList::Match]?
+              }
+
+              type decision = :accept | :reject | :review
+
+              module Decision
+                extend Straddle::Internal::Type::Enum
+
+                ACCEPT: :accept
+                REJECT: :reject
+                REVIEW: :review
+
+                def self?.values: -> ::Array[Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList::decision]
+              end
+
+              type match =
+                {
+                  correlation: Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList::Match::correlation,
+                  list_name: String,
+                  match_fields: ::Array[String],
+                  urls: ::Array[String]
+                }
+
+              class Match < Straddle::Internal::Type::BaseModel
+                attr_accessor correlation: Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList::Match::correlation
+
+                attr_accessor list_name: String
+
+                attr_accessor match_fields: ::Array[String]
+
+                attr_accessor urls: ::Array[String]
+
+                def initialize: (
+                  correlation: Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList::Match::correlation,
+                  list_name: String,
+                  match_fields: ::Array[String],
+                  urls: ::Array[String]
+                ) -> void
+
+                def to_hash: -> {
+                  correlation: Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList::Match::correlation,
+                  list_name: String,
+                  match_fields: ::Array[String],
+                  urls: ::Array[String]
+                }
+
+                type correlation =
+                  :low_confidence
+                  | :potential_match
+                  | :likely_match
+                  | :high_confidence
+                  | :unknown
+
+                module Correlation
+                  extend Straddle::Internal::Type::Enum
+
+                  LOW_CONFIDENCE: :low_confidence
+                  POTENTIAL_MATCH: :potential_match
+                  LIKELY_MATCH: :likely_match
+                  HIGH_CONFIDENCE: :high_confidence
+                  UNKNOWN: :unknown
+
+                  def self?.values: -> ::Array[Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList::Match::correlation]
+                end
+              end
+            end
+          end
+        end
+
+        type response_type = :object | :array | :error | :none
+
+        module ResponseType
+          extend Straddle::Internal::Type::Enum
+
+          OBJECT: :object
+          ARRAY: :array
+          ERROR: :error
+          NONE: :none
+
+          def self?.values: -> ::Array[Straddle::Models::Customers::CustomerReviewV1::response_type]
+        end
+      end
+    end
+  end
+end

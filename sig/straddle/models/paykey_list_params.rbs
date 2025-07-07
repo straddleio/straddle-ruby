@@ -1,0 +1,151 @@
+module Straddle
+  module Models
+    type paykey_list_params =
+      {
+        customer_id: String,
+        page_number: Integer,
+        page_size: Integer,
+        sort_by: Straddle::Models::PaykeyListParams::sort_by,
+        sort_order: Straddle::Models::PaykeyListParams::sort_order,
+        source: ::Array[Straddle::Models::PaykeyListParams::source],
+        status: ::Array[Straddle::Models::PaykeyListParams::status],
+        correlation_id: String,
+        request_id: String,
+        straddle_account_id: String
+      }
+      & Straddle::Internal::Type::request_parameters
+
+    class PaykeyListParams < Straddle::Internal::Type::BaseModel
+      extend Straddle::Internal::Type::RequestParameters::Converter
+      include Straddle::Internal::Type::RequestParameters
+
+      attr_reader customer_id: String?
+
+      def customer_id=: (String) -> String
+
+      attr_reader page_number: Integer?
+
+      def page_number=: (Integer) -> Integer
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
+
+      attr_reader sort_by: Straddle::Models::PaykeyListParams::sort_by?
+
+      def sort_by=: (
+        Straddle::Models::PaykeyListParams::sort_by
+      ) -> Straddle::Models::PaykeyListParams::sort_by
+
+      attr_reader sort_order: Straddle::Models::PaykeyListParams::sort_order?
+
+      def sort_order=: (
+        Straddle::Models::PaykeyListParams::sort_order
+      ) -> Straddle::Models::PaykeyListParams::sort_order
+
+      attr_reader source: ::Array[Straddle::Models::PaykeyListParams::source]?
+
+      def source=: (
+        ::Array[Straddle::Models::PaykeyListParams::source]
+      ) -> ::Array[Straddle::Models::PaykeyListParams::source]
+
+      attr_reader status: ::Array[Straddle::Models::PaykeyListParams::status]?
+
+      def status=: (
+        ::Array[Straddle::Models::PaykeyListParams::status]
+      ) -> ::Array[Straddle::Models::PaykeyListParams::status]
+
+      attr_reader correlation_id: String?
+
+      def correlation_id=: (String) -> String
+
+      attr_reader request_id: String?
+
+      def request_id=: (String) -> String
+
+      attr_reader straddle_account_id: String?
+
+      def straddle_account_id=: (String) -> String
+
+      def initialize: (
+        ?customer_id: String,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?sort_by: Straddle::Models::PaykeyListParams::sort_by,
+        ?sort_order: Straddle::Models::PaykeyListParams::sort_order,
+        ?source: ::Array[Straddle::Models::PaykeyListParams::source],
+        ?status: ::Array[Straddle::Models::PaykeyListParams::status],
+        ?correlation_id: String,
+        ?request_id: String,
+        ?straddle_account_id: String,
+        ?request_options: Straddle::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        customer_id: String,
+        page_number: Integer,
+        page_size: Integer,
+        sort_by: Straddle::Models::PaykeyListParams::sort_by,
+        sort_order: Straddle::Models::PaykeyListParams::sort_order,
+        source: ::Array[Straddle::Models::PaykeyListParams::source],
+        status: ::Array[Straddle::Models::PaykeyListParams::status],
+        correlation_id: String,
+        request_id: String,
+        straddle_account_id: String,
+        request_options: Straddle::RequestOptions
+      }
+
+      type sort_by = :institution_name | :expires_at | :created_at
+
+      module SortBy
+        extend Straddle::Internal::Type::Enum
+
+        INSTITUTION_NAME: :institution_name
+        EXPIRES_AT: :expires_at
+        CREATED_AT: :created_at
+
+        def self?.values: -> ::Array[Straddle::Models::PaykeyListParams::sort_by]
+      end
+
+      type sort_order = :asc | :desc
+
+      module SortOrder
+        extend Straddle::Internal::Type::Enum
+
+        ASC: :asc
+        DESC: :desc
+
+        def self?.values: -> ::Array[Straddle::Models::PaykeyListParams::sort_order]
+      end
+
+      type source = :bank_account | :straddle | :mx | :plaid | :tan | :quiltt
+
+      module Source
+        extend Straddle::Internal::Type::Enum
+
+        BANK_ACCOUNT: :bank_account
+        STRADDLE: :straddle
+        MX: :mx
+        PLAID: :plaid
+        TAN: :tan
+        QUILTT: :quiltt
+
+        def self?.values: -> ::Array[Straddle::Models::PaykeyListParams::source]
+      end
+
+      type status = :pending | :active | :inactive | :rejected | :review
+
+      module Status
+        extend Straddle::Internal::Type::Enum
+
+        PENDING: :pending
+        ACTIVE: :active
+        INACTIVE: :inactive
+        REJECTED: :rejected
+        REVIEW: :review
+
+        def self?.values: -> ::Array[Straddle::Models::PaykeyListParams::status]
+      end
+    end
+  end
+end

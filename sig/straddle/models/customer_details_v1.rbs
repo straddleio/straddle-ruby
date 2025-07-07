@@ -1,0 +1,51 @@
+module Straddle
+  module Models
+    type customer_details_v1 =
+      {
+        id: String,
+        customer_type: Straddle::Models::CustomerDetailsV1::customer_type,
+        email: String,
+        name: String,
+        phone: String
+      }
+
+    class CustomerDetailsV1 < Straddle::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor customer_type: Straddle::Models::CustomerDetailsV1::customer_type
+
+      attr_accessor email: String
+
+      attr_accessor name: String
+
+      attr_accessor phone: String
+
+      def initialize: (
+        id: String,
+        customer_type: Straddle::Models::CustomerDetailsV1::customer_type,
+        email: String,
+        name: String,
+        phone: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        customer_type: Straddle::Models::CustomerDetailsV1::customer_type,
+        email: String,
+        name: String,
+        phone: String
+      }
+
+      type customer_type = :individual | :business
+
+      module CustomerType
+        extend Straddle::Internal::Type::Enum
+
+        INDIVIDUAL: :individual
+        BUSINESS: :business
+
+        def self?.values: -> ::Array[Straddle::Models::CustomerDetailsV1::customer_type]
+      end
+    end
+  end
+end

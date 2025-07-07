@@ -1,0 +1,194 @@
+module Straddle
+  module Models
+    type customer_summary_paged_v1 =
+      {
+        data: ::Array[Straddle::CustomerSummaryPagedV1::Data],
+        meta: Straddle::CustomerSummaryPagedV1::Meta,
+        response_type: Straddle::Models::CustomerSummaryPagedV1::response_type
+      }
+
+    class CustomerSummaryPagedV1 < Straddle::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Straddle::CustomerSummaryPagedV1::Data]
+
+      attr_accessor meta: Straddle::CustomerSummaryPagedV1::Meta
+
+      attr_accessor response_type: Straddle::Models::CustomerSummaryPagedV1::response_type
+
+      def initialize: (
+        data: ::Array[Straddle::CustomerSummaryPagedV1::Data],
+        meta: Straddle::CustomerSummaryPagedV1::Meta,
+        response_type: Straddle::Models::CustomerSummaryPagedV1::response_type
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Straddle::CustomerSummaryPagedV1::Data],
+        meta: Straddle::CustomerSummaryPagedV1::Meta,
+        response_type: Straddle::Models::CustomerSummaryPagedV1::response_type
+      }
+
+      type data =
+        {
+          id: String,
+          created_at: Time,
+          email: String,
+          name: String,
+          phone: String,
+          status: Straddle::Models::CustomerSummaryPagedV1::Data::status,
+          type: Straddle::Models::CustomerSummaryPagedV1::Data::type_,
+          updated_at: Time,
+          external_id: String?
+        }
+
+      class Data < Straddle::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor created_at: Time
+
+        attr_accessor email: String
+
+        attr_accessor name: String
+
+        attr_accessor phone: String
+
+        attr_accessor status: Straddle::Models::CustomerSummaryPagedV1::Data::status
+
+        attr_accessor type: Straddle::Models::CustomerSummaryPagedV1::Data::type_
+
+        attr_accessor updated_at: Time
+
+        attr_accessor external_id: String?
+
+        def initialize: (
+          id: String,
+          created_at: Time,
+          email: String,
+          name: String,
+          phone: String,
+          status: Straddle::Models::CustomerSummaryPagedV1::Data::status,
+          type: Straddle::Models::CustomerSummaryPagedV1::Data::type_,
+          updated_at: Time,
+          ?external_id: String?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: Time,
+          email: String,
+          name: String,
+          phone: String,
+          status: Straddle::Models::CustomerSummaryPagedV1::Data::status,
+          type: Straddle::Models::CustomerSummaryPagedV1::Data::type_,
+          updated_at: Time,
+          external_id: String?
+        }
+
+        type status = :pending | :review | :verified | :inactive | :rejected
+
+        module Status
+          extend Straddle::Internal::Type::Enum
+
+          PENDING: :pending
+          REVIEW: :review
+          VERIFIED: :verified
+          INACTIVE: :inactive
+          REJECTED: :rejected
+
+          def self?.values: -> ::Array[Straddle::Models::CustomerSummaryPagedV1::Data::status]
+        end
+
+        type type_ = :individual | :business | :unknown
+
+        module Type
+          extend Straddle::Internal::Type::Enum
+
+          INDIVIDUAL: :individual
+          BUSINESS: :business
+          UNKNOWN: :unknown
+
+          def self?.values: -> ::Array[Straddle::Models::CustomerSummaryPagedV1::Data::type_]
+        end
+      end
+
+      type meta =
+        {
+          api_request_id: String,
+          api_request_timestamp: Time,
+          max_page_size: Integer,
+          page_number: Integer,
+          page_size: Integer,
+          sort_by: String,
+          sort_order: Straddle::Models::CustomerSummaryPagedV1::Meta::sort_order,
+          total_items: Integer,
+          total_pages: Integer
+        }
+
+      class Meta < Straddle::Internal::Type::BaseModel
+        attr_accessor api_request_id: String
+
+        attr_accessor api_request_timestamp: Time
+
+        attr_accessor max_page_size: Integer
+
+        attr_accessor page_number: Integer
+
+        attr_accessor page_size: Integer
+
+        attr_accessor sort_by: String
+
+        attr_accessor sort_order: Straddle::Models::CustomerSummaryPagedV1::Meta::sort_order
+
+        attr_accessor total_items: Integer
+
+        attr_accessor total_pages: Integer
+
+        def initialize: (
+          api_request_id: String,
+          api_request_timestamp: Time,
+          max_page_size: Integer,
+          page_number: Integer,
+          page_size: Integer,
+          sort_by: String,
+          sort_order: Straddle::Models::CustomerSummaryPagedV1::Meta::sort_order,
+          total_items: Integer,
+          total_pages: Integer
+        ) -> void
+
+        def to_hash: -> {
+          api_request_id: String,
+          api_request_timestamp: Time,
+          max_page_size: Integer,
+          page_number: Integer,
+          page_size: Integer,
+          sort_by: String,
+          sort_order: Straddle::Models::CustomerSummaryPagedV1::Meta::sort_order,
+          total_items: Integer,
+          total_pages: Integer
+        }
+
+        type sort_order = :asc | :desc
+
+        module SortOrder
+          extend Straddle::Internal::Type::Enum
+
+          ASC: :asc
+          DESC: :desc
+
+          def self?.values: -> ::Array[Straddle::Models::CustomerSummaryPagedV1::Meta::sort_order]
+        end
+      end
+
+      type response_type = :object | :array | :error | :none
+
+      module ResponseType
+        extend Straddle::Internal::Type::Enum
+
+        OBJECT: :object
+        ARRAY: :array
+        ERROR: :error
+        NONE: :none
+
+        def self?.values: -> ::Array[Straddle::Models::CustomerSummaryPagedV1::response_type]
+      end
+    end
+  end
+end

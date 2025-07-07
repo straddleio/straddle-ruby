@@ -1,0 +1,40 @@
+module Straddle
+  module Resources
+    class Payments
+      def list: (
+        ?customer_id: String,
+        ?default_page_size: Integer,
+        ?default_sort: Straddle::Models::PaymentListParams::default_sort,
+        ?default_sort_order: Straddle::Models::PaymentListParams::default_sort_order,
+        ?external_id: String,
+        ?funding_id: String,
+        ?max_amount: Integer,
+        ?max_created_at: Time,
+        ?max_effective_at: Time,
+        ?max_payment_date: Date,
+        ?min_amount: Integer,
+        ?min_created_at: Time,
+        ?min_effective_at: Time,
+        ?min_payment_date: Date,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?paykey: String,
+        ?paykey_id: String,
+        ?payment_id: String,
+        ?payment_status: ::Array[Straddle::Models::PaymentListParams::payment_status],
+        ?payment_type: ::Array[Straddle::Models::PaymentListParams::payment_type],
+        ?search_text: String,
+        ?sort_by: Straddle::Models::PaymentListParams::sort_by,
+        ?sort_order: Straddle::Models::PaymentListParams::sort_order,
+        ?status_reason: ::Array[Straddle::Models::PaymentListParams::status_reason],
+        ?status_source: ::Array[Straddle::Models::PaymentListParams::status_source],
+        ?correlation_id: String,
+        ?request_id: String,
+        ?straddle_account_id: String,
+        ?request_options: Straddle::request_opts
+      ) -> Straddle::Internal::PageNumberSchema[Straddle::PaymentSummaryPagedV1::Data]
+
+      def initialize: (client: Straddle::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,40 @@
+module Straddle
+  module Models
+    type customer_address_v1 =
+      {
+        :address1 => String,
+        city: String,
+        state: String,
+        zip: String,
+        :address2 => String?
+      }
+
+    class CustomerAddressV1 < Straddle::Internal::Type::BaseModel
+      attr_accessor address1: String
+
+      attr_accessor city: String
+
+      attr_accessor state: String
+
+      attr_accessor zip: String
+
+      attr_accessor address2: String?
+
+      def initialize: (
+        address1: String,
+        city: String,
+        state: String,
+        zip: String,
+        ?address2: String?
+      ) -> void
+
+      def to_hash: -> {
+        :address1 => String,
+        city: String,
+        state: String,
+        zip: String,
+        :address2 => String?
+      }
+    end
+  end
+end

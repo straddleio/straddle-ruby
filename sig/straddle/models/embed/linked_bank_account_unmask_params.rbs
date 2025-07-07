@@ -1,0 +1,34 @@
+module Straddle
+  module Models
+    module Embed
+      type linked_bank_account_unmask_params =
+        { correlation_id: String, request_id: String }
+        & Straddle::Internal::Type::request_parameters
+
+      class LinkedBankAccountUnmaskParams < Straddle::Internal::Type::BaseModel
+        extend Straddle::Internal::Type::RequestParameters::Converter
+        include Straddle::Internal::Type::RequestParameters
+
+        attr_reader correlation_id: String?
+
+        def correlation_id=: (String) -> String
+
+        attr_reader request_id: String?
+
+        def request_id=: (String) -> String
+
+        def initialize: (
+          ?correlation_id: String,
+          ?request_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          correlation_id: String,
+          request_id: String,
+          request_options: Straddle::RequestOptions
+        }
+      end
+    end
+  end
+end

@@ -1,0 +1,493 @@
+module Straddle
+  module Models
+    module Embed
+      type account_v1 =
+        {
+          data: Straddle::Embed::AccountV1::Data,
+          meta: Straddle::ResponseMetadata,
+          response_type: Straddle::Models::Embed::AccountV1::response_type
+        }
+
+      class AccountV1 < Straddle::Internal::Type::BaseModel
+        attr_accessor data: Straddle::Embed::AccountV1::Data
+
+        attr_accessor meta: Straddle::ResponseMetadata
+
+        attr_accessor response_type: Straddle::Models::Embed::AccountV1::response_type
+
+        def initialize: (
+          data: Straddle::Embed::AccountV1::Data,
+          meta: Straddle::ResponseMetadata,
+          response_type: Straddle::Models::Embed::AccountV1::response_type
+        ) -> void
+
+        def to_hash: -> {
+          data: Straddle::Embed::AccountV1::Data,
+          meta: Straddle::ResponseMetadata,
+          response_type: Straddle::Models::Embed::AccountV1::response_type
+        }
+
+        type data =
+          {
+            id: String,
+            access_level: Straddle::Models::Embed::AccountV1::Data::access_level,
+            organization_id: String,
+            status: Straddle::Models::Embed::AccountV1::Data::status,
+            status_detail: Straddle::Embed::AccountV1::Data::StatusDetail,
+            type: Straddle::Models::Embed::AccountV1::Data::type_,
+            business_profile: Straddle::Embed::BusinessProfileV1,
+            capabilities: Straddle::Embed::AccountV1::Data::Capabilities,
+            created_at: Time?,
+            external_id: String?,
+            metadata: ::Hash[Symbol, String?]?,
+            settings: Straddle::Embed::AccountV1::Data::Settings,
+            terms_of_service: Straddle::Embed::TermsOfServiceV1,
+            updated_at: Time?
+          }
+
+        class Data < Straddle::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor access_level: Straddle::Models::Embed::AccountV1::Data::access_level
+
+          attr_accessor organization_id: String
+
+          attr_accessor status: Straddle::Models::Embed::AccountV1::Data::status
+
+          attr_accessor status_detail: Straddle::Embed::AccountV1::Data::StatusDetail
+
+          attr_accessor type: Straddle::Models::Embed::AccountV1::Data::type_
+
+          attr_reader business_profile: Straddle::Embed::BusinessProfileV1?
+
+          def business_profile=: (
+            Straddle::Embed::BusinessProfileV1
+          ) -> Straddle::Embed::BusinessProfileV1
+
+          attr_reader capabilities: Straddle::Embed::AccountV1::Data::Capabilities?
+
+          def capabilities=: (
+            Straddle::Embed::AccountV1::Data::Capabilities
+          ) -> Straddle::Embed::AccountV1::Data::Capabilities
+
+          attr_accessor created_at: Time?
+
+          attr_accessor external_id: String?
+
+          attr_accessor metadata: ::Hash[Symbol, String?]?
+
+          attr_reader settings: Straddle::Embed::AccountV1::Data::Settings?
+
+          def settings=: (
+            Straddle::Embed::AccountV1::Data::Settings
+          ) -> Straddle::Embed::AccountV1::Data::Settings
+
+          attr_reader terms_of_service: Straddle::Embed::TermsOfServiceV1?
+
+          def terms_of_service=: (
+            Straddle::Embed::TermsOfServiceV1
+          ) -> Straddle::Embed::TermsOfServiceV1
+
+          attr_accessor updated_at: Time?
+
+          def initialize: (
+            id: String,
+            access_level: Straddle::Models::Embed::AccountV1::Data::access_level,
+            organization_id: String,
+            status: Straddle::Models::Embed::AccountV1::Data::status,
+            status_detail: Straddle::Embed::AccountV1::Data::StatusDetail,
+            type: Straddle::Models::Embed::AccountV1::Data::type_,
+            ?business_profile: Straddle::Embed::BusinessProfileV1,
+            ?capabilities: Straddle::Embed::AccountV1::Data::Capabilities,
+            ?created_at: Time?,
+            ?external_id: String?,
+            ?metadata: ::Hash[Symbol, String?]?,
+            ?settings: Straddle::Embed::AccountV1::Data::Settings,
+            ?terms_of_service: Straddle::Embed::TermsOfServiceV1,
+            ?updated_at: Time?
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            access_level: Straddle::Models::Embed::AccountV1::Data::access_level,
+            organization_id: String,
+            status: Straddle::Models::Embed::AccountV1::Data::status,
+            status_detail: Straddle::Embed::AccountV1::Data::StatusDetail,
+            type: Straddle::Models::Embed::AccountV1::Data::type_,
+            business_profile: Straddle::Embed::BusinessProfileV1,
+            capabilities: Straddle::Embed::AccountV1::Data::Capabilities,
+            created_at: Time?,
+            external_id: String?,
+            metadata: ::Hash[Symbol, String?]?,
+            settings: Straddle::Embed::AccountV1::Data::Settings,
+            terms_of_service: Straddle::Embed::TermsOfServiceV1,
+            updated_at: Time?
+          }
+
+          type access_level = :standard | :managed
+
+          module AccessLevel
+            extend Straddle::Internal::Type::Enum
+
+            STANDARD: :standard
+            MANAGED: :managed
+
+            def self?.values: -> ::Array[Straddle::Models::Embed::AccountV1::Data::access_level]
+          end
+
+          type status =
+            :created | :onboarding | :active | :rejected | :inactive | :unknown
+
+          module Status
+            extend Straddle::Internal::Type::Enum
+
+            CREATED: :created
+            ONBOARDING: :onboarding
+            ACTIVE: :active
+            REJECTED: :rejected
+            INACTIVE: :inactive
+            UNKNOWN: :unknown
+
+            def self?.values: -> ::Array[Straddle::Models::Embed::AccountV1::Data::status]
+          end
+
+          type status_detail =
+            {
+              code: String,
+              message: String,
+              reason: Straddle::Models::Embed::AccountV1::Data::StatusDetail::reason,
+              source: Straddle::Models::Embed::AccountV1::Data::StatusDetail::source
+            }
+
+          class StatusDetail < Straddle::Internal::Type::BaseModel
+            attr_accessor code: String
+
+            attr_accessor message: String
+
+            attr_accessor reason: Straddle::Models::Embed::AccountV1::Data::StatusDetail::reason
+
+            attr_accessor source: Straddle::Models::Embed::AccountV1::Data::StatusDetail::source
+
+            def initialize: (
+              code: String,
+              message: String,
+              reason: Straddle::Models::Embed::AccountV1::Data::StatusDetail::reason,
+              source: Straddle::Models::Embed::AccountV1::Data::StatusDetail::source
+            ) -> void
+
+            def to_hash: -> {
+              code: String,
+              message: String,
+              reason: Straddle::Models::Embed::AccountV1::Data::StatusDetail::reason,
+              source: Straddle::Models::Embed::AccountV1::Data::StatusDetail::source
+            }
+
+            type reason =
+              :unverified
+              | :in_review
+              | :pending
+              | :stuck
+              | :verified
+              | :failed_verification
+              | :disabled
+              | :terminated
+              | :new
+              | :unknown
+
+            module Reason
+              extend Straddle::Internal::Type::Enum
+
+              UNVERIFIED: :unverified
+              IN_REVIEW: :in_review
+              PENDING: :pending
+              STUCK: :stuck
+              VERIFIED: :verified
+              FAILED_VERIFICATION: :failed_verification
+              DISABLED: :disabled
+              TERMINATED: :terminated
+              NEW: :new
+              UNKNOWN: :unknown
+
+              def self?.values: -> ::Array[Straddle::Models::Embed::AccountV1::Data::StatusDetail::reason]
+            end
+
+            type source = :watchtower
+
+            module Source
+              extend Straddle::Internal::Type::Enum
+
+              WATCHTOWER: :watchtower
+
+              def self?.values: -> ::Array[Straddle::Models::Embed::AccountV1::Data::StatusDetail::source]
+            end
+          end
+
+          type type_ = :business | :unknown
+
+          module Type
+            extend Straddle::Internal::Type::Enum
+
+            BUSINESS: :business
+            UNKNOWN: :unknown
+
+            def self?.values: -> ::Array[Straddle::Models::Embed::AccountV1::Data::type_]
+          end
+
+          type capabilities =
+            {
+              consent_types: Straddle::Embed::AccountV1::Data::Capabilities::ConsentTypes,
+              customer_types: Straddle::Embed::AccountV1::Data::Capabilities::CustomerTypes,
+              payment_types: Straddle::Embed::AccountV1::Data::Capabilities::PaymentTypes
+            }
+
+          class Capabilities < Straddle::Internal::Type::BaseModel
+            attr_accessor consent_types: Straddle::Embed::AccountV1::Data::Capabilities::ConsentTypes
+
+            attr_accessor customer_types: Straddle::Embed::AccountV1::Data::Capabilities::CustomerTypes
+
+            attr_accessor payment_types: Straddle::Embed::AccountV1::Data::Capabilities::PaymentTypes
+
+            def initialize: (
+              consent_types: Straddle::Embed::AccountV1::Data::Capabilities::ConsentTypes,
+              customer_types: Straddle::Embed::AccountV1::Data::Capabilities::CustomerTypes,
+              payment_types: Straddle::Embed::AccountV1::Data::Capabilities::PaymentTypes
+            ) -> void
+
+            def to_hash: -> {
+              consent_types: Straddle::Embed::AccountV1::Data::Capabilities::ConsentTypes,
+              customer_types: Straddle::Embed::AccountV1::Data::Capabilities::CustomerTypes,
+              payment_types: Straddle::Embed::AccountV1::Data::Capabilities::PaymentTypes
+            }
+
+            type consent_types =
+              {
+                internet: Straddle::Embed::CapabilityV1,
+                signed_agreement: Straddle::Embed::CapabilityV1
+              }
+
+            class ConsentTypes < Straddle::Internal::Type::BaseModel
+              attr_accessor internet: Straddle::Embed::CapabilityV1
+
+              attr_accessor signed_agreement: Straddle::Embed::CapabilityV1
+
+              def initialize: (
+                internet: Straddle::Embed::CapabilityV1,
+                signed_agreement: Straddle::Embed::CapabilityV1
+              ) -> void
+
+              def to_hash: -> {
+                internet: Straddle::Embed::CapabilityV1,
+                signed_agreement: Straddle::Embed::CapabilityV1
+              }
+            end
+
+            type customer_types =
+              {
+                businesses: Straddle::Embed::CapabilityV1,
+                individuals: Straddle::Embed::CapabilityV1
+              }
+
+            class CustomerTypes < Straddle::Internal::Type::BaseModel
+              attr_accessor businesses: Straddle::Embed::CapabilityV1
+
+              attr_accessor individuals: Straddle::Embed::CapabilityV1
+
+              def initialize: (
+                businesses: Straddle::Embed::CapabilityV1,
+                individuals: Straddle::Embed::CapabilityV1
+              ) -> void
+
+              def to_hash: -> {
+                businesses: Straddle::Embed::CapabilityV1,
+                individuals: Straddle::Embed::CapabilityV1
+              }
+            end
+
+            type payment_types =
+              {
+                charges: Straddle::Embed::CapabilityV1,
+                payouts: Straddle::Embed::CapabilityV1
+              }
+
+            class PaymentTypes < Straddle::Internal::Type::BaseModel
+              attr_accessor charges: Straddle::Embed::CapabilityV1
+
+              attr_accessor payouts: Straddle::Embed::CapabilityV1
+
+              def initialize: (
+                charges: Straddle::Embed::CapabilityV1,
+                payouts: Straddle::Embed::CapabilityV1
+              ) -> void
+
+              def to_hash: -> {
+                charges: Straddle::Embed::CapabilityV1,
+                payouts: Straddle::Embed::CapabilityV1
+              }
+            end
+          end
+
+          type settings =
+            {
+              charges: Straddle::Embed::AccountV1::Data::Settings::Charges,
+              payouts: Straddle::Embed::AccountV1::Data::Settings::Payouts
+            }
+
+          class Settings < Straddle::Internal::Type::BaseModel
+            attr_accessor charges: Straddle::Embed::AccountV1::Data::Settings::Charges
+
+            attr_accessor payouts: Straddle::Embed::AccountV1::Data::Settings::Payouts
+
+            def initialize: (
+              charges: Straddle::Embed::AccountV1::Data::Settings::Charges,
+              payouts: Straddle::Embed::AccountV1::Data::Settings::Payouts
+            ) -> void
+
+            def to_hash: -> {
+              charges: Straddle::Embed::AccountV1::Data::Settings::Charges,
+              payouts: Straddle::Embed::AccountV1::Data::Settings::Payouts
+            }
+
+            type charges =
+              {
+                daily_amount: Integer,
+                funding_time: Straddle::Models::Embed::AccountV1::Data::Settings::Charges::funding_time,
+                linked_bank_account_id: String,
+                max_amount: Integer,
+                monthly_amount: Integer,
+                monthly_count: Integer
+              }
+
+            class Charges < Straddle::Internal::Type::BaseModel
+              attr_accessor daily_amount: Integer
+
+              attr_accessor funding_time: Straddle::Models::Embed::AccountV1::Data::Settings::Charges::funding_time
+
+              attr_accessor linked_bank_account_id: String
+
+              attr_accessor max_amount: Integer
+
+              attr_accessor monthly_amount: Integer
+
+              attr_accessor monthly_count: Integer
+
+              def initialize: (
+                daily_amount: Integer,
+                funding_time: Straddle::Models::Embed::AccountV1::Data::Settings::Charges::funding_time,
+                linked_bank_account_id: String,
+                max_amount: Integer,
+                monthly_amount: Integer,
+                monthly_count: Integer
+              ) -> void
+
+              def to_hash: -> {
+                daily_amount: Integer,
+                funding_time: Straddle::Models::Embed::AccountV1::Data::Settings::Charges::funding_time,
+                linked_bank_account_id: String,
+                max_amount: Integer,
+                monthly_amount: Integer,
+                monthly_count: Integer
+              }
+
+              type funding_time =
+                :immediate
+                | :next_day
+                | :one_day
+                | :two_day
+                | :three_day
+                | :unknown
+
+              module FundingTime
+                extend Straddle::Internal::Type::Enum
+
+                IMMEDIATE: :immediate
+                NEXT_DAY: :next_day
+                ONE_DAY: :one_day
+                TWO_DAY: :two_day
+                THREE_DAY: :three_day
+                UNKNOWN: :unknown
+
+                def self?.values: -> ::Array[Straddle::Models::Embed::AccountV1::Data::Settings::Charges::funding_time]
+              end
+            end
+
+            type payouts =
+              {
+                daily_amount: Integer,
+                funding_time: Straddle::Models::Embed::AccountV1::Data::Settings::Payouts::funding_time,
+                linked_bank_account_id: String,
+                max_amount: Integer,
+                monthly_amount: Integer,
+                monthly_count: Integer
+              }
+
+            class Payouts < Straddle::Internal::Type::BaseModel
+              attr_accessor daily_amount: Integer
+
+              attr_accessor funding_time: Straddle::Models::Embed::AccountV1::Data::Settings::Payouts::funding_time
+
+              attr_accessor linked_bank_account_id: String
+
+              attr_accessor max_amount: Integer
+
+              attr_accessor monthly_amount: Integer
+
+              attr_accessor monthly_count: Integer
+
+              def initialize: (
+                daily_amount: Integer,
+                funding_time: Straddle::Models::Embed::AccountV1::Data::Settings::Payouts::funding_time,
+                linked_bank_account_id: String,
+                max_amount: Integer,
+                monthly_amount: Integer,
+                monthly_count: Integer
+              ) -> void
+
+              def to_hash: -> {
+                daily_amount: Integer,
+                funding_time: Straddle::Models::Embed::AccountV1::Data::Settings::Payouts::funding_time,
+                linked_bank_account_id: String,
+                max_amount: Integer,
+                monthly_amount: Integer,
+                monthly_count: Integer
+              }
+
+              type funding_time =
+                :immediate
+                | :next_day
+                | :one_day
+                | :two_day
+                | :three_day
+                | :unknown
+
+              module FundingTime
+                extend Straddle::Internal::Type::Enum
+
+                IMMEDIATE: :immediate
+                NEXT_DAY: :next_day
+                ONE_DAY: :one_day
+                TWO_DAY: :two_day
+                THREE_DAY: :three_day
+                UNKNOWN: :unknown
+
+                def self?.values: -> ::Array[Straddle::Models::Embed::AccountV1::Data::Settings::Payouts::funding_time]
+              end
+            end
+          end
+        end
+
+        type response_type = :object | :array | :error | :none
+
+        module ResponseType
+          extend Straddle::Internal::Type::Enum
+
+          OBJECT: :object
+          ARRAY: :array
+          ERROR: :error
+          NONE: :none
+
+          def self?.values: -> ::Array[Straddle::Models::Embed::AccountV1::response_type]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,13 @@
+module Straddle
+  module Models
+    type device_info_v1 = { ip_address: String }
+
+    class DeviceInfoV1 < Straddle::Internal::Type::BaseModel
+      attr_accessor ip_address: String
+
+      def initialize: (ip_address: String) -> void
+
+      def to_hash: -> { ip_address: String }
+    end
+  end
+end

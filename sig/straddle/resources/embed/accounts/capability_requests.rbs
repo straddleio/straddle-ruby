@@ -1,0 +1,38 @@
+module Straddle
+  module Resources
+    class Embed
+      class Accounts
+        class CapabilityRequests
+          def create: (
+            String account_id,
+            ?businesses: Straddle::Embed::Accounts::CapabilityRequestCreateParams::Businesses,
+            ?charges: Straddle::Embed::Accounts::CapabilityRequestCreateParams::Charges,
+            ?individuals: Straddle::Embed::Accounts::CapabilityRequestCreateParams::Individuals,
+            ?internet: Straddle::Embed::Accounts::CapabilityRequestCreateParams::Internet,
+            ?payouts: Straddle::Embed::Accounts::CapabilityRequestCreateParams::Payouts,
+            ?signed_agreement: Straddle::Embed::Accounts::CapabilityRequestCreateParams::SignedAgreement,
+            ?correlation_id: String,
+            ?request_id: String,
+            ?request_options: Straddle::request_opts
+          ) -> Straddle::Embed::Accounts::CapabilityRequestPagedV1
+
+          def list: (
+            String account_id,
+            ?category: Straddle::Models::Embed::Accounts::CapabilityRequestListParams::category,
+            ?page_number: Integer,
+            ?page_size: Integer,
+            ?sort_by: String,
+            ?sort_order: Straddle::Models::Embed::Accounts::CapabilityRequestListParams::sort_order,
+            ?status: Straddle::Models::Embed::Accounts::CapabilityRequestListParams::status,
+            ?type: Straddle::Models::Embed::Accounts::CapabilityRequestListParams::type_,
+            ?correlation_id: String,
+            ?request_id: String,
+            ?request_options: Straddle::request_opts
+          ) -> Straddle::Internal::PageNumberSchema[Straddle::Embed::Accounts::CapabilityRequestPagedV1::Data]
+
+          def initialize: (client: Straddle::Client) -> void
+        end
+      end
+    end
+  end
+end

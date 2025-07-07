@@ -1,0 +1,24 @@
+module Straddle
+  module Models
+    module Embed
+      type support_channels_v1 =
+        { email: String?, phone: String?, url: String? }
+
+      class SupportChannelsV1 < Straddle::Internal::Type::BaseModel
+        attr_accessor email: String?
+
+        attr_accessor phone: String?
+
+        attr_accessor url: String?
+
+        def initialize: (
+          ?email: String?,
+          ?phone: String?,
+          ?url: String?
+        ) -> void
+
+        def to_hash: -> { email: String?, phone: String?, url: String? }
+      end
+    end
+  end
+end

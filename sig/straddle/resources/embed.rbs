@@ -1,0 +1,15 @@
+module Straddle
+  module Resources
+    class Embed
+      attr_reader accounts: Straddle::Resources::Embed::Accounts
+
+      attr_reader linked_bank_accounts: Straddle::Resources::Embed::LinkedBankAccounts
+
+      attr_reader organizations: Straddle::Resources::Embed::Organizations
+
+      attr_reader representatives: Straddle::Resources::Embed::Representatives
+
+      def initialize: (client: Straddle::Client) -> void
+    end
+  end
+end

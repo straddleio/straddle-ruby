@@ -1,0 +1,89 @@
+module Straddle
+  module Models
+    module Embed
+      type account_create_params =
+        {
+          access_level: Straddle::Models::Embed::AccountCreateParams::access_level,
+          account_type: Straddle::Models::Embed::AccountCreateParams::account_type,
+          business_profile: Straddle::Embed::BusinessProfileV1,
+          organization_id: String,
+          external_id: String?,
+          metadata: ::Hash[Symbol, String?]?,
+          correlation_id: String,
+          request_id: String
+        }
+        & Straddle::Internal::Type::request_parameters
+
+      class AccountCreateParams < Straddle::Internal::Type::BaseModel
+        extend Straddle::Internal::Type::RequestParameters::Converter
+        include Straddle::Internal::Type::RequestParameters
+
+        attr_accessor access_level: Straddle::Models::Embed::AccountCreateParams::access_level
+
+        attr_accessor account_type: Straddle::Models::Embed::AccountCreateParams::account_type
+
+        attr_accessor business_profile: Straddle::Embed::BusinessProfileV1
+
+        attr_accessor organization_id: String
+
+        attr_accessor external_id: String?
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_reader correlation_id: String?
+
+        def correlation_id=: (String) -> String
+
+        attr_reader request_id: String?
+
+        def request_id=: (String) -> String
+
+        def initialize: (
+          access_level: Straddle::Models::Embed::AccountCreateParams::access_level,
+          account_type: Straddle::Models::Embed::AccountCreateParams::account_type,
+          business_profile: Straddle::Embed::BusinessProfileV1,
+          organization_id: String,
+          ?external_id: String?,
+          ?metadata: ::Hash[Symbol, String?]?,
+          ?correlation_id: String,
+          ?request_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          access_level: Straddle::Models::Embed::AccountCreateParams::access_level,
+          account_type: Straddle::Models::Embed::AccountCreateParams::account_type,
+          business_profile: Straddle::Embed::BusinessProfileV1,
+          organization_id: String,
+          external_id: String?,
+          metadata: ::Hash[Symbol, String?]?,
+          correlation_id: String,
+          request_id: String,
+          request_options: Straddle::RequestOptions
+        }
+
+        type access_level = :standard | :managed
+
+        module AccessLevel
+          extend Straddle::Internal::Type::Enum
+
+          STANDARD: :standard
+          MANAGED: :managed
+
+          def self?.values: -> ::Array[Straddle::Models::Embed::AccountCreateParams::access_level]
+        end
+
+        type account_type = :business | :unknown
+
+        module AccountType
+          extend Straddle::Internal::Type::Enum
+
+          BUSINESS: :business
+          UNKNOWN: :unknown
+
+          def self?.values: -> ::Array[Straddle::Models::Embed::AccountCreateParams::account_type]
+        end
+      end
+    end
+  end
+end

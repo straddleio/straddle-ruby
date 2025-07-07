@@ -1,0 +1,127 @@
+module Straddle
+  module Models
+    module Embed
+      type account_list_params =
+        {
+          page_number: Integer,
+          page_size: Integer,
+          search_text: String,
+          sort_by: String,
+          sort_order: Straddle::Models::Embed::AccountListParams::sort_order,
+          status: Straddle::Models::Embed::AccountListParams::status,
+          type: Straddle::Models::Embed::AccountListParams::type_,
+          correlation_id: String,
+          request_id: String
+        }
+        & Straddle::Internal::Type::request_parameters
+
+      class AccountListParams < Straddle::Internal::Type::BaseModel
+        extend Straddle::Internal::Type::RequestParameters::Converter
+        include Straddle::Internal::Type::RequestParameters
+
+        attr_reader page_number: Integer?
+
+        def page_number=: (Integer) -> Integer
+
+        attr_reader page_size: Integer?
+
+        def page_size=: (Integer) -> Integer
+
+        attr_reader search_text: String?
+
+        def search_text=: (String) -> String
+
+        attr_reader sort_by: String?
+
+        def sort_by=: (String) -> String
+
+        attr_reader sort_order: Straddle::Models::Embed::AccountListParams::sort_order?
+
+        def sort_order=: (
+          Straddle::Models::Embed::AccountListParams::sort_order
+        ) -> Straddle::Models::Embed::AccountListParams::sort_order
+
+        attr_reader status: Straddle::Models::Embed::AccountListParams::status?
+
+        def status=: (
+          Straddle::Models::Embed::AccountListParams::status
+        ) -> Straddle::Models::Embed::AccountListParams::status
+
+        attr_reader type: Straddle::Models::Embed::AccountListParams::type_?
+
+        def type=: (
+          Straddle::Models::Embed::AccountListParams::type_
+        ) -> Straddle::Models::Embed::AccountListParams::type_
+
+        attr_reader correlation_id: String?
+
+        def correlation_id=: (String) -> String
+
+        attr_reader request_id: String?
+
+        def request_id=: (String) -> String
+
+        def initialize: (
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?search_text: String,
+          ?sort_by: String,
+          ?sort_order: Straddle::Models::Embed::AccountListParams::sort_order,
+          ?status: Straddle::Models::Embed::AccountListParams::status,
+          ?type: Straddle::Models::Embed::AccountListParams::type_,
+          ?correlation_id: String,
+          ?request_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          page_number: Integer,
+          page_size: Integer,
+          search_text: String,
+          sort_by: String,
+          sort_order: Straddle::Models::Embed::AccountListParams::sort_order,
+          status: Straddle::Models::Embed::AccountListParams::status,
+          type: Straddle::Models::Embed::AccountListParams::type_,
+          correlation_id: String,
+          request_id: String,
+          request_options: Straddle::RequestOptions
+        }
+
+        type sort_order = :asc | :desc
+
+        module SortOrder
+          extend Straddle::Internal::Type::Enum
+
+          ASC: :asc
+          DESC: :desc
+
+          def self?.values: -> ::Array[Straddle::Models::Embed::AccountListParams::sort_order]
+        end
+
+        type status = :created | :onboarding | :active | :rejected | :inactive
+
+        module Status
+          extend Straddle::Internal::Type::Enum
+
+          CREATED: :created
+          ONBOARDING: :onboarding
+          ACTIVE: :active
+          REJECTED: :rejected
+          INACTIVE: :inactive
+
+          def self?.values: -> ::Array[Straddle::Models::Embed::AccountListParams::status]
+        end
+
+        type type_ = :business
+
+        module Type
+          extend Straddle::Internal::Type::Enum
+
+          BUSINESS: :business
+
+          def self?.values: -> ::Array[Straddle::Models::Embed::AccountListParams::type_]
+        end
+      end
+    end
+  end
+end

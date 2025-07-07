@@ -1,0 +1,119 @@
+module Straddle
+  module Models
+    module Embed
+      type representative_create_params =
+        {
+          account_id: String,
+          dob: Date,
+          email: String,
+          first_name: String,
+          last_name: String,
+          mobile_number: String,
+          relationship: Straddle::Embed::RepresentativeCreateParams::Relationship,
+          :ssn_last4 => String,
+          external_id: String?,
+          correlation_id: String,
+          request_id: String
+        }
+        & Straddle::Internal::Type::request_parameters
+
+      class RepresentativeCreateParams < Straddle::Internal::Type::BaseModel
+        extend Straddle::Internal::Type::RequestParameters::Converter
+        include Straddle::Internal::Type::RequestParameters
+
+        attr_accessor account_id: String
+
+        attr_accessor dob: Date
+
+        attr_accessor email: String
+
+        attr_accessor first_name: String
+
+        attr_accessor last_name: String
+
+        attr_accessor mobile_number: String
+
+        attr_accessor relationship: Straddle::Embed::RepresentativeCreateParams::Relationship
+
+        attr_accessor ssn_last4: String
+
+        attr_accessor external_id: String?
+
+        attr_reader correlation_id: String?
+
+        def correlation_id=: (String) -> String
+
+        attr_reader request_id: String?
+
+        def request_id=: (String) -> String
+
+        def initialize: (
+          account_id: String,
+          dob: Date,
+          email: String,
+          first_name: String,
+          last_name: String,
+          mobile_number: String,
+          relationship: Straddle::Embed::RepresentativeCreateParams::Relationship,
+          ssn_last4: String,
+          ?external_id: String?,
+          ?correlation_id: String,
+          ?request_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          account_id: String,
+          dob: Date,
+          email: String,
+          first_name: String,
+          last_name: String,
+          mobile_number: String,
+          relationship: Straddle::Embed::RepresentativeCreateParams::Relationship,
+          :ssn_last4 => String,
+          external_id: String?,
+          correlation_id: String,
+          request_id: String,
+          request_options: Straddle::RequestOptions
+        }
+
+        type relationship =
+          {
+            control: bool,
+            owner: bool,
+            primary: bool,
+            percent_ownership: Float?,
+            title: String?
+          }
+
+        class Relationship < Straddle::Internal::Type::BaseModel
+          attr_accessor control: bool
+
+          attr_accessor owner: bool
+
+          attr_accessor primary: bool
+
+          attr_accessor percent_ownership: Float?
+
+          attr_accessor title: String?
+
+          def initialize: (
+            control: bool,
+            owner: bool,
+            primary: bool,
+            ?percent_ownership: Float?,
+            ?title: String?
+          ) -> void
+
+          def to_hash: -> {
+            control: bool,
+            owner: bool,
+            primary: bool,
+            percent_ownership: Float?,
+            title: String?
+          }
+        end
+      end
+    end
+  end
+end

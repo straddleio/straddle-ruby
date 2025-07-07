@@ -1,0 +1,42 @@
+module Straddle
+  module Models
+    module Embed
+      type account_onboard_params =
+        {
+          terms_of_service: Straddle::Embed::TermsOfServiceV1,
+          correlation_id: String,
+          request_id: String
+        }
+        & Straddle::Internal::Type::request_parameters
+
+      class AccountOnboardParams < Straddle::Internal::Type::BaseModel
+        extend Straddle::Internal::Type::RequestParameters::Converter
+        include Straddle::Internal::Type::RequestParameters
+
+        attr_accessor terms_of_service: Straddle::Embed::TermsOfServiceV1
+
+        attr_reader correlation_id: String?
+
+        def correlation_id=: (String) -> String
+
+        attr_reader request_id: String?
+
+        def request_id=: (String) -> String
+
+        def initialize: (
+          terms_of_service: Straddle::Embed::TermsOfServiceV1,
+          ?correlation_id: String,
+          ?request_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          terms_of_service: Straddle::Embed::TermsOfServiceV1,
+          correlation_id: String,
+          request_id: String,
+          request_options: Straddle::RequestOptions
+        }
+      end
+    end
+  end
+end

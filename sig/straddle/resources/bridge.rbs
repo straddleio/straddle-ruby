@@ -1,0 +1,18 @@
+module Straddle
+  module Resources
+    class Bridge
+      attr_reader link: Straddle::Resources::Bridge::Link
+
+      def initialize_: (
+        customer_id: String,
+        ?config: Straddle::BridgeInitializeParams::Config,
+        ?correlation_id: String,
+        ?request_id: String,
+        ?straddle_account_id: String,
+        ?request_options: Straddle::request_opts
+      ) -> Straddle::BridgeTokenV1
+
+      def initialize: (client: Straddle::Client) -> void
+    end
+  end
+end
