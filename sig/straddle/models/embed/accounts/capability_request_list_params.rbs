@@ -1,0 +1,153 @@
+module Straddle
+  module Models
+    module Embed
+      module Accounts
+        type capability_request_list_params =
+          {
+            category: Straddle::Models::Embed::Accounts::CapabilityRequestListParams::category,
+            page_number: Integer,
+            page_size: Integer,
+            sort_by: String,
+            sort_order: Straddle::Models::Embed::Accounts::CapabilityRequestListParams::sort_order,
+            status: Straddle::Models::Embed::Accounts::CapabilityRequestListParams::status,
+            type: Straddle::Models::Embed::Accounts::CapabilityRequestListParams::type_,
+            correlation_id: String,
+            request_id: String
+          }
+          & Straddle::Internal::Type::request_parameters
+
+        class CapabilityRequestListParams < Straddle::Internal::Type::BaseModel
+          extend Straddle::Internal::Type::RequestParameters::Converter
+          include Straddle::Internal::Type::RequestParameters
+
+          attr_reader category: Straddle::Models::Embed::Accounts::CapabilityRequestListParams::category?
+
+          def category=: (
+            Straddle::Models::Embed::Accounts::CapabilityRequestListParams::category
+          ) -> Straddle::Models::Embed::Accounts::CapabilityRequestListParams::category
+
+          attr_reader page_number: Integer?
+
+          def page_number=: (Integer) -> Integer
+
+          attr_reader page_size: Integer?
+
+          def page_size=: (Integer) -> Integer
+
+          attr_reader sort_by: String?
+
+          def sort_by=: (String) -> String
+
+          attr_reader sort_order: Straddle::Models::Embed::Accounts::CapabilityRequestListParams::sort_order?
+
+          def sort_order=: (
+            Straddle::Models::Embed::Accounts::CapabilityRequestListParams::sort_order
+          ) -> Straddle::Models::Embed::Accounts::CapabilityRequestListParams::sort_order
+
+          attr_reader status: Straddle::Models::Embed::Accounts::CapabilityRequestListParams::status?
+
+          def status=: (
+            Straddle::Models::Embed::Accounts::CapabilityRequestListParams::status
+          ) -> Straddle::Models::Embed::Accounts::CapabilityRequestListParams::status
+
+          attr_reader type: Straddle::Models::Embed::Accounts::CapabilityRequestListParams::type_?
+
+          def type=: (
+            Straddle::Models::Embed::Accounts::CapabilityRequestListParams::type_
+          ) -> Straddle::Models::Embed::Accounts::CapabilityRequestListParams::type_
+
+          attr_reader correlation_id: String?
+
+          def correlation_id=: (String) -> String
+
+          attr_reader request_id: String?
+
+          def request_id=: (String) -> String
+
+          def initialize: (
+            ?category: Straddle::Models::Embed::Accounts::CapabilityRequestListParams::category,
+            ?page_number: Integer,
+            ?page_size: Integer,
+            ?sort_by: String,
+            ?sort_order: Straddle::Models::Embed::Accounts::CapabilityRequestListParams::sort_order,
+            ?status: Straddle::Models::Embed::Accounts::CapabilityRequestListParams::status,
+            ?type: Straddle::Models::Embed::Accounts::CapabilityRequestListParams::type_,
+            ?correlation_id: String,
+            ?request_id: String,
+            ?request_options: Straddle::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            category: Straddle::Models::Embed::Accounts::CapabilityRequestListParams::category,
+            page_number: Integer,
+            page_size: Integer,
+            sort_by: String,
+            sort_order: Straddle::Models::Embed::Accounts::CapabilityRequestListParams::sort_order,
+            status: Straddle::Models::Embed::Accounts::CapabilityRequestListParams::status,
+            type: Straddle::Models::Embed::Accounts::CapabilityRequestListParams::type_,
+            correlation_id: String,
+            request_id: String,
+            request_options: Straddle::RequestOptions
+          }
+
+          type category = :payment_type | :customer_type | :consent_type
+
+          module Category
+            extend Straddle::Internal::Type::Enum
+
+            PAYMENT_TYPE: :payment_type
+            CUSTOMER_TYPE: :customer_type
+            CONSENT_TYPE: :consent_type
+
+            def self?.values: -> ::Array[Straddle::Models::Embed::Accounts::CapabilityRequestListParams::category]
+          end
+
+          type sort_order = :asc | :desc
+
+          module SortOrder
+            extend Straddle::Internal::Type::Enum
+
+            ASC: :asc
+            DESC: :desc
+
+            def self?.values: -> ::Array[Straddle::Models::Embed::Accounts::CapabilityRequestListParams::sort_order]
+          end
+
+          type status = :active | :inactive | :in_review | :rejected
+
+          module Status
+            extend Straddle::Internal::Type::Enum
+
+            ACTIVE: :active
+            INACTIVE: :inactive
+            IN_REVIEW: :in_review
+            REJECTED: :rejected
+
+            def self?.values: -> ::Array[Straddle::Models::Embed::Accounts::CapabilityRequestListParams::status]
+          end
+
+          type type_ =
+            :charges
+            | :payouts
+            | :individuals
+            | :businesses
+            | :signed_agreement
+            | :internet
+
+          module Type
+            extend Straddle::Internal::Type::Enum
+
+            CHARGES: :charges
+            PAYOUTS: :payouts
+            INDIVIDUALS: :individuals
+            BUSINESSES: :businesses
+            SIGNED_AGREEMENT: :signed_agreement
+            INTERNET: :internet
+
+            def self?.values: -> ::Array[Straddle::Models::Embed::Accounts::CapabilityRequestListParams::type_]
+          end
+        end
+      end
+    end
+  end
+end

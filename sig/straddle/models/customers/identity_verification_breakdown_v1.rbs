@@ -1,0 +1,81 @@
+module Straddle
+  module Models
+    module Customers
+      type identity_verification_breakdown_v1 =
+        {
+          codes: ::Array[String]?,
+          correlation: Straddle::Models::Customers::IdentityVerificationBreakdownV1::correlation,
+          correlation_score: Float?,
+          decision: Straddle::Models::Customers::IdentityVerificationBreakdownV1::decision,
+          risk_score: Float?
+        }
+
+      class IdentityVerificationBreakdownV1 < Straddle::Internal::Type::BaseModel
+        attr_accessor codes: ::Array[String]?
+
+        attr_reader correlation: Straddle::Models::Customers::IdentityVerificationBreakdownV1::correlation?
+
+        def correlation=: (
+          Straddle::Models::Customers::IdentityVerificationBreakdownV1::correlation
+        ) -> Straddle::Models::Customers::IdentityVerificationBreakdownV1::correlation
+
+        attr_accessor correlation_score: Float?
+
+        attr_reader decision: Straddle::Models::Customers::IdentityVerificationBreakdownV1::decision?
+
+        def decision=: (
+          Straddle::Models::Customers::IdentityVerificationBreakdownV1::decision
+        ) -> Straddle::Models::Customers::IdentityVerificationBreakdownV1::decision
+
+        attr_accessor risk_score: Float?
+
+        def initialize: (
+          ?codes: ::Array[String]?,
+          ?correlation: Straddle::Models::Customers::IdentityVerificationBreakdownV1::correlation,
+          ?correlation_score: Float?,
+          ?decision: Straddle::Models::Customers::IdentityVerificationBreakdownV1::decision,
+          ?risk_score: Float?
+        ) -> void
+
+        def to_hash: -> {
+          codes: ::Array[String]?,
+          correlation: Straddle::Models::Customers::IdentityVerificationBreakdownV1::correlation,
+          correlation_score: Float?,
+          decision: Straddle::Models::Customers::IdentityVerificationBreakdownV1::decision,
+          risk_score: Float?
+        }
+
+        type correlation =
+          :low_confidence
+          | :potential_match
+          | :likely_match
+          | :high_confidence
+          | :unknown
+
+        module Correlation
+          extend Straddle::Internal::Type::Enum
+
+          LOW_CONFIDENCE: :low_confidence
+          POTENTIAL_MATCH: :potential_match
+          LIKELY_MATCH: :likely_match
+          HIGH_CONFIDENCE: :high_confidence
+          UNKNOWN: :unknown
+
+          def self?.values: -> ::Array[Straddle::Models::Customers::IdentityVerificationBreakdownV1::correlation]
+        end
+
+        type decision = :accept | :reject | :review
+
+        module Decision
+          extend Straddle::Internal::Type::Enum
+
+          ACCEPT: :accept
+          REJECT: :reject
+          REVIEW: :review
+
+          def self?.values: -> ::Array[Straddle::Models::Customers::IdentityVerificationBreakdownV1::decision]
+        end
+      end
+    end
+  end
+end

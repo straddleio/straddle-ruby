@@ -1,0 +1,143 @@
+module Straddle
+  module Models
+    type payout_create_params =
+      {
+        amount: Integer,
+        currency: String,
+        description: String,
+        device: Straddle::DeviceInfoV1,
+        external_id: String,
+        paykey: String,
+        payment_date: Date,
+        config: Straddle::PayoutCreateParams::Config,
+        metadata: ::Hash[Symbol, String]?,
+        correlation_id: String,
+        request_id: String,
+        straddle_account_id: String
+      }
+      & Straddle::Internal::Type::request_parameters
+
+    class PayoutCreateParams < Straddle::Internal::Type::BaseModel
+      extend Straddle::Internal::Type::RequestParameters::Converter
+      include Straddle::Internal::Type::RequestParameters
+
+      attr_accessor amount: Integer
+
+      attr_accessor currency: String
+
+      attr_accessor description: String
+
+      attr_accessor device: Straddle::DeviceInfoV1
+
+      attr_accessor external_id: String
+
+      attr_accessor paykey: String
+
+      attr_accessor payment_date: Date
+
+      attr_reader config: Straddle::PayoutCreateParams::Config?
+
+      def config=: (
+        Straddle::PayoutCreateParams::Config
+      ) -> Straddle::PayoutCreateParams::Config
+
+      attr_accessor metadata: ::Hash[Symbol, String]?
+
+      attr_reader correlation_id: String?
+
+      def correlation_id=: (String) -> String
+
+      attr_reader request_id: String?
+
+      def request_id=: (String) -> String
+
+      attr_reader straddle_account_id: String?
+
+      def straddle_account_id=: (String) -> String
+
+      def initialize: (
+        amount: Integer,
+        currency: String,
+        description: String,
+        device: Straddle::DeviceInfoV1,
+        external_id: String,
+        paykey: String,
+        payment_date: Date,
+        ?config: Straddle::PayoutCreateParams::Config,
+        ?metadata: ::Hash[Symbol, String]?,
+        ?correlation_id: String,
+        ?request_id: String,
+        ?straddle_account_id: String,
+        ?request_options: Straddle::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        amount: Integer,
+        currency: String,
+        description: String,
+        device: Straddle::DeviceInfoV1,
+        external_id: String,
+        paykey: String,
+        payment_date: Date,
+        config: Straddle::PayoutCreateParams::Config,
+        metadata: ::Hash[Symbol, String]?,
+        correlation_id: String,
+        request_id: String,
+        straddle_account_id: String,
+        request_options: Straddle::RequestOptions
+      }
+
+      type config =
+        {
+          sandbox_outcome: Straddle::Models::PayoutCreateParams::Config::sandbox_outcome
+        }
+
+      class Config < Straddle::Internal::Type::BaseModel
+        attr_reader sandbox_outcome: Straddle::Models::PayoutCreateParams::Config::sandbox_outcome?
+
+        def sandbox_outcome=: (
+          Straddle::Models::PayoutCreateParams::Config::sandbox_outcome
+        ) -> Straddle::Models::PayoutCreateParams::Config::sandbox_outcome
+
+        def initialize: (
+          ?sandbox_outcome: Straddle::Models::PayoutCreateParams::Config::sandbox_outcome
+        ) -> void
+
+        def to_hash: -> {
+          sandbox_outcome: Straddle::Models::PayoutCreateParams::Config::sandbox_outcome
+        }
+
+        type sandbox_outcome =
+          :standard
+          | :paid
+          | :on_hold_daily_limit
+          | :cancelled_for_fraud_risk
+          | :cancelled_for_balance_check
+          | :failed_insufficient_funds
+          | :reversed_insufficient_funds
+          | :failed_customer_dispute
+          | :reversed_customer_dispute
+          | :failed_closed_bank_account
+          | :reversed_closed_bank_account
+
+        module SandboxOutcome
+          extend Straddle::Internal::Type::Enum
+
+          STANDARD: :standard
+          PAID: :paid
+          ON_HOLD_DAILY_LIMIT: :on_hold_daily_limit
+          CANCELLED_FOR_FRAUD_RISK: :cancelled_for_fraud_risk
+          CANCELLED_FOR_BALANCE_CHECK: :cancelled_for_balance_check
+          FAILED_INSUFFICIENT_FUNDS: :failed_insufficient_funds
+          REVERSED_INSUFFICIENT_FUNDS: :reversed_insufficient_funds
+          FAILED_CUSTOMER_DISPUTE: :failed_customer_dispute
+          REVERSED_CUSTOMER_DISPUTE: :reversed_customer_dispute
+          FAILED_CLOSED_BANK_ACCOUNT: :failed_closed_bank_account
+          REVERSED_CLOSED_BANK_ACCOUNT: :reversed_closed_bank_account
+
+          def self?.values: -> ::Array[Straddle::Models::PayoutCreateParams::Config::sandbox_outcome]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,19 @@
+module Straddle
+  module Models
+    type response_metadata =
+      { api_request_id: String, api_request_timestamp: Time }
+
+    class ResponseMetadata < Straddle::Internal::Type::BaseModel
+      attr_accessor api_request_id: String
+
+      attr_accessor api_request_timestamp: Time
+
+      def initialize: (
+        api_request_id: String,
+        api_request_timestamp: Time
+      ) -> void
+
+      def to_hash: -> { api_request_id: String, api_request_timestamp: Time }
+    end
+  end
+end

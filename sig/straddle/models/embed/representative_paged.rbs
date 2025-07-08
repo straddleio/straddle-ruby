@@ -1,0 +1,260 @@
+module Straddle
+  module Models
+    module Embed
+      type representative_paged =
+        {
+          data: ::Array[Straddle::Embed::RepresentativePaged::Data],
+          meta: Straddle::PagedResponseMetadata,
+          response_type: Straddle::Models::Embed::RepresentativePaged::response_type
+        }
+
+      class RepresentativePaged < Straddle::Internal::Type::BaseModel
+        attr_accessor data: ::Array[Straddle::Embed::RepresentativePaged::Data]
+
+        attr_accessor meta: Straddle::PagedResponseMetadata
+
+        attr_accessor response_type: Straddle::Models::Embed::RepresentativePaged::response_type
+
+        def initialize: (
+          data: ::Array[Straddle::Embed::RepresentativePaged::Data],
+          meta: Straddle::PagedResponseMetadata,
+          response_type: Straddle::Models::Embed::RepresentativePaged::response_type
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Straddle::Embed::RepresentativePaged::Data],
+          meta: Straddle::PagedResponseMetadata,
+          response_type: Straddle::Models::Embed::RepresentativePaged::response_type
+        }
+
+        type data =
+          {
+            id: String,
+            account_id: String,
+            created_at: Time,
+            dob: Date,
+            email: String?,
+            first_name: String,
+            last_name: String,
+            mobile_number: String,
+            name: String,
+            relationship: Straddle::Embed::RepresentativePaged::Data::Relationship,
+            :ssn_last4 => String,
+            status: Straddle::Models::Embed::RepresentativePaged::Data::status,
+            status_detail: Straddle::Embed::RepresentativePaged::Data::StatusDetail,
+            updated_at: Time,
+            external_id: String?,
+            phone: String?,
+            user_id: String?
+          }
+
+        class Data < Straddle::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor account_id: String
+
+          attr_accessor created_at: Time
+
+          attr_accessor dob: Date
+
+          attr_accessor email: String?
+
+          attr_accessor first_name: String
+
+          attr_accessor last_name: String
+
+          attr_accessor mobile_number: String
+
+          attr_accessor name: String
+
+          attr_accessor relationship: Straddle::Embed::RepresentativePaged::Data::Relationship
+
+          attr_accessor ssn_last4: String
+
+          attr_accessor status: Straddle::Models::Embed::RepresentativePaged::Data::status
+
+          attr_accessor status_detail: Straddle::Embed::RepresentativePaged::Data::StatusDetail
+
+          attr_accessor updated_at: Time
+
+          attr_accessor external_id: String?
+
+          attr_accessor phone: String?
+
+          attr_accessor user_id: String?
+
+          def initialize: (
+            id: String,
+            account_id: String,
+            created_at: Time,
+            dob: Date,
+            email: String?,
+            first_name: String,
+            last_name: String,
+            mobile_number: String,
+            name: String,
+            relationship: Straddle::Embed::RepresentativePaged::Data::Relationship,
+            ssn_last4: String,
+            status: Straddle::Models::Embed::RepresentativePaged::Data::status,
+            status_detail: Straddle::Embed::RepresentativePaged::Data::StatusDetail,
+            updated_at: Time,
+            ?external_id: String?,
+            ?phone: String?,
+            ?user_id: String?
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            account_id: String,
+            created_at: Time,
+            dob: Date,
+            email: String?,
+            first_name: String,
+            last_name: String,
+            mobile_number: String,
+            name: String,
+            relationship: Straddle::Embed::RepresentativePaged::Data::Relationship,
+            :ssn_last4 => String,
+            status: Straddle::Models::Embed::RepresentativePaged::Data::status,
+            status_detail: Straddle::Embed::RepresentativePaged::Data::StatusDetail,
+            updated_at: Time,
+            external_id: String?,
+            phone: String?,
+            user_id: String?
+          }
+
+          type relationship =
+            {
+              control: bool,
+              owner: bool,
+              primary: bool,
+              percent_ownership: Float?,
+              title: String?
+            }
+
+          class Relationship < Straddle::Internal::Type::BaseModel
+            attr_accessor control: bool
+
+            attr_accessor owner: bool
+
+            attr_accessor primary: bool
+
+            attr_accessor percent_ownership: Float?
+
+            attr_accessor title: String?
+
+            def initialize: (
+              control: bool,
+              owner: bool,
+              primary: bool,
+              ?percent_ownership: Float?,
+              ?title: String?
+            ) -> void
+
+            def to_hash: -> {
+              control: bool,
+              owner: bool,
+              primary: bool,
+              percent_ownership: Float?,
+              title: String?
+            }
+          end
+
+          type status = :created | :onboarding | :active | :rejected | :inactive
+
+          module Status
+            extend Straddle::Internal::Type::Enum
+
+            CREATED: :created
+            ONBOARDING: :onboarding
+            ACTIVE: :active
+            REJECTED: :rejected
+            INACTIVE: :inactive
+
+            def self?.values: -> ::Array[Straddle::Models::Embed::RepresentativePaged::Data::status]
+          end
+
+          type status_detail =
+            {
+              code: String,
+              message: String,
+              reason: Straddle::Models::Embed::RepresentativePaged::Data::StatusDetail::reason,
+              source: Straddle::Models::Embed::RepresentativePaged::Data::StatusDetail::source
+            }
+
+          class StatusDetail < Straddle::Internal::Type::BaseModel
+            attr_accessor code: String
+
+            attr_accessor message: String
+
+            attr_accessor reason: Straddle::Models::Embed::RepresentativePaged::Data::StatusDetail::reason
+
+            attr_accessor source: Straddle::Models::Embed::RepresentativePaged::Data::StatusDetail::source
+
+            def initialize: (
+              code: String,
+              message: String,
+              reason: Straddle::Models::Embed::RepresentativePaged::Data::StatusDetail::reason,
+              source: Straddle::Models::Embed::RepresentativePaged::Data::StatusDetail::source
+            ) -> void
+
+            def to_hash: -> {
+              code: String,
+              message: String,
+              reason: Straddle::Models::Embed::RepresentativePaged::Data::StatusDetail::reason,
+              source: Straddle::Models::Embed::RepresentativePaged::Data::StatusDetail::source
+            }
+
+            type reason =
+              :unverified
+              | :in_review
+              | :pending
+              | :stuck
+              | :verified
+              | :failed_verification
+              | :disabled
+              | :new
+
+            module Reason
+              extend Straddle::Internal::Type::Enum
+
+              UNVERIFIED: :unverified
+              IN_REVIEW: :in_review
+              PENDING: :pending
+              STUCK: :stuck
+              VERIFIED: :verified
+              FAILED_VERIFICATION: :failed_verification
+              DISABLED: :disabled
+              NEW: :new
+
+              def self?.values: -> ::Array[Straddle::Models::Embed::RepresentativePaged::Data::StatusDetail::reason]
+            end
+
+            type source = :watchtower
+
+            module Source
+              extend Straddle::Internal::Type::Enum
+
+              WATCHTOWER: :watchtower
+
+              def self?.values: -> ::Array[Straddle::Models::Embed::RepresentativePaged::Data::StatusDetail::source]
+            end
+          end
+        end
+
+        type response_type = :object | :array | :error | :none
+
+        module ResponseType
+          extend Straddle::Internal::Type::Enum
+
+          OBJECT: :object
+          ARRAY: :array
+          ERROR: :error
+          NONE: :none
+
+          def self?.values: -> ::Array[Straddle::Models::Embed::RepresentativePaged::response_type]
+        end
+      end
+    end
+  end
+end

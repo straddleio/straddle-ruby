@@ -1,0 +1,53 @@
+module Straddle
+  module Models
+    module Embed
+      type terms_of_service_v1 =
+        {
+          accepted_date: Time,
+          agreement_type: Straddle::Models::Embed::TermsOfServiceV1::agreement_type,
+          agreement_url: String?,
+          accepted_ip: String?,
+          accepted_user_agent: String?
+        }
+
+      class TermsOfServiceV1 < Straddle::Internal::Type::BaseModel
+        attr_accessor accepted_date: Time
+
+        attr_accessor agreement_type: Straddle::Models::Embed::TermsOfServiceV1::agreement_type
+
+        attr_accessor agreement_url: String?
+
+        attr_accessor accepted_ip: String?
+
+        attr_accessor accepted_user_agent: String?
+
+        def initialize: (
+          accepted_date: Time,
+          agreement_type: Straddle::Models::Embed::TermsOfServiceV1::agreement_type,
+          agreement_url: String?,
+          ?accepted_ip: String?,
+          ?accepted_user_agent: String?
+        ) -> void
+
+        def to_hash: -> {
+          accepted_date: Time,
+          agreement_type: Straddle::Models::Embed::TermsOfServiceV1::agreement_type,
+          agreement_url: String?,
+          accepted_ip: String?,
+          accepted_user_agent: String?
+        }
+
+        type agreement_type = :embedded | :direct
+
+        module AgreementType
+          extend Straddle::Internal::Type::Enum
+
+          EMBEDDED: :embedded
+          DIRECT: :direct
+
+          def self?.values: -> ::Array[Straddle::Models::Embed::TermsOfServiceV1::agreement_type]
+        end
+      end
+    end
+  end
+end

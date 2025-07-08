@@ -1,0 +1,42 @@
+module Straddle
+  module Models
+    type paykey_reveal_params =
+      {
+        correlation_id: String,
+        request_id: String,
+        straddle_account_id: String
+      }
+      & Straddle::Internal::Type::request_parameters
+
+    class PaykeyRevealParams < Straddle::Internal::Type::BaseModel
+      extend Straddle::Internal::Type::RequestParameters::Converter
+      include Straddle::Internal::Type::RequestParameters
+
+      attr_reader correlation_id: String?
+
+      def correlation_id=: (String) -> String
+
+      attr_reader request_id: String?
+
+      def request_id=: (String) -> String
+
+      attr_reader straddle_account_id: String?
+
+      def straddle_account_id=: (String) -> String
+
+      def initialize: (
+        ?correlation_id: String,
+        ?request_id: String,
+        ?straddle_account_id: String,
+        ?request_options: Straddle::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        correlation_id: String,
+        request_id: String,
+        straddle_account_id: String,
+        request_options: Straddle::RequestOptions
+      }
+    end
+  end
+end

@@ -1,0 +1,26 @@
+module Straddle
+  module Internal
+    module Type
+      class Boolean
+        extend Straddle::Internal::Type::Converter
+        extend Straddle::Internal::Util::SorbetRuntimeSupport
+
+        def self.===: (top other) -> bool
+
+        def self.==: (top other) -> bool
+
+        def self.coerce: (
+          bool | top value,
+          state: Straddle::Internal::Type::Converter::coerce_state
+        ) -> (bool | top)
+
+        def self.dump: (
+          bool | top value,
+          state: Straddle::Internal::Type::Converter::dump_state
+        ) -> (bool | top)
+
+        def self.to_sorbet_type: -> top
+      end
+    end
+  end
+end

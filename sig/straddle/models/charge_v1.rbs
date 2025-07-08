@@ -1,0 +1,427 @@
+module Straddle
+  module Models
+    type charge_v1 =
+      {
+        data: Straddle::ChargeV1::Data,
+        meta: Straddle::ResponseMetadata,
+        response_type: Straddle::Models::ChargeV1::response_type
+      }
+
+    class ChargeV1 < Straddle::Internal::Type::BaseModel
+      attr_accessor data: Straddle::ChargeV1::Data
+
+      attr_accessor meta: Straddle::ResponseMetadata
+
+      attr_accessor response_type: Straddle::Models::ChargeV1::response_type
+
+      def initialize: (
+        data: Straddle::ChargeV1::Data,
+        meta: Straddle::ResponseMetadata,
+        response_type: Straddle::Models::ChargeV1::response_type
+      ) -> void
+
+      def to_hash: -> {
+        data: Straddle::ChargeV1::Data,
+        meta: Straddle::ResponseMetadata,
+        response_type: Straddle::Models::ChargeV1::response_type
+      }
+
+      type data =
+        {
+          id: String,
+          amount: Integer,
+          config: Straddle::ChargeV1::Data::Config,
+          consent_type: Straddle::Models::ChargeV1::Data::consent_type,
+          created_at: Time?,
+          currency: String,
+          description: String,
+          device: Straddle::DeviceInfoV1,
+          external_id: String,
+          funding_ids: ::Array[String],
+          paykey: String,
+          payment_date: Date,
+          status: Straddle::Models::ChargeV1::Data::status,
+          status_details: Straddle::StatusDetailsV1,
+          status_history: ::Array[Straddle::ChargeV1::Data::StatusHistory],
+          updated_at: Time?,
+          customer_details: Straddle::CustomerDetailsV1,
+          effective_at: Time?,
+          metadata: ::Hash[Symbol, String]?,
+          paykey_details: Straddle::PaykeyDetailsV1,
+          payment_rail: Straddle::Models::ChargeV1::Data::payment_rail,
+          processed_at: Time?
+        }
+
+      class Data < Straddle::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor amount: Integer
+
+        attr_accessor config: Straddle::ChargeV1::Data::Config
+
+        attr_accessor consent_type: Straddle::Models::ChargeV1::Data::consent_type
+
+        attr_accessor created_at: Time?
+
+        attr_accessor currency: String
+
+        attr_accessor description: String
+
+        attr_accessor device: Straddle::DeviceInfoV1
+
+        attr_accessor external_id: String
+
+        attr_accessor funding_ids: ::Array[String]
+
+        attr_accessor paykey: String
+
+        attr_accessor payment_date: Date
+
+        attr_accessor status: Straddle::Models::ChargeV1::Data::status
+
+        attr_accessor status_details: Straddle::StatusDetailsV1
+
+        attr_accessor status_history: ::Array[Straddle::ChargeV1::Data::StatusHistory]
+
+        attr_accessor updated_at: Time?
+
+        attr_reader customer_details: Straddle::CustomerDetailsV1?
+
+        def customer_details=: (
+          Straddle::CustomerDetailsV1
+        ) -> Straddle::CustomerDetailsV1
+
+        attr_accessor effective_at: Time?
+
+        attr_accessor metadata: ::Hash[Symbol, String]?
+
+        attr_reader paykey_details: Straddle::PaykeyDetailsV1?
+
+        def paykey_details=: (
+          Straddle::PaykeyDetailsV1
+        ) -> Straddle::PaykeyDetailsV1
+
+        attr_reader payment_rail: Straddle::Models::ChargeV1::Data::payment_rail?
+
+        def payment_rail=: (
+          Straddle::Models::ChargeV1::Data::payment_rail
+        ) -> Straddle::Models::ChargeV1::Data::payment_rail
+
+        attr_accessor processed_at: Time?
+
+        def initialize: (
+          id: String,
+          amount: Integer,
+          config: Straddle::ChargeV1::Data::Config,
+          consent_type: Straddle::Models::ChargeV1::Data::consent_type,
+          created_at: Time?,
+          currency: String,
+          description: String,
+          device: Straddle::DeviceInfoV1,
+          external_id: String,
+          funding_ids: ::Array[String],
+          paykey: String,
+          payment_date: Date,
+          status: Straddle::Models::ChargeV1::Data::status,
+          status_details: Straddle::StatusDetailsV1,
+          status_history: ::Array[Straddle::ChargeV1::Data::StatusHistory],
+          updated_at: Time?,
+          ?customer_details: Straddle::CustomerDetailsV1,
+          ?effective_at: Time?,
+          ?metadata: ::Hash[Symbol, String]?,
+          ?paykey_details: Straddle::PaykeyDetailsV1,
+          ?payment_rail: Straddle::Models::ChargeV1::Data::payment_rail,
+          ?processed_at: Time?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          amount: Integer,
+          config: Straddle::ChargeV1::Data::Config,
+          consent_type: Straddle::Models::ChargeV1::Data::consent_type,
+          created_at: Time?,
+          currency: String,
+          description: String,
+          device: Straddle::DeviceInfoV1,
+          external_id: String,
+          funding_ids: ::Array[String],
+          paykey: String,
+          payment_date: Date,
+          status: Straddle::Models::ChargeV1::Data::status,
+          status_details: Straddle::StatusDetailsV1,
+          status_history: ::Array[Straddle::ChargeV1::Data::StatusHistory],
+          updated_at: Time?,
+          customer_details: Straddle::CustomerDetailsV1,
+          effective_at: Time?,
+          metadata: ::Hash[Symbol, String]?,
+          paykey_details: Straddle::PaykeyDetailsV1,
+          payment_rail: Straddle::Models::ChargeV1::Data::payment_rail,
+          processed_at: Time?
+        }
+
+        type config =
+          {
+            balance_check: Straddle::Models::ChargeV1::Data::Config::balance_check,
+            sandbox_outcome: Straddle::Models::ChargeV1::Data::Config::sandbox_outcome
+          }
+
+        class Config < Straddle::Internal::Type::BaseModel
+          attr_accessor balance_check: Straddle::Models::ChargeV1::Data::Config::balance_check
+
+          attr_reader sandbox_outcome: Straddle::Models::ChargeV1::Data::Config::sandbox_outcome?
+
+          def sandbox_outcome=: (
+            Straddle::Models::ChargeV1::Data::Config::sandbox_outcome
+          ) -> Straddle::Models::ChargeV1::Data::Config::sandbox_outcome
+
+          def initialize: (
+            balance_check: Straddle::Models::ChargeV1::Data::Config::balance_check,
+            ?sandbox_outcome: Straddle::Models::ChargeV1::Data::Config::sandbox_outcome
+          ) -> void
+
+          def to_hash: -> {
+            balance_check: Straddle::Models::ChargeV1::Data::Config::balance_check,
+            sandbox_outcome: Straddle::Models::ChargeV1::Data::Config::sandbox_outcome
+          }
+
+          type balance_check = :required | :enabled | :disabled
+
+          module BalanceCheck
+            extend Straddle::Internal::Type::Enum
+
+            REQUIRED: :required
+            ENABLED: :enabled
+            DISABLED: :disabled
+
+            def self?.values: -> ::Array[Straddle::Models::ChargeV1::Data::Config::balance_check]
+          end
+
+          type sandbox_outcome =
+            :standard
+            | :paid
+            | :on_hold_daily_limit
+            | :cancelled_for_fraud_risk
+            | :cancelled_for_balance_check
+            | :failed_insufficient_funds
+            | :reversed_insufficient_funds
+            | :failed_customer_dispute
+            | :reversed_customer_dispute
+            | :failed_closed_bank_account
+            | :reversed_closed_bank_account
+
+          module SandboxOutcome
+            extend Straddle::Internal::Type::Enum
+
+            STANDARD: :standard
+            PAID: :paid
+            ON_HOLD_DAILY_LIMIT: :on_hold_daily_limit
+            CANCELLED_FOR_FRAUD_RISK: :cancelled_for_fraud_risk
+            CANCELLED_FOR_BALANCE_CHECK: :cancelled_for_balance_check
+            FAILED_INSUFFICIENT_FUNDS: :failed_insufficient_funds
+            REVERSED_INSUFFICIENT_FUNDS: :reversed_insufficient_funds
+            FAILED_CUSTOMER_DISPUTE: :failed_customer_dispute
+            REVERSED_CUSTOMER_DISPUTE: :reversed_customer_dispute
+            FAILED_CLOSED_BANK_ACCOUNT: :failed_closed_bank_account
+            REVERSED_CLOSED_BANK_ACCOUNT: :reversed_closed_bank_account
+
+            def self?.values: -> ::Array[Straddle::Models::ChargeV1::Data::Config::sandbox_outcome]
+          end
+        end
+
+        type consent_type = :internet | :signed
+
+        module ConsentType
+          extend Straddle::Internal::Type::Enum
+
+          INTERNET: :internet
+          SIGNED: :signed
+
+          def self?.values: -> ::Array[Straddle::Models::ChargeV1::Data::consent_type]
+        end
+
+        type status =
+          :created
+          | :scheduled
+          | :failed
+          | :cancelled
+          | :on_hold
+          | :pending
+          | :paid
+          | :reversed
+
+        module Status
+          extend Straddle::Internal::Type::Enum
+
+          CREATED: :created
+          SCHEDULED: :scheduled
+          FAILED: :failed
+          CANCELLED: :cancelled
+          ON_HOLD: :on_hold
+          PENDING: :pending
+          PAID: :paid
+          REVERSED: :reversed
+
+          def self?.values: -> ::Array[Straddle::Models::ChargeV1::Data::status]
+        end
+
+        type status_history =
+          {
+            changed_at: Time,
+            message: String,
+            reason: Straddle::Models::ChargeV1::Data::StatusHistory::reason,
+            source: Straddle::Models::ChargeV1::Data::StatusHistory::source,
+            status: Straddle::Models::ChargeV1::Data::StatusHistory::status,
+            code: String?
+          }
+
+        class StatusHistory < Straddle::Internal::Type::BaseModel
+          attr_accessor changed_at: Time
+
+          attr_accessor message: String
+
+          attr_accessor reason: Straddle::Models::ChargeV1::Data::StatusHistory::reason
+
+          attr_accessor source: Straddle::Models::ChargeV1::Data::StatusHistory::source
+
+          attr_accessor status: Straddle::Models::ChargeV1::Data::StatusHistory::status
+
+          attr_accessor code: String?
+
+          def initialize: (
+            changed_at: Time,
+            message: String,
+            reason: Straddle::Models::ChargeV1::Data::StatusHistory::reason,
+            source: Straddle::Models::ChargeV1::Data::StatusHistory::source,
+            status: Straddle::Models::ChargeV1::Data::StatusHistory::status,
+            ?code: String?
+          ) -> void
+
+          def to_hash: -> {
+            changed_at: Time,
+            message: String,
+            reason: Straddle::Models::ChargeV1::Data::StatusHistory::reason,
+            source: Straddle::Models::ChargeV1::Data::StatusHistory::source,
+            status: Straddle::Models::ChargeV1::Data::StatusHistory::status,
+            code: String?
+          }
+
+          type reason =
+            :insufficient_funds
+            | :closed_bank_account
+            | :invalid_bank_account
+            | :invalid_routing
+            | :disputed
+            | :payment_stopped
+            | :owner_deceased
+            | :frozen_bank_account
+            | :risk_review
+            | :fraudulent
+            | :duplicate_entry
+            | :invalid_paykey
+            | :payment_blocked
+            | :amount_too_large
+            | :too_many_attempts
+            | :internal_system_error
+            | :user_request
+            | :ok
+            | :other_network_return
+            | :payout_refused
+
+          module Reason
+            extend Straddle::Internal::Type::Enum
+
+            INSUFFICIENT_FUNDS: :insufficient_funds
+            CLOSED_BANK_ACCOUNT: :closed_bank_account
+            INVALID_BANK_ACCOUNT: :invalid_bank_account
+            INVALID_ROUTING: :invalid_routing
+            DISPUTED: :disputed
+            PAYMENT_STOPPED: :payment_stopped
+            OWNER_DECEASED: :owner_deceased
+            FROZEN_BANK_ACCOUNT: :frozen_bank_account
+            RISK_REVIEW: :risk_review
+            FRAUDULENT: :fraudulent
+            DUPLICATE_ENTRY: :duplicate_entry
+            INVALID_PAYKEY: :invalid_paykey
+            PAYMENT_BLOCKED: :payment_blocked
+            AMOUNT_TOO_LARGE: :amount_too_large
+            TOO_MANY_ATTEMPTS: :too_many_attempts
+            INTERNAL_SYSTEM_ERROR: :internal_system_error
+            USER_REQUEST: :user_request
+            OK: :ok
+            OTHER_NETWORK_RETURN: :other_network_return
+            PAYOUT_REFUSED: :payout_refused
+
+            def self?.values: -> ::Array[Straddle::Models::ChargeV1::Data::StatusHistory::reason]
+          end
+
+          type source =
+            :watchtower
+            | :bank_decline
+            | :customer_dispute
+            | :user_action
+            | :system
+
+          module Source
+            extend Straddle::Internal::Type::Enum
+
+            WATCHTOWER: :watchtower
+            BANK_DECLINE: :bank_decline
+            CUSTOMER_DISPUTE: :customer_dispute
+            USER_ACTION: :user_action
+            SYSTEM: :system
+
+            def self?.values: -> ::Array[Straddle::Models::ChargeV1::Data::StatusHistory::source]
+          end
+
+          type status =
+            :created
+            | :scheduled
+            | :failed
+            | :cancelled
+            | :on_hold
+            | :pending
+            | :paid
+            | :reversed
+
+          module Status
+            extend Straddle::Internal::Type::Enum
+
+            CREATED: :created
+            SCHEDULED: :scheduled
+            FAILED: :failed
+            CANCELLED: :cancelled
+            ON_HOLD: :on_hold
+            PENDING: :pending
+            PAID: :paid
+            REVERSED: :reversed
+
+            def self?.values: -> ::Array[Straddle::Models::ChargeV1::Data::StatusHistory::status]
+          end
+        end
+
+        type payment_rail = :ach
+
+        module PaymentRail
+          extend Straddle::Internal::Type::Enum
+
+          ACH: :ach
+
+          def self?.values: -> ::Array[Straddle::Models::ChargeV1::Data::payment_rail]
+        end
+      end
+
+      type response_type = :object | :array | :error | :none
+
+      module ResponseType
+        extend Straddle::Internal::Type::Enum
+
+        OBJECT: :object
+        ARRAY: :array
+        ERROR: :error
+        NONE: :none
+
+        def self?.values: -> ::Array[Straddle::Models::ChargeV1::response_type]
+      end
+    end
+  end
+end

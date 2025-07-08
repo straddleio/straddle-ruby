@@ -1,0 +1,389 @@
+module Straddle
+  module Models
+    module Bridge
+      type link_create_tan_response =
+        {
+          data: Straddle::Models::Bridge::LinkCreateTanResponse::Data,
+          meta: Straddle::ResponseMetadata,
+          response_type: Straddle::Models::Bridge::LinkCreateTanResponse::response_type
+        }
+
+      class LinkCreateTanResponse < Straddle::Internal::Type::BaseModel
+        attr_accessor data: Straddle::Models::Bridge::LinkCreateTanResponse::Data
+
+        attr_accessor meta: Straddle::ResponseMetadata
+
+        attr_accessor response_type: Straddle::Models::Bridge::LinkCreateTanResponse::response_type
+
+        def initialize: (
+          data: Straddle::Models::Bridge::LinkCreateTanResponse::Data,
+          meta: Straddle::ResponseMetadata,
+          response_type: Straddle::Models::Bridge::LinkCreateTanResponse::response_type
+        ) -> void
+
+        def to_hash: -> {
+          data: Straddle::Models::Bridge::LinkCreateTanResponse::Data,
+          meta: Straddle::ResponseMetadata,
+          response_type: Straddle::Models::Bridge::LinkCreateTanResponse::response_type
+        }
+
+        type data =
+          {
+            id: String,
+            config: Straddle::Models::Bridge::LinkCreateTanResponse::Data::Config,
+            created_at: Time,
+            label: String,
+            paykey: String,
+            source: Straddle::Models::Bridge::LinkCreateTanResponse::Data::source,
+            status: Straddle::Models::Bridge::LinkCreateTanResponse::Data::status,
+            updated_at: Time,
+            balance: Straddle::Models::Bridge::LinkCreateTanResponse::Data::Balance,
+            bank_data: Straddle::Models::Bridge::LinkCreateTanResponse::Data::BankData,
+            customer_id: String?,
+            expires_at: Time?,
+            institution_name: String?,
+            metadata: ::Hash[Symbol, String]?,
+            status_details: Straddle::Models::Bridge::LinkCreateTanResponse::Data::StatusDetails
+          }
+
+        class Data < Straddle::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor config: Straddle::Models::Bridge::LinkCreateTanResponse::Data::Config
+
+          attr_accessor created_at: Time
+
+          attr_accessor label: String
+
+          attr_accessor paykey: String
+
+          attr_accessor source: Straddle::Models::Bridge::LinkCreateTanResponse::Data::source
+
+          attr_accessor status: Straddle::Models::Bridge::LinkCreateTanResponse::Data::status
+
+          attr_accessor updated_at: Time
+
+          attr_reader balance: Straddle::Models::Bridge::LinkCreateTanResponse::Data::Balance?
+
+          def balance=: (
+            Straddle::Models::Bridge::LinkCreateTanResponse::Data::Balance
+          ) -> Straddle::Models::Bridge::LinkCreateTanResponse::Data::Balance
+
+          attr_reader bank_data: Straddle::Models::Bridge::LinkCreateTanResponse::Data::BankData?
+
+          def bank_data=: (
+            Straddle::Models::Bridge::LinkCreateTanResponse::Data::BankData
+          ) -> Straddle::Models::Bridge::LinkCreateTanResponse::Data::BankData
+
+          attr_accessor customer_id: String?
+
+          attr_accessor expires_at: Time?
+
+          attr_accessor institution_name: String?
+
+          attr_accessor metadata: ::Hash[Symbol, String]?
+
+          attr_reader status_details: Straddle::Models::Bridge::LinkCreateTanResponse::Data::StatusDetails?
+
+          def status_details=: (
+            Straddle::Models::Bridge::LinkCreateTanResponse::Data::StatusDetails
+          ) -> Straddle::Models::Bridge::LinkCreateTanResponse::Data::StatusDetails
+
+          def initialize: (
+            id: String,
+            config: Straddle::Models::Bridge::LinkCreateTanResponse::Data::Config,
+            created_at: Time,
+            label: String,
+            paykey: String,
+            source: Straddle::Models::Bridge::LinkCreateTanResponse::Data::source,
+            status: Straddle::Models::Bridge::LinkCreateTanResponse::Data::status,
+            updated_at: Time,
+            ?balance: Straddle::Models::Bridge::LinkCreateTanResponse::Data::Balance,
+            ?bank_data: Straddle::Models::Bridge::LinkCreateTanResponse::Data::BankData,
+            ?customer_id: String?,
+            ?expires_at: Time?,
+            ?institution_name: String?,
+            ?metadata: ::Hash[Symbol, String]?,
+            ?status_details: Straddle::Models::Bridge::LinkCreateTanResponse::Data::StatusDetails
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            config: Straddle::Models::Bridge::LinkCreateTanResponse::Data::Config,
+            created_at: Time,
+            label: String,
+            paykey: String,
+            source: Straddle::Models::Bridge::LinkCreateTanResponse::Data::source,
+            status: Straddle::Models::Bridge::LinkCreateTanResponse::Data::status,
+            updated_at: Time,
+            balance: Straddle::Models::Bridge::LinkCreateTanResponse::Data::Balance,
+            bank_data: Straddle::Models::Bridge::LinkCreateTanResponse::Data::BankData,
+            customer_id: String?,
+            expires_at: Time?,
+            institution_name: String?,
+            metadata: ::Hash[Symbol, String]?,
+            status_details: Straddle::Models::Bridge::LinkCreateTanResponse::Data::StatusDetails
+          }
+
+          type config =
+            {
+              sandbox_outcome: Straddle::Models::Bridge::LinkCreateTanResponse::Data::Config::sandbox_outcome
+            }
+
+          class Config < Straddle::Internal::Type::BaseModel
+            attr_reader sandbox_outcome: Straddle::Models::Bridge::LinkCreateTanResponse::Data::Config::sandbox_outcome?
+
+            def sandbox_outcome=: (
+              Straddle::Models::Bridge::LinkCreateTanResponse::Data::Config::sandbox_outcome
+            ) -> Straddle::Models::Bridge::LinkCreateTanResponse::Data::Config::sandbox_outcome
+
+            def initialize: (
+              ?sandbox_outcome: Straddle::Models::Bridge::LinkCreateTanResponse::Data::Config::sandbox_outcome
+            ) -> void
+
+            def to_hash: -> {
+              sandbox_outcome: Straddle::Models::Bridge::LinkCreateTanResponse::Data::Config::sandbox_outcome
+            }
+
+            type sandbox_outcome = :standard | :active | :rejected
+
+            module SandboxOutcome
+              extend Straddle::Internal::Type::Enum
+
+              STANDARD: :standard
+              ACTIVE: :active
+              REJECTED: :rejected
+
+              def self?.values: -> ::Array[Straddle::Models::Bridge::LinkCreateTanResponse::Data::Config::sandbox_outcome]
+            end
+          end
+
+          type source =
+            :bank_account | :straddle | :mx | :plaid | :tan | :quiltt
+
+          module Source
+            extend Straddle::Internal::Type::Enum
+
+            BANK_ACCOUNT: :bank_account
+            STRADDLE: :straddle
+            MX: :mx
+            PLAID: :plaid
+            TAN: :tan
+            QUILTT: :quiltt
+
+            def self?.values: -> ::Array[Straddle::Models::Bridge::LinkCreateTanResponse::Data::source]
+          end
+
+          type status = :pending | :active | :inactive | :rejected | :review
+
+          module Status
+            extend Straddle::Internal::Type::Enum
+
+            PENDING: :pending
+            ACTIVE: :active
+            INACTIVE: :inactive
+            REJECTED: :rejected
+            REVIEW: :review
+
+            def self?.values: -> ::Array[Straddle::Models::Bridge::LinkCreateTanResponse::Data::status]
+          end
+
+          type balance =
+            {
+              status: Straddle::Models::Bridge::LinkCreateTanResponse::Data::Balance::status,
+              account_balance: Integer?,
+              updated_at: Time?
+            }
+
+          class Balance < Straddle::Internal::Type::BaseModel
+            attr_accessor status: Straddle::Models::Bridge::LinkCreateTanResponse::Data::Balance::status
+
+            attr_accessor account_balance: Integer?
+
+            attr_accessor updated_at: Time?
+
+            def initialize: (
+              status: Straddle::Models::Bridge::LinkCreateTanResponse::Data::Balance::status,
+              ?account_balance: Integer?,
+              ?updated_at: Time?
+            ) -> void
+
+            def to_hash: -> {
+              status: Straddle::Models::Bridge::LinkCreateTanResponse::Data::Balance::status,
+              account_balance: Integer?,
+              updated_at: Time?
+            }
+
+            type status = :pending | :completed | :failed
+
+            module Status
+              extend Straddle::Internal::Type::Enum
+
+              PENDING: :pending
+              COMPLETED: :completed
+              FAILED: :failed
+
+              def self?.values: -> ::Array[Straddle::Models::Bridge::LinkCreateTanResponse::Data::Balance::status]
+            end
+          end
+
+          type bank_data =
+            {
+              account_number: String,
+              account_type: Straddle::Models::Bridge::LinkCreateTanResponse::Data::BankData::account_type,
+              routing_number: String
+            }
+
+          class BankData < Straddle::Internal::Type::BaseModel
+            attr_accessor account_number: String
+
+            attr_accessor account_type: Straddle::Models::Bridge::LinkCreateTanResponse::Data::BankData::account_type
+
+            attr_accessor routing_number: String
+
+            def initialize: (
+              account_number: String,
+              account_type: Straddle::Models::Bridge::LinkCreateTanResponse::Data::BankData::account_type,
+              routing_number: String
+            ) -> void
+
+            def to_hash: -> {
+              account_number: String,
+              account_type: Straddle::Models::Bridge::LinkCreateTanResponse::Data::BankData::account_type,
+              routing_number: String
+            }
+
+            type account_type = :checking | :savings
+
+            module AccountType
+              extend Straddle::Internal::Type::Enum
+
+              CHECKING: :checking
+              SAVINGS: :savings
+
+              def self?.values: -> ::Array[Straddle::Models::Bridge::LinkCreateTanResponse::Data::BankData::account_type]
+            end
+          end
+
+          type status_details =
+            {
+              changed_at: Time,
+              message: String,
+              reason: Straddle::Models::Bridge::LinkCreateTanResponse::Data::StatusDetails::reason,
+              source: Straddle::Models::Bridge::LinkCreateTanResponse::Data::StatusDetails::source,
+              code: String?
+            }
+
+          class StatusDetails < Straddle::Internal::Type::BaseModel
+            attr_accessor changed_at: Time
+
+            attr_accessor message: String
+
+            attr_accessor reason: Straddle::Models::Bridge::LinkCreateTanResponse::Data::StatusDetails::reason
+
+            attr_accessor source: Straddle::Models::Bridge::LinkCreateTanResponse::Data::StatusDetails::source
+
+            attr_accessor code: String?
+
+            def initialize: (
+              changed_at: Time,
+              message: String,
+              reason: Straddle::Models::Bridge::LinkCreateTanResponse::Data::StatusDetails::reason,
+              source: Straddle::Models::Bridge::LinkCreateTanResponse::Data::StatusDetails::source,
+              ?code: String?
+            ) -> void
+
+            def to_hash: -> {
+              changed_at: Time,
+              message: String,
+              reason: Straddle::Models::Bridge::LinkCreateTanResponse::Data::StatusDetails::reason,
+              source: Straddle::Models::Bridge::LinkCreateTanResponse::Data::StatusDetails::source,
+              code: String?
+            }
+
+            type reason =
+              :insufficient_funds
+              | :closed_bank_account
+              | :invalid_bank_account
+              | :invalid_routing
+              | :disputed
+              | :payment_stopped
+              | :owner_deceased
+              | :frozen_bank_account
+              | :risk_review
+              | :fraudulent
+              | :duplicate_entry
+              | :invalid_paykey
+              | :payment_blocked
+              | :amount_too_large
+              | :too_many_attempts
+              | :internal_system_error
+              | :user_request
+              | :ok
+              | :other_network_return
+              | :payout_refused
+
+            module Reason
+              extend Straddle::Internal::Type::Enum
+
+              INSUFFICIENT_FUNDS: :insufficient_funds
+              CLOSED_BANK_ACCOUNT: :closed_bank_account
+              INVALID_BANK_ACCOUNT: :invalid_bank_account
+              INVALID_ROUTING: :invalid_routing
+              DISPUTED: :disputed
+              PAYMENT_STOPPED: :payment_stopped
+              OWNER_DECEASED: :owner_deceased
+              FROZEN_BANK_ACCOUNT: :frozen_bank_account
+              RISK_REVIEW: :risk_review
+              FRAUDULENT: :fraudulent
+              DUPLICATE_ENTRY: :duplicate_entry
+              INVALID_PAYKEY: :invalid_paykey
+              PAYMENT_BLOCKED: :payment_blocked
+              AMOUNT_TOO_LARGE: :amount_too_large
+              TOO_MANY_ATTEMPTS: :too_many_attempts
+              INTERNAL_SYSTEM_ERROR: :internal_system_error
+              USER_REQUEST: :user_request
+              OK: :ok
+              OTHER_NETWORK_RETURN: :other_network_return
+              PAYOUT_REFUSED: :payout_refused
+
+              def self?.values: -> ::Array[Straddle::Models::Bridge::LinkCreateTanResponse::Data::StatusDetails::reason]
+            end
+
+            type source =
+              :watchtower
+              | :bank_decline
+              | :customer_dispute
+              | :user_action
+              | :system
+
+            module Source
+              extend Straddle::Internal::Type::Enum
+
+              WATCHTOWER: :watchtower
+              BANK_DECLINE: :bank_decline
+              CUSTOMER_DISPUTE: :customer_dispute
+              USER_ACTION: :user_action
+              SYSTEM: :system
+
+              def self?.values: -> ::Array[Straddle::Models::Bridge::LinkCreateTanResponse::Data::StatusDetails::source]
+            end
+          end
+        end
+
+        type response_type = :object | :array | :error | :none
+
+        module ResponseType
+          extend Straddle::Internal::Type::Enum
+
+          OBJECT: :object
+          ARRAY: :array
+          ERROR: :error
+          NONE: :none
+
+          def self?.values: -> ::Array[Straddle::Models::Bridge::LinkCreateTanResponse::response_type]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,74 @@
+module Straddle
+  module Models
+    module Embed
+      type linked_bank_account_update_params =
+        {
+          bank_account: Straddle::Embed::LinkedBankAccountUpdateParams::BankAccount,
+          metadata: ::Hash[Symbol, String?]?,
+          correlation_id: String,
+          request_id: String
+        }
+        & Straddle::Internal::Type::request_parameters
+
+      class LinkedBankAccountUpdateParams < Straddle::Internal::Type::BaseModel
+        extend Straddle::Internal::Type::RequestParameters::Converter
+        include Straddle::Internal::Type::RequestParameters
+
+        attr_accessor bank_account: Straddle::Embed::LinkedBankAccountUpdateParams::BankAccount
+
+        attr_accessor metadata: ::Hash[Symbol, String?]?
+
+        attr_reader correlation_id: String?
+
+        def correlation_id=: (String) -> String
+
+        attr_reader request_id: String?
+
+        def request_id=: (String) -> String
+
+        def initialize: (
+          bank_account: Straddle::Embed::LinkedBankAccountUpdateParams::BankAccount,
+          ?metadata: ::Hash[Symbol, String?]?,
+          ?correlation_id: String,
+          ?request_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          bank_account: Straddle::Embed::LinkedBankAccountUpdateParams::BankAccount,
+          metadata: ::Hash[Symbol, String?]?,
+          correlation_id: String,
+          request_id: String,
+          request_options: Straddle::RequestOptions
+        }
+
+        type bank_account =
+          {
+            account_holder: String,
+            account_number: String,
+            routing_number: String
+          }
+
+        class BankAccount < Straddle::Internal::Type::BaseModel
+          attr_accessor account_holder: String
+
+          attr_accessor account_number: String
+
+          attr_accessor routing_number: String
+
+          def initialize: (
+            account_holder: String,
+            account_number: String,
+            routing_number: String
+          ) -> void
+
+          def to_hash: -> {
+            account_holder: String,
+            account_number: String,
+            routing_number: String
+          }
+        end
+      end
+    end
+  end
+end

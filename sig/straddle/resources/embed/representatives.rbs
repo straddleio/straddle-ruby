@@ -1,0 +1,67 @@
+module Straddle
+  module Resources
+    class Embed
+      class Representatives
+        def create: (
+          account_id: String,
+          dob: Date,
+          email: String,
+          first_name: String,
+          last_name: String,
+          mobile_number: String,
+          relationship: Straddle::Embed::RepresentativeCreateParams::Relationship,
+          ssn_last4: String,
+          ?external_id: String?,
+          ?correlation_id: String,
+          ?request_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> Straddle::Embed::Representative
+
+        def update: (
+          String representative_id,
+          dob: Date,
+          email: String,
+          first_name: String,
+          last_name: String,
+          mobile_number: String,
+          relationship: Straddle::Embed::RepresentativeUpdateParams::Relationship,
+          ssn_last4: String,
+          ?external_id: String?,
+          ?correlation_id: String,
+          ?request_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> Straddle::Embed::Representative
+
+        def list: (
+          ?account_id: String,
+          ?level: Straddle::Models::Embed::RepresentativeListParams::level,
+          ?organization_id: String,
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?platform_id: String,
+          ?sort_by: String,
+          ?sort_order: Straddle::Models::Embed::RepresentativeListParams::sort_order,
+          ?correlation_id: String,
+          ?request_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> Straddle::Internal::PageNumberSchema[Straddle::Embed::RepresentativePaged::Data]
+
+        def get: (
+          String representative_id,
+          ?correlation_id: String,
+          ?request_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> Straddle::Embed::Representative
+
+        def unmask: (
+          String representative_id,
+          ?correlation_id: String,
+          ?request_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> Straddle::Embed::Representative
+
+        def initialize: (client: Straddle::Client) -> void
+      end
+    end
+  end
+end

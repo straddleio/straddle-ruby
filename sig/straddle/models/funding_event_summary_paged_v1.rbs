@@ -1,0 +1,191 @@
+module Straddle
+  module Models
+    type funding_event_summary_paged_v1 =
+      {
+        data: ::Array[Straddle::FundingEventSummaryPagedV1::Data],
+        meta: Straddle::FundingEventSummaryPagedV1::Meta,
+        response_type: Straddle::Models::FundingEventSummaryPagedV1::response_type
+      }
+
+    class FundingEventSummaryPagedV1 < Straddle::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Straddle::FundingEventSummaryPagedV1::Data]
+
+      attr_accessor meta: Straddle::FundingEventSummaryPagedV1::Meta
+
+      attr_accessor response_type: Straddle::Models::FundingEventSummaryPagedV1::response_type
+
+      def initialize: (
+        data: ::Array[Straddle::FundingEventSummaryPagedV1::Data],
+        meta: Straddle::FundingEventSummaryPagedV1::Meta,
+        response_type: Straddle::Models::FundingEventSummaryPagedV1::response_type
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Straddle::FundingEventSummaryPagedV1::Data],
+        meta: Straddle::FundingEventSummaryPagedV1::Meta,
+        response_type: Straddle::Models::FundingEventSummaryPagedV1::response_type
+      }
+
+      type data =
+        {
+          id: String,
+          amount: Integer,
+          direction: Straddle::Models::FundingEventSummaryPagedV1::Data::direction,
+          event_type: Straddle::Models::FundingEventSummaryPagedV1::Data::event_type,
+          payment_count: Integer,
+          trace_numbers: ::Array[String],
+          transfer_date: Date,
+          trace_number: String?
+        }
+
+      class Data < Straddle::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor amount: Integer
+
+        attr_accessor direction: Straddle::Models::FundingEventSummaryPagedV1::Data::direction
+
+        attr_accessor event_type: Straddle::Models::FundingEventSummaryPagedV1::Data::event_type
+
+        attr_accessor payment_count: Integer
+
+        attr_accessor trace_numbers: ::Array[String]
+
+        attr_accessor transfer_date: Date
+
+        attr_accessor trace_number: String?
+
+        def initialize: (
+          id: String,
+          amount: Integer,
+          direction: Straddle::Models::FundingEventSummaryPagedV1::Data::direction,
+          event_type: Straddle::Models::FundingEventSummaryPagedV1::Data::event_type,
+          payment_count: Integer,
+          trace_numbers: ::Array[String],
+          transfer_date: Date,
+          ?trace_number: String?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          amount: Integer,
+          direction: Straddle::Models::FundingEventSummaryPagedV1::Data::direction,
+          event_type: Straddle::Models::FundingEventSummaryPagedV1::Data::event_type,
+          payment_count: Integer,
+          trace_numbers: ::Array[String],
+          transfer_date: Date,
+          trace_number: String?
+        }
+
+        type direction = :deposit | :withdrawal
+
+        module Direction
+          extend Straddle::Internal::Type::Enum
+
+          DEPOSIT: :deposit
+          WITHDRAWAL: :withdrawal
+
+          def self?.values: -> ::Array[Straddle::Models::FundingEventSummaryPagedV1::Data::direction]
+        end
+
+        type event_type =
+          :charge_deposit
+          | :charge_reversal
+          | :payout_return
+          | :payout_withdrawal
+
+        module EventType
+          extend Straddle::Internal::Type::Enum
+
+          CHARGE_DEPOSIT: :charge_deposit
+          CHARGE_REVERSAL: :charge_reversal
+          PAYOUT_RETURN: :payout_return
+          PAYOUT_WITHDRAWAL: :payout_withdrawal
+
+          def self?.values: -> ::Array[Straddle::Models::FundingEventSummaryPagedV1::Data::event_type]
+        end
+      end
+
+      type meta =
+        {
+          api_request_id: String,
+          api_request_timestamp: Time,
+          max_page_size: Integer,
+          page_number: Integer,
+          page_size: Integer,
+          sort_by: String,
+          sort_order: Straddle::Models::FundingEventSummaryPagedV1::Meta::sort_order,
+          total_items: Integer,
+          total_pages: Integer
+        }
+
+      class Meta < Straddle::Internal::Type::BaseModel
+        attr_accessor api_request_id: String
+
+        attr_accessor api_request_timestamp: Time
+
+        attr_accessor max_page_size: Integer
+
+        attr_accessor page_number: Integer
+
+        attr_accessor page_size: Integer
+
+        attr_accessor sort_by: String
+
+        attr_accessor sort_order: Straddle::Models::FundingEventSummaryPagedV1::Meta::sort_order
+
+        attr_accessor total_items: Integer
+
+        attr_accessor total_pages: Integer
+
+        def initialize: (
+          api_request_id: String,
+          api_request_timestamp: Time,
+          max_page_size: Integer,
+          page_number: Integer,
+          page_size: Integer,
+          sort_by: String,
+          sort_order: Straddle::Models::FundingEventSummaryPagedV1::Meta::sort_order,
+          total_items: Integer,
+          total_pages: Integer
+        ) -> void
+
+        def to_hash: -> {
+          api_request_id: String,
+          api_request_timestamp: Time,
+          max_page_size: Integer,
+          page_number: Integer,
+          page_size: Integer,
+          sort_by: String,
+          sort_order: Straddle::Models::FundingEventSummaryPagedV1::Meta::sort_order,
+          total_items: Integer,
+          total_pages: Integer
+        }
+
+        type sort_order = :asc | :desc
+
+        module SortOrder
+          extend Straddle::Internal::Type::Enum
+
+          ASC: :asc
+          DESC: :desc
+
+          def self?.values: -> ::Array[Straddle::Models::FundingEventSummaryPagedV1::Meta::sort_order]
+        end
+      end
+
+      type response_type = :object | :array | :error | :none
+
+      module ResponseType
+        extend Straddle::Internal::Type::Enum
+
+        OBJECT: :object
+        ARRAY: :array
+        ERROR: :error
+        NONE: :none
+
+        def self?.values: -> ::Array[Straddle::Models::FundingEventSummaryPagedV1::response_type]
+      end
+    end
+  end
+end

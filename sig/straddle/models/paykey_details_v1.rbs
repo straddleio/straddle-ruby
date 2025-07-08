@@ -1,0 +1,30 @@
+module Straddle
+  module Models
+    type paykey_details_v1 =
+      { id: String, customer_id: String, label: String, balance: Integer? }
+
+    class PaykeyDetailsV1 < Straddle::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor customer_id: String
+
+      attr_accessor label: String
+
+      attr_accessor balance: Integer?
+
+      def initialize: (
+        id: String,
+        customer_id: String,
+        label: String,
+        ?balance: Integer?
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        customer_id: String,
+        label: String,
+        balance: Integer?
+      }
+    end
+  end
+end

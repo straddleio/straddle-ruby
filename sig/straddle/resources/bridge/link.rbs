@@ -1,0 +1,57 @@
+module Straddle
+  module Resources
+    class Bridge
+      class Link
+        def bank_account: (
+          account_number: String,
+          account_type: Straddle::Models::Bridge::LinkBankAccountParams::account_type,
+          customer_id: String,
+          routing_number: String,
+          ?config: Straddle::Bridge::LinkBankAccountParams::Config,
+          ?metadata: ::Hash[Symbol, String]?,
+          ?correlation_id: String,
+          ?request_id: String,
+          ?straddle_account_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> Straddle::PaykeyV1
+
+        def create_paykey: (
+          customer_id: String,
+          quiltt_token: String,
+          ?config: Straddle::Bridge::LinkCreatePaykeyParams::Config,
+          ?metadata: ::Hash[Symbol, String]?,
+          ?correlation_id: String,
+          ?request_id: String,
+          ?straddle_account_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> Straddle::Models::Bridge::LinkCreatePaykeyResponse
+
+        def create_tan: (
+          account_type: Straddle::Models::Bridge::LinkCreateTanParams::account_type,
+          customer_id: String,
+          routing_number: String,
+          tan: String,
+          ?config: Straddle::Bridge::LinkCreateTanParams::Config,
+          ?metadata: ::Hash[Symbol, String]?,
+          ?correlation_id: String,
+          ?request_id: String,
+          ?straddle_account_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> Straddle::Models::Bridge::LinkCreateTanResponse
+
+        def plaid: (
+          customer_id: String,
+          plaid_token: String,
+          ?config: Straddle::Bridge::LinkPlaidParams::Config,
+          ?metadata: ::Hash[Symbol, String]?,
+          ?correlation_id: String,
+          ?request_id: String,
+          ?straddle_account_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> Straddle::PaykeyV1
+
+        def initialize: (client: Straddle::Client) -> void
+      end
+    end
+  end
+end

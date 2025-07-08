@@ -1,0 +1,173 @@
+module Straddle
+  module Models
+    type customer_update_params =
+      {
+        device: Straddle::DeviceUnmaskedV1,
+        email: String,
+        name: String,
+        phone: String,
+        status: Straddle::Models::CustomerUpdateParams::status,
+        address: Straddle::CustomerAddressV1?,
+        compliance_profile: Straddle::Models::CustomerUpdateParams::compliance_profile?,
+        external_id: String?,
+        metadata: ::Hash[Symbol, String]?,
+        correlation_id: String,
+        request_id: String,
+        straddle_account_id: String
+      }
+      & Straddle::Internal::Type::request_parameters
+
+    class CustomerUpdateParams < Straddle::Internal::Type::BaseModel
+      extend Straddle::Internal::Type::RequestParameters::Converter
+      include Straddle::Internal::Type::RequestParameters
+
+      attr_accessor device: Straddle::DeviceUnmaskedV1
+
+      attr_accessor email: String
+
+      attr_accessor name: String
+
+      attr_accessor phone: String
+
+      attr_accessor status: Straddle::Models::CustomerUpdateParams::status
+
+      attr_accessor address: Straddle::CustomerAddressV1?
+
+      attr_accessor compliance_profile: Straddle::Models::CustomerUpdateParams::compliance_profile?
+
+      attr_accessor external_id: String?
+
+      attr_accessor metadata: ::Hash[Symbol, String]?
+
+      attr_reader correlation_id: String?
+
+      def correlation_id=: (String) -> String
+
+      attr_reader request_id: String?
+
+      def request_id=: (String) -> String
+
+      attr_reader straddle_account_id: String?
+
+      def straddle_account_id=: (String) -> String
+
+      def initialize: (
+        device: Straddle::DeviceUnmaskedV1,
+        email: String,
+        name: String,
+        phone: String,
+        status: Straddle::Models::CustomerUpdateParams::status,
+        ?address: Straddle::CustomerAddressV1?,
+        ?compliance_profile: Straddle::Models::CustomerUpdateParams::compliance_profile?,
+        ?external_id: String?,
+        ?metadata: ::Hash[Symbol, String]?,
+        ?correlation_id: String,
+        ?request_id: String,
+        ?straddle_account_id: String,
+        ?request_options: Straddle::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        device: Straddle::DeviceUnmaskedV1,
+        email: String,
+        name: String,
+        phone: String,
+        status: Straddle::Models::CustomerUpdateParams::status,
+        address: Straddle::CustomerAddressV1?,
+        compliance_profile: Straddle::Models::CustomerUpdateParams::compliance_profile?,
+        external_id: String?,
+        metadata: ::Hash[Symbol, String]?,
+        correlation_id: String,
+        request_id: String,
+        straddle_account_id: String,
+        request_options: Straddle::RequestOptions
+      }
+
+      type status = :pending | :review | :verified | :inactive | :rejected
+
+      module Status
+        extend Straddle::Internal::Type::Enum
+
+        PENDING: :pending
+        REVIEW: :review
+        VERIFIED: :verified
+        INACTIVE: :inactive
+        REJECTED: :rejected
+
+        def self?.values: -> ::Array[Straddle::Models::CustomerUpdateParams::status]
+      end
+
+      type compliance_profile =
+        Straddle::CustomerUpdateParams::ComplianceProfile::IndividualComplianceProfile
+        | Straddle::CustomerUpdateParams::ComplianceProfile::BusinessComplianceProfile
+
+      module ComplianceProfile
+        extend Straddle::Internal::Type::Union
+
+        type individual_compliance_profile = { dob: Date?, ssn: String? }
+
+        class IndividualComplianceProfile < Straddle::Internal::Type::BaseModel
+          attr_accessor dob: Date?
+
+          attr_accessor ssn: String?
+
+          def initialize: (dob: Date?, ssn: String?) -> void
+
+          def to_hash: -> { dob: Date?, ssn: String? }
+        end
+
+        type business_compliance_profile =
+          {
+            ein: String?,
+            legal_business_name: String?,
+            representatives: ::Array[Straddle::CustomerUpdateParams::ComplianceProfile::BusinessComplianceProfile::Representative]?,
+            website: String?
+          }
+
+        class BusinessComplianceProfile < Straddle::Internal::Type::BaseModel
+          attr_accessor ein: String?
+
+          attr_accessor legal_business_name: String?
+
+          attr_accessor representatives: ::Array[Straddle::CustomerUpdateParams::ComplianceProfile::BusinessComplianceProfile::Representative]?
+
+          attr_accessor website: String?
+
+          def initialize: (
+            ein: String?,
+            legal_business_name: String?,
+            ?representatives: ::Array[Straddle::CustomerUpdateParams::ComplianceProfile::BusinessComplianceProfile::Representative]?,
+            ?website: String?
+          ) -> void
+
+          def to_hash: -> {
+            ein: String?,
+            legal_business_name: String?,
+            representatives: ::Array[Straddle::CustomerUpdateParams::ComplianceProfile::BusinessComplianceProfile::Representative]?,
+            website: String?
+          }
+
+          type representative = { name: String, email: String?, phone: String? }
+
+          class Representative < Straddle::Internal::Type::BaseModel
+            attr_accessor name: String
+
+            attr_accessor email: String?
+
+            attr_accessor phone: String?
+
+            def initialize: (
+              name: String,
+              ?email: String?,
+              ?phone: String?
+            ) -> void
+
+            def to_hash: -> { name: String, email: String?, phone: String? }
+          end
+        end
+
+        def self?.variants: -> ::Array[Straddle::Models::CustomerUpdateParams::compliance_profile]
+      end
+    end
+  end
+end
