@@ -185,8 +185,6 @@ module Straddle
           T.let(:individual, Straddle::CustomerCreateParams::Type::TaggedSymbol)
         BUSINESS =
           T.let(:business, Straddle::CustomerCreateParams::Type::TaggedSymbol)
-        UNKNOWN =
-          T.let(:unknown, Straddle::CustomerCreateParams::Type::TaggedSymbol)
 
         sig do
           override.returns(

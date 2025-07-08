@@ -179,7 +179,6 @@ module Straddle
             ACTIVE = :active
             REJECTED = :rejected
             INACTIVE = :inactive
-            UNKNOWN = :unknown
 
             # @!method self.values
             #   @return [Array<Symbol>]
@@ -242,7 +241,6 @@ module Straddle
               DISABLED = :disabled
               TERMINATED = :terminated
               NEW = :new
-              UNKNOWN = :unknown
 
               # @!method self.values
               #   @return [Array<Symbol>]
@@ -269,7 +267,6 @@ module Straddle
             extend Straddle::Internal::Type::Enum
 
             BUSINESS = :business
-            UNKNOWN = :unknown
 
             # @!method self.values
             #   @return [Array<Symbol>]
@@ -445,7 +442,6 @@ module Straddle
                 ONE_DAY = :one_day
                 TWO_DAY = :two_day
                 THREE_DAY = :three_day
-                UNKNOWN = :unknown
 
                 # @!method self.values
                 #   @return [Array<Symbol>]
@@ -522,7 +518,6 @@ module Straddle
                 ONE_DAY = :one_day
                 TWO_DAY = :two_day
                 THREE_DAY = :three_day
-                UNKNOWN = :unknown
 
                 # @!method self.values
                 #   @return [Array<Symbol>]

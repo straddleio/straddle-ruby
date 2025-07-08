@@ -17,7 +17,7 @@ To use this gem, install via Bundler by adding the following to your application
 <!-- x-release-please-start-version -->
 
 ```ruby
-gem "straddle", "~> 0.1.0.pre.alpha.1"
+gem "straddle", "~> 0.1.1"
 ```
 
 <!-- x-release-please-end -->
@@ -30,7 +30,7 @@ require "straddle"
 
 straddle = Straddle::Client.new(
   api_key: ENV["STRADDLE_API_KEY"], # This is the default and can be omitted
-  environment: "sandbox" # defaults to "production"
+  environment: "production" # defaults to "sandbox"
 )
 
 charge_v1 = straddle.charges.create(

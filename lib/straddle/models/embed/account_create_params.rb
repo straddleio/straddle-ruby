@@ -95,7 +95,6 @@ module Straddle
           extend Straddle::Internal::Type::Enum
 
           BUSINESS = :business
-          UNKNOWN = :unknown
 
           # @!method self.values
           #   @return [Array<Symbol>]

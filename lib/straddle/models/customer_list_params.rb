@@ -163,7 +163,6 @@ module Straddle
 
         INDIVIDUAL = :individual
         BUSINESS = :business
-        UNKNOWN = :unknown
 
         # @!method self.values
         #   @return [Array<Symbol>]

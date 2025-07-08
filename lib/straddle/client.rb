@@ -17,7 +17,7 @@ module Straddle
 
     # rubocop:disable Style/MutableConstant
     # @type [Hash{Symbol=>String}]
-    ENVIRONMENTS = {production: "https://production.straddle.io", sandbox: "https://sandbox.straddle.io"}
+    ENVIRONMENTS = {sandbox: "https://sandbox.straddle.io", production: "https://production.straddle.io"}
     # rubocop:enable Style/MutableConstant
 
     # Use your Straddle API Key in the Authorization header as Bearer <token> to
@@ -66,12 +66,12 @@ module Straddle
     # @param api_key [String, nil] Use your Straddle API Key in the Authorization header as Bearer <token> to
     # authorize API requests. Defaults to `ENV["STRADDLE_API_KEY"]`
     #
-    # @param environment [:production, :sandbox, nil] Specifies the environment to use for the API.
+    # @param environment [:sandbox, :production, nil] Specifies the environment to use for the API.
     #
     # Each environment maps to a different base URL:
     #
-    # - `production` corresponds to `https://production.straddle.io`
     # - `sandbox` corresponds to `https://sandbox.straddle.io`
+    # - `production` corresponds to `https://production.straddle.io`
     #
     # @param base_url [String, nil] Override the default base URL for the API, e.g.,
     # `"https://api.example.com/v2/"`. Defaults to `ENV["STRADDLE_BASE_URL"]`

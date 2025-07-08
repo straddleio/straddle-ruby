@@ -13,8 +13,8 @@ module Straddle
     ENVIRONMENTS =
       T.let(
         {
-          production: "https://production.straddle.io",
-          sandbox: "https://sandbox.straddle.io"
+          sandbox: "https://sandbox.straddle.io",
+          production: "https://production.straddle.io"
         },
         T::Hash[Symbol, String]
       )
@@ -76,8 +76,8 @@ module Straddle
       #
       # Each environment maps to a different base URL:
       #
-      # - `production` corresponds to `https://production.straddle.io`
       # - `sandbox` corresponds to `https://sandbox.straddle.io`
+      # - `production` corresponds to `https://production.straddle.io`
       environment: nil,
       # Override the default base URL for the API, e.g.,
       # `"https://api.example.com/v2/"`. Defaults to `ENV["STRADDLE_BASE_URL"]`

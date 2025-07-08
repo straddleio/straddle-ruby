@@ -157,14 +157,13 @@ module Straddle
               def self?.values: -> ::Array[Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::status]
             end
 
-            type type_ = :individual | :business | :unknown
+            type type_ = :individual | :business
 
             module Type
               extend Straddle::Internal::Type::Enum
 
               INDIVIDUAL: :individual
               BUSINESS: :business
-              UNKNOWN: :unknown
 
               def self?.values: -> ::Array[Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::type_]
             end
@@ -965,7 +964,6 @@ module Straddle
                   | :potential_match
                   | :likely_match
                   | :high_confidence
-                  | :unknown
 
                 module Correlation
                   extend Straddle::Internal::Type::Enum
@@ -974,7 +972,6 @@ module Straddle
                   POTENTIAL_MATCH: :potential_match
                   LIKELY_MATCH: :likely_match
                   HIGH_CONFIDENCE: :high_confidence
-                  UNKNOWN: :unknown
 
                   def self?.values: -> ::Array[Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList::Match::correlation]
                 end
