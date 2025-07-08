@@ -30,7 +30,7 @@ require "straddle"
 
 straddle = Straddle::Client.new(
   api_key: ENV["STRADDLE_API_KEY"], # This is the default and can be omitted
-  environment: "sandbox" # defaults to "production"
+  environment: "production" # defaults to "sandbox"
 )
 
 charge_v1 = straddle.charges.create(
