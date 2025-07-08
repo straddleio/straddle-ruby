@@ -73,13 +73,12 @@ module Straddle
           def self?.values: -> ::Array[Straddle::Models::Embed::AccountCreateParams::access_level]
         end
 
-        type account_type = :business | :unknown
+        type account_type = :business
 
         module AccountType
           extend Straddle::Internal::Type::Enum
 
           BUSINESS: :business
-          UNKNOWN: :unknown
 
           def self?.values: -> ::Array[Straddle::Models::Embed::AccountCreateParams::account_type]
         end

@@ -230,11 +230,6 @@ module Straddle
               :business,
               Straddle::CustomerSummaryPagedV1::Data::Type::TaggedSymbol
             )
-          UNKNOWN =
-            T.let(
-              :unknown,
-              Straddle::CustomerSummaryPagedV1::Data::Type::TaggedSymbol
-            )
 
           sig do
             override.returns(

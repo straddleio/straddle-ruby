@@ -316,11 +316,6 @@ module Straddle
                 :inactive,
                 Straddle::Embed::AccountV1::Data::Status::TaggedSymbol
               )
-            UNKNOWN =
-              T.let(
-                :unknown,
-                Straddle::Embed::AccountV1::Data::Status::TaggedSymbol
-              )
 
             sig do
               override.returns(
@@ -466,11 +461,6 @@ module Straddle
                   :new,
                   Straddle::Embed::AccountV1::Data::StatusDetail::Reason::TaggedSymbol
                 )
-              UNKNOWN =
-                T.let(
-                  :unknown,
-                  Straddle::Embed::AccountV1::Data::StatusDetail::Reason::TaggedSymbol
-                )
 
               sig do
                 override.returns(
@@ -528,11 +518,6 @@ module Straddle
             BUSINESS =
               T.let(
                 :business,
-                Straddle::Embed::AccountV1::Data::Type::TaggedSymbol
-              )
-            UNKNOWN =
-              T.let(
-                :unknown,
                 Straddle::Embed::AccountV1::Data::Type::TaggedSymbol
               )
 
@@ -955,11 +940,6 @@ module Straddle
                     :three_day,
                     Straddle::Embed::AccountV1::Data::Settings::Charges::FundingTime::TaggedSymbol
                   )
-                UNKNOWN =
-                  T.let(
-                    :unknown,
-                    Straddle::Embed::AccountV1::Data::Settings::Charges::FundingTime::TaggedSymbol
-                  )
 
                 sig do
                   override.returns(
@@ -1092,11 +1072,6 @@ module Straddle
                 THREE_DAY =
                   T.let(
                     :three_day,
-                    Straddle::Embed::AccountV1::Data::Settings::Payouts::FundingTime::TaggedSymbol
-                  )
-                UNKNOWN =
-                  T.let(
-                    :unknown,
                     Straddle::Embed::AccountV1::Data::Settings::Payouts::FundingTime::TaggedSymbol
                   )
 

@@ -96,14 +96,13 @@ module Straddle
           def self?.values: -> ::Array[Straddle::Models::CustomerSummaryPagedV1::Data::status]
         end
 
-        type type_ = :individual | :business | :unknown
+        type type_ = :individual | :business
 
         module Type
           extend Straddle::Internal::Type::Enum
 
           INDIVIDUAL: :individual
           BUSINESS: :business
-          UNKNOWN: :unknown
 
           def self?.values: -> ::Array[Straddle::Models::CustomerSummaryPagedV1::Data::type_]
         end

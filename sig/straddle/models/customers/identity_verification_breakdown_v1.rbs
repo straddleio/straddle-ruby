@@ -46,11 +46,7 @@ module Straddle
         }
 
         type correlation =
-          :low_confidence
-          | :potential_match
-          | :likely_match
-          | :high_confidence
-          | :unknown
+          :low_confidence | :potential_match | :likely_match | :high_confidence
 
         module Correlation
           extend Straddle::Internal::Type::Enum
@@ -59,7 +55,6 @@ module Straddle
           POTENTIAL_MATCH: :potential_match
           LIKELY_MATCH: :likely_match
           HIGH_CONFIDENCE: :high_confidence
-          UNKNOWN: :unknown
 
           def self?.values: -> ::Array[Straddle::Models::Customers::IdentityVerificationBreakdownV1::correlation]
         end
