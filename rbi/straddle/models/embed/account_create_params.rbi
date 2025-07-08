@@ -168,11 +168,6 @@ module Straddle
               :business,
               Straddle::Embed::AccountCreateParams::AccountType::TaggedSymbol
             )
-          UNKNOWN =
-            T.let(
-              :unknown,
-              Straddle::Embed::AccountCreateParams::AccountType::TaggedSymbol
-            )
 
           sig do
             override.returns(

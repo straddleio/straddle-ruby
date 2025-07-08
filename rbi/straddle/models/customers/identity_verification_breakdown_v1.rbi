@@ -133,11 +133,6 @@ module Straddle
               :high_confidence,
               Straddle::Customers::IdentityVerificationBreakdownV1::Correlation::TaggedSymbol
             )
-          UNKNOWN =
-            T.let(
-              :unknown,
-              Straddle::Customers::IdentityVerificationBreakdownV1::Correlation::TaggedSymbol
-            )
 
           sig do
             override.returns(

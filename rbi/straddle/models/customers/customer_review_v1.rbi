@@ -417,11 +417,6 @@ module Straddle
                   :business,
                   Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::Type::TaggedSymbol
                 )
-              UNKNOWN =
-                T.let(
-                  :unknown,
-                  Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::Type::TaggedSymbol
-                )
 
               sig do
                 override.returns(
@@ -2136,11 +2131,6 @@ module Straddle
                   HIGH_CONFIDENCE =
                     T.let(
                       :high_confidence,
-                      Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList::Match::Correlation::TaggedSymbol
-                    )
-                  UNKNOWN =
-                    T.let(
-                      :unknown,
                       Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList::Match::Correlation::TaggedSymbol
                     )
 

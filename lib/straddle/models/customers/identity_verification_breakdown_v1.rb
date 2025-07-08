@@ -56,7 +56,6 @@ module Straddle
           POTENTIAL_MATCH = :potential_match
           LIKELY_MATCH = :likely_match
           HIGH_CONFIDENCE = :high_confidence
-          UNKNOWN = :unknown
 
           # @!method self.values
           #   @return [Array<Symbol>]
