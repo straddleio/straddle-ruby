@@ -1,0 +1,21 @@
+PATH
+  remote: ../..
+  specs:
+    straddle (0.1.1)
+      connection_pool
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    connection_pool (2.5.3)
+    dotenv (3.1.8)
+
+PLATFORMS
+  arm64-darwin-23
+
+DEPENDENCIES
+  dotenv
+  straddle!
+
+BUNDLED WITH
+   2.4.1

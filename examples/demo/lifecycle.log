@@ -1,0 +1,61 @@
+# Logfile created on 2025-07-22 14:58:24 -0400 by logger.rb/v1.5.3
+2025-07-22T18:58:24Z INFO : 1️⃣  Creating an organization…
+2025-07-22T18:58:25Z INFO :    → Created org fee9c83f-a807-437e-9ab9-fb59a9e16d87 (name=RubySDK Org 2507221458)
+2025-07-22T18:58:25Z INFO : 2️⃣  Creating an account for org fee9c83f-a807-437e-9ab9-fb59a9e16d87…
+2025-07-22T18:58:30Z INFO :    → Created account d7657321-57ae-4e96-9e24-86c233cef57a (status=created)
+2025-07-22T18:58:30Z INFO : 🔄  Checking capability statuses for account 698d507b-0079-4b5e-86bd-d8e6612f9b7c…
+2025-07-22T18:58:31Z INFO :    → Capability statuses: individuals=inactive, businesses=inactive
+2025-07-22T18:58:31Z INFO : 1️⃣  Creating bank-account paykey…
+2025-07-22T18:58:35Z INFO :    → Created paykey 01983380-6d98-7471-ba40-087b2dd83fad
+2025-07-22T18:58:35Z INFO : 2️⃣  Creating a charge…
+2025-07-22T18:58:36Z INFO :    → Created charge 01983380-7f7b-741e-a6f5-78231a29e4b7 (status=created) - description: RubySDK Subscription fee 817
+2025-07-22T18:58:36Z INFO : 3️⃣  Creating a payout…
+2025-07-22T18:58:36Z INFO :    → Created payout 01983380-80a6-724a-9fc8-3345a572b669 (status=created) - description: RubySDK Monthly subscription fee 410
+2025-07-22T18:58:36Z INFO : 4️⃣  Listing recent payments for account…
+2025-07-22T18:58:36Z INFO :    • Payment 0197fb3e-b15d-73b1-8542-90c0a7f3c4f9: 1553 USD (failed) - description: RubySDK Monthly subscription fee 334 - created_at: 2025-07-11T20:47:59.325408Z
+2025-07-22T18:58:36Z INFO :    • Payment 0197fb3e-aff9-74c2-88e3-66286dadac36: 1553 USD (failed) - description: RubySDK Subscription fee 537 - created_at: 2025-07-11T20:47:58.9691408Z
+2025-07-22T18:58:36Z INFO :    • Payment 0197f63b-3e67-7291-8b34-2f38748950ec: 1776 USD (failed) - description: RubySDK Monthly subscription fee 688 - created_at: 2025-07-10T21:26:07.2076114Z
+2025-07-22T18:58:36Z INFO :    • Payment 0197f63b-3da1-742b-89fd-a293ccff24b7: 1776 USD (failed) - description: RubySDK Subscription fee 111 - created_at: 2025-07-10T21:26:07.0092027Z
+2025-07-22T18:58:36Z INFO :    • Payment 0197f632-d1cb-70a4-8d74-58491a2d7cc0: 997 USD (failed) - description: RubySDK Monthly subscription fee 414 - created_at: 2025-07-10T21:16:55.1150709Z
+2025-07-22T18:58:36Z INFO :    • Payment 0197f632-d054-734d-90e6-2ec5af954ebf: 997 USD (failed) - description: RubySDK Subscription fee 363 - created_at: 2025-07-10T21:16:54.7407238Z
+2025-07-22T18:58:36Z INFO : 5️⃣  Listing customers for account…
+2025-07-22T18:58:37Z INFO :    • Customer 0197326a-fe72-72af-8268-3f2fa2c22e46:   (email: Keyshawn.Beier17@yahoo.com) - created_at: 2025-06-02T20:52:42
+2025-07-22T18:58:37Z INFO :    • Customer 0197326a-b524-70dd-83b0-22382f6c3cd1:   (email: Aglae.McClure67@yahoo.com) - created_at: 2025-06-02T20:52:23
+2025-07-22T18:58:37Z INFO : ✅  All tests passed!
+2025-07-22T18:59:19Z INFO : 1️⃣  Creating an organization…
+2025-07-22T18:59:19Z INFO :    → Created org 53199937-a25d-4fca-85db-6cc990c08e81 (name=RubySDK Org 2507221459)
+2025-07-22T18:59:19Z INFO : 2️⃣  Creating an account for org 53199937-a25d-4fca-85db-6cc990c08e81…
+2025-07-22T18:59:20Z INFO :    → Created account 62017e3d-4645-4267-9f63-d16cfd485197 (status=created)
+2025-07-22T18:59:20Z INFO : 🔄  Checking capability statuses for account 698d507b-0079-4b5e-86bd-d8e6612f9b7c…
+2025-07-22T18:59:20Z INFO :    → Capability statuses: individuals=inactive, businesses=inactive
+2025-07-22T18:59:20Z INFO : 1️⃣  Creating bank-account paykey…
+2025-07-22T18:59:23Z INFO :    → Created paykey 01983381-2ed7-73c0-a09c-337cdc24ece3
+2025-07-22T18:59:23Z INFO : 2️⃣  Creating a charge…
+2025-07-22T18:59:24Z INFO :    → Created charge 01983381-3acb-73c9-b24f-0732ed90928c (status=created) - description: RubySDK Subscription fee 215
+2025-07-22T18:59:24Z INFO : 3️⃣  Creating a payout…
+2025-07-22T18:59:24Z INFO :    → Created payout 01983381-3b8f-779b-a3b7-180b34a17b5c (status=created) - description: RubySDK Monthly subscription fee 158
+2025-07-22T18:59:24Z INFO : 4️⃣  Listing recent payments for account…
+2025-07-22T18:59:24Z INFO :    • Payment 01983380-80a6-724a-9fc8-3345a572b669: 1243 USD (failed) - description: RubySDK Monthly subscription fee 410 - created_at: 2025-07-22T18:58:36.3261582Z
+2025-07-22T18:59:24Z INFO :    • Payment 01983380-7f7b-741e-a6f5-78231a29e4b7: 1243 USD (failed) - description: RubySDK Subscription fee 817 - created_at: 2025-07-22T18:58:36.0279714Z
+2025-07-22T18:59:24Z INFO :    • Payment 0197fb3e-b15d-73b1-8542-90c0a7f3c4f9: 1553 USD (failed) - description: RubySDK Monthly subscription fee 334 - created_at: 2025-07-11T20:47:59.325408Z
+2025-07-22T18:59:24Z INFO :    • Payment 0197fb3e-aff9-74c2-88e3-66286dadac36: 1553 USD (failed) - description: RubySDK Subscription fee 537 - created_at: 2025-07-11T20:47:58.9691408Z
+2025-07-22T18:59:24Z INFO :    • Payment 0197f63b-3e67-7291-8b34-2f38748950ec: 1776 USD (failed) - description: RubySDK Monthly subscription fee 688 - created_at: 2025-07-10T21:26:07.2076114Z
+2025-07-22T18:59:24Z INFO :    • Payment 0197f63b-3da1-742b-89fd-a293ccff24b7: 1776 USD (failed) - description: RubySDK Subscription fee 111 - created_at: 2025-07-10T21:26:07.0092027Z
+2025-07-22T18:59:24Z INFO :    • Payment 0197f632-d1cb-70a4-8d74-58491a2d7cc0: 997 USD (failed) - description: RubySDK Monthly subscription fee 414 - created_at: 2025-07-10T21:16:55.1150709Z
+2025-07-22T18:59:24Z INFO :    • Payment 0197f632-d054-734d-90e6-2ec5af954ebf: 997 USD (failed) - description: RubySDK Subscription fee 363 - created_at: 2025-07-10T21:16:54.7407238Z
+2025-07-22T18:59:24Z INFO : 5️⃣  Listing customers for account…
+2025-07-22T18:59:24Z INFO :    • Customer 0197326a-fe72-72af-8268-3f2fa2c22e46:   (email: Keyshawn.Beier17@yahoo.com) - created_at: 2025-06-02T20:52:42
+2025-07-22T18:59:24Z INFO :    • Customer 0197326a-b524-70dd-83b0-22382f6c3cd1:   (email: Aglae.McClure67@yahoo.com) - created_at: 2025-06-02T20:52:23
+2025-07-22T18:59:24Z INFO : ✅  All tests passed!
+2025-07-22T19:23:52Z INFO : 1️⃣  Creating an organization…
+2025-07-22T19:23:52Z INFO :    → Created org f7b5473c-ab5c-44bd-b694-d5b1901e9294 (name=RubySDK Org 2507221523)
+2025-07-22T19:23:52Z INFO : 2️⃣  Creating an account for org f7b5473c-ab5c-44bd-b694-d5b1901e9294…
+2025-07-22T19:23:54Z INFO :    → Created account 390d6f39-b5df-4972-a61f-1bb83f501821 (status=created)
+2025-07-22T19:27:18Z INFO : 1️⃣  Creating an organization…
+2025-07-22T19:27:18Z INFO :    → Created org a843f25e-aab1-499b-928e-382ba9c719b0 (name=RubySDK Org 2507221527)
+2025-07-22T19:27:18Z INFO : 2️⃣  Creating an account for org a843f25e-aab1-499b-928e-382ba9c719b0…
+2025-07-22T19:27:20Z INFO :    → Created account ef995972-4761-4ba2-b903-c37ab99ddd97 (status=created)
+2025-07-22T19:27:20Z INFO : 🔄  Checking capability statuses for account ef995972-4761-4ba2-b903-c37ab99ddd97…
+2025-07-22T19:27:20Z INFO :    → Capability statuses: individuals=inactive, businesses=inactive
+2025-07-22T19:27:20Z INFO : 3️⃣  Creating a customer for account ef995972-4761-4ba2-b903-c37ab99ddd97…
+2025-07-22T19:27:23Z ERROR: ❌  API error (Straddle::Errors::UnprocessableEntityError): {:url=>"https://api.test.straddle.io/v1/customers", :status=>422, :body=>{:error=>{:status=>422, :type=>"/validation_error", :title=>"Validation Failed", :detail=>"Validation failed: \n -- Type: Account does not support 'individual' Customers. Severity: Error", :items=>[{:reference=>"type", :detail=>"Account does not support 'individual' Customers."}]}, :meta=>{:api_request_id=>"0198339a-cf92-7059-be0f-b2882ecbb629", :api_request_timestamp=>"2025-07-22T19:27:23.2495315Z"}, :response_type=>"error"}}
