@@ -17,7 +17,7 @@ To use this gem, install via Bundler by adding the following to your application
 <!-- x-release-please-start-version -->
 
 ```ruby
-gem "straddle", "~> 0.1.1"
+gem "straddle", "~> 0.2.0"
 ```
 
 <!-- x-release-please-end -->
