@@ -129,6 +129,27 @@ module Straddle
         )
         end
 
+        # Cancels an existing linked bank account. This can be used to cancel a linked
+        # bank account before it has been reviewed. The linked bank account must be in
+        # 'created' status.
+        sig do
+          params(
+            linked_bank_account_id: String,
+            correlation_id: String,
+            request_id: String,
+            request_options: Straddle::RequestOptions::OrHash
+          ).returns(Straddle::Embed::LinkedBankAccountV1)
+        end
+        def cancel(
+          linked_bank_account_id,
+          # Optional client generated identifier to trace and debug a series of requests.
+          correlation_id: nil,
+          # Optional client generated identifier to trace and debug a request.
+          request_id: nil,
+          request_options: {}
+        )
+        end
+
         # Retrieves the details of a linked bank account that has previously been created.
         # Supply the unique linked bank account `id`, and Straddle will return the
         # corresponding information. The response includes masked account details for
