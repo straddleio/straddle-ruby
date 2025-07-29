@@ -127,6 +127,34 @@ module Straddle
       )
       end
 
+      # Update the status of a paykey when in review status
+      sig do
+        params(
+          id: String,
+          status: Straddle::PaykeyReviewParams::Status::OrSymbol,
+          correlation_id: String,
+          request_id: String,
+          straddle_account_id: String,
+          request_options: Straddle::RequestOptions::OrHash
+        ).returns(Straddle::PaykeyV1)
+      end
+      def review(
+        # Path param:
+        id,
+        # Body param:
+        status:,
+        # Header param: Optional client generated identifier to trace and debug a series
+        # of requests.
+        correlation_id: nil,
+        # Header param: Optional client generated identifier to trace and debug a request.
+        request_id: nil,
+        # Header param: For use by platforms to specify an account id and set scope of a
+        # request.
+        straddle_account_id: nil,
+        request_options: {}
+      )
+      end
+
       # Retrieves the unmasked details of an existing paykey. Supply the unique paykey
       # `id` and Straddle will return the corresponding paykey record, including the
       # unmasked bank account details. This endpoint needs to be enabled by Straddle for

@@ -35,6 +35,13 @@ module Straddle
           ?request_options: Straddle::request_opts
         ) -> Straddle::Internal::PageNumberSchema[Straddle::Embed::LinkedBankAccountPagedV1::Data]
 
+        def cancel: (
+          String linked_bank_account_id,
+          ?correlation_id: String,
+          ?request_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> Straddle::Embed::LinkedBankAccountV1
+
         def get: (
           String linked_bank_account_id,
           ?correlation_id: String,

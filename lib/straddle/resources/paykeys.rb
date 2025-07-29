@@ -161,6 +161,46 @@ module Straddle
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Straddle::Models::PaykeyReviewParams} for more details.
+      #
+      # Update the status of a paykey when in review status
+      #
+      # @overload review(id, status:, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      #
+      # @param id [String] Path param:
+      #
+      # @param status [Symbol, Straddle::Models::PaykeyReviewParams::Status] Body param:
+      #
+      # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
+      #
+      # @param request_id [String] Header param: Optional client generated identifier to trace and debug a request.
+      #
+      # @param straddle_account_id [String] Header param: For use by platforms to specify an account id and set scope of a r
+      #
+      # @param request_options [Straddle::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Straddle::Models::PaykeyV1]
+      #
+      # @see Straddle::Models::PaykeyReviewParams
+      def review(id, params)
+        parsed, options = Straddle::PaykeyReviewParams.dump_request(params)
+        header_params =
+          {
+            correlation_id: "correlation-id",
+            request_id: "request-id",
+            straddle_account_id: "straddle-account-id"
+          }
+        @client.request(
+          method: :patch,
+          path: ["v1/paykeys/%1$s/review", id],
+          headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+          body: parsed.except(*header_params.keys),
+          model: Straddle::PaykeyV1,
+          options: options
+        )
+      end
+
       # Retrieves the unmasked details of an existing paykey. Supply the unique paykey
       # `id` and Straddle will return the corresponding paykey record, including the
       # unmasked bank account details. This endpoint needs to be enabled by Straddle for

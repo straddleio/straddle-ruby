@@ -73,6 +73,8 @@ module Straddle
 
   class PaykeyRevealParams = Straddle::Models::PaykeyRevealParams
 
+  class PaykeyReviewParams = Straddle::Models::PaykeyReviewParams
+
   class PaykeySummaryPagedV1 = Straddle::Models::PaykeySummaryPagedV1
 
   class PaykeyUnmaskedParams = Straddle::Models::PaykeyUnmaskedParams
