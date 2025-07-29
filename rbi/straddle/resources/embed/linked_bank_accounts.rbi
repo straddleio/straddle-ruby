@@ -10,10 +10,18 @@ module Straddle
         # more.
         sig do
           params(
-            account_id: String,
+            account_id: T.nilable(String),
             bank_account:
               Straddle::Embed::LinkedBankAccountCreateParams::BankAccount::OrHash,
+            description: T.nilable(String),
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+            platform_id: T.nilable(String),
+            purposes:
+              T.nilable(
+                T::Array[
+                  Straddle::Embed::LinkedBankAccountCreateParams::Purpose::OrSymbol
+                ]
+              ),
             correlation_id: String,
             request_id: String,
             request_options: Straddle::RequestOptions::OrHash
@@ -25,9 +33,16 @@ module Straddle
           account_id:,
           # Body param:
           bank_account:,
+          # Body param: Optional description for the bank account.
+          description: nil,
           # Body param: Up to 20 additional user-defined key-value pairs. Useful for storing
           # additional information about the linked bank account in a structured format.
           metadata: nil,
+          # Body param: The unique identifier of the Straddle Platform to associate this
+          # bank account with.
+          platform_id: nil,
+          # Body param: The purposes for the linked bank account.
+          purposes: nil,
           # Header param: Optional client generated identifier to trace and debug a series
           # of requests.
           correlation_id: nil,

@@ -71,9 +71,11 @@ class Straddle::Test::Resources::Embed::LinkedBankAccountsTest < Straddle::Test:
         account_id: String | nil,
         bank_account: Straddle::Embed::LinkedBankAccountPagedV1::Data::BankAccount,
         created_at: Time,
+        purposes: ^(Straddle::Internal::Type::ArrayOf[enum: Straddle::Embed::LinkedBankAccountPagedV1::Data::Purpose]),
         status: Straddle::Embed::LinkedBankAccountPagedV1::Data::Status,
         status_detail: Straddle::Embed::LinkedBankAccountPagedV1::Data::StatusDetail,
         updated_at: Time,
+        description: String | nil,
         metadata: ^(Straddle::Internal::Type::HashOf[String, nil?: true]) | nil,
         platform_id: String | nil
       }

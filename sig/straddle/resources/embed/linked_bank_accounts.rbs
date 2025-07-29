@@ -3,9 +3,12 @@ module Straddle
     class Embed
       class LinkedBankAccounts
         def create: (
-          account_id: String,
+          account_id: String?,
           bank_account: Straddle::Embed::LinkedBankAccountCreateParams::BankAccount,
+          ?description: String?,
           ?metadata: ::Hash[Symbol, String?]?,
+          ?platform_id: String?,
+          ?purposes: ::Array[Straddle::Models::Embed::LinkedBankAccountCreateParams::purpose]?,
           ?correlation_id: String,
           ?request_id: String,
           ?request_options: Straddle::request_opts
