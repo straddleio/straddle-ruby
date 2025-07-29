@@ -40,6 +40,15 @@ module Straddle
         ?request_options: Straddle::request_opts
       ) -> Straddle::Models::PaykeyRevealResponse
 
+      def review: (
+        String id,
+        status: Straddle::Models::PaykeyReviewParams::status,
+        ?correlation_id: String,
+        ?request_id: String,
+        ?straddle_account_id: String,
+        ?request_options: Straddle::request_opts
+      ) -> Straddle::PaykeyV1
+
       def unmasked: (
         String id,
         ?correlation_id: String,

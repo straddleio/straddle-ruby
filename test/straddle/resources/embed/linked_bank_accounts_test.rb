@@ -82,6 +82,22 @@ class Straddle::Test::Resources::Embed::LinkedBankAccountsTest < Straddle::Test:
     end
   end
 
+  def test_cancel
+    response = @straddle.embed.linked_bank_accounts.cancel("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+
+    assert_pattern do
+      response => Straddle::Embed::LinkedBankAccountV1
+    end
+
+    assert_pattern do
+      response => {
+        data: Straddle::Embed::LinkedBankAccountV1::Data,
+        meta: Straddle::ResponseMetadata,
+        response_type: Straddle::Embed::LinkedBankAccountV1::ResponseType
+      }
+    end
+  end
+
   def test_get
     response = @straddle.embed.linked_bank_accounts.get("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
