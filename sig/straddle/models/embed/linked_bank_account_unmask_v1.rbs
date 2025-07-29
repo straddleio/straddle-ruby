@@ -110,7 +110,8 @@ module Straddle
             }
           end
 
-          type status = :created | :onboarding | :active | :rejected | :inactive
+          type status =
+            :created | :onboarding | :active | :rejected | :inactive | :canceled
 
           module Status
             extend Straddle::Internal::Type::Enum
@@ -120,6 +121,7 @@ module Straddle
             ACTIVE: :active
             REJECTED: :rejected
             INACTIVE: :inactive
+            CANCELED: :canceled
 
             def self?.values: -> ::Array[Straddle::Models::Embed::LinkedBankAccountUnmaskV1::Data::status]
           end

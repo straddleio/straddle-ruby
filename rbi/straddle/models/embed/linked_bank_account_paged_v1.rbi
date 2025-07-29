@@ -113,6 +113,16 @@ module Straddle
           sig { returns(Time) }
           attr_accessor :created_at
 
+          # The purposes for the linked bank account.
+          sig do
+            returns(
+              T::Array[
+                Straddle::Embed::LinkedBankAccountPagedV1::Data::Purpose::TaggedSymbol
+              ]
+            )
+          end
+          attr_accessor :purposes
+
           # The current status of the linked bank account.
           sig do
             returns(
@@ -140,6 +150,10 @@ module Straddle
           sig { returns(Time) }
           attr_accessor :updated_at
 
+          # Optional description for the bank account.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :description
+
           # Up to 20 additional user-defined key-value pairs. Useful for storing additional
           # information about the linked bank account in a structured format.
           sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
@@ -156,11 +170,16 @@ module Straddle
               bank_account:
                 Straddle::Embed::LinkedBankAccountPagedV1::Data::BankAccount::OrHash,
               created_at: Time,
+              purposes:
+                T::Array[
+                  Straddle::Embed::LinkedBankAccountPagedV1::Data::Purpose::OrSymbol
+                ],
               status:
                 Straddle::Embed::LinkedBankAccountPagedV1::Data::Status::OrSymbol,
               status_detail:
                 Straddle::Embed::LinkedBankAccountPagedV1::Data::StatusDetail::OrHash,
               updated_at: Time,
+              description: T.nilable(String),
               metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
               platform_id: T.nilable(String)
             ).returns(T.attached_class)
@@ -173,11 +192,15 @@ module Straddle
             bank_account:,
             # Timestamp of when the bank account object was created.
             created_at:,
+            # The purposes for the linked bank account.
+            purposes:,
             # The current status of the linked bank account.
             status:,
             status_detail:,
             # Timestamp of the most recent update to the linked bank account.
             updated_at:,
+            # Optional description for the bank account.
+            description: nil,
             # Up to 20 additional user-defined key-value pairs. Useful for storing additional
             # information about the linked bank account in a structured format.
             metadata: nil,
@@ -194,11 +217,16 @@ module Straddle
                 bank_account:
                   Straddle::Embed::LinkedBankAccountPagedV1::Data::BankAccount,
                 created_at: Time,
+                purposes:
+                  T::Array[
+                    Straddle::Embed::LinkedBankAccountPagedV1::Data::Purpose::TaggedSymbol
+                  ],
                 status:
                   Straddle::Embed::LinkedBankAccountPagedV1::Data::Status::TaggedSymbol,
                 status_detail:
                   Straddle::Embed::LinkedBankAccountPagedV1::Data::StatusDetail,
                 updated_at: Time,
+                description: T.nilable(String),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                 platform_id: T.nilable(String)
               }
@@ -258,6 +286,45 @@ module Straddle
             end
           end
 
+          module Purpose
+            extend Straddle::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Straddle::Embed::LinkedBankAccountPagedV1::Data::Purpose
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            CHARGES =
+              T.let(
+                :charges,
+                Straddle::Embed::LinkedBankAccountPagedV1::Data::Purpose::TaggedSymbol
+              )
+            PAYOUTS =
+              T.let(
+                :payouts,
+                Straddle::Embed::LinkedBankAccountPagedV1::Data::Purpose::TaggedSymbol
+              )
+            BILLING =
+              T.let(
+                :billing,
+                Straddle::Embed::LinkedBankAccountPagedV1::Data::Purpose::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Straddle::Embed::LinkedBankAccountPagedV1::Data::Purpose::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
           # The current status of the linked bank account.
           module Status
             extend Straddle::Internal::Type::Enum
@@ -294,6 +361,11 @@ module Straddle
             INACTIVE =
               T.let(
                 :inactive,
+                Straddle::Embed::LinkedBankAccountPagedV1::Data::Status::TaggedSymbol
+              )
+            CANCELED =
+              T.let(
+                :canceled,
                 Straddle::Embed::LinkedBankAccountPagedV1::Data::Status::TaggedSymbol
               )
 

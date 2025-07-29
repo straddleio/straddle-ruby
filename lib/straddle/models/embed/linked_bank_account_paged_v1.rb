@@ -65,6 +65,15 @@ module Straddle
           #   @return [Time]
           required :created_at, Time
 
+          # @!attribute purposes
+          #   The purposes for the linked bank account.
+          #
+          #   @return [Array<Symbol, Straddle::Models::Embed::LinkedBankAccountPagedV1::Data::Purpose>]
+          required :purposes,
+                   -> {
+                     Straddle::Internal::Type::ArrayOf[enum: Straddle::Embed::LinkedBankAccountPagedV1::Data::Purpose]
+                   }
+
           # @!attribute status
           #   The current status of the linked bank account.
           #
@@ -82,6 +91,12 @@ module Straddle
           #   @return [Time]
           required :updated_at, Time
 
+          # @!attribute description
+          #   Optional description for the bank account.
+          #
+          #   @return [String, nil]
+          optional :description, String, nil?: true
+
           # @!attribute metadata
           #   Up to 20 additional user-defined key-value pairs. Useful for storing additional
           #   information about the linked bank account in a structured format.
@@ -95,7 +110,7 @@ module Straddle
           #   @return [String, nil]
           optional :platform_id, String, nil?: true
 
-          # @!method initialize(id:, account_id:, bank_account:, created_at:, status:, status_detail:, updated_at:, metadata: nil, platform_id: nil)
+          # @!method initialize(id:, account_id:, bank_account:, created_at:, purposes:, status:, status_detail:, updated_at:, description: nil, metadata: nil, platform_id: nil)
           #   Some parameter documentations has been truncated, see
           #   {Straddle::Models::Embed::LinkedBankAccountPagedV1::Data} for more details.
           #
@@ -107,11 +122,15 @@ module Straddle
           #
           #   @param created_at [Time] Timestamp of when the bank account object was created.
           #
+          #   @param purposes [Array<Symbol, Straddle::Models::Embed::LinkedBankAccountPagedV1::Data::Purpose>] The purposes for the linked bank account.
+          #
           #   @param status [Symbol, Straddle::Models::Embed::LinkedBankAccountPagedV1::Data::Status] The current status of the linked bank account.
           #
           #   @param status_detail [Straddle::Models::Embed::LinkedBankAccountPagedV1::Data::StatusDetail]
           #
           #   @param updated_at [Time] Timestamp of the most recent update to the linked bank account.
+          #
+          #   @param description [String, nil] Optional description for the bank account.
           #
           #   @param metadata [Hash{Symbol=>String, nil}, nil] Up to 20 additional user-defined key-value pairs. Useful for storing additional
           #
@@ -146,6 +165,17 @@ module Straddle
             #   @param routing_number [String]
           end
 
+          module Purpose
+            extend Straddle::Internal::Type::Enum
+
+            CHARGES = :charges
+            PAYOUTS = :payouts
+            BILLING = :billing
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
           # The current status of the linked bank account.
           #
           # @see Straddle::Models::Embed::LinkedBankAccountPagedV1::Data#status
@@ -157,6 +187,7 @@ module Straddle
             ACTIVE = :active
             REJECTED = :rejected
             INACTIVE = :inactive
+            CANCELED = :canceled
 
             # @!method self.values
             #   @return [Array<Symbol>]
