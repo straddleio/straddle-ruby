@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.2 (2025-07-29)
+
+Full Changelog: [v0.1.1...v0.1.2](https://github.com/straddleio/straddle-ruby/compare/v0.1.1...v0.1.2)
+
+### Bug Fixes
+
+* **internal:** ensure sorbet test always runs serially ([9f7f88a](https://github.com/straddleio/straddle-ruby/commit/9f7f88a59fdc8b2723aec681757d170505561202))
+
+
+### Chores
+
+* update contribute.md ([1da1122](https://github.com/straddleio/straddle-ruby/commit/1da11228a4e40ad0e4b2a5a750a343f312d5fe16))
+
 ## 0.1.1 (2025-07-08)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.1](https://github.com/straddleio/straddle-ruby/compare/v0.1.0-alpha.1...v0.1.1)
