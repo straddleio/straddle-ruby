@@ -12,13 +12,19 @@ module Straddle
         # for various payment operations such as payment deposits, payout withdrawals, and
         # more.
         #
-        # @overload create(account_id:, bank_account:, metadata: nil, correlation_id: nil, request_id: nil, request_options: {})
+        # @overload create(account_id:, bank_account:, description: nil, metadata: nil, platform_id: nil, purposes: nil, correlation_id: nil, request_id: nil, request_options: {})
         #
-        # @param account_id [String] Body param: The unique identifier of the Straddle account to associate this bank
+        # @param account_id [String, nil] Body param: The unique identifier of the Straddle account to associate this bank
         #
         # @param bank_account [Straddle::Models::Embed::LinkedBankAccountCreateParams::BankAccount] Body param:
         #
+        # @param description [String, nil] Body param: Optional description for the bank account.
+        #
         # @param metadata [Hash{Symbol=>String, nil}, nil] Body param: Up to 20 additional user-defined key-value pairs. Useful for storing
+        #
+        # @param platform_id [String, nil] Body param: The unique identifier of the Straddle Platform to associate this ban
+        #
+        # @param purposes [Array<Symbol, Straddle::Models::Embed::LinkedBankAccountCreateParams::Purpose>, nil] Body param: The purposes for the linked bank account.
         #
         # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
         #

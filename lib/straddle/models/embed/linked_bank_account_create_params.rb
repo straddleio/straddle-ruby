@@ -12,13 +12,19 @@ module Straddle
         #   The unique identifier of the Straddle account to associate this bank account
         #   with.
         #
-        #   @return [String]
-        required :account_id, String
+        #   @return [String, nil]
+        required :account_id, String, nil?: true
 
         # @!attribute bank_account
         #
         #   @return [Straddle::Models::Embed::LinkedBankAccountCreateParams::BankAccount]
         required :bank_account, -> { Straddle::Embed::LinkedBankAccountCreateParams::BankAccount }
+
+        # @!attribute description
+        #   Optional description for the bank account.
+        #
+        #   @return [String, nil]
+        optional :description, String, nil?: true
 
         # @!attribute metadata
         #   Up to 20 additional user-defined key-value pairs. Useful for storing additional
@@ -26,6 +32,23 @@ module Straddle
         #
         #   @return [Hash{Symbol=>String, nil}, nil]
         optional :metadata, Straddle::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+        # @!attribute platform_id
+        #   The unique identifier of the Straddle Platform to associate this bank account
+        #   with.
+        #
+        #   @return [String, nil]
+        optional :platform_id, String, nil?: true
+
+        # @!attribute purposes
+        #   The purposes for the linked bank account.
+        #
+        #   @return [Array<Symbol, Straddle::Models::Embed::LinkedBankAccountCreateParams::Purpose>, nil]
+        optional :purposes,
+                 -> {
+                   Straddle::Internal::Type::ArrayOf[enum: Straddle::Embed::LinkedBankAccountCreateParams::Purpose]
+                 },
+                 nil?: true
 
         # @!attribute correlation_id
         #
@@ -37,15 +60,21 @@ module Straddle
         #   @return [String, nil]
         optional :request_id, String
 
-        # @!method initialize(account_id:, bank_account:, metadata: nil, correlation_id: nil, request_id: nil, request_options: {})
+        # @!method initialize(account_id:, bank_account:, description: nil, metadata: nil, platform_id: nil, purposes: nil, correlation_id: nil, request_id: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Straddle::Models::Embed::LinkedBankAccountCreateParams} for more details.
         #
-        #   @param account_id [String] The unique identifier of the Straddle account to associate this bank account wit
+        #   @param account_id [String, nil] The unique identifier of the Straddle account to associate this bank account wit
         #
         #   @param bank_account [Straddle::Models::Embed::LinkedBankAccountCreateParams::BankAccount]
         #
+        #   @param description [String, nil] Optional description for the bank account.
+        #
         #   @param metadata [Hash{Symbol=>String, nil}, nil] Up to 20 additional user-defined key-value pairs. Useful for storing additional
+        #
+        #   @param platform_id [String, nil] The unique identifier of the Straddle Platform to associate this bank account wi
+        #
+        #   @param purposes [Array<Symbol, Straddle::Models::Embed::LinkedBankAccountCreateParams::Purpose>, nil] The purposes for the linked bank account.
         #
         #   @param correlation_id [String]
         #
@@ -83,6 +112,17 @@ module Straddle
           #   @param account_number [String] The bank account number.
           #
           #   @param routing_number [String] The routing number of the bank account.
+        end
+
+        module Purpose
+          extend Straddle::Internal::Type::Enum
+
+          CHARGES = :charges
+          PAYOUTS = :payouts
+          BILLING = :billing
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

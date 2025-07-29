@@ -291,6 +291,11 @@ module Straddle
                 :inactive,
                 Straddle::Embed::LinkedBankAccountUnmaskV1::Data::Status::TaggedSymbol
               )
+            CANCELED =
+              T.let(
+                :canceled,
+                Straddle::Embed::LinkedBankAccountUnmaskV1::Data::Status::TaggedSymbol
+              )
 
             sig do
               override.returns(

@@ -146,6 +146,7 @@ module Straddle
             ACTIVE = :active
             REJECTED = :rejected
             INACTIVE = :inactive
+            CANCELED = :canceled
 
             # @!method self.values
             #   @return [Array<Symbol>]
