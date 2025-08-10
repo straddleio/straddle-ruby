@@ -16,7 +16,8 @@ module Straddle
             T::Array[
               [
                 T.nilable(Symbol),
-                T.proc.returns(Straddle::Internal::Type::Converter::Input)
+                T.proc.returns(Straddle::Internal::Type::Converter::Input),
+                Straddle::Internal::AnyHash
               ]
             ]
           )
@@ -25,7 +26,13 @@ module Straddle
         end
 
         # @api private
-        sig { returns(T::Array[[T.nilable(Symbol), T.anything]]) }
+        sig do
+          returns(
+            T::Array[
+              [T.nilable(Symbol), T.anything, Straddle::Internal::AnyHash]
+            ]
+          )
+        end
         protected def derefed_variants
         end
 
