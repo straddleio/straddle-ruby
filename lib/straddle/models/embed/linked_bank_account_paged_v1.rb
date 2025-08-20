@@ -7,10 +7,7 @@ module Straddle
         # @!attribute data
         #
         #   @return [Array<Straddle::Models::Embed::LinkedBankAccountPagedV1::Data>]
-        required :data,
-                 -> {
-                   Straddle::Internal::Type::ArrayOf[Straddle::Embed::LinkedBankAccountPagedV1::Data]
-                 }
+        required :data, -> { Straddle::Internal::Type::ArrayOf[Straddle::Embed::LinkedBankAccountPagedV1::Data] }
 
         # @!attribute meta
         #   Metadata about the API request, including an identifier, timestamp, and
@@ -70,9 +67,7 @@ module Straddle
           #
           #   @return [Array<Symbol, Straddle::Models::Embed::LinkedBankAccountPagedV1::Data::Purpose>]
           required :purposes,
-                   -> {
-                     Straddle::Internal::Type::ArrayOf[enum: Straddle::Embed::LinkedBankAccountPagedV1::Data::Purpose]
-                   }
+                   -> { Straddle::Internal::Type::ArrayOf[enum: Straddle::Embed::LinkedBankAccountPagedV1::Data::Purpose] }
 
           # @!attribute status
           #   The current status of the linked bank account.
@@ -213,20 +208,14 @@ module Straddle
             #   handling.
             #
             #   @return [Symbol, Straddle::Models::Embed::LinkedBankAccountPagedV1::Data::StatusDetail::Reason]
-            required :reason,
-                     enum: -> {
-                       Straddle::Embed::LinkedBankAccountPagedV1::Data::StatusDetail::Reason
-                     }
+            required :reason, enum: -> { Straddle::Embed::LinkedBankAccountPagedV1::Data::StatusDetail::Reason }
 
             # @!attribute source
             #   Identifies the origin of the status change (e.g., `watchtower`). This helps in
             #   tracking the cause of status updates.
             #
             #   @return [Symbol, Straddle::Models::Embed::LinkedBankAccountPagedV1::Data::StatusDetail::Source]
-            required :source,
-                     enum: -> {
-                       Straddle::Embed::LinkedBankAccountPagedV1::Data::StatusDetail::Source
-                     }
+            required :source, enum: -> { Straddle::Embed::LinkedBankAccountPagedV1::Data::StatusDetail::Source }
 
             # @!method initialize(code:, message:, reason:, source:)
             #   Some parameter documentations has been truncated, see

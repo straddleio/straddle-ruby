@@ -68,9 +68,7 @@ module Straddle
           #
           #   @return [Array<Symbol, Straddle::Models::Embed::LinkedBankAccountV1::Data::Purpose>]
           required :purposes,
-                   -> {
-                     Straddle::Internal::Type::ArrayOf[enum: Straddle::Embed::LinkedBankAccountV1::Data::Purpose]
-                   }
+                   -> { Straddle::Internal::Type::ArrayOf[enum: Straddle::Embed::LinkedBankAccountV1::Data::Purpose] }
 
           # @!attribute status
           #   The current status of the linked bank account.

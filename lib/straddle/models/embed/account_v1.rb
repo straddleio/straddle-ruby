@@ -384,10 +384,7 @@ module Straddle
               #   Straddle.
               #
               #   @return [Symbol, Straddle::Models::Embed::AccountV1::Data::Settings::Charges::FundingTime]
-              required :funding_time,
-                       enum: -> {
-                         Straddle::Embed::AccountV1::Data::Settings::Charges::FundingTime
-                       }
+              required :funding_time, enum: -> { Straddle::Embed::AccountV1::Data::Settings::Charges::FundingTime }
 
               # @!attribute linked_bank_account_id
               #   The unique identifier of the linked bank account associated with charges. This
@@ -461,10 +458,7 @@ module Straddle
               #   Straddle.
               #
               #   @return [Symbol, Straddle::Models::Embed::AccountV1::Data::Settings::Payouts::FundingTime]
-              required :funding_time,
-                       enum: -> {
-                         Straddle::Embed::AccountV1::Data::Settings::Payouts::FundingTime
-                       }
+              required :funding_time, enum: -> { Straddle::Embed::AccountV1::Data::Settings::Payouts::FundingTime }
 
               # @!attribute linked_bank_account_id
               #   The unique identifier of the linked bank account to use for payouts.

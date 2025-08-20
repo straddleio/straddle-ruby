@@ -89,10 +89,7 @@ module Straddle
             # @!attribute status
             #
             #   @return [Symbol, Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::Status]
-            required :status,
-                     enum: -> {
-                       Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::Status
-                     }
+            required :status, enum: -> { Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::Status }
 
             # @!attribute type
             #
@@ -211,14 +208,10 @@ module Straddle
               extend Straddle::Internal::Type::Union
 
               # PII required to trigger Patriot Act compliant KYC verification.
-              variant -> {
-                Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::ComplianceProfile::IndividualComplianceProfile
-              }
+              variant -> { Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::ComplianceProfile::IndividualComplianceProfile }
 
               # Business registration data required to trigger Patriot Act compliant KYB verification.
-              variant -> {
-                Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::ComplianceProfile::BusinessComplianceProfile
-              }
+              variant -> { Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::ComplianceProfile::BusinessComplianceProfile }
 
               class IndividualComplianceProfile < Straddle::Internal::Type::BaseModel
                 # @!attribute dob
@@ -323,17 +316,13 @@ module Straddle
               #
               #   @return [Symbol, Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::Config::ProcessingMethod, nil]
               optional :processing_method,
-                       enum: -> {
-                         Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::Config::ProcessingMethod
-                       }
+                       enum: -> { Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::Config::ProcessingMethod }
 
               # @!attribute sandbox_outcome
               #
               #   @return [Symbol, Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::Config::SandboxOutcome, nil]
               optional :sandbox_outcome,
-                       enum: -> {
-                         Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::Config::SandboxOutcome
-                       }
+                       enum: -> { Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::Config::SandboxOutcome }
 
               # @!method initialize(processing_method: nil, sandbox_outcome: nil)
               #   @param processing_method [Symbol, Straddle::Models::Customers::CustomerReviewV1::Data::CustomerDetails::Config::ProcessingMethod]
@@ -390,10 +379,7 @@ module Straddle
             #   risk scores, correlation score, and more.
             #
             #   @return [Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::Breakdown]
-            required :breakdown,
-                     -> {
-                       Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::Breakdown
-                     }
+            required :breakdown, -> { Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::Breakdown }
 
             # @!attribute created_at
             #   Timestamp of when the review was initiated.
@@ -404,10 +390,7 @@ module Straddle
             # @!attribute decision
             #
             #   @return [Symbol, Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::Decision]
-            required :decision,
-                     enum: -> {
-                       Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::Decision
-                     }
+            required :decision, enum: -> { Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::Decision }
 
             # @!attribute review_id
             #   Unique identifier for the review.
@@ -441,18 +424,12 @@ module Straddle
             # @!attribute reputation
             #
             #   @return [Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::Reputation, nil]
-            optional :reputation,
-                     -> {
-                       Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::Reputation
-                     }
+            optional :reputation, -> { Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::Reputation }
 
             # @!attribute watch_list
             #
             #   @return [Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList, nil]
-            optional :watch_list,
-                     -> {
-                       Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList
-                     }
+            optional :watch_list, -> { Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList }
 
             # @!method initialize(breakdown:, created_at:, decision:, review_id:, updated_at:, kyc: nil, messages: nil, network_alerts: nil, reputation: nil, watch_list: nil)
             #   Some parameter documentations has been truncated, see
@@ -566,9 +543,7 @@ module Straddle
               #
               #   @return [Symbol, Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::KYC::Decision, nil]
               optional :decision,
-                       enum: -> {
-                         Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::KYC::Decision
-                       }
+                       enum: -> { Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::KYC::Decision }
 
               # @!method initialize(validations:, codes: nil, decision: nil)
               #   @param validations [Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::KYC::Validations] Boolean values indicating the result of each validation in the KYC process.
@@ -675,9 +650,7 @@ module Straddle
               #
               #   @return [Symbol, Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::NetworkAlerts::Decision, nil]
               optional :decision,
-                       enum: -> {
-                         Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::NetworkAlerts::Decision
-                       }
+                       enum: -> { Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::NetworkAlerts::Decision }
 
               # @!method initialize(alerts: nil, codes: nil, decision: nil)
               #   @param alerts [Array<String>, nil] Any alerts or flags raised during the consortium alert screening.
@@ -711,17 +684,13 @@ module Straddle
               #
               #   @return [Symbol, Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::Reputation::Decision, nil]
               optional :decision,
-                       enum: -> {
-                         Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::Reputation::Decision
-                       }
+                       enum: -> { Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::Reputation::Decision }
 
               # @!attribute insights
               #
               #   @return [Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::Reputation::Insights, nil]
               optional :insights,
-                       -> {
-                         Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::Reputation::Insights
-                       }
+                       -> { Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::Reputation::Insights }
 
               # @!attribute risk_score
               #
@@ -967,9 +936,7 @@ module Straddle
               #
               #   @return [Symbol, Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList::Decision, nil]
               optional :decision,
-                       enum: -> {
-                         Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList::Decision
-                       }
+                       enum: -> { Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList::Decision }
 
               # @!attribute matched
               #   Information about any matches found during screening.
@@ -1013,9 +980,7 @@ module Straddle
                 #
                 #   @return [Symbol, Straddle::Models::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList::Match::Correlation]
                 required :correlation,
-                         enum: -> {
-                           Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList::Match::Correlation
-                         }
+                         enum: -> { Straddle::Customers::CustomerReviewV1::Data::IdentityDetails::WatchList::Match::Correlation }
 
                 # @!attribute list_name
                 #   The name of the list the match was found.

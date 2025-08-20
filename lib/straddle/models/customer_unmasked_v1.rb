@@ -299,10 +299,7 @@ module Straddle
           # @!attribute processing_method
           #
           #   @return [Symbol, Straddle::Models::CustomerUnmaskedV1::Data::Config::ProcessingMethod, nil]
-          optional :processing_method,
-                   enum: -> {
-                     Straddle::CustomerUnmaskedV1::Data::Config::ProcessingMethod
-                   }
+          optional :processing_method, enum: -> { Straddle::CustomerUnmaskedV1::Data::Config::ProcessingMethod }
 
           # @!attribute sandbox_outcome
           #
