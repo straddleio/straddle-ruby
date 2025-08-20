@@ -281,10 +281,7 @@ module Straddle
             # @!attribute customer_types
             #
             #   @return [Straddle::Models::Embed::AccountPagedV1::Data::Capabilities::CustomerTypes]
-            required :customer_types,
-                     -> {
-                       Straddle::Embed::AccountPagedV1::Data::Capabilities::CustomerTypes
-                     }
+            required :customer_types, -> { Straddle::Embed::AccountPagedV1::Data::Capabilities::CustomerTypes }
 
             # @!attribute payment_types
             #
@@ -386,10 +383,7 @@ module Straddle
               #   Straddle.
               #
               #   @return [Symbol, Straddle::Models::Embed::AccountPagedV1::Data::Settings::Charges::FundingTime]
-              required :funding_time,
-                       enum: -> {
-                         Straddle::Embed::AccountPagedV1::Data::Settings::Charges::FundingTime
-                       }
+              required :funding_time, enum: -> { Straddle::Embed::AccountPagedV1::Data::Settings::Charges::FundingTime }
 
               # @!attribute linked_bank_account_id
               #   The unique identifier of the linked bank account associated with charges. This
@@ -464,10 +458,7 @@ module Straddle
               #   Straddle.
               #
               #   @return [Symbol, Straddle::Models::Embed::AccountPagedV1::Data::Settings::Payouts::FundingTime]
-              required :funding_time,
-                       enum: -> {
-                         Straddle::Embed::AccountPagedV1::Data::Settings::Payouts::FundingTime
-                       }
+              required :funding_time, enum: -> { Straddle::Embed::AccountPagedV1::Data::Settings::Payouts::FundingTime }
 
               # @!attribute linked_bank_account_id
               #   The unique identifier of the linked bank account to use for payouts.

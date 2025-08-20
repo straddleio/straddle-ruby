@@ -10,9 +10,7 @@ module Straddle
           #
           #   @return [Array<Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data>]
           required :data,
-                   -> {
-                     Straddle::Internal::Type::ArrayOf[Straddle::Embed::Accounts::CapabilityRequestPagedV1::Data]
-                   }
+                   -> { Straddle::Internal::Type::ArrayOf[Straddle::Embed::Accounts::CapabilityRequestPagedV1::Data] }
 
           # @!attribute meta
           #   Metadata about the API request, including an identifier, timestamp, and
@@ -31,10 +29,7 @@ module Straddle
           #   - "none" means no data is returned.
           #
           #   @return [Symbol, Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::ResponseType]
-          required :response_type,
-                   enum: -> {
-                     Straddle::Embed::Accounts::CapabilityRequestPagedV1::ResponseType
-                   }
+          required :response_type, enum: -> { Straddle::Embed::Accounts::CapabilityRequestPagedV1::ResponseType }
 
           # @!method initialize(data:, meta:, response_type:)
           #   Some parameter documentations has been truncated, see
@@ -65,10 +60,7 @@ module Straddle
             #   `consent_type` for `signed_agreement` or `internet` payment authorization.
             #
             #   @return [Symbol, Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data::Category]
-            required :category,
-                     enum: -> {
-                       Straddle::Embed::Accounts::CapabilityRequestPagedV1::Data::Category
-                     }
+            required :category, enum: -> { Straddle::Embed::Accounts::CapabilityRequestPagedV1::Data::Category }
 
             # @!attribute created_at
             #   Timestamp of when the capability request was created.
