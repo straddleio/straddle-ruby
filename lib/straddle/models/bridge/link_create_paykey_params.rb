@@ -72,10 +72,7 @@ module Straddle
           # @!attribute sandbox_outcome
           #
           #   @return [Symbol, Straddle::Models::Bridge::LinkCreatePaykeyParams::Config::SandboxOutcome, nil]
-          optional :sandbox_outcome,
-                   enum: -> {
-                     Straddle::Bridge::LinkCreatePaykeyParams::Config::SandboxOutcome
-                   }
+          optional :sandbox_outcome, enum: -> { Straddle::Bridge::LinkCreatePaykeyParams::Config::SandboxOutcome }
 
           # @!method initialize(sandbox_outcome: nil)
           #   @param sandbox_outcome [Symbol, Straddle::Models::Bridge::LinkCreatePaykeyParams::Config::SandboxOutcome]

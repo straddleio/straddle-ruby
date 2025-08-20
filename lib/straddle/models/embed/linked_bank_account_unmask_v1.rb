@@ -172,20 +172,14 @@ module Straddle
             #   handling.
             #
             #   @return [Symbol, Straddle::Models::Embed::LinkedBankAccountUnmaskV1::Data::StatusDetail::Reason]
-            required :reason,
-                     enum: -> {
-                       Straddle::Embed::LinkedBankAccountUnmaskV1::Data::StatusDetail::Reason
-                     }
+            required :reason, enum: -> { Straddle::Embed::LinkedBankAccountUnmaskV1::Data::StatusDetail::Reason }
 
             # @!attribute source
             #   Identifies the origin of the status change (e.g., `watchtower`). This helps in
             #   tracking the cause of status updates.
             #
             #   @return [Symbol, Straddle::Models::Embed::LinkedBankAccountUnmaskV1::Data::StatusDetail::Source]
-            required :source,
-                     enum: -> {
-                       Straddle::Embed::LinkedBankAccountUnmaskV1::Data::StatusDetail::Source
-                     }
+            required :source, enum: -> { Straddle::Embed::LinkedBankAccountUnmaskV1::Data::StatusDetail::Source }
 
             # @!method initialize(code:, message:, reason:, source:)
             #   Some parameter documentations has been truncated, see

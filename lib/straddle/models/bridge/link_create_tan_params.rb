@@ -96,10 +96,7 @@ module Straddle
           # @!attribute sandbox_outcome
           #
           #   @return [Symbol, Straddle::Models::Bridge::LinkCreateTanParams::Config::SandboxOutcome, nil]
-          optional :sandbox_outcome,
-                   enum: -> {
-                     Straddle::Bridge::LinkCreateTanParams::Config::SandboxOutcome
-                   }
+          optional :sandbox_outcome, enum: -> { Straddle::Bridge::LinkCreateTanParams::Config::SandboxOutcome }
 
           # @!method initialize(sandbox_outcome: nil)
           #   @param sandbox_outcome [Symbol, Straddle::Models::Bridge::LinkCreateTanParams::Config::SandboxOutcome]
