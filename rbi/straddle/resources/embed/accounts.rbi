@@ -23,6 +23,7 @@ module Straddle
             external_id: T.nilable(String),
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
             correlation_id: String,
+            idempotency_key: String,
             request_id: String,
             request_options: Straddle::RequestOptions::OrHash
           ).returns(Straddle::Embed::AccountV1)
@@ -47,6 +48,8 @@ module Straddle
           # Header param: Optional client generated identifier to trace and debug a series
           # of requests.
           correlation_id: nil,
+          # Header param: Optional client generated value to use for idempotent requests.
+          idempotency_key: nil,
           # Header param: Optional client generated identifier to trace and debug a request.
           request_id: nil,
           request_options: {}
@@ -62,6 +65,7 @@ module Straddle
             external_id: T.nilable(String),
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
             correlation_id: String,
+            idempotency_key: String,
             request_id: String,
             request_options: Straddle::RequestOptions::OrHash
           ).returns(Straddle::Embed::AccountV1)
@@ -80,6 +84,8 @@ module Straddle
           # Header param: Optional client generated identifier to trace and debug a series
           # of requests.
           correlation_id: nil,
+          # Header param: Optional client generated value to use for idempotent requests.
+          idempotency_key: nil,
           # Header param: Optional client generated identifier to trace and debug a request.
           request_id: nil,
           request_options: {}
@@ -162,6 +168,7 @@ module Straddle
             account_id: String,
             terms_of_service: Straddle::Embed::TermsOfServiceV1::OrHash,
             correlation_id: String,
+            idempotency_key: String,
             request_id: String,
             request_options: Straddle::RequestOptions::OrHash
           ).returns(Straddle::Embed::AccountV1)
@@ -174,6 +181,8 @@ module Straddle
           # Header param: Optional client generated identifier to trace and debug a series
           # of requests.
           correlation_id: nil,
+          # Header param: Optional client generated value to use for idempotent requests.
+          idempotency_key: nil,
           # Header param: Optional client generated identifier to trace and debug a request.
           request_id: nil,
           request_options: {}
@@ -188,6 +197,7 @@ module Straddle
             final_status:
               Straddle::Embed::AccountSimulateParams::FinalStatus::OrSymbol,
             correlation_id: String,
+            idempotency_key: String,
             request_id: String,
             request_options: Straddle::RequestOptions::OrHash
           ).returns(Straddle::Embed::AccountV1)
@@ -200,6 +210,8 @@ module Straddle
           # Header param: Optional client generated identifier to trace and debug a series
           # of requests.
           correlation_id: nil,
+          # Header param: Optional client generated value to use for idempotent requests.
+          idempotency_key: nil,
           # Header param: Optional client generated identifier to trace and debug a request.
           request_id: nil,
           request_options: {}

@@ -23,6 +23,7 @@ module Straddle
                 ]
               ),
             correlation_id: String,
+            idempotency_key: String,
             request_id: String,
             request_options: Straddle::RequestOptions::OrHash
           ).returns(Straddle::Embed::LinkedBankAccountV1)
@@ -46,6 +47,8 @@ module Straddle
           # Header param: Optional client generated identifier to trace and debug a series
           # of requests.
           correlation_id: nil,
+          # Header param: Optional client generated value to use for idempotent requests.
+          idempotency_key: nil,
           # Header param: Optional client generated identifier to trace and debug a request.
           request_id: nil,
           request_options: {}
@@ -63,6 +66,7 @@ module Straddle
               Straddle::Embed::LinkedBankAccountUpdateParams::BankAccount::OrHash,
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
             correlation_id: String,
+            idempotency_key: String,
             request_id: String,
             request_options: Straddle::RequestOptions::OrHash
           ).returns(Straddle::Embed::LinkedBankAccountV1)
@@ -78,6 +82,8 @@ module Straddle
           # Header param: Optional client generated identifier to trace and debug a series
           # of requests.
           correlation_id: nil,
+          # Header param: Optional client generated value to use for idempotent requests.
+          idempotency_key: nil,
           # Header param: Optional client generated identifier to trace and debug a request.
           request_id: nil,
           request_options: {}
@@ -136,6 +142,7 @@ module Straddle
           params(
             linked_bank_account_id: String,
             correlation_id: String,
+            idempotency_key: String,
             request_id: String,
             request_options: Straddle::RequestOptions::OrHash
           ).returns(Straddle::Embed::LinkedBankAccountV1)
@@ -144,6 +151,8 @@ module Straddle
           linked_bank_account_id,
           # Optional client generated identifier to trace and debug a series of requests.
           correlation_id: nil,
+          # Optional client generated value to use for idempotent requests.
+          idempotency_key: nil,
           # Optional client generated identifier to trace and debug a request.
           request_id: nil,
           request_options: {}

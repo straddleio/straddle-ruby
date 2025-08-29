@@ -5,6 +5,7 @@ module Straddle
         {
           terms_of_service: Straddle::Embed::TermsOfServiceV1,
           correlation_id: String,
+          idempotency_key: String,
           request_id: String
         }
         & Straddle::Internal::Type::request_parameters
@@ -19,6 +20,10 @@ module Straddle
 
         def correlation_id=: (String) -> String
 
+        attr_reader idempotency_key: String?
+
+        def idempotency_key=: (String) -> String
+
         attr_reader request_id: String?
 
         def request_id=: (String) -> String
@@ -26,6 +31,7 @@ module Straddle
         def initialize: (
           terms_of_service: Straddle::Embed::TermsOfServiceV1,
           ?correlation_id: String,
+          ?idempotency_key: String,
           ?request_id: String,
           ?request_options: Straddle::request_opts
         ) -> void
@@ -33,6 +39,7 @@ module Straddle
         def to_hash: -> {
           terms_of_service: Straddle::Embed::TermsOfServiceV1,
           correlation_id: String,
+          idempotency_key: String,
           request_id: String,
           request_options: Straddle::RequestOptions
         }

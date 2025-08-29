@@ -86,6 +86,7 @@ class Straddle::Test::Resources::Embed::RepresentativesTest < Straddle::Test::Re
         status_detail: Straddle::Embed::RepresentativePaged::Data::StatusDetail,
         updated_at: Time,
         external_id: String | nil,
+        metadata: ^(Straddle::Internal::Type::HashOf[String]) | nil,
         phone: String | nil,
         user_id: String | nil
       }

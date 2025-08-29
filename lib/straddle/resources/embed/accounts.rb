@@ -14,7 +14,7 @@ module Straddle
         # endpoint allows you to set up an account with specified details, including
         # business information and access levels.
         #
-        # @overload create(access_level:, account_type:, business_profile:, organization_id:, external_id: nil, metadata: nil, correlation_id: nil, request_id: nil, request_options: {})
+        # @overload create(access_level:, account_type:, business_profile:, organization_id:, external_id: nil, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
         #
         # @param access_level [Symbol, Straddle::Models::Embed::AccountCreateParams::AccessLevel] Body param: The access level granted to the account. This is determined by your
         #
@@ -30,6 +30,8 @@ module Straddle
         #
         # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
         #
+        # @param idempotency_key [String] Header param: Optional client generated value to use for idempotent requests.
+        #
         # @param request_id [String] Header param: Optional client generated identifier to trace and debug a request.
         #
         # @param request_options [Straddle::RequestOptions, Hash{Symbol=>Object}, nil]
@@ -39,7 +41,8 @@ module Straddle
         # @see Straddle::Models::Embed::AccountCreateParams
         def create(params)
           parsed, options = Straddle::Embed::AccountCreateParams.dump_request(params)
-          header_params = {correlation_id: "correlation-id", request_id: "request-id"}
+          header_params =
+            {correlation_id: "correlation-id", idempotency_key: "idempotency-key", request_id: "request-id"}
           @client.request(
             method: :post,
             path: "v1/accounts",
@@ -56,7 +59,7 @@ module Straddle
         # Updates an existing account's information. This endpoint allows you to update
         # various account details during onboarding or after the account has been created.
         #
-        # @overload update(account_id, business_profile:, external_id: nil, metadata: nil, correlation_id: nil, request_id: nil, request_options: {})
+        # @overload update(account_id, business_profile:, external_id: nil, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
         #
         # @param account_id [String] Path param:
         #
@@ -68,6 +71,8 @@ module Straddle
         #
         # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
         #
+        # @param idempotency_key [String] Header param: Optional client generated value to use for idempotent requests.
+        #
         # @param request_id [String] Header param: Optional client generated identifier to trace and debug a request.
         #
         # @param request_options [Straddle::RequestOptions, Hash{Symbol=>Object}, nil]
@@ -77,7 +82,8 @@ module Straddle
         # @see Straddle::Models::Embed::AccountUpdateParams
         def update(account_id, params)
           parsed, options = Straddle::Embed::AccountUpdateParams.dump_request(params)
-          header_params = {correlation_id: "correlation-id", request_id: "request-id"}
+          header_params =
+            {correlation_id: "correlation-id", idempotency_key: "idempotency-key", request_id: "request-id"}
           @client.request(
             method: :put,
             path: ["v1/accounts/%1$s", account_id],
@@ -173,13 +179,15 @@ module Straddle
         # used for accounts where at least one representative and one bank account have
         # already been created.
         #
-        # @overload onboard(account_id, terms_of_service:, correlation_id: nil, request_id: nil, request_options: {})
+        # @overload onboard(account_id, terms_of_service:, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
         #
         # @param account_id [String] Path param:
         #
         # @param terms_of_service [Straddle::Models::Embed::TermsOfServiceV1] Body param:
         #
         # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
+        #
+        # @param idempotency_key [String] Header param: Optional client generated value to use for idempotent requests.
         #
         # @param request_id [String] Header param: Optional client generated identifier to trace and debug a request.
         #
@@ -190,7 +198,8 @@ module Straddle
         # @see Straddle::Models::Embed::AccountOnboardParams
         def onboard(account_id, params)
           parsed, options = Straddle::Embed::AccountOnboardParams.dump_request(params)
-          header_params = {correlation_id: "correlation-id", request_id: "request-id"}
+          header_params =
+            {correlation_id: "correlation-id", idempotency_key: "idempotency-key", request_id: "request-id"}
           @client.request(
             method: :post,
             path: ["v1/accounts/%1$s/onboard", account_id],
@@ -207,13 +216,15 @@ module Straddle
         # Simulate the status transitions for sandbox accounts. This endpoint can only be
         # used for sandbox accounts.
         #
-        # @overload simulate(account_id, final_status: nil, correlation_id: nil, request_id: nil, request_options: {})
+        # @overload simulate(account_id, final_status: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
         #
         # @param account_id [String] Path param:
         #
         # @param final_status [Symbol, Straddle::Models::Embed::AccountSimulateParams::FinalStatus] Query param:
         #
         # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
+        #
+        # @param idempotency_key [String] Header param: Optional client generated value to use for idempotent requests.
         #
         # @param request_id [String] Header param: Optional client generated identifier to trace and debug a request.
         #
@@ -231,6 +242,7 @@ module Straddle
             query: parsed.slice(*query_params),
             headers: parsed.except(*query_params).transform_keys(
               correlation_id: "correlation-id",
+              idempotency_key: "idempotency-key",
               request_id: "request-id"
             ),
             model: Straddle::Embed::AccountV1,

@@ -11,7 +11,7 @@ module Straddle
         # can be used to group related accounts and manage permissions across multiple
         # users.
         #
-        # @overload create(name:, external_id: nil, metadata: nil, correlation_id: nil, request_id: nil, request_options: {})
+        # @overload create(name:, external_id: nil, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
         #
         # @param name [String] Body param: The name of the organization.
         #
@@ -20,6 +20,8 @@ module Straddle
         # @param metadata [Hash{Symbol=>String, nil}, nil] Body param: Up to 20 additional user-defined key-value pairs. Useful for storing
         #
         # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
+        #
+        # @param idempotency_key [String] Header param: Optional client generated value to use for idempotent requests.
         #
         # @param request_id [String] Header param: Optional client generated identifier to trace and debug a request.
         #
@@ -30,7 +32,8 @@ module Straddle
         # @see Straddle::Models::Embed::OrganizationCreateParams
         def create(params)
           parsed, options = Straddle::Embed::OrganizationCreateParams.dump_request(params)
-          header_params = {correlation_id: "correlation-id", request_id: "request-id"}
+          header_params =
+            {correlation_id: "correlation-id", idempotency_key: "idempotency-key", request_id: "request-id"}
           @client.request(
             method: :post,
             path: "v1/organizations",

@@ -12,6 +12,7 @@ module Straddle
           ?external_id: String?,
           ?metadata: ::Hash[Symbol, String?]?,
           ?correlation_id: String,
+          ?idempotency_key: String,
           ?request_id: String,
           ?request_options: Straddle::request_opts
         ) -> Straddle::Embed::AccountV1
@@ -22,6 +23,7 @@ module Straddle
           ?external_id: String?,
           ?metadata: ::Hash[Symbol, String?]?,
           ?correlation_id: String,
+          ?idempotency_key: String,
           ?request_id: String,
           ?request_options: Straddle::request_opts
         ) -> Straddle::Embed::AccountV1
@@ -50,6 +52,7 @@ module Straddle
           String account_id,
           terms_of_service: Straddle::Embed::TermsOfServiceV1,
           ?correlation_id: String,
+          ?idempotency_key: String,
           ?request_id: String,
           ?request_options: Straddle::request_opts
         ) -> Straddle::Embed::AccountV1
@@ -58,6 +61,7 @@ module Straddle
           String account_id,
           ?final_status: Straddle::Models::Embed::AccountSimulateParams::final_status,
           ?correlation_id: String,
+          ?idempotency_key: String,
           ?request_id: String,
           ?request_options: Straddle::request_opts
         ) -> Straddle::Embed::AccountV1

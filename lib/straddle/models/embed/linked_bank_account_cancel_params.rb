@@ -13,13 +13,19 @@ module Straddle
         #   @return [String, nil]
         optional :correlation_id, String
 
+        # @!attribute idempotency_key
+        #
+        #   @return [String, nil]
+        optional :idempotency_key, String
+
         # @!attribute request_id
         #
         #   @return [String, nil]
         optional :request_id, String
 
-        # @!method initialize(correlation_id: nil, request_id: nil, request_options: {})
+        # @!method initialize(correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
         #   @param correlation_id [String]
+        #   @param idempotency_key [String]
         #   @param request_id [String]
         #   @param request_options [Straddle::RequestOptions, Hash{Symbol=>Object}]
       end
