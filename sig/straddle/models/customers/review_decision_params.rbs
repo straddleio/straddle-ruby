@@ -5,6 +5,7 @@ module Straddle
         {
           status: Straddle::Models::Customers::ReviewDecisionParams::status,
           correlation_id: String,
+          idempotency_key: String,
           request_id: String,
           straddle_account_id: String
         }
@@ -20,6 +21,10 @@ module Straddle
 
         def correlation_id=: (String) -> String
 
+        attr_reader idempotency_key: String?
+
+        def idempotency_key=: (String) -> String
+
         attr_reader request_id: String?
 
         def request_id=: (String) -> String
@@ -31,6 +36,7 @@ module Straddle
         def initialize: (
           status: Straddle::Models::Customers::ReviewDecisionParams::status,
           ?correlation_id: String,
+          ?idempotency_key: String,
           ?request_id: String,
           ?straddle_account_id: String,
           ?request_options: Straddle::request_opts
@@ -39,6 +45,7 @@ module Straddle
         def to_hash: -> {
           status: Straddle::Models::Customers::ReviewDecisionParams::status,
           correlation_id: String,
+          idempotency_key: String,
           request_id: String,
           straddle_account_id: String,
           request_options: Straddle::RequestOptions

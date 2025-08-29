@@ -13,7 +13,7 @@ module Straddle
       # risk assessment scores. This endpoint allows you to create a customer profile
       # and associate it with paykeys and payments.
       #
-      # @overload create(device:, email:, name:, phone:, type:, address: nil, compliance_profile: nil, config: nil, external_id: nil, metadata: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @overload create(device:, email:, name:, phone:, type:, address: nil, compliance_profile: nil, config: nil, external_id: nil, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
       # @param device [Straddle::Models::DeviceUnmaskedV1] Body param:
       #
@@ -38,6 +38,8 @@ module Straddle
       #
       # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
       #
+      # @param idempotency_key [String] Header param: Optional client generated value to use for idempotent requests.
+      #
       # @param request_id [String] Header param: Optional client generated identifier to trace and debug a request.
       #
       # @param straddle_account_id [String] Header param: For use by platforms to specify an account id and set scope of a r
@@ -52,6 +54,7 @@ module Straddle
         header_params =
           {
             correlation_id: "correlation-id",
+            idempotency_key: "idempotency-key",
             request_id: "request-id",
             straddle_account_id: "straddle-account-id"
           }
@@ -71,7 +74,7 @@ module Straddle
       # Updates an existing customer's information. This endpoint allows you to modify
       # the customer's contact details, PII, and metadata.
       #
-      # @overload update(id, device:, email:, name:, phone:, status:, address: nil, compliance_profile: nil, external_id: nil, metadata: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @overload update(id, device:, email:, name:, phone:, status:, address: nil, compliance_profile: nil, external_id: nil, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
       # @param id [String] Path param:
       #
@@ -95,6 +98,8 @@ module Straddle
       #
       # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
       #
+      # @param idempotency_key [String] Header param: Optional client generated value to use for idempotent requests.
+      #
       # @param request_id [String] Header param: Optional client generated identifier to trace and debug a request.
       #
       # @param straddle_account_id [String] Header param: For use by platforms to specify an account id and set scope of a r
@@ -109,6 +114,7 @@ module Straddle
         header_params =
           {
             correlation_id: "correlation-id",
+            idempotency_key: "idempotency-key",
             request_id: "request-id",
             straddle_account_id: "straddle-account-id"
           }
@@ -203,11 +209,13 @@ module Straddle
       # undone and should only be used to satisfy regulatory requirements or for privacy
       # compliance.
       #
-      # @overload delete(id, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @overload delete(id, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
       # @param id [String]
       #
       # @param correlation_id [String] Optional client generated identifier to trace and debug a series of requests.
+      #
+      # @param idempotency_key [String] Optional client generated value to use for idempotent requests.
       #
       # @param request_id [String] Optional client generated identifier to trace and debug a request.
       #
@@ -225,6 +233,7 @@ module Straddle
           path: ["v1/customers/%1$s", id],
           headers: parsed.transform_keys(
             correlation_id: "correlation-id",
+            idempotency_key: "idempotency-key",
             request_id: "request-id",
             straddle_account_id: "straddle-account-id"
           ),
@@ -271,11 +280,13 @@ module Straddle
       # you to modify the outcome of a customer decision and is useful for correcting or
       # updating the status of a customer's verification.
       #
-      # @overload refresh_review(id, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @overload refresh_review(id, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
       # @param id [String]
       #
       # @param correlation_id [String] Optional client generated identifier to trace and debug a series of requests.
+      #
+      # @param idempotency_key [String] Optional client generated value to use for idempotent requests.
       #
       # @param request_id [String] Optional client generated identifier to trace and debug a request.
       #
@@ -293,6 +304,7 @@ module Straddle
           path: ["v1/customers/%1$s/refresh_review", id],
           headers: parsed.transform_keys(
             correlation_id: "correlation-id",
+            idempotency_key: "idempotency-key",
             request_id: "request-id",
             straddle_account_id: "straddle-account-id"
           ),
