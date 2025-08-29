@@ -12,6 +12,7 @@ module Straddle
             ?payouts: Straddle::Embed::Accounts::CapabilityRequestCreateParams::Payouts,
             ?signed_agreement: Straddle::Embed::Accounts::CapabilityRequestCreateParams::SignedAgreement,
             ?correlation_id: String,
+            ?idempotency_key: String,
             ?request_id: String,
             ?request_options: Straddle::request_opts
           ) -> Straddle::Embed::Accounts::CapabilityRequestPagedV1

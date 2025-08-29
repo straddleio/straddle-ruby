@@ -128,6 +128,13 @@ module Straddle
           #   @return [String, nil]
           optional :external_id, String, nil?: true
 
+          # @!attribute metadata
+          #   Up to 20 additional user-defined key-value pairs. Useful for storing additional
+          #   information about the represetative in a structured format.
+          #
+          #   @return [Hash{Symbol=>String}, nil]
+          optional :metadata, Straddle::Internal::Type::HashOf[String], nil?: true
+
           # @!attribute phone
           #
           #   @return [String, nil]
@@ -140,7 +147,7 @@ module Straddle
           #   @return [String, nil]
           optional :user_id, String, nil?: true
 
-          # @!method initialize(id:, account_id:, created_at:, dob:, email:, first_name:, last_name:, mobile_number:, name:, relationship:, ssn_last4:, status:, status_detail:, updated_at:, external_id: nil, phone: nil, user_id: nil)
+          # @!method initialize(id:, account_id:, created_at:, dob:, email:, first_name:, last_name:, mobile_number:, name:, relationship:, ssn_last4:, status:, status_detail:, updated_at:, external_id: nil, metadata: nil, phone: nil, user_id: nil)
           #   Some parameter documentations has been truncated, see
           #   {Straddle::Models::Embed::Representative::Data} for more details.
           #
@@ -173,6 +180,8 @@ module Straddle
           #   @param updated_at [Time] Timestamp of the most recent update to the representative.
           #
           #   @param external_id [String, nil] Unique identifier for the representative in your database, used for cross-refere
+          #
+          #   @param metadata [Hash{Symbol=>String}, nil] Up to 20 additional user-defined key-value pairs. Useful for storing additional
           #
           #   @param phone [String, nil]
           #

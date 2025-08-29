@@ -8,7 +8,7 @@ module Straddle
       #
       # Use charges to collect money from a customer for the sale of goods or services.
       #
-      # @overload create(amount:, config:, consent_type:, currency:, description:, device:, external_id:, paykey:, payment_date:, metadata: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @overload create(amount:, config:, consent_type:, currency:, description:, device:, external_id:, paykey:, payment_date:, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
       # @param amount [Integer] Body param: The amount of the charge in cents.
       #
@@ -32,6 +32,8 @@ module Straddle
       #
       # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
       #
+      # @param idempotency_key [String] Header param: Optional client generated value to use for idempotent requests.
+      #
       # @param request_id [String] Header param: Optional client generated identifier to trace and debug a request.
       #
       # @param straddle_account_id [String] Header param: For use by platforms to specify an account id and set scope of a r
@@ -46,6 +48,7 @@ module Straddle
         header_params =
           {
             correlation_id: "correlation-id",
+            idempotency_key: "idempotency-key",
             request_id: "request-id",
             straddle_account_id: "straddle-account-id"
           }
@@ -65,7 +68,7 @@ module Straddle
       # Change the values of parameters associated with a charge prior to processing.
       # The status of the charge must be `created`, `scheduled`, or `on_hold`.
       #
-      # @overload update(id, amount:, description:, payment_date:, metadata: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @overload update(id, amount:, description:, payment_date:, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
       # @param id [String] Path param:
       #
@@ -78,6 +81,8 @@ module Straddle
       # @param metadata [Hash{Symbol=>String}, nil] Body param: Up to 20 additional user-defined key-value pairs. Useful for storing
       #
       # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
+      #
+      # @param idempotency_key [String] Header param: Optional client generated value to use for idempotent requests.
       #
       # @param request_id [String] Header param: Optional client generated identifier to trace and debug a request.
       #
@@ -93,6 +98,7 @@ module Straddle
         header_params =
           {
             correlation_id: "correlation-id",
+            idempotency_key: "idempotency-key",
             request_id: "request-id",
             straddle_account_id: "straddle-account-id"
           }
@@ -112,13 +118,15 @@ module Straddle
       # Cancel a charge to prevent it from being originated for processing. The status
       # of the charge must be `created`, `scheduled`, or `on_hold`.
       #
-      # @overload cancel(id, reason: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @overload cancel(id, reason: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
       # @param id [String] Path param:
       #
       # @param reason [String, nil] Body param: Details about why the charge status was updated.
       #
       # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
+      #
+      # @param idempotency_key [String] Header param: Optional client generated value to use for idempotent requests.
       #
       # @param request_id [String] Header param: Optional client generated identifier to trace and debug a request.
       #
@@ -134,6 +142,7 @@ module Straddle
         header_params =
           {
             correlation_id: "correlation-id",
+            idempotency_key: "idempotency-key",
             request_id: "request-id",
             straddle_account_id: "straddle-account-id"
           }
@@ -186,13 +195,15 @@ module Straddle
       # Place a charge on hold to prevent it from being originated for processing. The
       # status of the charge must be `created` or `scheduled`.
       #
-      # @overload hold(id, reason: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @overload hold(id, reason: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
       # @param id [String] Path param:
       #
       # @param reason [String, nil] Body param: Details about why the charge status was updated.
       #
       # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
+      #
+      # @param idempotency_key [String] Header param: Optional client generated value to use for idempotent requests.
       #
       # @param request_id [String] Header param: Optional client generated identifier to trace and debug a request.
       #
@@ -208,6 +219,7 @@ module Straddle
         header_params =
           {
             correlation_id: "correlation-id",
+            idempotency_key: "idempotency-key",
             request_id: "request-id",
             straddle_account_id: "straddle-account-id"
           }
@@ -227,13 +239,15 @@ module Straddle
       # Release a charge from an `on_hold` status to allow it to be rescheduled for
       # processing.
       #
-      # @overload release(id, reason: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @overload release(id, reason: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
       # @param id [String] Path param:
       #
       # @param reason [String, nil] Body param: Details about why the charge status was updated.
       #
       # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
+      #
+      # @param idempotency_key [String] Header param: Optional client generated value to use for idempotent requests.
       #
       # @param request_id [String] Header param: Optional client generated identifier to trace and debug a request.
       #
@@ -249,6 +263,7 @@ module Straddle
         header_params =
           {
             correlation_id: "correlation-id",
+            idempotency_key: "idempotency-key",
             request_id: "request-id",
             straddle_account_id: "straddle-account-id"
           }

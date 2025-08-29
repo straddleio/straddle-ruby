@@ -13,6 +13,7 @@ module Straddle
         payment_date: Date,
         ?metadata: ::Hash[Symbol, String]?,
         ?correlation_id: String,
+        ?idempotency_key: String,
         ?request_id: String,
         ?straddle_account_id: String,
         ?request_options: Straddle::request_opts
@@ -25,6 +26,7 @@ module Straddle
         payment_date: Date,
         ?metadata: ::Hash[Symbol, String]?,
         ?correlation_id: String,
+        ?idempotency_key: String,
         ?request_id: String,
         ?straddle_account_id: String,
         ?request_options: Straddle::request_opts
@@ -34,6 +36,7 @@ module Straddle
         String id,
         ?reason: String?,
         ?correlation_id: String,
+        ?idempotency_key: String,
         ?request_id: String,
         ?straddle_account_id: String,
         ?request_options: Straddle::request_opts
@@ -51,6 +54,7 @@ module Straddle
         String id,
         ?reason: String?,
         ?correlation_id: String,
+        ?idempotency_key: String,
         ?request_id: String,
         ?straddle_account_id: String,
         ?request_options: Straddle::request_opts
@@ -60,6 +64,7 @@ module Straddle
         String id,
         ?reason: String?,
         ?correlation_id: String,
+        ?idempotency_key: String,
         ?request_id: String,
         ?straddle_account_id: String,
         ?request_options: Straddle::request_opts

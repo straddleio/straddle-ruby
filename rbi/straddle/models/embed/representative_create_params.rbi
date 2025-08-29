@@ -61,11 +61,22 @@ module Straddle
         sig { returns(T.nilable(String)) }
         attr_accessor :external_id
 
+        # Up to 20 additional user-defined key-value pairs. Useful for storing additional
+        # information about the represetative in a structured format.
+        sig { returns(T.nilable(T::Hash[Symbol, String])) }
+        attr_accessor :metadata
+
         sig { returns(T.nilable(String)) }
         attr_reader :correlation_id
 
         sig { params(correlation_id: String).void }
         attr_writer :correlation_id
+
+        sig { returns(T.nilable(String)) }
+        attr_reader :idempotency_key
+
+        sig { params(idempotency_key: String).void }
+        attr_writer :idempotency_key
 
         sig { returns(T.nilable(String)) }
         attr_reader :request_id
@@ -85,7 +96,9 @@ module Straddle
               Straddle::Embed::RepresentativeCreateParams::Relationship::OrHash,
             ssn_last4: String,
             external_id: T.nilable(String),
+            metadata: T.nilable(T::Hash[Symbol, String]),
             correlation_id: String,
+            idempotency_key: String,
             request_id: String,
             request_options: Straddle::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -109,7 +122,11 @@ module Straddle
           # Unique identifier for the representative in your database, used for
           # cross-referencing between Straddle and your systems.
           external_id: nil,
+          # Up to 20 additional user-defined key-value pairs. Useful for storing additional
+          # information about the represetative in a structured format.
+          metadata: nil,
           correlation_id: nil,
+          idempotency_key: nil,
           request_id: nil,
           request_options: {}
         )
@@ -128,7 +145,9 @@ module Straddle
                 Straddle::Embed::RepresentativeCreateParams::Relationship,
               ssn_last4: String,
               external_id: T.nilable(String),
+              metadata: T.nilable(T::Hash[Symbol, String]),
               correlation_id: String,
+              idempotency_key: String,
               request_id: String,
               request_options: Straddle::RequestOptions
             }

@@ -12,7 +12,7 @@ module Straddle
           # Submits a request to enable a specific capability for an account. Use this
           # endpoint to request additional features or services for an account.
           #
-          # @overload create(account_id, businesses: nil, charges: nil, individuals: nil, internet: nil, payouts: nil, signed_agreement: nil, correlation_id: nil, request_id: nil, request_options: {})
+          # @overload create(account_id, businesses: nil, charges: nil, individuals: nil, internet: nil, payouts: nil, signed_agreement: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
           #
           # @param account_id [String] Path param:
           #
@@ -30,6 +30,8 @@ module Straddle
           #
           # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
           #
+          # @param idempotency_key [String] Header param: Optional client generated value to use for idempotent requests.
+          #
           # @param request_id [String] Header param: Optional client generated identifier to trace and debug a request.
           #
           # @param request_options [Straddle::RequestOptions, Hash{Symbol=>Object}, nil]
@@ -39,7 +41,8 @@ module Straddle
           # @see Straddle::Models::Embed::Accounts::CapabilityRequestCreateParams
           def create(account_id, params = {})
             parsed, options = Straddle::Embed::Accounts::CapabilityRequestCreateParams.dump_request(params)
-            header_params = {correlation_id: "correlation-id", request_id: "request-id"}
+            header_params =
+              {correlation_id: "correlation-id", idempotency_key: "idempotency-key", request_id: "request-id"}
             @client.request(
               method: :post,
               path: ["v1/accounts/%1$s/capability_requests", account_id],

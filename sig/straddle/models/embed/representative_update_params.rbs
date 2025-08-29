@@ -11,7 +11,9 @@ module Straddle
           relationship: Straddle::Embed::RepresentativeUpdateParams::Relationship,
           :ssn_last4 => String,
           external_id: String?,
+          metadata: ::Hash[Symbol, String]?,
           correlation_id: String,
+          idempotency_key: String,
           request_id: String
         }
         & Straddle::Internal::Type::request_parameters
@@ -36,9 +38,15 @@ module Straddle
 
         attr_accessor external_id: String?
 
+        attr_accessor metadata: ::Hash[Symbol, String]?
+
         attr_reader correlation_id: String?
 
         def correlation_id=: (String) -> String
+
+        attr_reader idempotency_key: String?
+
+        def idempotency_key=: (String) -> String
 
         attr_reader request_id: String?
 
@@ -53,7 +61,9 @@ module Straddle
           relationship: Straddle::Embed::RepresentativeUpdateParams::Relationship,
           ssn_last4: String,
           ?external_id: String?,
+          ?metadata: ::Hash[Symbol, String]?,
           ?correlation_id: String,
+          ?idempotency_key: String,
           ?request_id: String,
           ?request_options: Straddle::request_opts
         ) -> void
@@ -67,7 +77,9 @@ module Straddle
           relationship: Straddle::Embed::RepresentativeUpdateParams::Relationship,
           :ssn_last4 => String,
           external_id: String?,
+          metadata: ::Hash[Symbol, String]?,
           correlation_id: String,
+          idempotency_key: String,
           request_id: String,
           request_options: Straddle::RequestOptions
         }

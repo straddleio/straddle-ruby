@@ -22,6 +22,12 @@ module Straddle
         attr_writer :correlation_id
 
         sig { returns(T.nilable(String)) }
+        attr_reader :idempotency_key
+
+        sig { params(idempotency_key: String).void }
+        attr_writer :idempotency_key
+
+        sig { returns(T.nilable(String)) }
         attr_reader :request_id
 
         sig { params(request_id: String).void }
@@ -30,17 +36,24 @@ module Straddle
         sig do
           params(
             correlation_id: String,
+            idempotency_key: String,
             request_id: String,
             request_options: Straddle::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(correlation_id: nil, request_id: nil, request_options: {})
+        def self.new(
+          correlation_id: nil,
+          idempotency_key: nil,
+          request_id: nil,
+          request_options: {}
+        )
         end
 
         sig do
           override.returns(
             {
               correlation_id: String,
+              idempotency_key: String,
               request_id: String,
               request_options: Straddle::RequestOptions
             }
