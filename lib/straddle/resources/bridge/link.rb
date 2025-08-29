@@ -11,7 +11,7 @@ module Straddle
         # source. This endpoint allows you to create a secure payment token linked to a
         # specific bank account.
         #
-        # @overload bank_account(account_number:, account_type:, customer_id:, routing_number:, config: nil, metadata: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+        # @overload bank_account(account_number:, account_type:, customer_id:, routing_number:, config: nil, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
         #
         # @param account_number [String] Body param: The bank account number.
         #
@@ -27,6 +27,8 @@ module Straddle
         #
         # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
         #
+        # @param idempotency_key [String] Header param: Optional client generated value to use for idempotent requests.
+        #
         # @param request_id [String] Header param: Optional client generated identifier to trace and debug a request.
         #
         # @param straddle_account_id [String] Header param: For use by platforms to specify an account id and set scope of a r
@@ -41,6 +43,7 @@ module Straddle
           header_params =
             {
               correlation_id: "correlation-id",
+              idempotency_key: "idempotency-key",
               request_id: "request-id",
               straddle_account_id: "straddle-account-id"
             }
@@ -61,7 +64,7 @@ module Straddle
         # you to create a secure payment token linked to a bank account authenticated
         # through Quiltt.
         #
-        # @overload create_paykey(customer_id:, quiltt_token:, config: nil, metadata: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+        # @overload create_paykey(customer_id:, quiltt_token:, config: nil, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
         #
         # @param customer_id [String] Body param: Unique identifier of the related customer object.
         #
@@ -72,6 +75,8 @@ module Straddle
         # @param metadata [Hash{Symbol=>String}, nil] Body param: Up to 20 additional user-defined key-value pairs. Useful for storing
         #
         # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
+        #
+        # @param idempotency_key [String] Header param: Optional client generated value to use for idempotent requests.
         #
         # @param request_id [String] Header param: Optional client generated identifier to trace and debug a request.
         #
@@ -87,6 +92,7 @@ module Straddle
           header_params =
             {
               correlation_id: "correlation-id",
+              idempotency_key: "idempotency-key",
               request_id: "request-id",
               straddle_account_id: "straddle-account-id"
             }
@@ -103,7 +109,7 @@ module Straddle
         # Some parameter documentations has been truncated, see
         # {Straddle::Models::Bridge::LinkCreateTanParams} for more details.
         #
-        # @overload create_tan(account_type:, customer_id:, routing_number:, tan:, config: nil, metadata: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+        # @overload create_tan(account_type:, customer_id:, routing_number:, tan:, config: nil, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
         #
         # @param account_type [Symbol, Straddle::Models::Bridge::LinkCreateTanParams::AccountType] Body param:
         #
@@ -119,6 +125,8 @@ module Straddle
         #
         # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
         #
+        # @param idempotency_key [String] Header param: Optional client generated value to use for idempotent requests.
+        #
         # @param request_id [String] Header param: Optional client generated identifier to trace and debug a request.
         #
         # @param straddle_account_id [String] Header param: For use by platforms to specify an account id and set scope of a r
@@ -133,6 +141,7 @@ module Straddle
           header_params =
             {
               correlation_id: "correlation-id",
+              idempotency_key: "idempotency-key",
               request_id: "request-id",
               straddle_account_id: "straddle-account-id"
             }
@@ -153,7 +162,7 @@ module Straddle
         # endpoint allows you to create a secure payment token linked to a bank account
         # authenticated through Plaid.
         #
-        # @overload plaid(customer_id:, plaid_token:, config: nil, metadata: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+        # @overload plaid(customer_id:, plaid_token:, config: nil, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
         #
         # @param customer_id [String] Body param: Unique identifier of the related customer object.
         #
@@ -164,6 +173,8 @@ module Straddle
         # @param metadata [Hash{Symbol=>String}, nil] Body param: Up to 20 additional user-defined key-value pairs. Useful for storing
         #
         # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
+        #
+        # @param idempotency_key [String] Header param: Optional client generated value to use for idempotent requests.
         #
         # @param request_id [String] Header param: Optional client generated identifier to trace and debug a request.
         #
@@ -179,6 +190,7 @@ module Straddle
           header_params =
             {
               correlation_id: "correlation-id",
+              idempotency_key: "idempotency-key",
               request_id: "request-id",
               straddle_account_id: "straddle-account-id"
             }

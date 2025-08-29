@@ -57,13 +57,15 @@ module Straddle
       # Some parameter documentations has been truncated, see
       # {Straddle::Models::PaykeyCancelParams} for more details.
       #
-      # @overload cancel(id, reason: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @overload cancel(id, reason: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
       # @param id [String] Path param:
       #
       # @param reason [String, nil] Body param:
       #
       # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
+      #
+      # @param idempotency_key [String] Header param: Optional client generated value to use for idempotent requests.
       #
       # @param request_id [String] Header param: Optional client generated identifier to trace and debug a request.
       #
@@ -79,6 +81,7 @@ module Straddle
         header_params =
           {
             correlation_id: "correlation-id",
+            idempotency_key: "idempotency-key",
             request_id: "request-id",
             straddle_account_id: "straddle-account-id"
           }
@@ -166,13 +169,15 @@ module Straddle
       #
       # Update the status of a paykey when in review status
       #
-      # @overload review(id, status:, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @overload review(id, status:, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
       # @param id [String] Path param:
       #
       # @param status [Symbol, Straddle::Models::PaykeyReviewParams::Status] Body param:
       #
       # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
+      #
+      # @param idempotency_key [String] Header param: Optional client generated value to use for idempotent requests.
       #
       # @param request_id [String] Header param: Optional client generated identifier to trace and debug a request.
       #
@@ -188,6 +193,7 @@ module Straddle
         header_params =
           {
             correlation_id: "correlation-id",
+            idempotency_key: "idempotency-key",
             request_id: "request-id",
             straddle_account_id: "straddle-account-id"
           }

@@ -48,6 +48,11 @@ module Straddle
         #   @return [String, nil]
         optional :correlation_id, String
 
+        # @!attribute idempotency_key
+        #
+        #   @return [String, nil]
+        optional :idempotency_key, String
+
         # @!attribute request_id
         #
         #   @return [String, nil]
@@ -58,7 +63,7 @@ module Straddle
         #   @return [String, nil]
         optional :straddle_account_id, String
 
-        # @!method initialize(account_number:, account_type:, customer_id:, routing_number:, config: nil, metadata: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+        # @!method initialize(account_number:, account_type:, customer_id:, routing_number:, config: nil, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Straddle::Models::Bridge::LinkBankAccountParams} for more details.
         #
@@ -75,6 +80,8 @@ module Straddle
         #   @param metadata [Hash{Symbol=>String}, nil] Up to 20 additional user-defined key-value pairs. Useful for storing additional
         #
         #   @param correlation_id [String]
+        #
+        #   @param idempotency_key [String]
         #
         #   @param request_id [String]
         #

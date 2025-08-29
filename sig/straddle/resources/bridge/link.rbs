@@ -10,6 +10,7 @@ module Straddle
           ?config: Straddle::Bridge::LinkBankAccountParams::Config,
           ?metadata: ::Hash[Symbol, String]?,
           ?correlation_id: String,
+          ?idempotency_key: String,
           ?request_id: String,
           ?straddle_account_id: String,
           ?request_options: Straddle::request_opts
@@ -21,6 +22,7 @@ module Straddle
           ?config: Straddle::Bridge::LinkCreatePaykeyParams::Config,
           ?metadata: ::Hash[Symbol, String]?,
           ?correlation_id: String,
+          ?idempotency_key: String,
           ?request_id: String,
           ?straddle_account_id: String,
           ?request_options: Straddle::request_opts
@@ -34,6 +36,7 @@ module Straddle
           ?config: Straddle::Bridge::LinkCreateTanParams::Config,
           ?metadata: ::Hash[Symbol, String]?,
           ?correlation_id: String,
+          ?idempotency_key: String,
           ?request_id: String,
           ?straddle_account_id: String,
           ?request_options: Straddle::request_opts
@@ -45,6 +48,7 @@ module Straddle
           ?config: Straddle::Bridge::LinkPlaidParams::Config,
           ?metadata: ::Hash[Symbol, String]?,
           ?correlation_id: String,
+          ?idempotency_key: String,
           ?request_id: String,
           ?straddle_account_id: String,
           ?request_options: Straddle::request_opts
