@@ -12,7 +12,9 @@ module Straddle
           relationship: Straddle::Embed::RepresentativeCreateParams::Relationship,
           ssn_last4: String,
           ?external_id: String?,
+          ?metadata: ::Hash[Symbol, String]?,
           ?correlation_id: String,
+          ?idempotency_key: String,
           ?request_id: String,
           ?request_options: Straddle::request_opts
         ) -> Straddle::Embed::Representative
@@ -27,7 +29,9 @@ module Straddle
           relationship: Straddle::Embed::RepresentativeUpdateParams::Relationship,
           ssn_last4: String,
           ?external_id: String?,
+          ?metadata: ::Hash[Symbol, String]?,
           ?correlation_id: String,
+          ?idempotency_key: String,
           ?request_id: String,
           ?request_options: Straddle::request_opts
         ) -> Straddle::Embed::Representative

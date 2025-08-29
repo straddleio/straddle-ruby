@@ -19,7 +19,9 @@ module Straddle
               Straddle::Embed::RepresentativeCreateParams::Relationship::OrHash,
             ssn_last4: String,
             external_id: T.nilable(String),
+            metadata: T.nilable(T::Hash[Symbol, String]),
             correlation_id: String,
+            idempotency_key: String,
             request_id: String,
             request_options: Straddle::RequestOptions::OrHash
           ).returns(Straddle::Embed::Representative)
@@ -46,9 +48,14 @@ module Straddle
           # Body param: Unique identifier for the representative in your database, used for
           # cross-referencing between Straddle and your systems.
           external_id: nil,
+          # Body param: Up to 20 additional user-defined key-value pairs. Useful for storing
+          # additional information about the represetative in a structured format.
+          metadata: nil,
           # Header param: Optional client generated identifier to trace and debug a series
           # of requests.
           correlation_id: nil,
+          # Header param: Optional client generated value to use for idempotent requests.
+          idempotency_key: nil,
           # Header param: Optional client generated identifier to trace and debug a request.
           request_id: nil,
           request_options: {}
@@ -70,7 +77,9 @@ module Straddle
               Straddle::Embed::RepresentativeUpdateParams::Relationship::OrHash,
             ssn_last4: String,
             external_id: T.nilable(String),
+            metadata: T.nilable(T::Hash[Symbol, String]),
             correlation_id: String,
+            idempotency_key: String,
             request_id: String,
             request_options: Straddle::RequestOptions::OrHash
           ).returns(Straddle::Embed::Representative)
@@ -96,9 +105,14 @@ module Straddle
           # Body param: Unique identifier for the representative in your database, used for
           # cross-referencing between Straddle and your systems.
           external_id: nil,
+          # Body param: Up to 20 additional user-defined key-value pairs. Useful for storing
+          # additional information about the represetative in a structured format.
+          metadata: nil,
           # Header param: Optional client generated identifier to trace and debug a series
           # of requests.
           correlation_id: nil,
+          # Header param: Optional client generated value to use for idempotent requests.
+          idempotency_key: nil,
           # Header param: Optional client generated identifier to trace and debug a request.
           request_id: nil,
           request_options: {}

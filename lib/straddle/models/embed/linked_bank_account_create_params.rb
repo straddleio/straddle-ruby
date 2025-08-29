@@ -55,12 +55,17 @@ module Straddle
         #   @return [String, nil]
         optional :correlation_id, String
 
+        # @!attribute idempotency_key
+        #
+        #   @return [String, nil]
+        optional :idempotency_key, String
+
         # @!attribute request_id
         #
         #   @return [String, nil]
         optional :request_id, String
 
-        # @!method initialize(account_id:, bank_account:, description: nil, metadata: nil, platform_id: nil, purposes: nil, correlation_id: nil, request_id: nil, request_options: {})
+        # @!method initialize(account_id:, bank_account:, description: nil, metadata: nil, platform_id: nil, purposes: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Straddle::Models::Embed::LinkedBankAccountCreateParams} for more details.
         #
@@ -77,6 +82,8 @@ module Straddle
         #   @param purposes [Array<Symbol, Straddle::Models::Embed::LinkedBankAccountCreateParams::Purpose>, nil] The purposes for the linked bank account.
         #
         #   @param correlation_id [String]
+        #
+        #   @param idempotency_key [String]
         #
         #   @param request_id [String]
         #

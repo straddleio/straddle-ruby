@@ -7,6 +7,7 @@ module Straddle
           ?external_id: String?,
           ?metadata: ::Hash[Symbol, String?]?,
           ?correlation_id: String,
+          ?idempotency_key: String,
           ?request_id: String,
           ?request_options: Straddle::request_opts
         ) -> Straddle::Embed::OrganizationV1

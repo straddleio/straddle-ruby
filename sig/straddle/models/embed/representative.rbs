@@ -44,6 +44,7 @@ module Straddle
             status_detail: Straddle::Embed::Representative::Data::StatusDetail,
             updated_at: Time,
             external_id: String?,
+            metadata: ::Hash[Symbol, String]?,
             phone: String?,
             user_id: String?
           }
@@ -79,6 +80,8 @@ module Straddle
 
           attr_accessor external_id: String?
 
+          attr_accessor metadata: ::Hash[Symbol, String]?
+
           attr_accessor phone: String?
 
           attr_accessor user_id: String?
@@ -99,6 +102,7 @@ module Straddle
             status_detail: Straddle::Embed::Representative::Data::StatusDetail,
             updated_at: Time,
             ?external_id: String?,
+            ?metadata: ::Hash[Symbol, String]?,
             ?phone: String?,
             ?user_id: String?
           ) -> void
@@ -119,6 +123,7 @@ module Straddle
             status_detail: Straddle::Embed::Representative::Data::StatusDetail,
             updated_at: Time,
             external_id: String?,
+            metadata: ::Hash[Symbol, String]?,
             phone: String?,
             user_id: String?
           }

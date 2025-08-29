@@ -5,6 +5,7 @@ module Straddle
         {
           final_status: Straddle::Models::Embed::AccountSimulateParams::final_status,
           correlation_id: String,
+          idempotency_key: String,
           request_id: String
         }
         & Straddle::Internal::Type::request_parameters
@@ -23,6 +24,10 @@ module Straddle
 
         def correlation_id=: (String) -> String
 
+        attr_reader idempotency_key: String?
+
+        def idempotency_key=: (String) -> String
+
         attr_reader request_id: String?
 
         def request_id=: (String) -> String
@@ -30,6 +35,7 @@ module Straddle
         def initialize: (
           ?final_status: Straddle::Models::Embed::AccountSimulateParams::final_status,
           ?correlation_id: String,
+          ?idempotency_key: String,
           ?request_id: String,
           ?request_options: Straddle::request_opts
         ) -> void
@@ -37,6 +43,7 @@ module Straddle
         def to_hash: -> {
           final_status: Straddle::Models::Embed::AccountSimulateParams::final_status,
           correlation_id: String,
+          idempotency_key: String,
           request_id: String,
           request_options: Straddle::RequestOptions
         }

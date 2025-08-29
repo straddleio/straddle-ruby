@@ -23,6 +23,7 @@ module Straddle
               signed_agreement:
                 Straddle::Embed::Accounts::CapabilityRequestCreateParams::SignedAgreement::OrHash,
               correlation_id: String,
+              idempotency_key: String,
               request_id: String,
               request_options: Straddle::RequestOptions::OrHash
             ).returns(Straddle::Embed::Accounts::CapabilityRequestPagedV1)
@@ -47,6 +48,8 @@ module Straddle
             # Header param: Optional client generated identifier to trace and debug a series
             # of requests.
             correlation_id: nil,
+            # Header param: Optional client generated value to use for idempotent requests.
+            idempotency_key: nil,
             # Header param: Optional client generated identifier to trace and debug a request.
             request_id: nil,
             request_options: {}

@@ -62,17 +62,29 @@ module Straddle
         #   @return [String, nil]
         optional :external_id, String, nil?: true
 
+        # @!attribute metadata
+        #   Up to 20 additional user-defined key-value pairs. Useful for storing additional
+        #   information about the represetative in a structured format.
+        #
+        #   @return [Hash{Symbol=>String}, nil]
+        optional :metadata, Straddle::Internal::Type::HashOf[String], nil?: true
+
         # @!attribute correlation_id
         #
         #   @return [String, nil]
         optional :correlation_id, String
+
+        # @!attribute idempotency_key
+        #
+        #   @return [String, nil]
+        optional :idempotency_key, String
 
         # @!attribute request_id
         #
         #   @return [String, nil]
         optional :request_id, String
 
-        # @!method initialize(account_id:, dob:, email:, first_name:, last_name:, mobile_number:, relationship:, ssn_last4:, external_id: nil, correlation_id: nil, request_id: nil, request_options: {})
+        # @!method initialize(account_id:, dob:, email:, first_name:, last_name:, mobile_number:, relationship:, ssn_last4:, external_id: nil, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Straddle::Models::Embed::RepresentativeCreateParams} for more details.
         #
@@ -94,7 +106,11 @@ module Straddle
         #
         #   @param external_id [String, nil] Unique identifier for the representative in your database, used for cross-refere
         #
+        #   @param metadata [Hash{Symbol=>String}, nil] Up to 20 additional user-defined key-value pairs. Useful for storing additional
+        #
         #   @param correlation_id [String]
+        #
+        #   @param idempotency_key [String]
         #
         #   @param request_id [String]
         #

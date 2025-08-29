@@ -10,6 +10,7 @@ module Straddle
           ?platform_id: String?,
           ?purposes: ::Array[Straddle::Models::Embed::LinkedBankAccountCreateParams::purpose]?,
           ?correlation_id: String,
+          ?idempotency_key: String,
           ?request_id: String,
           ?request_options: Straddle::request_opts
         ) -> Straddle::Embed::LinkedBankAccountV1
@@ -19,6 +20,7 @@ module Straddle
           bank_account: Straddle::Embed::LinkedBankAccountUpdateParams::BankAccount,
           ?metadata: ::Hash[Symbol, String?]?,
           ?correlation_id: String,
+          ?idempotency_key: String,
           ?request_id: String,
           ?request_options: Straddle::request_opts
         ) -> Straddle::Embed::LinkedBankAccountV1
@@ -38,6 +40,7 @@ module Straddle
         def cancel: (
           String linked_bank_account_id,
           ?correlation_id: String,
+          ?idempotency_key: String,
           ?request_id: String,
           ?request_options: Straddle::request_opts
         ) -> Straddle::Embed::LinkedBankAccountV1

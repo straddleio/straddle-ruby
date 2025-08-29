@@ -22,6 +22,12 @@ module Straddle
       attr_writer :correlation_id
 
       sig { returns(T.nilable(String)) }
+      attr_reader :idempotency_key
+
+      sig { params(idempotency_key: String).void }
+      attr_writer :idempotency_key
+
+      sig { returns(T.nilable(String)) }
       attr_reader :request_id
 
       sig { params(request_id: String).void }
@@ -37,6 +43,7 @@ module Straddle
         params(
           reason: T.nilable(String),
           correlation_id: String,
+          idempotency_key: String,
           request_id: String,
           straddle_account_id: String,
           request_options: Straddle::RequestOptions::OrHash
@@ -46,6 +53,7 @@ module Straddle
         # Details about why the charge status was updated.
         reason: nil,
         correlation_id: nil,
+        idempotency_key: nil,
         request_id: nil,
         straddle_account_id: nil,
         request_options: {}
@@ -57,6 +65,7 @@ module Straddle
           {
             reason: T.nilable(String),
             correlation_id: String,
+            idempotency_key: String,
             request_id: String,
             straddle_account_id: String,
             request_options: Straddle::RequestOptions

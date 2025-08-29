@@ -165,6 +165,11 @@ module Straddle
           sig { returns(T.nilable(String)) }
           attr_accessor :external_id
 
+          # Up to 20 additional user-defined key-value pairs. Useful for storing additional
+          # information about the represetative in a structured format.
+          sig { returns(T.nilable(T::Hash[Symbol, String])) }
+          attr_accessor :metadata
+
           sig { returns(T.nilable(String)) }
           attr_accessor :phone
 
@@ -193,6 +198,7 @@ module Straddle
                 Straddle::Embed::RepresentativePaged::Data::StatusDetail::OrHash,
               updated_at: Time,
               external_id: T.nilable(String),
+              metadata: T.nilable(T::Hash[Symbol, String]),
               phone: T.nilable(String),
               user_id: T.nilable(String)
             ).returns(T.attached_class)
@@ -226,6 +232,9 @@ module Straddle
             # Unique identifier for the representative in your database, used for
             # cross-referencing between Straddle and your systems.
             external_id: nil,
+            # Up to 20 additional user-defined key-value pairs. Useful for storing additional
+            # information about the represetative in a structured format.
+            metadata: nil,
             phone: nil,
             # The unique identifier of the user account associated with this representative,
             # if applicable.
@@ -254,6 +263,7 @@ module Straddle
                   Straddle::Embed::RepresentativePaged::Data::StatusDetail,
                 updated_at: Time,
                 external_id: T.nilable(String),
+                metadata: T.nilable(T::Hash[Symbol, String]),
                 phone: T.nilable(String),
                 user_id: T.nilable(String)
               }

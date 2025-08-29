@@ -12,7 +12,7 @@ module Straddle
         # for various payment operations such as payment deposits, payout withdrawals, and
         # more.
         #
-        # @overload create(account_id:, bank_account:, description: nil, metadata: nil, platform_id: nil, purposes: nil, correlation_id: nil, request_id: nil, request_options: {})
+        # @overload create(account_id:, bank_account:, description: nil, metadata: nil, platform_id: nil, purposes: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
         #
         # @param account_id [String, nil] Body param: The unique identifier of the Straddle account to associate this bank
         #
@@ -28,6 +28,8 @@ module Straddle
         #
         # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
         #
+        # @param idempotency_key [String] Header param: Optional client generated value to use for idempotent requests.
+        #
         # @param request_id [String] Header param: Optional client generated identifier to trace and debug a request.
         #
         # @param request_options [Straddle::RequestOptions, Hash{Symbol=>Object}, nil]
@@ -37,7 +39,8 @@ module Straddle
         # @see Straddle::Models::Embed::LinkedBankAccountCreateParams
         def create(params)
           parsed, options = Straddle::Embed::LinkedBankAccountCreateParams.dump_request(params)
-          header_params = {correlation_id: "correlation-id", request_id: "request-id"}
+          header_params =
+            {correlation_id: "correlation-id", idempotency_key: "idempotency-key", request_id: "request-id"}
           @client.request(
             method: :post,
             path: "v1/linked_bank_accounts",
@@ -56,7 +59,7 @@ module Straddle
         # the linked account. The linked bank account must be in 'created' or 'onboarding'
         # status.
         #
-        # @overload update(linked_bank_account_id, bank_account:, metadata: nil, correlation_id: nil, request_id: nil, request_options: {})
+        # @overload update(linked_bank_account_id, bank_account:, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
         #
         # @param linked_bank_account_id [String] Path param:
         #
@@ -65,6 +68,8 @@ module Straddle
         # @param metadata [Hash{Symbol=>String, nil}, nil] Body param: Up to 20 additional user-defined key-value pairs. Useful for storing
         #
         # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
+        #
+        # @param idempotency_key [String] Header param: Optional client generated value to use for idempotent requests.
         #
         # @param request_id [String] Header param: Optional client generated identifier to trace and debug a request.
         #
@@ -75,7 +80,8 @@ module Straddle
         # @see Straddle::Models::Embed::LinkedBankAccountUpdateParams
         def update(linked_bank_account_id, params)
           parsed, options = Straddle::Embed::LinkedBankAccountUpdateParams.dump_request(params)
-          header_params = {correlation_id: "correlation-id", request_id: "request-id"}
+          header_params =
+            {correlation_id: "correlation-id", idempotency_key: "idempotency-key", request_id: "request-id"}
           @client.request(
             method: :put,
             path: ["v1/linked_bank_accounts/%1$s", linked_bank_account_id],
@@ -138,11 +144,13 @@ module Straddle
         # bank account before it has been reviewed. The linked bank account must be in
         # 'created' status.
         #
-        # @overload cancel(linked_bank_account_id, correlation_id: nil, request_id: nil, request_options: {})
+        # @overload cancel(linked_bank_account_id, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
         #
         # @param linked_bank_account_id [String]
         #
         # @param correlation_id [String] Optional client generated identifier to trace and debug a series of requests.
+        #
+        # @param idempotency_key [String] Optional client generated value to use for idempotent requests.
         #
         # @param request_id [String] Optional client generated identifier to trace and debug a request.
         #
@@ -156,7 +164,11 @@ module Straddle
           @client.request(
             method: :patch,
             path: ["v1/linked_bank_accounts/%1$s/cancel", linked_bank_account_id],
-            headers: parsed.transform_keys(correlation_id: "correlation-id", request_id: "request-id"),
+            headers: parsed.transform_keys(
+              correlation_id: "correlation-id",
+              idempotency_key: "idempotency-key",
+              request_id: "request-id"
+            ),
             model: Straddle::Embed::LinkedBankAccountV1,
             options: options
           )

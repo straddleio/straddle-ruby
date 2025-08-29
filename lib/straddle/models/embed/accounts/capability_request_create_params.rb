@@ -53,12 +53,17 @@ module Straddle
           #   @return [String, nil]
           optional :correlation_id, String
 
+          # @!attribute idempotency_key
+          #
+          #   @return [String, nil]
+          optional :idempotency_key, String
+
           # @!attribute request_id
           #
           #   @return [String, nil]
           optional :request_id, String
 
-          # @!method initialize(businesses: nil, charges: nil, individuals: nil, internet: nil, payouts: nil, signed_agreement: nil, correlation_id: nil, request_id: nil, request_options: {})
+          # @!method initialize(businesses: nil, charges: nil, individuals: nil, internet: nil, payouts: nil, signed_agreement: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {Straddle::Models::Embed::Accounts::CapabilityRequestCreateParams} for more
           #   details.
@@ -76,6 +81,8 @@ module Straddle
           #   @param signed_agreement [Straddle::Models::Embed::Accounts::CapabilityRequestCreateParams::SignedAgreement] Allows the account to accept payments authorized by signed agreements or contrac
           #
           #   @param correlation_id [String]
+          #
+          #   @param idempotency_key [String]
           #
           #   @param request_id [String]
           #

@@ -11,7 +11,7 @@ module Straddle
         # individuals who have legal authority or significant responsibility within the
         # business.
         #
-        # @overload create(account_id:, dob:, email:, first_name:, last_name:, mobile_number:, relationship:, ssn_last4:, external_id: nil, correlation_id: nil, request_id: nil, request_options: {})
+        # @overload create(account_id:, dob:, email:, first_name:, last_name:, mobile_number:, relationship:, ssn_last4:, external_id: nil, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
         #
         # @param account_id [String] Body param: The unique identifier of the account this representative is associat
         #
@@ -31,7 +31,11 @@ module Straddle
         #
         # @param external_id [String, nil] Body param: Unique identifier for the representative in your database, used for
         #
+        # @param metadata [Hash{Symbol=>String}, nil] Body param: Up to 20 additional user-defined key-value pairs. Useful for storing
+        #
         # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
+        #
+        # @param idempotency_key [String] Header param: Optional client generated value to use for idempotent requests.
         #
         # @param request_id [String] Header param: Optional client generated identifier to trace and debug a request.
         #
@@ -42,7 +46,8 @@ module Straddle
         # @see Straddle::Models::Embed::RepresentativeCreateParams
         def create(params)
           parsed, options = Straddle::Embed::RepresentativeCreateParams.dump_request(params)
-          header_params = {correlation_id: "correlation-id", request_id: "request-id"}
+          header_params =
+            {correlation_id: "correlation-id", idempotency_key: "idempotency-key", request_id: "request-id"}
           @client.request(
             method: :post,
             path: "v1/representatives",
@@ -60,7 +65,7 @@ module Straddle
         # personal details, contact information, or the relationship to the account or
         # organization.
         #
-        # @overload update(representative_id, dob:, email:, first_name:, last_name:, mobile_number:, relationship:, ssn_last4:, external_id: nil, correlation_id: nil, request_id: nil, request_options: {})
+        # @overload update(representative_id, dob:, email:, first_name:, last_name:, mobile_number:, relationship:, ssn_last4:, external_id: nil, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
         #
         # @param representative_id [String] Path param:
         #
@@ -80,7 +85,11 @@ module Straddle
         #
         # @param external_id [String, nil] Body param: Unique identifier for the representative in your database, used for
         #
+        # @param metadata [Hash{Symbol=>String}, nil] Body param: Up to 20 additional user-defined key-value pairs. Useful for storing
+        #
         # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
+        #
+        # @param idempotency_key [String] Header param: Optional client generated value to use for idempotent requests.
         #
         # @param request_id [String] Header param: Optional client generated identifier to trace and debug a request.
         #
@@ -91,7 +100,8 @@ module Straddle
         # @see Straddle::Models::Embed::RepresentativeUpdateParams
         def update(representative_id, params)
           parsed, options = Straddle::Embed::RepresentativeUpdateParams.dump_request(params)
-          header_params = {correlation_id: "correlation-id", request_id: "request-id"}
+          header_params =
+            {correlation_id: "correlation-id", idempotency_key: "idempotency-key", request_id: "request-id"}
           @client.request(
             method: :put,
             path: ["v1/representatives/%1$s", representative_id],
