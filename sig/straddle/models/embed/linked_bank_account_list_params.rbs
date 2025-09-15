@@ -7,8 +7,10 @@ module Straddle
           level: Straddle::Models::Embed::LinkedBankAccountListParams::level,
           page_number: Integer,
           page_size: Integer,
+          purpose: Straddle::Models::Embed::LinkedBankAccountListParams::purpose,
           sort_by: String,
           sort_order: Straddle::Models::Embed::LinkedBankAccountListParams::sort_order,
+          status: Straddle::Models::Embed::LinkedBankAccountListParams::status,
           correlation_id: String,
           request_id: String
         }
@@ -36,6 +38,12 @@ module Straddle
 
         def page_size=: (Integer) -> Integer
 
+        attr_reader purpose: Straddle::Models::Embed::LinkedBankAccountListParams::purpose?
+
+        def purpose=: (
+          Straddle::Models::Embed::LinkedBankAccountListParams::purpose
+        ) -> Straddle::Models::Embed::LinkedBankAccountListParams::purpose
+
         attr_reader sort_by: String?
 
         def sort_by=: (String) -> String
@@ -45,6 +53,12 @@ module Straddle
         def sort_order=: (
           Straddle::Models::Embed::LinkedBankAccountListParams::sort_order
         ) -> Straddle::Models::Embed::LinkedBankAccountListParams::sort_order
+
+        attr_reader status: Straddle::Models::Embed::LinkedBankAccountListParams::status?
+
+        def status=: (
+          Straddle::Models::Embed::LinkedBankAccountListParams::status
+        ) -> Straddle::Models::Embed::LinkedBankAccountListParams::status
 
         attr_reader correlation_id: String?
 
@@ -59,8 +73,10 @@ module Straddle
           ?level: Straddle::Models::Embed::LinkedBankAccountListParams::level,
           ?page_number: Integer,
           ?page_size: Integer,
+          ?purpose: Straddle::Models::Embed::LinkedBankAccountListParams::purpose,
           ?sort_by: String,
           ?sort_order: Straddle::Models::Embed::LinkedBankAccountListParams::sort_order,
+          ?status: Straddle::Models::Embed::LinkedBankAccountListParams::status,
           ?correlation_id: String,
           ?request_id: String,
           ?request_options: Straddle::request_opts
@@ -71,8 +87,10 @@ module Straddle
           level: Straddle::Models::Embed::LinkedBankAccountListParams::level,
           page_number: Integer,
           page_size: Integer,
+          purpose: Straddle::Models::Embed::LinkedBankAccountListParams::purpose,
           sort_by: String,
           sort_order: Straddle::Models::Embed::LinkedBankAccountListParams::sort_order,
+          status: Straddle::Models::Embed::LinkedBankAccountListParams::status,
           correlation_id: String,
           request_id: String,
           request_options: Straddle::RequestOptions
@@ -89,6 +107,18 @@ module Straddle
           def self?.values: -> ::Array[Straddle::Models::Embed::LinkedBankAccountListParams::level]
         end
 
+        type purpose = :charges | :payouts | :billing
+
+        module Purpose
+          extend Straddle::Internal::Type::Enum
+
+          CHARGES: :charges
+          PAYOUTS: :payouts
+          BILLING: :billing
+
+          def self?.values: -> ::Array[Straddle::Models::Embed::LinkedBankAccountListParams::purpose]
+        end
+
         type sort_order = :asc | :desc
 
         module SortOrder
@@ -98,6 +128,22 @@ module Straddle
           DESC: :desc
 
           def self?.values: -> ::Array[Straddle::Models::Embed::LinkedBankAccountListParams::sort_order]
+        end
+
+        type status =
+          :created | :onboarding | :active | :rejected | :inactive | :canceled
+
+        module Status
+          extend Straddle::Internal::Type::Enum
+
+          CREATED: :created
+          ONBOARDING: :onboarding
+          ACTIVE: :active
+          REJECTED: :rejected
+          INACTIVE: :inactive
+          CANCELED: :canceled
+
+          def self?.values: -> ::Array[Straddle::Models::Embed::LinkedBankAccountListParams::status]
         end
       end
     end
