@@ -52,25 +52,6 @@ module Straddle
         sig { params(page_size: Integer).void }
         attr_writer :page_size
 
-        # The purpose of the linked bank accounts to return. Possible values: 'charges',
-        # 'payouts', 'billing'.
-        sig do
-          returns(
-            T.nilable(
-              Straddle::Embed::LinkedBankAccountListParams::Purpose::OrSymbol
-            )
-          )
-        end
-        attr_reader :purpose
-
-        sig do
-          params(
-            purpose:
-              Straddle::Embed::LinkedBankAccountListParams::Purpose::OrSymbol
-          ).void
-        end
-        attr_writer :purpose
-
         # Sort By.
         sig { returns(T.nilable(String)) }
         attr_reader :sort_by
@@ -96,25 +77,6 @@ module Straddle
         end
         attr_writer :sort_order
 
-        # The status of the linked bank accounts to return. Possible values: 'created',
-        # 'onboarding', 'active', 'inactive', 'rejected'.
-        sig do
-          returns(
-            T.nilable(
-              Straddle::Embed::LinkedBankAccountListParams::Status::OrSymbol
-            )
-          )
-        end
-        attr_reader :status
-
-        sig do
-          params(
-            status:
-              Straddle::Embed::LinkedBankAccountListParams::Status::OrSymbol
-          ).void
-        end
-        attr_writer :status
-
         sig { returns(T.nilable(String)) }
         attr_reader :correlation_id
 
@@ -134,13 +96,9 @@ module Straddle
               Straddle::Embed::LinkedBankAccountListParams::Level::OrSymbol,
             page_number: Integer,
             page_size: Integer,
-            purpose:
-              Straddle::Embed::LinkedBankAccountListParams::Purpose::OrSymbol,
             sort_by: String,
             sort_order:
               Straddle::Embed::LinkedBankAccountListParams::SortOrder::OrSymbol,
-            status:
-              Straddle::Embed::LinkedBankAccountListParams::Status::OrSymbol,
             correlation_id: String,
             request_id: String,
             request_options: Straddle::RequestOptions::OrHash
@@ -154,16 +112,10 @@ module Straddle
           page_number: nil,
           # Page size. Max value: 1000
           page_size: nil,
-          # The purpose of the linked bank accounts to return. Possible values: 'charges',
-          # 'payouts', 'billing'.
-          purpose: nil,
           # Sort By.
           sort_by: nil,
           # Sort Order.
           sort_order: nil,
-          # The status of the linked bank accounts to return. Possible values: 'created',
-          # 'onboarding', 'active', 'inactive', 'rejected'.
-          status: nil,
           correlation_id: nil,
           request_id: nil,
           request_options: {}
@@ -178,13 +130,9 @@ module Straddle
                 Straddle::Embed::LinkedBankAccountListParams::Level::OrSymbol,
               page_number: Integer,
               page_size: Integer,
-              purpose:
-                Straddle::Embed::LinkedBankAccountListParams::Purpose::OrSymbol,
               sort_by: String,
               sort_order:
                 Straddle::Embed::LinkedBankAccountListParams::SortOrder::OrSymbol,
-              status:
-                Straddle::Embed::LinkedBankAccountListParams::Status::OrSymbol,
               correlation_id: String,
               request_id: String,
               request_options: Straddle::RequestOptions
@@ -225,47 +173,6 @@ module Straddle
           end
         end
 
-        # The purpose of the linked bank accounts to return. Possible values: 'charges',
-        # 'payouts', 'billing'.
-        module Purpose
-          extend Straddle::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Straddle::Embed::LinkedBankAccountListParams::Purpose
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          CHARGES =
-            T.let(
-              :charges,
-              Straddle::Embed::LinkedBankAccountListParams::Purpose::TaggedSymbol
-            )
-          PAYOUTS =
-            T.let(
-              :payouts,
-              Straddle::Embed::LinkedBankAccountListParams::Purpose::TaggedSymbol
-            )
-          BILLING =
-            T.let(
-              :billing,
-              Straddle::Embed::LinkedBankAccountListParams::Purpose::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Straddle::Embed::LinkedBankAccountListParams::Purpose::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
-        end
-
         # Sort Order.
         module SortOrder
           extend Straddle::Internal::Type::Enum
@@ -294,62 +201,6 @@ module Straddle
             override.returns(
               T::Array[
                 Straddle::Embed::LinkedBankAccountListParams::SortOrder::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
-        end
-
-        # The status of the linked bank accounts to return. Possible values: 'created',
-        # 'onboarding', 'active', 'inactive', 'rejected'.
-        module Status
-          extend Straddle::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Straddle::Embed::LinkedBankAccountListParams::Status
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          CREATED =
-            T.let(
-              :created,
-              Straddle::Embed::LinkedBankAccountListParams::Status::TaggedSymbol
-            )
-          ONBOARDING =
-            T.let(
-              :onboarding,
-              Straddle::Embed::LinkedBankAccountListParams::Status::TaggedSymbol
-            )
-          ACTIVE =
-            T.let(
-              :active,
-              Straddle::Embed::LinkedBankAccountListParams::Status::TaggedSymbol
-            )
-          REJECTED =
-            T.let(
-              :rejected,
-              Straddle::Embed::LinkedBankAccountListParams::Status::TaggedSymbol
-            )
-          INACTIVE =
-            T.let(
-              :inactive,
-              Straddle::Embed::LinkedBankAccountListParams::Status::TaggedSymbol
-            )
-          CANCELED =
-            T.let(
-              :canceled,
-              Straddle::Embed::LinkedBankAccountListParams::Status::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Straddle::Embed::LinkedBankAccountListParams::Status::TaggedSymbol
               ]
             )
           end

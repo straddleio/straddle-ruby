@@ -101,13 +101,9 @@ module Straddle
               Straddle::Embed::LinkedBankAccountListParams::Level::OrSymbol,
             page_number: Integer,
             page_size: Integer,
-            purpose:
-              Straddle::Embed::LinkedBankAccountListParams::Purpose::OrSymbol,
             sort_by: String,
             sort_order:
               Straddle::Embed::LinkedBankAccountListParams::SortOrder::OrSymbol,
-            status:
-              Straddle::Embed::LinkedBankAccountListParams::Status::OrSymbol,
             correlation_id: String,
             request_id: String,
             request_options: Straddle::RequestOptions::OrHash
@@ -126,16 +122,10 @@ module Straddle
           page_number: nil,
           # Query param: Page size. Max value: 1000
           page_size: nil,
-          # Query param: The purpose of the linked bank accounts to return. Possible values:
-          # 'charges', 'payouts', 'billing'.
-          purpose: nil,
           # Query param: Sort By.
           sort_by: nil,
           # Query param: Sort Order.
           sort_order: nil,
-          # Query param: The status of the linked bank accounts to return. Possible values:
-          # 'created', 'onboarding', 'active', 'inactive', 'rejected'.
-          status: nil,
           # Header param: Optional client generated identifier to trace and debug a series
           # of requests.
           correlation_id: nil,
