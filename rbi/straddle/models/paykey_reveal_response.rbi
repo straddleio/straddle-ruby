@@ -669,6 +669,8 @@ module Straddle
           sig { returns(String) }
           attr_accessor :message
 
+          # A machine-readable identifier for the specific status, useful for programmatic
+          # handling.
           sig do
             returns(
               Straddle::Models::PaykeyRevealResponse::Data::StatusDetails::Reason::TaggedSymbol
@@ -676,6 +678,8 @@ module Straddle
           end
           attr_accessor :reason
 
+          # Identifies the origin of the status change (e.g., 'bank_decline', 'watchtower').
+          # This helps in tracking the cause of status updates.
           sig do
             returns(
               Straddle::Models::PaykeyRevealResponse::Data::StatusDetails::Source::TaggedSymbol
@@ -703,7 +707,11 @@ module Straddle
             changed_at:,
             # A human-readable description of the current status.
             message:,
+            # A machine-readable identifier for the specific status, useful for programmatic
+            # handling.
             reason:,
+            # Identifies the origin of the status change (e.g., 'bank_decline', 'watchtower').
+            # This helps in tracking the cause of status updates.
             source:,
             # The status code if applicable.
             code: nil
@@ -726,6 +734,8 @@ module Straddle
           def to_hash
           end
 
+          # A machine-readable identifier for the specific status, useful for programmatic
+          # handling.
           module Reason
             extend Straddle::Internal::Type::Enum
 
@@ -850,6 +860,8 @@ module Straddle
             end
           end
 
+          # Identifies the origin of the status change (e.g., 'bank_decline', 'watchtower').
+          # This helps in tracking the cause of status updates.
           module Source
             extend Straddle::Internal::Type::Enum
 
