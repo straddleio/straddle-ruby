@@ -312,16 +312,12 @@ module Straddle
             required :message, String
 
             # @!attribute reason
-            #   A machine-readable identifier for the specific status, useful for programmatic
-            #   handling.
             #
             #   @return [Symbol, Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason]
             required :reason,
                      enum: -> { Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason }
 
             # @!attribute source
-            #   Identifies the origin of the status change (e.g., 'bank_decline', 'watchtower').
-            #   This helps in tracking the cause of status updates.
             #
             #   @return [Symbol, Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Source]
             required :source,
@@ -334,23 +330,16 @@ module Straddle
             optional :code, String, nil?: true
 
             # @!method initialize(changed_at:, message:, reason:, source:, code: nil)
-            #   Some parameter documentations has been truncated, see
-            #   {Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails} for
-            #   more details.
-            #
             #   @param changed_at [Time] The time the status change occurred.
             #
             #   @param message [String] A human-readable description of the current status.
             #
-            #   @param reason [Symbol, Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason] A machine-readable identifier for the specific status, useful for programmatic h
+            #   @param reason [Symbol, Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason]
             #
-            #   @param source [Symbol, Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Source] Identifies the origin of the status change (e.g., 'bank_decline', 'watchtower').
+            #   @param source [Symbol, Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Source]
             #
             #   @param code [String, nil] The status code if applicable.
 
-            # A machine-readable identifier for the specific status, useful for programmatic
-            # handling.
-            #
             # @see Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails#reason
             module Reason
               extend Straddle::Internal::Type::Enum
@@ -380,9 +369,6 @@ module Straddle
               #   @return [Array<Symbol>]
             end
 
-            # Identifies the origin of the status change (e.g., 'bank_decline', 'watchtower').
-            # This helps in tracking the cause of status updates.
-            #
             # @see Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails#source
             module Source
               extend Straddle::Internal::Type::Enum
