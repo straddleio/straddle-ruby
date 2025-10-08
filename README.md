@@ -8,7 +8,7 @@ It is generated with [Stainless](https://www.stainless.com/).
 
 Documentation for releases of this gem can be found [on RubyDoc](https://gemdocs.org/gems/straddle).
 
-The REST API documentation can be found on [docs.straddle.io](https://docs.straddle.io).
+The REST API documentation can be found on [docs.straddle.com](https://docs.straddle.com).
 
 ## Installation
 

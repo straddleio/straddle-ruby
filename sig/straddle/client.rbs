@@ -9,8 +9,8 @@ module Straddle
     DEFAULT_MAX_RETRY_DELAY: Float
 
     ENVIRONMENTS: {
-      sandbox: "https://sandbox.straddle.io",
-      production: "https://production.straddle.io"
+      sandbox: "https://sandbox.straddle.com",
+      production: "https://production.straddle.com"
     }
 
     attr_reader api_key: String
