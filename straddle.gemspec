@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version = Straddle::VERSION
   s.summary = "Ruby library to access the Straddle API"
   s.authors = ["Straddle"]
-  s.email = "help@straddle.io"
+  s.email = "help@straddle.com"
   s.homepage = "https://gemdocs.org/gems/straddle"
   s.metadata["homepage_uri"] = s.homepage
   s.metadata["source_code_uri"] = "https://github.com/straddleio/straddle-ruby"
