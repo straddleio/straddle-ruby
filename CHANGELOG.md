@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.1 (2025-10-10)
+
+Full Changelog: [v0.2.0...v0.2.1](https://github.com/straddleio/straddle-ruby/compare/v0.2.0...v0.2.1)
+
+### Chores
+
+* ignore linter error for tests having large collections ([bc64eef](https://github.com/straddleio/straddle-ruby/commit/bc64eefa88be0777031542098b605f2677a8c29f))
+
 ## 0.2.0 (2025-10-08)
 
 Full Changelog: [v0.1.1...v0.2.0](https://github.com/straddleio/straddle-ruby/compare/v0.1.1...v0.2.0)
