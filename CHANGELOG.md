@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.3.0 (2025-10-24)
+
+Full Changelog: [v0.2.0...v0.3.0](https://github.com/straddleio/straddle-ruby/compare/v0.2.0...v0.3.0)
+
+### Features
+
+* handle thread interrupts in the core HTTP client ([0e8ff22](https://github.com/straddleio/straddle-ruby/commit/0e8ff229d3f4e5bb905f807338896f8999cc1f44))
+
+
+### Bug Fixes
+
+* absolutely qualified uris should always override the default ([9ec59a0](https://github.com/straddleio/straddle-ruby/commit/9ec59a081f213bbef52a0deb0e05229f047ec4b3))
+* should not reuse buffers for `IO.copy_stream` interop ([ab1134b](https://github.com/straddleio/straddle-ruby/commit/ab1134bebd96319b18959ef961f303b7fa92cf18))
+
+
+### Chores
+
+* ignore linter error for tests having large collections ([bc64eef](https://github.com/straddleio/straddle-ruby/commit/bc64eefa88be0777031542098b605f2677a8c29f))
+
 ## 0.2.0 (2025-10-08)
 
 Full Changelog: [v0.1.1...v0.2.0](https://github.com/straddleio/straddle-ruby/compare/v0.1.1...v0.2.0)

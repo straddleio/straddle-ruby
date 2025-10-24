@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    straddle (0.2.0)
+    straddle (0.3.0)
       connection_pool
 
 GEM
