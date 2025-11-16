@@ -2,14 +2,14 @@
 
 module Straddle
   module Models
-    class CustomerRefreshReviewParams < Straddle::Internal::Type::BaseModel
+    class PaykeyUpdateBalanceParams < Straddle::Internal::Type::BaseModel
       extend Straddle::Internal::Type::RequestParameters::Converter
       include Straddle::Internal::Type::RequestParameters
 
       OrHash =
         T.type_alias do
           T.any(
-            Straddle::CustomerRefreshReviewParams,
+            Straddle::PaykeyUpdateBalanceParams,
             Straddle::Internal::AnyHash
           )
         end

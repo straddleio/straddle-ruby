@@ -111,22 +111,6 @@ class Straddle::Test::Resources::CustomersTest < Straddle::Test::ResourceTest
     end
   end
 
-  def test_refresh_review
-    response = @straddle.customers.refresh_review("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
-
-    assert_pattern do
-      response => Straddle::CustomerV1
-    end
-
-    assert_pattern do
-      response => {
-        data: Straddle::CustomerV1::Data,
-        meta: Straddle::ResponseMetadata,
-        response_type: Straddle::CustomerV1::ResponseType
-      }
-    end
-  end
-
   def test_unmasked
     response = @straddle.customers.unmasked("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 

@@ -1,0 +1,67 @@
+module Straddle
+  module Models
+    module Paykeys
+      type review_decision_params =
+        {
+          status: Straddle::Models::Paykeys::ReviewDecisionParams::status,
+          correlation_id: String,
+          idempotency_key: String,
+          request_id: String,
+          straddle_account_id: String
+        }
+        & Straddle::Internal::Type::request_parameters
+
+      class ReviewDecisionParams < Straddle::Internal::Type::BaseModel
+        extend Straddle::Internal::Type::RequestParameters::Converter
+        include Straddle::Internal::Type::RequestParameters
+
+        attr_accessor status: Straddle::Models::Paykeys::ReviewDecisionParams::status
+
+        attr_reader correlation_id: String?
+
+        def correlation_id=: (String) -> String
+
+        attr_reader idempotency_key: String?
+
+        def idempotency_key=: (String) -> String
+
+        attr_reader request_id: String?
+
+        def request_id=: (String) -> String
+
+        attr_reader straddle_account_id: String?
+
+        def straddle_account_id=: (String) -> String
+
+        def initialize: (
+          status: Straddle::Models::Paykeys::ReviewDecisionParams::status,
+          ?correlation_id: String,
+          ?idempotency_key: String,
+          ?request_id: String,
+          ?straddle_account_id: String,
+          ?request_options: Straddle::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          status: Straddle::Models::Paykeys::ReviewDecisionParams::status,
+          correlation_id: String,
+          idempotency_key: String,
+          request_id: String,
+          straddle_account_id: String,
+          request_options: Straddle::RequestOptions
+        }
+
+        type status = :active | :rejected
+
+        module Status
+          extend Straddle::Internal::Type::Enum
+
+          ACTIVE: :active
+          REJECTED: :rejected
+
+          def self?.values: -> ::Array[Straddle::Models::Paykeys::ReviewDecisionParams::status]
+        end
+      end
+    end
+  end
+end
