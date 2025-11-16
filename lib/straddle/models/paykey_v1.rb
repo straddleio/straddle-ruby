@@ -107,6 +107,13 @@ module Straddle
         #   @return [Time, nil]
         optional :expires_at, Time, nil?: true
 
+        # @!attribute external_id
+        #   Unique identifier for the paykey in your database, used for cross-referencing
+        #   between Straddle and your systems.
+        #
+        #   @return [String, nil]
+        optional :external_id, String, nil?: true
+
         # @!attribute institution_name
         #   Name of the financial institution.
         #
@@ -125,7 +132,7 @@ module Straddle
         #   @return [Straddle::Models::PaykeyV1::Data::StatusDetails, nil]
         optional :status_details, -> { Straddle::PaykeyV1::Data::StatusDetails }
 
-        # @!method initialize(id:, config:, created_at:, label:, paykey:, source:, status:, updated_at:, balance: nil, bank_data: nil, customer_id: nil, expires_at: nil, institution_name: nil, metadata: nil, status_details: nil)
+        # @!method initialize(id:, config:, created_at:, label:, paykey:, source:, status:, updated_at:, balance: nil, bank_data: nil, customer_id: nil, expires_at: nil, external_id: nil, institution_name: nil, metadata: nil, status_details: nil)
         #   Some parameter documentations has been truncated, see
         #   {Straddle::Models::PaykeyV1::Data} for more details.
         #
@@ -153,6 +160,8 @@ module Straddle
         #
         #   @param expires_at [Time, nil] Expiration date and time of the paykey, if applicable.
         #
+        #   @param external_id [String, nil] Unique identifier for the paykey in your database, used for cross-referencing be
+        #
         #   @param institution_name [String, nil] Name of the financial institution.
         #
         #   @param metadata [Hash{Symbol=>String}, nil] Up to 20 additional user-defined key-value pairs. Useful for storing additional
@@ -161,13 +170,31 @@ module Straddle
 
         # @see Straddle::Models::PaykeyV1::Data#config
         class Config < Straddle::Internal::Type::BaseModel
+          # @!attribute processing_method
+          #
+          #   @return [Symbol, Straddle::Models::PaykeyV1::Data::Config::ProcessingMethod, nil]
+          optional :processing_method, enum: -> { Straddle::PaykeyV1::Data::Config::ProcessingMethod }
+
           # @!attribute sandbox_outcome
           #
           #   @return [Symbol, Straddle::Models::PaykeyV1::Data::Config::SandboxOutcome, nil]
           optional :sandbox_outcome, enum: -> { Straddle::PaykeyV1::Data::Config::SandboxOutcome }
 
-          # @!method initialize(sandbox_outcome: nil)
+          # @!method initialize(processing_method: nil, sandbox_outcome: nil)
+          #   @param processing_method [Symbol, Straddle::Models::PaykeyV1::Data::Config::ProcessingMethod]
           #   @param sandbox_outcome [Symbol, Straddle::Models::PaykeyV1::Data::Config::SandboxOutcome]
+
+          # @see Straddle::Models::PaykeyV1::Data::Config#processing_method
+          module ProcessingMethod
+            extend Straddle::Internal::Type::Enum
+
+            INLINE = :inline
+            BACKGROUND = :background
+            SKIP = :skip
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
 
           # @see Straddle::Models::PaykeyV1::Data::Config#sandbox_outcome
           module SandboxOutcome
@@ -176,6 +203,7 @@ module Straddle
             STANDARD = :standard
             ACTIVE = :active
             REJECTED = :rejected
+            REVIEW = :review
 
             # @!method self.values
             #   @return [Array<Symbol>]

@@ -15,6 +15,7 @@ module Straddle
             customer_id: String,
             routing_number: String,
             config: Straddle::Bridge::LinkBankAccountParams::Config::OrHash,
+            external_id: T.nilable(String),
             metadata: T.nilable(T::Hash[Symbol, String]),
             correlation_id: String,
             idempotency_key: String,
@@ -34,6 +35,9 @@ module Straddle
           routing_number:,
           # Body param:
           config: nil,
+          # Body param: Unique identifier for the paykey in your database, used for
+          # cross-referencing between Straddle and your systems.
+          external_id: nil,
           # Body param: Up to 20 additional user-defined key-value pairs. Useful for storing
           # additional information about the paykey in a structured format.
           metadata: nil,
@@ -59,6 +63,7 @@ module Straddle
             customer_id: String,
             quiltt_token: String,
             config: Straddle::Bridge::LinkCreatePaykeyParams::Config::OrHash,
+            external_id: T.nilable(String),
             metadata: T.nilable(T::Hash[Symbol, String]),
             correlation_id: String,
             idempotency_key: String,
@@ -75,6 +80,9 @@ module Straddle
           quiltt_token:,
           # Body param:
           config: nil,
+          # Body param: Unique identifier for the paykey in your database, used for
+          # cross-referencing between Straddle and your systems.
+          external_id: nil,
           # Body param: Up to 20 additional user-defined key-value pairs. Useful for storing
           # additional information about the paykey in a structured format.
           metadata: nil,
@@ -100,6 +108,7 @@ module Straddle
             routing_number: String,
             tan: String,
             config: Straddle::Bridge::LinkCreateTanParams::Config::OrHash,
+            external_id: T.nilable(String),
             metadata: T.nilable(T::Hash[Symbol, String]),
             correlation_id: String,
             idempotency_key: String,
@@ -119,6 +128,9 @@ module Straddle
           tan:,
           # Body param:
           config: nil,
+          # Body param: Unique identifier for the paykey in your database, used for
+          # cross-referencing between Straddle and your systems.
+          external_id: nil,
           # Body param: Up to 20 additional user-defined key-value pairs. Useful for storing
           # additional information about the paykey in a structured format.
           metadata: nil,
@@ -144,6 +156,7 @@ module Straddle
             customer_id: String,
             plaid_token: String,
             config: Straddle::Bridge::LinkPlaidParams::Config::OrHash,
+            external_id: T.nilable(String),
             metadata: T.nilable(T::Hash[Symbol, String]),
             correlation_id: String,
             idempotency_key: String,
@@ -160,6 +173,9 @@ module Straddle
           plaid_token:,
           # Body param:
           config: nil,
+          # Body param: Unique identifier for the paykey in your database, used for
+          # cross-referencing between Straddle and your systems.
+          external_id: nil,
           # Body param: Up to 20 additional user-defined key-value pairs. Useful for storing
           # additional information about the paykey in a structured format.
           metadata: nil,

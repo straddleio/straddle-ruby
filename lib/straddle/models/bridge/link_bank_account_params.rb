@@ -36,6 +36,13 @@ module Straddle
         #   @return [Straddle::Models::Bridge::LinkBankAccountParams::Config, nil]
         optional :config, -> { Straddle::Bridge::LinkBankAccountParams::Config }
 
+        # @!attribute external_id
+        #   Unique identifier for the paykey in your database, used for cross-referencing
+        #   between Straddle and your systems.
+        #
+        #   @return [String, nil]
+        optional :external_id, String, nil?: true
+
         # @!attribute metadata
         #   Up to 20 additional user-defined key-value pairs. Useful for storing additional
         #   information about the paykey in a structured format.
@@ -63,7 +70,7 @@ module Straddle
         #   @return [String, nil]
         optional :straddle_account_id, String
 
-        # @!method initialize(account_number:, account_type:, customer_id:, routing_number:, config: nil, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+        # @!method initialize(account_number:, account_type:, customer_id:, routing_number:, config: nil, external_id: nil, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Straddle::Models::Bridge::LinkBankAccountParams} for more details.
         #
@@ -76,6 +83,8 @@ module Straddle
         #   @param routing_number [String] The routing number of the bank account.
         #
         #   @param config [Straddle::Models::Bridge::LinkBankAccountParams::Config]
+        #
+        #   @param external_id [String, nil] Unique identifier for the paykey in your database, used for cross-referencing be
         #
         #   @param metadata [Hash{Symbol=>String}, nil] Up to 20 additional user-defined key-value pairs. Useful for storing additional
         #
@@ -100,13 +109,32 @@ module Straddle
         end
 
         class Config < Straddle::Internal::Type::BaseModel
+          # @!attribute processing_method
+          #
+          #   @return [Symbol, Straddle::Models::Bridge::LinkBankAccountParams::Config::ProcessingMethod, nil]
+          optional :processing_method,
+                   enum: -> { Straddle::Bridge::LinkBankAccountParams::Config::ProcessingMethod }
+
           # @!attribute sandbox_outcome
           #
           #   @return [Symbol, Straddle::Models::Bridge::LinkBankAccountParams::Config::SandboxOutcome, nil]
           optional :sandbox_outcome, enum: -> { Straddle::Bridge::LinkBankAccountParams::Config::SandboxOutcome }
 
-          # @!method initialize(sandbox_outcome: nil)
+          # @!method initialize(processing_method: nil, sandbox_outcome: nil)
+          #   @param processing_method [Symbol, Straddle::Models::Bridge::LinkBankAccountParams::Config::ProcessingMethod]
           #   @param sandbox_outcome [Symbol, Straddle::Models::Bridge::LinkBankAccountParams::Config::SandboxOutcome]
+
+          # @see Straddle::Models::Bridge::LinkBankAccountParams::Config#processing_method
+          module ProcessingMethod
+            extend Straddle::Internal::Type::Enum
+
+            INLINE = :inline
+            BACKGROUND = :background
+            SKIP = :skip
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
 
           # @see Straddle::Models::Bridge::LinkBankAccountParams::Config#sandbox_outcome
           module SandboxOutcome
@@ -115,6 +143,7 @@ module Straddle
             STANDARD = :standard
             ACTIVE = :active
             REJECTED = :rejected
+            REVIEW = :review
 
             # @!method self.values
             #   @return [Array<Symbol>]

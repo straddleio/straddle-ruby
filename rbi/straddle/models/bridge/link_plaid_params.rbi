@@ -32,6 +32,11 @@ module Straddle
         end
         attr_writer :config
 
+        # Unique identifier for the paykey in your database, used for cross-referencing
+        # between Straddle and your systems.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :external_id
+
         # Up to 20 additional user-defined key-value pairs. Useful for storing additional
         # information about the paykey in a structured format.
         sig { returns(T.nilable(T::Hash[Symbol, String])) }
@@ -66,6 +71,7 @@ module Straddle
             customer_id: String,
             plaid_token: String,
             config: Straddle::Bridge::LinkPlaidParams::Config::OrHash,
+            external_id: T.nilable(String),
             metadata: T.nilable(T::Hash[Symbol, String]),
             correlation_id: String,
             idempotency_key: String,
@@ -81,6 +87,9 @@ module Straddle
           # API.
           plaid_token:,
           config: nil,
+          # Unique identifier for the paykey in your database, used for cross-referencing
+          # between Straddle and your systems.
+          external_id: nil,
           # Up to 20 additional user-defined key-value pairs. Useful for storing additional
           # information about the paykey in a structured format.
           metadata: nil,
@@ -98,6 +107,7 @@ module Straddle
               customer_id: String,
               plaid_token: String,
               config: Straddle::Bridge::LinkPlaidParams::Config,
+              external_id: T.nilable(String),
               metadata: T.nilable(T::Hash[Symbol, String]),
               correlation_id: String,
               idempotency_key: String,
@@ -122,6 +132,23 @@ module Straddle
           sig do
             returns(
               T.nilable(
+                Straddle::Bridge::LinkPlaidParams::Config::ProcessingMethod::OrSymbol
+              )
+            )
+          end
+          attr_reader :processing_method
+
+          sig do
+            params(
+              processing_method:
+                Straddle::Bridge::LinkPlaidParams::Config::ProcessingMethod::OrSymbol
+            ).void
+          end
+          attr_writer :processing_method
+
+          sig do
+            returns(
+              T.nilable(
                 Straddle::Bridge::LinkPlaidParams::Config::SandboxOutcome::OrSymbol
               )
             )
@@ -138,22 +165,65 @@ module Straddle
 
           sig do
             params(
+              processing_method:
+                Straddle::Bridge::LinkPlaidParams::Config::ProcessingMethod::OrSymbol,
               sandbox_outcome:
                 Straddle::Bridge::LinkPlaidParams::Config::SandboxOutcome::OrSymbol
             ).returns(T.attached_class)
           end
-          def self.new(sandbox_outcome: nil)
+          def self.new(processing_method: nil, sandbox_outcome: nil)
           end
 
           sig do
             override.returns(
               {
+                processing_method:
+                  Straddle::Bridge::LinkPlaidParams::Config::ProcessingMethod::OrSymbol,
                 sandbox_outcome:
                   Straddle::Bridge::LinkPlaidParams::Config::SandboxOutcome::OrSymbol
               }
             )
           end
           def to_hash
+          end
+
+          module ProcessingMethod
+            extend Straddle::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Straddle::Bridge::LinkPlaidParams::Config::ProcessingMethod
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INLINE =
+              T.let(
+                :inline,
+                Straddle::Bridge::LinkPlaidParams::Config::ProcessingMethod::TaggedSymbol
+              )
+            BACKGROUND =
+              T.let(
+                :background,
+                Straddle::Bridge::LinkPlaidParams::Config::ProcessingMethod::TaggedSymbol
+              )
+            SKIP =
+              T.let(
+                :skip,
+                Straddle::Bridge::LinkPlaidParams::Config::ProcessingMethod::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Straddle::Bridge::LinkPlaidParams::Config::ProcessingMethod::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
 
           module SandboxOutcome
@@ -181,6 +251,11 @@ module Straddle
             REJECTED =
               T.let(
                 :rejected,
+                Straddle::Bridge::LinkPlaidParams::Config::SandboxOutcome::TaggedSymbol
+              )
+            REVIEW =
+              T.let(
+                :review,
                 Straddle::Bridge::LinkPlaidParams::Config::SandboxOutcome::TaggedSymbol
               )
 

@@ -65,6 +65,10 @@ module Straddle
       sig { params(page_size: Integer).void }
       attr_writer :page_size
 
+      # Search text.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :search_text
+
       # The field to sort the results by.
       sig do
         returns(T.nilable(Straddle::FundingEventListParams::SortBy::OrSymbol))
@@ -121,6 +125,7 @@ module Straddle
           event_type: Straddle::FundingEventListParams::EventType::OrSymbol,
           page_number: Integer,
           page_size: Integer,
+          search_text: T.nilable(String),
           sort_by: Straddle::FundingEventListParams::SortBy::OrSymbol,
           sort_order: Straddle::FundingEventListParams::SortOrder::OrSymbol,
           trace_number: T.nilable(String),
@@ -145,6 +150,8 @@ module Straddle
         page_number: nil,
         # Results page size. Max value: 1000
         page_size: nil,
+        # Search text.
+        search_text: nil,
         # The field to sort the results by.
         sort_by: nil,
         # The order in which to sort the results.
@@ -167,6 +174,7 @@ module Straddle
             event_type: Straddle::FundingEventListParams::EventType::OrSymbol,
             page_number: Integer,
             page_size: Integer,
+            search_text: T.nilable(String),
             sort_by: Straddle::FundingEventListParams::SortBy::OrSymbol,
             sort_order: Straddle::FundingEventListParams::SortOrder::OrSymbol,
             trace_number: T.nilable(String),

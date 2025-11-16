@@ -45,6 +45,12 @@ module Straddle
       #   @return [Integer, nil]
       optional :page_size, Integer
 
+      # @!attribute search_text
+      #   Search text.
+      #
+      #   @return [String, nil]
+      optional :search_text, String, nil?: true
+
       # @!attribute sort_by
       #   The field to sort the results by.
       #
@@ -78,7 +84,7 @@ module Straddle
       #   @return [String, nil]
       optional :straddle_account_id, String
 
-      # @!method initialize(created_from: nil, created_to: nil, direction: nil, event_type: nil, page_number: nil, page_size: nil, sort_by: nil, sort_order: nil, trace_number: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @!method initialize(created_from: nil, created_to: nil, direction: nil, event_type: nil, page_number: nil, page_size: nil, search_text: nil, sort_by: nil, sort_order: nil, trace_number: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Straddle::Models::FundingEventListParams} for more details.
       #
@@ -93,6 +99,8 @@ module Straddle
       #   @param page_number [Integer] Results page number. Starts at page 1.
       #
       #   @param page_size [Integer] Results page size. Max value: 1000
+      #
+      #   @param search_text [String, nil] Search text.
       #
       #   @param sort_by [Symbol, Straddle::Models::FundingEventListParams::SortBy] The field to sort the results by.
       #

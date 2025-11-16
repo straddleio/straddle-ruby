@@ -40,6 +40,7 @@ module Straddle
           payment_type: Straddle::Models::PaymentSummaryPagedV1::Data::payment_type,
           status: Straddle::Models::PaymentSummaryPagedV1::Data::status,
           status_details: Straddle::StatusDetailsV1,
+          trace_ids: ::Hash[Symbol, String],
           updated_at: Time,
           customer_details: Straddle::CustomerDetailsV1,
           effective_at: Time?,
@@ -72,6 +73,8 @@ module Straddle
 
         attr_accessor status_details: Straddle::StatusDetailsV1
 
+        attr_accessor trace_ids: ::Hash[Symbol, String]
+
         attr_accessor updated_at: Time
 
         attr_reader customer_details: Straddle::CustomerDetailsV1?
@@ -103,6 +106,7 @@ module Straddle
           payment_type: Straddle::Models::PaymentSummaryPagedV1::Data::payment_type,
           status: Straddle::Models::PaymentSummaryPagedV1::Data::status,
           status_details: Straddle::StatusDetailsV1,
+          trace_ids: ::Hash[Symbol, String],
           updated_at: Time,
           ?customer_details: Straddle::CustomerDetailsV1,
           ?effective_at: Time?,
@@ -123,6 +127,7 @@ module Straddle
           payment_type: Straddle::Models::PaymentSummaryPagedV1::Data::payment_type,
           status: Straddle::Models::PaymentSummaryPagedV1::Data::status,
           status_details: Straddle::StatusDetailsV1,
+          trace_ids: ::Hash[Symbol, String],
           updated_at: Time,
           customer_details: Straddle::CustomerDetailsV1,
           effective_at: Time?,

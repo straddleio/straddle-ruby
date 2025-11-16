@@ -48,6 +48,12 @@ module Straddle
         #   @return [Integer]
         required :amount, Integer
 
+        # @!attribute created_at
+        #   Created at.
+        #
+        #   @return [Time]
+        required :created_at, Time
+
         # @!attribute direction
         #   Describes the direction of the funding event from the perspective of the
         #   `linked_bank_account`.
@@ -68,6 +74,12 @@ module Straddle
         #   @return [Integer]
         required :payment_count, Integer
 
+        # @!attribute trace_ids
+        #   Trace Ids.
+        #
+        #   @return [Hash{Symbol=>String}]
+        required :trace_ids, Straddle::Internal::Type::HashOf[String]
+
         # @!attribute trace_numbers
         #   Trace number.
         #
@@ -82,13 +94,19 @@ module Straddle
         #   @return [Date]
         required :transfer_date, Date
 
+        # @!attribute updated_at
+        #   Updated at.
+        #
+        #   @return [Time]
+        required :updated_at, Time
+
         # @!attribute trace_number
         #   The trace number of the funding event.
         #
         #   @return [String, nil]
         optional :trace_number, String, nil?: true
 
-        # @!method initialize(id:, amount:, direction:, event_type:, payment_count:, trace_numbers:, transfer_date:, trace_number: nil)
+        # @!method initialize(id:, amount:, created_at:, direction:, event_type:, payment_count:, trace_ids:, trace_numbers:, transfer_date:, updated_at:, trace_number: nil)
         #   Some parameter documentations has been truncated, see
         #   {Straddle::Models::FundingEventSummaryPagedV1::Data} for more details.
         #
@@ -96,15 +114,21 @@ module Straddle
         #
         #   @param amount [Integer] The amount of the funding event in cents.
         #
+        #   @param created_at [Time] Created at.
+        #
         #   @param direction [Symbol, Straddle::Models::FundingEventSummaryPagedV1::Data::Direction] Describes the direction of the funding event from the perspective of the `linked
         #
         #   @param event_type [Symbol, Straddle::Models::FundingEventSummaryPagedV1::Data::EventType] The funding event types describes the direction and reason for the funding event
         #
         #   @param payment_count [Integer] The number of payments associated with the funding event.
         #
+        #   @param trace_ids [Hash{Symbol=>String}] Trace Ids.
+        #
         #   @param trace_numbers [Array<String>] Trace number.
         #
         #   @param transfer_date [Date] The date on which the funding event occurred. For `deposits` and `returns`, this
+        #
+        #   @param updated_at [Time] Updated at.
         #
         #   @param trace_number [String, nil] The trace number of the funding event.
 

@@ -11,6 +11,7 @@ module Straddle
         params(
           customer_id: String,
           config: Straddle::BridgeInitializeParams::Config::OrHash,
+          external_id: T.nilable(String),
           correlation_id: String,
           idempotency_key: String,
           request_id: String,
@@ -24,6 +25,9 @@ module Straddle
         customer_id:,
         # Body param:
         config: nil,
+        # Body param: Unique identifier for the paykey in your database, used for
+        # cross-referencing between Straddle and your systems.
+        external_id: nil,
         # Header param: Optional client generated identifier to trace and debug a series
         # of requests.
         correlation_id: nil,

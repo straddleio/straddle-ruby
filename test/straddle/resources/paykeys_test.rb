@@ -30,6 +30,7 @@ class Straddle::Test::Resources::PaykeysTest < Straddle::Test::ResourceTest
         bank_data: Straddle::PaykeySummaryPagedV1::Data::BankData | nil,
         customer_id: String | nil,
         expires_at: Time | nil,
+        external_id: String | nil,
         institution_name: String | nil,
         status_details: Straddle::PaykeySummaryPagedV1::Data::StatusDetails | nil
       }
