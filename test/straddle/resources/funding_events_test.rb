@@ -21,11 +21,14 @@ class Straddle::Test::Resources::FundingEventsTest < Straddle::Test::ResourceTes
       row => {
         id: String,
         amount: Integer,
+        created_at: Time,
         direction: Straddle::FundingEventSummaryPagedV1::Data::Direction,
         event_type: Straddle::FundingEventSummaryPagedV1::Data::EventType,
         payment_count: Integer,
+        trace_ids: ^(Straddle::Internal::Type::HashOf[String]),
         trace_numbers: ^(Straddle::Internal::Type::ArrayOf[String]),
         transfer_date: Date,
+        updated_at: Time,
         trace_number: String | nil
       }
     end

@@ -135,6 +135,11 @@ module Straddle
         sig { returns(T.nilable(Time)) }
         attr_accessor :expires_at
 
+        # Unique identifier for the paykey in your database, used for cross-referencing
+        # between Straddle and your systems.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :external_id
+
         # Name of the financial institution.
         sig { returns(T.nilable(String)) }
         attr_accessor :institution_name
@@ -171,6 +176,7 @@ module Straddle
             bank_data: Straddle::PaykeyUnmaskedV1::Data::BankData::OrHash,
             customer_id: T.nilable(String),
             expires_at: T.nilable(Time),
+            external_id: T.nilable(String),
             institution_name: T.nilable(String),
             metadata: T.nilable(T::Hash[Symbol, String]),
             status_details:
@@ -198,6 +204,9 @@ module Straddle
           customer_id: nil,
           # Expiration date and time of the paykey, if applicable.
           expires_at: nil,
+          # Unique identifier for the paykey in your database, used for cross-referencing
+          # between Straddle and your systems.
+          external_id: nil,
           # Name of the financial institution.
           institution_name: nil,
           # Up to 20 additional user-defined key-value pairs. Useful for storing additional
@@ -222,6 +231,7 @@ module Straddle
               bank_data: Straddle::PaykeyUnmaskedV1::Data::BankData,
               customer_id: T.nilable(String),
               expires_at: T.nilable(Time),
+              external_id: T.nilable(String),
               institution_name: T.nilable(String),
               metadata: T.nilable(T::Hash[Symbol, String]),
               status_details: Straddle::PaykeyUnmaskedV1::Data::StatusDetails
@@ -243,6 +253,23 @@ module Straddle
           sig do
             returns(
               T.nilable(
+                Straddle::PaykeyUnmaskedV1::Data::Config::ProcessingMethod::TaggedSymbol
+              )
+            )
+          end
+          attr_reader :processing_method
+
+          sig do
+            params(
+              processing_method:
+                Straddle::PaykeyUnmaskedV1::Data::Config::ProcessingMethod::OrSymbol
+            ).void
+          end
+          attr_writer :processing_method
+
+          sig do
+            returns(
+              T.nilable(
                 Straddle::PaykeyUnmaskedV1::Data::Config::SandboxOutcome::TaggedSymbol
               )
             )
@@ -259,22 +286,65 @@ module Straddle
 
           sig do
             params(
+              processing_method:
+                Straddle::PaykeyUnmaskedV1::Data::Config::ProcessingMethod::OrSymbol,
               sandbox_outcome:
                 Straddle::PaykeyUnmaskedV1::Data::Config::SandboxOutcome::OrSymbol
             ).returns(T.attached_class)
           end
-          def self.new(sandbox_outcome: nil)
+          def self.new(processing_method: nil, sandbox_outcome: nil)
           end
 
           sig do
             override.returns(
               {
+                processing_method:
+                  Straddle::PaykeyUnmaskedV1::Data::Config::ProcessingMethod::TaggedSymbol,
                 sandbox_outcome:
                   Straddle::PaykeyUnmaskedV1::Data::Config::SandboxOutcome::TaggedSymbol
               }
             )
           end
           def to_hash
+          end
+
+          module ProcessingMethod
+            extend Straddle::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Straddle::PaykeyUnmaskedV1::Data::Config::ProcessingMethod
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INLINE =
+              T.let(
+                :inline,
+                Straddle::PaykeyUnmaskedV1::Data::Config::ProcessingMethod::TaggedSymbol
+              )
+            BACKGROUND =
+              T.let(
+                :background,
+                Straddle::PaykeyUnmaskedV1::Data::Config::ProcessingMethod::TaggedSymbol
+              )
+            SKIP =
+              T.let(
+                :skip,
+                Straddle::PaykeyUnmaskedV1::Data::Config::ProcessingMethod::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Straddle::PaykeyUnmaskedV1::Data::Config::ProcessingMethod::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
 
           module SandboxOutcome
@@ -302,6 +372,11 @@ module Straddle
             REJECTED =
               T.let(
                 :rejected,
+                Straddle::PaykeyUnmaskedV1::Data::Config::SandboxOutcome::TaggedSymbol
+              )
+            REVIEW =
+              T.let(
+                :review,
                 Straddle::PaykeyUnmaskedV1::Data::Config::SandboxOutcome::TaggedSymbol
               )
 

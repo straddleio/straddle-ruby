@@ -30,11 +30,14 @@ module Straddle
         {
           id: String,
           amount: Integer,
+          created_at: Time,
           direction: Straddle::Models::FundingEventSummaryPagedV1::Data::direction,
           event_type: Straddle::Models::FundingEventSummaryPagedV1::Data::event_type,
           payment_count: Integer,
+          trace_ids: ::Hash[Symbol, String],
           trace_numbers: ::Array[String],
           transfer_date: Date,
+          updated_at: Time,
           trace_number: String?
         }
 
@@ -43,37 +46,49 @@ module Straddle
 
         attr_accessor amount: Integer
 
+        attr_accessor created_at: Time
+
         attr_accessor direction: Straddle::Models::FundingEventSummaryPagedV1::Data::direction
 
         attr_accessor event_type: Straddle::Models::FundingEventSummaryPagedV1::Data::event_type
 
         attr_accessor payment_count: Integer
 
+        attr_accessor trace_ids: ::Hash[Symbol, String]
+
         attr_accessor trace_numbers: ::Array[String]
 
         attr_accessor transfer_date: Date
+
+        attr_accessor updated_at: Time
 
         attr_accessor trace_number: String?
 
         def initialize: (
           id: String,
           amount: Integer,
+          created_at: Time,
           direction: Straddle::Models::FundingEventSummaryPagedV1::Data::direction,
           event_type: Straddle::Models::FundingEventSummaryPagedV1::Data::event_type,
           payment_count: Integer,
+          trace_ids: ::Hash[Symbol, String],
           trace_numbers: ::Array[String],
           transfer_date: Date,
+          updated_at: Time,
           ?trace_number: String?
         ) -> void
 
         def to_hash: -> {
           id: String,
           amount: Integer,
+          created_at: Time,
           direction: Straddle::Models::FundingEventSummaryPagedV1::Data::direction,
           event_type: Straddle::Models::FundingEventSummaryPagedV1::Data::event_type,
           payment_count: Integer,
+          trace_ids: ::Hash[Symbol, String],
           trace_numbers: ::Array[String],
           transfer_date: Date,
+          updated_at: Time,
           trace_number: String?
         }
 

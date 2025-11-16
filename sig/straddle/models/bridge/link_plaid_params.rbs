@@ -6,6 +6,7 @@ module Straddle
           customer_id: String,
           plaid_token: String,
           config: Straddle::Bridge::LinkPlaidParams::Config,
+          external_id: String?,
           metadata: ::Hash[Symbol, String]?,
           correlation_id: String,
           idempotency_key: String,
@@ -27,6 +28,8 @@ module Straddle
         def config=: (
           Straddle::Bridge::LinkPlaidParams::Config
         ) -> Straddle::Bridge::LinkPlaidParams::Config
+
+        attr_accessor external_id: String?
 
         attr_accessor metadata: ::Hash[Symbol, String]?
 
@@ -50,6 +53,7 @@ module Straddle
           customer_id: String,
           plaid_token: String,
           ?config: Straddle::Bridge::LinkPlaidParams::Config,
+          ?external_id: String?,
           ?metadata: ::Hash[Symbol, String]?,
           ?correlation_id: String,
           ?idempotency_key: String,
@@ -62,6 +66,7 @@ module Straddle
           customer_id: String,
           plaid_token: String,
           config: Straddle::Bridge::LinkPlaidParams::Config,
+          external_id: String?,
           metadata: ::Hash[Symbol, String]?,
           correlation_id: String,
           idempotency_key: String,
@@ -72,10 +77,17 @@ module Straddle
 
         type config =
           {
+            processing_method: Straddle::Models::Bridge::LinkPlaidParams::Config::processing_method,
             sandbox_outcome: Straddle::Models::Bridge::LinkPlaidParams::Config::sandbox_outcome
           }
 
         class Config < Straddle::Internal::Type::BaseModel
+          attr_reader processing_method: Straddle::Models::Bridge::LinkPlaidParams::Config::processing_method?
+
+          def processing_method=: (
+            Straddle::Models::Bridge::LinkPlaidParams::Config::processing_method
+          ) -> Straddle::Models::Bridge::LinkPlaidParams::Config::processing_method
+
           attr_reader sandbox_outcome: Straddle::Models::Bridge::LinkPlaidParams::Config::sandbox_outcome?
 
           def sandbox_outcome=: (
@@ -83,14 +95,28 @@ module Straddle
           ) -> Straddle::Models::Bridge::LinkPlaidParams::Config::sandbox_outcome
 
           def initialize: (
+            ?processing_method: Straddle::Models::Bridge::LinkPlaidParams::Config::processing_method,
             ?sandbox_outcome: Straddle::Models::Bridge::LinkPlaidParams::Config::sandbox_outcome
           ) -> void
 
           def to_hash: -> {
+            processing_method: Straddle::Models::Bridge::LinkPlaidParams::Config::processing_method,
             sandbox_outcome: Straddle::Models::Bridge::LinkPlaidParams::Config::sandbox_outcome
           }
 
-          type sandbox_outcome = :standard | :active | :rejected
+          type processing_method = :inline | :background | :skip
+
+          module ProcessingMethod
+            extend Straddle::Internal::Type::Enum
+
+            INLINE: :inline
+            BACKGROUND: :background
+            SKIP: :skip
+
+            def self?.values: -> ::Array[Straddle::Models::Bridge::LinkPlaidParams::Config::processing_method]
+          end
+
+          type sandbox_outcome = :standard | :active | :rejected | :review
 
           module SandboxOutcome
             extend Straddle::Internal::Type::Enum
@@ -98,6 +124,7 @@ module Straddle
             STANDARD: :standard
             ACTIVE: :active
             REJECTED: :rejected
+            REVIEW: :review
 
             def self?.values: -> ::Array[Straddle::Models::Bridge::LinkPlaidParams::Config::sandbox_outcome]
           end

@@ -31,6 +31,7 @@ class Straddle::Test::Resources::PaymentsTest < Straddle::Test::ResourceTest
         payment_type: Straddle::PaymentSummaryPagedV1::Data::PaymentType,
         status: Straddle::PaymentSummaryPagedV1::Data::Status,
         status_details: Straddle::StatusDetailsV1,
+        trace_ids: ^(Straddle::Internal::Type::HashOf[String]),
         updated_at: Time,
         customer_details: Straddle::CustomerDetailsV1 | nil,
         effective_at: Time | nil,

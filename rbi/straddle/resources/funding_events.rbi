@@ -13,6 +13,7 @@ module Straddle
           event_type: Straddle::FundingEventListParams::EventType::OrSymbol,
           page_number: Integer,
           page_size: Integer,
+          search_text: T.nilable(String),
           sort_by: Straddle::FundingEventListParams::SortBy::OrSymbol,
           sort_order: Straddle::FundingEventListParams::SortOrder::OrSymbol,
           trace_number: T.nilable(String),
@@ -43,6 +44,8 @@ module Straddle
         page_number: nil,
         # Query param: Results page size. Max value: 1000
         page_size: nil,
+        # Query param: Search text.
+        search_text: nil,
         # Query param: The field to sort the results by.
         sort_by: nil,
         # Query param: The order in which to sort the results.

@@ -11,11 +11,13 @@ module Straddle
       #
       # Use this endpoint to generate a session token for use in the Bridge widget.
       #
-      # @overload initialize_(customer_id:, config: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @overload initialize_(customer_id:, config: nil, external_id: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
       # @param customer_id [String] Body param: The Straddle generated unique identifier of the `customer` to create
       #
       # @param config [Straddle::Models::BridgeInitializeParams::Config] Body param:
+      #
+      # @param external_id [String, nil] Body param: Unique identifier for the paykey in your database, used for cross-re
       #
       # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
       #
