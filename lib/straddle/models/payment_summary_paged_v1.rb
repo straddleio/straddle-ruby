@@ -111,6 +111,12 @@ module Straddle
         #   @return [Straddle::Models::StatusDetailsV1]
         required :status_details, -> { Straddle::StatusDetailsV1 }
 
+        # @!attribute trace_ids
+        #   Trace ids.
+        #
+        #   @return [Hash{Symbol=>String}]
+        required :trace_ids, Straddle::Internal::Type::HashOf[String]
+
         # @!attribute updated_at
         #   The time the `charge` or `payout` was last updated.
         #
@@ -144,7 +150,7 @@ module Straddle
         #   @return [Straddle::Models::PaykeyDetailsV1, nil]
         optional :paykey_details, -> { Straddle::PaykeyDetailsV1 }
 
-        # @!method initialize(id:, amount:, created_at:, currency:, description:, external_id:, funding_ids:, paykey:, payment_date:, payment_type:, status:, status_details:, updated_at:, customer_details: nil, effective_at: nil, funding_id: nil, paykey_details: nil)
+        # @!method initialize(id:, amount:, created_at:, currency:, description:, external_id:, funding_ids:, paykey:, payment_date:, payment_type:, status:, status_details:, trace_ids:, updated_at:, customer_details: nil, effective_at: nil, funding_id: nil, paykey_details: nil)
         #   Some parameter documentations has been truncated, see
         #   {Straddle::Models::PaymentSummaryPagedV1::Data} for more details.
         #
@@ -171,6 +177,8 @@ module Straddle
         #   @param status [Symbol, Straddle::Models::PaymentSummaryPagedV1::Data::Status] The current status of the `charge` or `payout`.
         #
         #   @param status_details [Straddle::Models::StatusDetailsV1] Details about the current status of the `charge` or `payout`.
+        #
+        #   @param trace_ids [Hash{Symbol=>String}] Trace ids.
         #
         #   @param updated_at [Time] The time the `charge` or `payout` was last updated.
         #

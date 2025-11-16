@@ -6,6 +6,7 @@ module Straddle
       def initialize_: (
         customer_id: String,
         ?config: Straddle::BridgeInitializeParams::Config,
+        ?external_id: String?,
         ?correlation_id: String,
         ?idempotency_key: String,
         ?request_id: String,

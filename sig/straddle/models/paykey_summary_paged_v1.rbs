@@ -39,6 +39,7 @@ module Straddle
           bank_data: Straddle::PaykeySummaryPagedV1::Data::BankData,
           customer_id: String?,
           expires_at: Time?,
+          external_id: String?,
           institution_name: String?,
           status_details: Straddle::PaykeySummaryPagedV1::Data::StatusDetails
         }
@@ -70,6 +71,8 @@ module Straddle
 
         attr_accessor expires_at: Time?
 
+        attr_accessor external_id: String?
+
         attr_accessor institution_name: String?
 
         attr_reader status_details: Straddle::PaykeySummaryPagedV1::Data::StatusDetails?
@@ -90,6 +93,7 @@ module Straddle
           ?bank_data: Straddle::PaykeySummaryPagedV1::Data::BankData,
           ?customer_id: String?,
           ?expires_at: Time?,
+          ?external_id: String?,
           ?institution_name: String?,
           ?status_details: Straddle::PaykeySummaryPagedV1::Data::StatusDetails
         ) -> void
@@ -106,16 +110,24 @@ module Straddle
           bank_data: Straddle::PaykeySummaryPagedV1::Data::BankData,
           customer_id: String?,
           expires_at: Time?,
+          external_id: String?,
           institution_name: String?,
           status_details: Straddle::PaykeySummaryPagedV1::Data::StatusDetails
         }
 
         type config =
           {
+            processing_method: Straddle::Models::PaykeySummaryPagedV1::Data::Config::processing_method,
             sandbox_outcome: Straddle::Models::PaykeySummaryPagedV1::Data::Config::sandbox_outcome
           }
 
         class Config < Straddle::Internal::Type::BaseModel
+          attr_reader processing_method: Straddle::Models::PaykeySummaryPagedV1::Data::Config::processing_method?
+
+          def processing_method=: (
+            Straddle::Models::PaykeySummaryPagedV1::Data::Config::processing_method
+          ) -> Straddle::Models::PaykeySummaryPagedV1::Data::Config::processing_method
+
           attr_reader sandbox_outcome: Straddle::Models::PaykeySummaryPagedV1::Data::Config::sandbox_outcome?
 
           def sandbox_outcome=: (
@@ -123,14 +135,28 @@ module Straddle
           ) -> Straddle::Models::PaykeySummaryPagedV1::Data::Config::sandbox_outcome
 
           def initialize: (
+            ?processing_method: Straddle::Models::PaykeySummaryPagedV1::Data::Config::processing_method,
             ?sandbox_outcome: Straddle::Models::PaykeySummaryPagedV1::Data::Config::sandbox_outcome
           ) -> void
 
           def to_hash: -> {
+            processing_method: Straddle::Models::PaykeySummaryPagedV1::Data::Config::processing_method,
             sandbox_outcome: Straddle::Models::PaykeySummaryPagedV1::Data::Config::sandbox_outcome
           }
 
-          type sandbox_outcome = :standard | :active | :rejected
+          type processing_method = :inline | :background | :skip
+
+          module ProcessingMethod
+            extend Straddle::Internal::Type::Enum
+
+            INLINE: :inline
+            BACKGROUND: :background
+            SKIP: :skip
+
+            def self?.values: -> ::Array[Straddle::Models::PaykeySummaryPagedV1::Data::Config::processing_method]
+          end
+
+          type sandbox_outcome = :standard | :active | :rejected | :review
 
           module SandboxOutcome
             extend Straddle::Internal::Type::Enum
@@ -138,6 +164,7 @@ module Straddle
             STANDARD: :standard
             ACTIVE: :active
             REJECTED: :rejected
+            REVIEW: :review
 
             def self?.values: -> ::Array[Straddle::Models::PaykeySummaryPagedV1::Data::Config::sandbox_outcome]
           end

@@ -8,6 +8,7 @@ module Straddle
         ?event_type: Straddle::Models::FundingEventListParams::event_type,
         ?page_number: Integer,
         ?page_size: Integer,
+        ?search_text: String?,
         ?sort_by: Straddle::Models::FundingEventListParams::sort_by,
         ?sort_order: Straddle::Models::FundingEventListParams::sort_order,
         ?trace_number: String?,

@@ -132,6 +132,10 @@ module Straddle
         sig { params(status_details: Straddle::StatusDetailsV1::OrHash).void }
         attr_writer :status_details
 
+        # Trace ids.
+        sig { returns(T::Hash[Symbol, String]) }
+        attr_accessor :trace_ids
+
         # The time the `charge` or `payout` was last updated.
         sig { returns(Time) }
         attr_accessor :updated_at
@@ -178,6 +182,7 @@ module Straddle
               Straddle::PaymentSummaryPagedV1::Data::PaymentType::OrSymbol,
             status: Straddle::PaymentSummaryPagedV1::Data::Status::OrSymbol,
             status_details: Straddle::StatusDetailsV1::OrHash,
+            trace_ids: T::Hash[Symbol, String],
             updated_at: Time,
             customer_details: Straddle::CustomerDetailsV1::OrHash,
             effective_at: T.nilable(Time),
@@ -213,6 +218,8 @@ module Straddle
           status:,
           # Details about the current status of the `charge` or `payout`.
           status_details:,
+          # Trace ids.
+          trace_ids:,
           # The time the `charge` or `payout` was last updated.
           updated_at:,
           # Information about the customer associated with the charge or payout.
@@ -246,6 +253,7 @@ module Straddle
               status:
                 Straddle::PaymentSummaryPagedV1::Data::Status::TaggedSymbol,
               status_details: Straddle::StatusDetailsV1,
+              trace_ids: T::Hash[Symbol, String],
               updated_at: Time,
               customer_details: Straddle::CustomerDetailsV1,
               effective_at: T.nilable(Time),

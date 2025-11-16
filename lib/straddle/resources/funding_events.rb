@@ -9,7 +9,7 @@ module Straddle
       # Retrieves a list of funding events for your account. This endpoint supports
       # advanced sorting and filtering options.
       #
-      # @overload list(created_from: nil, created_to: nil, direction: nil, event_type: nil, page_number: nil, page_size: nil, sort_by: nil, sort_order: nil, trace_number: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @overload list(created_from: nil, created_to: nil, direction: nil, event_type: nil, page_number: nil, page_size: nil, search_text: nil, sort_by: nil, sort_order: nil, trace_number: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
       # @param created_from [Date, nil] Query param: The start date of the range to filter by using the `YYYY-MM-DD` for
       #
@@ -22,6 +22,8 @@ module Straddle
       # @param page_number [Integer] Query param: Results page number. Starts at page 1.
       #
       # @param page_size [Integer] Query param: Results page size. Max value: 1000
+      #
+      # @param search_text [String, nil] Query param: Search text.
       #
       # @param sort_by [Symbol, Straddle::Models::FundingEventListParams::SortBy] Query param: The field to sort the results by.
       #
@@ -50,6 +52,7 @@ module Straddle
             :event_type,
             :page_number,
             :page_size,
+            :search_text,
             :sort_by,
             :sort_order,
             :trace_number

@@ -88,6 +88,10 @@ module Straddle
         sig { returns(Integer) }
         attr_accessor :amount
 
+        # Created at.
+        sig { returns(Time) }
+        attr_accessor :created_at
+
         # Describes the direction of the funding event from the perspective of the
         # `linked_bank_account`.
         sig do
@@ -110,6 +114,10 @@ module Straddle
         sig { returns(Integer) }
         attr_accessor :payment_count
 
+        # Trace Ids.
+        sig { returns(T::Hash[Symbol, String]) }
+        attr_accessor :trace_ids
+
         # Trace number.
         sig { returns(T::Array[String]) }
         attr_accessor :trace_numbers
@@ -120,6 +128,10 @@ module Straddle
         sig { returns(Date) }
         attr_accessor :transfer_date
 
+        # Updated at.
+        sig { returns(Time) }
+        attr_accessor :updated_at
+
         # The trace number of the funding event.
         sig { returns(T.nilable(String)) }
         attr_accessor :trace_number
@@ -128,13 +140,16 @@ module Straddle
           params(
             id: String,
             amount: Integer,
+            created_at: Time,
             direction:
               Straddle::FundingEventSummaryPagedV1::Data::Direction::OrSymbol,
             event_type:
               Straddle::FundingEventSummaryPagedV1::Data::EventType::OrSymbol,
             payment_count: Integer,
+            trace_ids: T::Hash[Symbol, String],
             trace_numbers: T::Array[String],
             transfer_date: Date,
+            updated_at: Time,
             trace_number: T.nilable(String)
           ).returns(T.attached_class)
         end
@@ -143,6 +158,8 @@ module Straddle
           id:,
           # The amount of the funding event in cents.
           amount:,
+          # Created at.
+          created_at:,
           # Describes the direction of the funding event from the perspective of the
           # `linked_bank_account`.
           direction:,
@@ -151,12 +168,16 @@ module Straddle
           event_type:,
           # The number of payments associated with the funding event.
           payment_count:,
+          # Trace Ids.
+          trace_ids:,
           # Trace number.
           trace_numbers:,
           # The date on which the funding event occurred. For `deposits` and `returns`, this
           # is the date the funds were credited to your bank account. For `withdrawals` and
           # `reversals`, this is the date the funds were debited from your bank account.
           transfer_date:,
+          # Updated at.
+          updated_at:,
           # The trace number of the funding event.
           trace_number: nil
         )
@@ -167,13 +188,16 @@ module Straddle
             {
               id: String,
               amount: Integer,
+              created_at: Time,
               direction:
                 Straddle::FundingEventSummaryPagedV1::Data::Direction::TaggedSymbol,
               event_type:
                 Straddle::FundingEventSummaryPagedV1::Data::EventType::TaggedSymbol,
               payment_count: Integer,
+              trace_ids: T::Hash[Symbol, String],
               trace_numbers: T::Array[String],
               transfer_date: Date,
+              updated_at: Time,
               trace_number: T.nilable(String)
             }
           )

@@ -24,6 +24,11 @@ module Straddle
       end
       attr_writer :config
 
+      # Unique identifier for the paykey in your database, used for cross-referencing
+      # between Straddle and your systems.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :external_id
+
       sig { returns(T.nilable(String)) }
       attr_reader :correlation_id
 
@@ -52,6 +57,7 @@ module Straddle
         params(
           customer_id: String,
           config: Straddle::BridgeInitializeParams::Config::OrHash,
+          external_id: T.nilable(String),
           correlation_id: String,
           idempotency_key: String,
           request_id: String,
@@ -64,6 +70,9 @@ module Straddle
         # token for.
         customer_id:,
         config: nil,
+        # Unique identifier for the paykey in your database, used for cross-referencing
+        # between Straddle and your systems.
+        external_id: nil,
         correlation_id: nil,
         idempotency_key: nil,
         request_id: nil,
@@ -77,6 +86,7 @@ module Straddle
           {
             customer_id: String,
             config: Straddle::BridgeInitializeParams::Config,
+            external_id: T.nilable(String),
             correlation_id: String,
             idempotency_key: String,
             request_id: String,
@@ -100,6 +110,23 @@ module Straddle
         sig do
           returns(
             T.nilable(
+              Straddle::BridgeInitializeParams::Config::ProcessingMethod::OrSymbol
+            )
+          )
+        end
+        attr_reader :processing_method
+
+        sig do
+          params(
+            processing_method:
+              Straddle::BridgeInitializeParams::Config::ProcessingMethod::OrSymbol
+          ).void
+        end
+        attr_writer :processing_method
+
+        sig do
+          returns(
+            T.nilable(
               Straddle::BridgeInitializeParams::Config::SandboxOutcome::OrSymbol
             )
           )
@@ -116,22 +143,65 @@ module Straddle
 
         sig do
           params(
+            processing_method:
+              Straddle::BridgeInitializeParams::Config::ProcessingMethod::OrSymbol,
             sandbox_outcome:
               Straddle::BridgeInitializeParams::Config::SandboxOutcome::OrSymbol
           ).returns(T.attached_class)
         end
-        def self.new(sandbox_outcome: nil)
+        def self.new(processing_method: nil, sandbox_outcome: nil)
         end
 
         sig do
           override.returns(
             {
+              processing_method:
+                Straddle::BridgeInitializeParams::Config::ProcessingMethod::OrSymbol,
               sandbox_outcome:
                 Straddle::BridgeInitializeParams::Config::SandboxOutcome::OrSymbol
             }
           )
         end
         def to_hash
+        end
+
+        module ProcessingMethod
+          extend Straddle::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Straddle::BridgeInitializeParams::Config::ProcessingMethod
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          INLINE =
+            T.let(
+              :inline,
+              Straddle::BridgeInitializeParams::Config::ProcessingMethod::TaggedSymbol
+            )
+          BACKGROUND =
+            T.let(
+              :background,
+              Straddle::BridgeInitializeParams::Config::ProcessingMethod::TaggedSymbol
+            )
+          SKIP =
+            T.let(
+              :skip,
+              Straddle::BridgeInitializeParams::Config::ProcessingMethod::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Straddle::BridgeInitializeParams::Config::ProcessingMethod::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         module SandboxOutcome
@@ -159,6 +229,11 @@ module Straddle
           REJECTED =
             T.let(
               :rejected,
+              Straddle::BridgeInitializeParams::Config::SandboxOutcome::TaggedSymbol
+            )
+          REVIEW =
+            T.let(
+              :review,
               Straddle::BridgeInitializeParams::Config::SandboxOutcome::TaggedSymbol
             )
 

@@ -100,7 +100,7 @@ module Straddle
         # recently created appearing first. This endpoint supports pagination to handle
         # accounts with multiple linked bank accounts.
         #
-        # @overload list(account_id: nil, level: nil, page_number: nil, page_size: nil, sort_by: nil, sort_order: nil, correlation_id: nil, request_id: nil, request_options: {})
+        # @overload list(account_id: nil, level: nil, page_number: nil, page_size: nil, purpose: nil, sort_by: nil, sort_order: nil, status: nil, correlation_id: nil, request_id: nil, request_options: {})
         #
         # @param account_id [String] Query param: The unique identifier of the related account.
         #
@@ -110,9 +110,13 @@ module Straddle
         #
         # @param page_size [Integer] Query param: Page size. Max value: 1000
         #
+        # @param purpose [Symbol, Straddle::Models::Embed::LinkedBankAccountListParams::Purpose] Query param: The purpose of the linked bank accounts to return. Possible values:
+        #
         # @param sort_by [String] Query param: Sort By.
         #
         # @param sort_order [Symbol, Straddle::Models::Embed::LinkedBankAccountListParams::SortOrder] Query param: Sort Order.
+        #
+        # @param status [Symbol, Straddle::Models::Embed::LinkedBankAccountListParams::Status] Query param: The status of the linked bank accounts to return. Possible values:
         #
         # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
         #
@@ -125,7 +129,16 @@ module Straddle
         # @see Straddle::Models::Embed::LinkedBankAccountListParams
         def list(params = {})
           parsed, options = Straddle::Embed::LinkedBankAccountListParams.dump_request(params)
-          query_params = [:account_id, :level, :page_number, :page_size, :sort_by, :sort_order]
+          query_params = [
+            :account_id,
+            :level,
+            :page_number,
+            :page_size,
+            :purpose,
+            :sort_by,
+            :sort_order,
+            :status
+          ]
           @client.request(
             method: :get,
             path: "v1/linked_bank_accounts",
