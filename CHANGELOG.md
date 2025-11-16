@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.3.0 (2025-11-16)
+
+Full Changelog: [v0.2.0...v0.3.0](https://github.com/straddleio/straddle-ruby/compare/v0.2.0...v0.3.0)
+
+### Features
+
+* **api:** manual updates ([c048e53](https://github.com/straddleio/straddle-ruby/commit/c048e539bb7e3851302e4ddbd166a58fb593a52b))
+* **docs:** Preliminary update to SDK Spec ([8d573e9](https://github.com/straddleio/straddle-ruby/commit/8d573e9c1d39e407dae8a1ec8cc716c0e86a8b46))
+* handle thread interrupts in the core HTTP client ([0e8ff22](https://github.com/straddleio/straddle-ruby/commit/0e8ff229d3f4e5bb905f807338896f8999cc1f44))
+
+
+### Bug Fixes
+
+* absolutely qualified uris should always override the default ([9ec59a0](https://github.com/straddleio/straddle-ruby/commit/9ec59a081f213bbef52a0deb0e05229f047ec4b3))
+* better thread safety via early initializing SSL store during HTTP client creation ([44dd717](https://github.com/straddleio/straddle-ruby/commit/44dd7179fdf7a912e6c0df4016cd7976ceaaa3f9))
+* should not reuse buffers for `IO.copy_stream` interop ([ab1134b](https://github.com/straddleio/straddle-ruby/commit/ab1134bebd96319b18959ef961f303b7fa92cf18))
+
+
+### Chores
+
+* bump dependency version and update sorbet types ([19ed027](https://github.com/straddleio/straddle-ruby/commit/19ed0274aeb5f8303d0170817a1520591c6e484b))
+* ignore linter error for tests having large collections ([bc64eef](https://github.com/straddleio/straddle-ruby/commit/bc64eefa88be0777031542098b605f2677a8c29f))
+
 ## 0.2.0 (2025-10-08)
 
 Full Changelog: [v0.1.1...v0.2.0](https://github.com/straddleio/straddle-ruby/compare/v0.1.1...v0.2.0)
