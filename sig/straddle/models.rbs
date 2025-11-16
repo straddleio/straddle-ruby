@@ -33,8 +33,6 @@ module Straddle
 
   class CustomerListParams = Straddle::Models::CustomerListParams
 
-  class CustomerRefreshReviewParams = Straddle::Models::CustomerRefreshReviewParams
-
   module Customers = Straddle::Models::Customers
 
   class CustomerSummaryPagedV1 = Straddle::Models::CustomerSummaryPagedV1
@@ -73,13 +71,15 @@ module Straddle
 
   class PaykeyRevealParams = Straddle::Models::PaykeyRevealParams
 
-  class PaykeyReviewParams = Straddle::Models::PaykeyReviewParams
+  module Paykeys = Straddle::Models::Paykeys
 
   class PaykeySummaryPagedV1 = Straddle::Models::PaykeySummaryPagedV1
 
   class PaykeyUnmaskedParams = Straddle::Models::PaykeyUnmaskedParams
 
   class PaykeyUnmaskedV1 = Straddle::Models::PaykeyUnmaskedV1
+
+  class PaykeyUpdateBalanceParams = Straddle::Models::PaykeyUpdateBalanceParams
 
   class PaykeyV1 = Straddle::Models::PaykeyV1
 

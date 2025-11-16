@@ -3,6 +3,9 @@
 module Straddle
   module Resources
     class Paykeys
+      # @return [Straddle::Resources::Paykeys::Review]
+      attr_reader :review
+
       # Some parameter documentations has been truncated, see
       # {Straddle::Models::PaykeyListParams} for more details.
       #
@@ -164,49 +167,6 @@ module Straddle
         )
       end
 
-      # Some parameter documentations has been truncated, see
-      # {Straddle::Models::PaykeyReviewParams} for more details.
-      #
-      # Update the status of a paykey when in review status
-      #
-      # @overload review(id, status:, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
-      #
-      # @param id [String] Path param:
-      #
-      # @param status [Symbol, Straddle::Models::PaykeyReviewParams::Status] Body param:
-      #
-      # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
-      #
-      # @param idempotency_key [String] Header param: Optional client generated value to use for idempotent requests.
-      #
-      # @param request_id [String] Header param: Optional client generated identifier to trace and debug a request.
-      #
-      # @param straddle_account_id [String] Header param: For use by platforms to specify an account id and set scope of a r
-      #
-      # @param request_options [Straddle::RequestOptions, Hash{Symbol=>Object}, nil]
-      #
-      # @return [Straddle::Models::PaykeyV1]
-      #
-      # @see Straddle::Models::PaykeyReviewParams
-      def review(id, params)
-        parsed, options = Straddle::PaykeyReviewParams.dump_request(params)
-        header_params =
-          {
-            correlation_id: "correlation-id",
-            idempotency_key: "idempotency-key",
-            request_id: "request-id",
-            straddle_account_id: "straddle-account-id"
-          }
-        @client.request(
-          method: :patch,
-          path: ["v1/paykeys/%1$s/review", id],
-          headers: parsed.slice(*header_params.keys).transform_keys(header_params),
-          body: parsed.except(*header_params.keys),
-          model: Straddle::PaykeyV1,
-          options: options
-        )
-      end
-
       # Retrieves the unmasked details of an existing paykey. Supply the unique paykey
       # `id` and Straddle will return the corresponding paykey record, including the
       # unmasked bank account details. This endpoint needs to be enabled by Straddle for
@@ -242,11 +202,48 @@ module Straddle
         )
       end
 
+      # Updates the balance of a paykey. This endpoint allows you to refresh the balance
+      # of a paykey.
+      #
+      # @overload update_balance(id, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      #
+      # @param id [String]
+      #
+      # @param correlation_id [String] Optional client generated identifier to trace and debug a series of requests.
+      #
+      # @param idempotency_key [String] Optional client generated value to use for idempotent requests.
+      #
+      # @param request_id [String] Optional client generated identifier to trace and debug a request.
+      #
+      # @param straddle_account_id [String] For use by platforms to specify an account id and set scope of a request.
+      #
+      # @param request_options [Straddle::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Straddle::Models::PaykeyV1]
+      #
+      # @see Straddle::Models::PaykeyUpdateBalanceParams
+      def update_balance(id, params = {})
+        parsed, options = Straddle::PaykeyUpdateBalanceParams.dump_request(params)
+        @client.request(
+          method: :put,
+          path: ["v1/paykeys/%1$s/refresh_balance", id],
+          headers: parsed.transform_keys(
+            correlation_id: "correlation-id",
+            idempotency_key: "idempotency-key",
+            request_id: "request-id",
+            straddle_account_id: "straddle-account-id"
+          ),
+          model: Straddle::PaykeyV1,
+          options: options
+        )
+      end
+
       # @api private
       #
       # @param client [Straddle::Client]
       def initialize(client:)
         @client = client
+        @review = Straddle::Resources::Paykeys::Review.new(client: client)
       end
     end
   end

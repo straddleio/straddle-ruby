@@ -16,6 +16,9 @@ module Straddle
         module Accounts
         end
       end
+
+      module Paykeys
+      end
     end
   end
 end

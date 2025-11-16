@@ -257,33 +257,6 @@ module Straddle
       )
       end
 
-      # Updates the decision of a customer's identity validation. This endpoint allows
-      # you to modify the outcome of a customer decision and is useful for correcting or
-      # updating the status of a customer's verification.
-      sig do
-        params(
-          id: String,
-          correlation_id: String,
-          idempotency_key: String,
-          request_id: String,
-          straddle_account_id: String,
-          request_options: Straddle::RequestOptions::OrHash
-        ).returns(Straddle::CustomerV1)
-      end
-      def refresh_review(
-        id,
-        # Optional client generated identifier to trace and debug a series of requests.
-        correlation_id: nil,
-        # Optional client generated value to use for idempotent requests.
-        idempotency_key: nil,
-        # Optional client generated identifier to trace and debug a request.
-        request_id: nil,
-        # For use by platforms to specify an account id and set scope of a request.
-        straddle_account_id: nil,
-        request_options: {}
-      )
-      end
-
       # Retrieves the unmasked details, including PII, of an existing customer. Supply
       # the unique customer ID that was returned from your 'create customer' request,
       # and Straddle will return the corresponding customer information. This endpoint
