@@ -2,27 +2,24 @@
 
 module Straddle
   module Resources
-    class Customers
+    class Paykeys
       class Review
-        # Updates the status of a customer's identity decision. This endpoint allows you
-        # to modify the outcome of a customer risk screening and is useful for correcting
-        # or updating the status of a customer's verification. Note that this endpoint is
-        # only available for customers with a current status of `review`.
+        # Update the status of a paykey when in review status
         sig do
           params(
             id: String,
-            status: Straddle::Customers::ReviewDecisionParams::Status::OrSymbol,
+            status: Straddle::Paykeys::ReviewDecisionParams::Status::OrSymbol,
             correlation_id: String,
             idempotency_key: String,
             request_id: String,
             straddle_account_id: String,
             request_options: Straddle::RequestOptions::OrHash
-          ).returns(Straddle::CustomerV1)
+          ).returns(Straddle::PaykeyV1)
         end
         def decision(
           # Path param:
           id,
-          # Body param: The final status of the customer review.
+          # Body param:
           status:,
           # Header param: Optional client generated identifier to trace and debug a series
           # of requests.
@@ -38,15 +35,7 @@ module Straddle
         )
         end
 
-        # Retrieves and analyzes the results of a customer's identity validation and fraud
-        # score. This endpoint provides a comprehensive breakdown of the validation
-        # outcome, including:
-        #
-        # - Risk and correlation scores
-        # - Reason codes for the decision
-        # - Results of watchlist screening
-        # - Any network alerts detected Use this endpoint to gain insights into the
-        #   verification process and make informed decisions about customer onboarding.
+        # Get additional details about a paykey.
         sig do
           params(
             id: String,
@@ -54,7 +43,7 @@ module Straddle
             request_id: String,
             straddle_account_id: String,
             request_options: Straddle::RequestOptions::OrHash
-          ).returns(Straddle::Customers::CustomerReviewV1)
+          ).returns(Straddle::Models::Paykeys::ReviewGetResponse)
         end
         def get(
           id,
@@ -68,9 +57,9 @@ module Straddle
         )
         end
 
-        # Updates the decision of a customer's identity validation. This endpoint allows
-        # you to modify the outcome of a customer decision and is useful for correcting or
-        # updating the status of a customer's verification.
+        # Updates the decision of a paykey's review validation. This endpoint allows you
+        # to refresh the outcome of a paykey's decision and is useful for correcting or
+        # updating the status of a paykey's verification.
         sig do
           params(
             id: String,
@@ -79,7 +68,7 @@ module Straddle
             request_id: String,
             straddle_account_id: String,
             request_options: Straddle::RequestOptions::OrHash
-          ).returns(Straddle::CustomerV1)
+          ).returns(Straddle::PaykeyV1)
         end
         def refresh_review(
           id,

@@ -85,22 +85,6 @@ class Straddle::Test::Resources::PaykeysTest < Straddle::Test::ResourceTest
     end
   end
 
-  def test_review_required_params
-    response = @straddle.paykeys.review("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", status: :active)
-
-    assert_pattern do
-      response => Straddle::PaykeyV1
-    end
-
-    assert_pattern do
-      response => {
-        data: Straddle::PaykeyV1::Data,
-        meta: Straddle::ResponseMetadata,
-        response_type: Straddle::PaykeyV1::ResponseType
-      }
-    end
-  end
-
   def test_unmasked
     response = @straddle.paykeys.unmasked("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
@@ -113,6 +97,22 @@ class Straddle::Test::Resources::PaykeysTest < Straddle::Test::ResourceTest
         data: Straddle::PaykeyUnmaskedV1::Data,
         meta: Straddle::ResponseMetadata,
         response_type: Straddle::PaykeyUnmaskedV1::ResponseType
+      }
+    end
+  end
+
+  def test_update_balance
+    response = @straddle.paykeys.update_balance("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+
+    assert_pattern do
+      response => Straddle::PaykeyV1
+    end
+
+    assert_pattern do
+      response => {
+        data: Straddle::PaykeyV1::Data,
+        meta: Straddle::ResponseMetadata,
+        response_type: Straddle::PaykeyV1::ResponseType
       }
     end
   end

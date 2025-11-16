@@ -1,0 +1,627 @@
+module Straddle
+  module Models
+    module Paykeys
+      type review_get_response =
+        {
+          data: Straddle::Models::Paykeys::ReviewGetResponse::Data,
+          meta: Straddle::ResponseMetadata,
+          response_type: Straddle::Models::Paykeys::ReviewGetResponse::response_type
+        }
+
+      class ReviewGetResponse < Straddle::Internal::Type::BaseModel
+        attr_accessor data: Straddle::Models::Paykeys::ReviewGetResponse::Data
+
+        attr_accessor meta: Straddle::ResponseMetadata
+
+        attr_accessor response_type: Straddle::Models::Paykeys::ReviewGetResponse::response_type
+
+        def initialize: (
+          data: Straddle::Models::Paykeys::ReviewGetResponse::Data,
+          meta: Straddle::ResponseMetadata,
+          response_type: Straddle::Models::Paykeys::ReviewGetResponse::response_type
+        ) -> void
+
+        def to_hash: -> {
+          data: Straddle::Models::Paykeys::ReviewGetResponse::Data,
+          meta: Straddle::ResponseMetadata,
+          response_type: Straddle::Models::Paykeys::ReviewGetResponse::response_type
+        }
+
+        type data =
+          {
+            paykey_details: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails,
+            verification_details: Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails
+          }
+
+        class Data < Straddle::Internal::Type::BaseModel
+          attr_accessor paykey_details: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails
+
+          attr_reader verification_details: Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails?
+
+          def verification_details=: (
+            Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails
+          ) -> Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails
+
+          def initialize: (
+            paykey_details: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails,
+            ?verification_details: Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails
+          ) -> void
+
+          def to_hash: -> {
+            paykey_details: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails,
+            verification_details: Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails
+          }
+
+          type paykey_details =
+            {
+              id: String,
+              config: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Config,
+              created_at: Time,
+              label: String,
+              paykey: String,
+              source: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::source,
+              status: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::status,
+              updated_at: Time,
+              balance: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Balance,
+              bank_data: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::BankData,
+              customer_id: String?,
+              expires_at: Time?,
+              external_id: String?,
+              institution_name: String?,
+              metadata: ::Hash[Symbol, String]?,
+              status_details: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails
+            }
+
+          class PaykeyDetails < Straddle::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor config: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Config
+
+            attr_accessor created_at: Time
+
+            attr_accessor label: String
+
+            attr_accessor paykey: String
+
+            attr_accessor source: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::source
+
+            attr_accessor status: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::status
+
+            attr_accessor updated_at: Time
+
+            attr_reader balance: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Balance?
+
+            def balance=: (
+              Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Balance
+            ) -> Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Balance
+
+            attr_reader bank_data: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::BankData?
+
+            def bank_data=: (
+              Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::BankData
+            ) -> Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::BankData
+
+            attr_accessor customer_id: String?
+
+            attr_accessor expires_at: Time?
+
+            attr_accessor external_id: String?
+
+            attr_accessor institution_name: String?
+
+            attr_accessor metadata: ::Hash[Symbol, String]?
+
+            attr_reader status_details: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails?
+
+            def status_details=: (
+              Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails
+            ) -> Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails
+
+            def initialize: (
+              id: String,
+              config: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Config,
+              created_at: Time,
+              label: String,
+              paykey: String,
+              source: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::source,
+              status: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::status,
+              updated_at: Time,
+              ?balance: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Balance,
+              ?bank_data: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::BankData,
+              ?customer_id: String?,
+              ?expires_at: Time?,
+              ?external_id: String?,
+              ?institution_name: String?,
+              ?metadata: ::Hash[Symbol, String]?,
+              ?status_details: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              config: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Config,
+              created_at: Time,
+              label: String,
+              paykey: String,
+              source: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::source,
+              status: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::status,
+              updated_at: Time,
+              balance: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Balance,
+              bank_data: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::BankData,
+              customer_id: String?,
+              expires_at: Time?,
+              external_id: String?,
+              institution_name: String?,
+              metadata: ::Hash[Symbol, String]?,
+              status_details: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails
+            }
+
+            type config =
+              {
+                processing_method: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Config::processing_method,
+                sandbox_outcome: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Config::sandbox_outcome
+              }
+
+            class Config < Straddle::Internal::Type::BaseModel
+              attr_reader processing_method: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Config::processing_method?
+
+              def processing_method=: (
+                Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Config::processing_method
+              ) -> Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Config::processing_method
+
+              attr_reader sandbox_outcome: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Config::sandbox_outcome?
+
+              def sandbox_outcome=: (
+                Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Config::sandbox_outcome
+              ) -> Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Config::sandbox_outcome
+
+              def initialize: (
+                ?processing_method: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Config::processing_method,
+                ?sandbox_outcome: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Config::sandbox_outcome
+              ) -> void
+
+              def to_hash: -> {
+                processing_method: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Config::processing_method,
+                sandbox_outcome: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Config::sandbox_outcome
+              }
+
+              type processing_method = :inline | :background | :skip
+
+              module ProcessingMethod
+                extend Straddle::Internal::Type::Enum
+
+                INLINE: :inline
+                BACKGROUND: :background
+                SKIP: :skip
+
+                def self?.values: -> ::Array[Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Config::processing_method]
+              end
+
+              type sandbox_outcome = :standard | :active | :rejected | :review
+
+              module SandboxOutcome
+                extend Straddle::Internal::Type::Enum
+
+                STANDARD: :standard
+                ACTIVE: :active
+                REJECTED: :rejected
+                REVIEW: :review
+
+                def self?.values: -> ::Array[Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Config::sandbox_outcome]
+              end
+            end
+
+            type source =
+              :bank_account | :straddle | :mx | :plaid | :tan | :quiltt
+
+            module Source
+              extend Straddle::Internal::Type::Enum
+
+              BANK_ACCOUNT: :bank_account
+              STRADDLE: :straddle
+              MX: :mx
+              PLAID: :plaid
+              TAN: :tan
+              QUILTT: :quiltt
+
+              def self?.values: -> ::Array[Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::source]
+            end
+
+            type status = :pending | :active | :inactive | :rejected | :review
+
+            module Status
+              extend Straddle::Internal::Type::Enum
+
+              PENDING: :pending
+              ACTIVE: :active
+              INACTIVE: :inactive
+              REJECTED: :rejected
+              REVIEW: :review
+
+              def self?.values: -> ::Array[Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::status]
+            end
+
+            type balance =
+              {
+                status: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Balance::status,
+                account_balance: Integer?,
+                updated_at: Time?
+              }
+
+            class Balance < Straddle::Internal::Type::BaseModel
+              attr_accessor status: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Balance::status
+
+              attr_accessor account_balance: Integer?
+
+              attr_accessor updated_at: Time?
+
+              def initialize: (
+                status: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Balance::status,
+                ?account_balance: Integer?,
+                ?updated_at: Time?
+              ) -> void
+
+              def to_hash: -> {
+                status: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Balance::status,
+                account_balance: Integer?,
+                updated_at: Time?
+              }
+
+              type status = :pending | :completed | :failed
+
+              module Status
+                extend Straddle::Internal::Type::Enum
+
+                PENDING: :pending
+                COMPLETED: :completed
+                FAILED: :failed
+
+                def self?.values: -> ::Array[Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Balance::status]
+              end
+            end
+
+            type bank_data =
+              {
+                account_number: String,
+                account_type: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::BankData::account_type,
+                routing_number: String
+              }
+
+            class BankData < Straddle::Internal::Type::BaseModel
+              attr_accessor account_number: String
+
+              attr_accessor account_type: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::BankData::account_type
+
+              attr_accessor routing_number: String
+
+              def initialize: (
+                account_number: String,
+                account_type: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::BankData::account_type,
+                routing_number: String
+              ) -> void
+
+              def to_hash: -> {
+                account_number: String,
+                account_type: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::BankData::account_type,
+                routing_number: String
+              }
+
+              type account_type = :checking | :savings
+
+              module AccountType
+                extend Straddle::Internal::Type::Enum
+
+                CHECKING: :checking
+                SAVINGS: :savings
+
+                def self?.values: -> ::Array[Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::BankData::account_type]
+              end
+            end
+
+            type status_details =
+              {
+                changed_at: Time,
+                message: String,
+                reason: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails::reason,
+                source: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails::source,
+                code: String?
+              }
+
+            class StatusDetails < Straddle::Internal::Type::BaseModel
+              attr_accessor changed_at: Time
+
+              attr_accessor message: String
+
+              attr_accessor reason: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails::reason
+
+              attr_accessor source: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails::source
+
+              attr_accessor code: String?
+
+              def initialize: (
+                changed_at: Time,
+                message: String,
+                reason: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails::reason,
+                source: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails::source,
+                ?code: String?
+              ) -> void
+
+              def to_hash: -> {
+                changed_at: Time,
+                message: String,
+                reason: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails::reason,
+                source: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails::source,
+                code: String?
+              }
+
+              type reason =
+                :insufficient_funds
+                | :closed_bank_account
+                | :invalid_bank_account
+                | :invalid_routing
+                | :disputed
+                | :payment_stopped
+                | :owner_deceased
+                | :frozen_bank_account
+                | :risk_review
+                | :fraudulent
+                | :duplicate_entry
+                | :invalid_paykey
+                | :payment_blocked
+                | :amount_too_large
+                | :too_many_attempts
+                | :internal_system_error
+                | :user_request
+                | :ok
+                | :other_network_return
+                | :payout_refused
+
+              module Reason
+                extend Straddle::Internal::Type::Enum
+
+                INSUFFICIENT_FUNDS: :insufficient_funds
+                CLOSED_BANK_ACCOUNT: :closed_bank_account
+                INVALID_BANK_ACCOUNT: :invalid_bank_account
+                INVALID_ROUTING: :invalid_routing
+                DISPUTED: :disputed
+                PAYMENT_STOPPED: :payment_stopped
+                OWNER_DECEASED: :owner_deceased
+                FROZEN_BANK_ACCOUNT: :frozen_bank_account
+                RISK_REVIEW: :risk_review
+                FRAUDULENT: :fraudulent
+                DUPLICATE_ENTRY: :duplicate_entry
+                INVALID_PAYKEY: :invalid_paykey
+                PAYMENT_BLOCKED: :payment_blocked
+                AMOUNT_TOO_LARGE: :amount_too_large
+                TOO_MANY_ATTEMPTS: :too_many_attempts
+                INTERNAL_SYSTEM_ERROR: :internal_system_error
+                USER_REQUEST: :user_request
+                OK: :ok
+                OTHER_NETWORK_RETURN: :other_network_return
+                PAYOUT_REFUSED: :payout_refused
+
+                def self?.values: -> ::Array[Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails::reason]
+              end
+
+              type source =
+                :watchtower
+                | :bank_decline
+                | :customer_dispute
+                | :user_action
+                | :system
+
+              module Source
+                extend Straddle::Internal::Type::Enum
+
+                WATCHTOWER: :watchtower
+                BANK_DECLINE: :bank_decline
+                CUSTOMER_DISPUTE: :customer_dispute
+                USER_ACTION: :user_action
+                SYSTEM: :system
+
+                def self?.values: -> ::Array[Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails::source]
+              end
+            end
+          end
+
+          type verification_details =
+            {
+              id: String,
+              breakdown: Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::Breakdown,
+              created_at: Time,
+              decision: Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::decision,
+              messages: ::Hash[Symbol, String],
+              updated_at: Time
+            }
+
+          class VerificationDetails < Straddle::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor breakdown: Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::Breakdown
+
+            attr_accessor created_at: Time
+
+            attr_accessor decision: Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::decision
+
+            attr_accessor messages: ::Hash[Symbol, String]
+
+            attr_accessor updated_at: Time
+
+            def initialize: (
+              id: String,
+              breakdown: Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::Breakdown,
+              created_at: Time,
+              decision: Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::decision,
+              messages: ::Hash[Symbol, String],
+              updated_at: Time
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              breakdown: Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::Breakdown,
+              created_at: Time,
+              decision: Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::decision,
+              messages: ::Hash[Symbol, String],
+              updated_at: Time
+            }
+
+            type breakdown =
+              {
+                account_validation: Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::Breakdown::AccountValidation,
+                name_match: Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::Breakdown::NameMatch
+              }
+
+            class Breakdown < Straddle::Internal::Type::BaseModel
+              attr_reader account_validation: Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::Breakdown::AccountValidation?
+
+              def account_validation=: (
+                Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::Breakdown::AccountValidation
+              ) -> Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::Breakdown::AccountValidation
+
+              attr_reader name_match: Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::Breakdown::NameMatch?
+
+              def name_match=: (
+                Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::Breakdown::NameMatch
+              ) -> Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::Breakdown::NameMatch
+
+              def initialize: (
+                ?account_validation: Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::Breakdown::AccountValidation,
+                ?name_match: Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::Breakdown::NameMatch
+              ) -> void
+
+              def to_hash: -> {
+                account_validation: Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::Breakdown::AccountValidation,
+                name_match: Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::Breakdown::NameMatch
+              }
+
+              type account_validation =
+                {
+                  codes: ::Array[String],
+                  decision: Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::Breakdown::AccountValidation::decision,
+                  reason: String?
+                }
+
+              class AccountValidation < Straddle::Internal::Type::BaseModel
+                attr_accessor codes: ::Array[String]
+
+                attr_accessor decision: Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::Breakdown::AccountValidation::decision
+
+                attr_accessor reason: String?
+
+                def initialize: (
+                  codes: ::Array[String],
+                  decision: Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::Breakdown::AccountValidation::decision,
+                  ?reason: String?
+                ) -> void
+
+                def to_hash: -> {
+                  codes: ::Array[String],
+                  decision: Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::Breakdown::AccountValidation::decision,
+                  reason: String?
+                }
+
+                type decision = :unknown | :accept | :reject | :review
+
+                module Decision
+                  extend Straddle::Internal::Type::Enum
+
+                  UNKNOWN: :unknown
+                  ACCEPT: :accept
+                  REJECT: :reject
+                  REVIEW: :review
+
+                  def self?.values: -> ::Array[Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::Breakdown::AccountValidation::decision]
+                end
+              end
+
+              type name_match =
+                {
+                  codes: ::Array[String],
+                  decision: Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::Breakdown::NameMatch::decision,
+                  correlation_score: Float?,
+                  customer_name: String?,
+                  matched_name: String?,
+                  names_on_account: ::Array[String]?,
+                  reason: String?
+                }
+
+              class NameMatch < Straddle::Internal::Type::BaseModel
+                attr_accessor codes: ::Array[String]
+
+                attr_accessor decision: Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::Breakdown::NameMatch::decision
+
+                attr_accessor correlation_score: Float?
+
+                attr_accessor customer_name: String?
+
+                attr_accessor matched_name: String?
+
+                attr_accessor names_on_account: ::Array[String]?
+
+                attr_accessor reason: String?
+
+                def initialize: (
+                  codes: ::Array[String],
+                  decision: Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::Breakdown::NameMatch::decision,
+                  ?correlation_score: Float?,
+                  ?customer_name: String?,
+                  ?matched_name: String?,
+                  ?names_on_account: ::Array[String]?,
+                  ?reason: String?
+                ) -> void
+
+                def to_hash: -> {
+                  codes: ::Array[String],
+                  decision: Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::Breakdown::NameMatch::decision,
+                  correlation_score: Float?,
+                  customer_name: String?,
+                  matched_name: String?,
+                  names_on_account: ::Array[String]?,
+                  reason: String?
+                }
+
+                type decision = :unknown | :accept | :reject | :review
+
+                module Decision
+                  extend Straddle::Internal::Type::Enum
+
+                  UNKNOWN: :unknown
+                  ACCEPT: :accept
+                  REJECT: :reject
+                  REVIEW: :review
+
+                  def self?.values: -> ::Array[Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::Breakdown::NameMatch::decision]
+                end
+              end
+            end
+
+            type decision = :unknown | :accept | :reject | :review
+
+            module Decision
+              extend Straddle::Internal::Type::Enum
+
+              UNKNOWN: :unknown
+              ACCEPT: :accept
+              REJECT: :reject
+              REVIEW: :review
+
+              def self?.values: -> ::Array[Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::decision]
+            end
+          end
+        end
+
+        type response_type = :object | :array | :error | :none
+
+        module ResponseType
+          extend Straddle::Internal::Type::Enum
+
+          OBJECT: :object
+          ARRAY: :array
+          ERROR: :error
+          NONE: :none
+
+          def self?.values: -> ::Array[Straddle::Models::Paykeys::ReviewGetResponse::response_type]
+        end
+      end
+    end
+  end
+end
