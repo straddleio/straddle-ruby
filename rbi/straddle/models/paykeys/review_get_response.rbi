@@ -1269,11 +1269,6 @@ module Straddle
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-                  UNKNOWN =
-                    T.let(
-                      :unknown,
-                      Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::Breakdown::AccountValidation::Decision::TaggedSymbol
-                    )
                   ACCEPT =
                     T.let(
                       :accept,
@@ -1388,11 +1383,6 @@ module Straddle
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-                  UNKNOWN =
-                    T.let(
-                      :unknown,
-                      Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::Breakdown::NameMatch::Decision::TaggedSymbol
-                    )
                   ACCEPT =
                     T.let(
                       :accept,
@@ -1434,11 +1424,6 @@ module Straddle
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              UNKNOWN =
-                T.let(
-                  :unknown,
-                  Straddle::Models::Paykeys::ReviewGetResponse::Data::VerificationDetails::Decision::TaggedSymbol
-                )
               ACCEPT =
                 T.let(
                   :accept,
