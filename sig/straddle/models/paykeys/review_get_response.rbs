@@ -519,12 +519,11 @@ module Straddle
                   reason: String?
                 }
 
-                type decision = :unknown | :accept | :reject | :review
+                type decision = :accept | :reject | :review
 
                 module Decision
                   extend Straddle::Internal::Type::Enum
 
-                  UNKNOWN: :unknown
                   ACCEPT: :accept
                   REJECT: :reject
                   REVIEW: :review
@@ -579,12 +578,11 @@ module Straddle
                   reason: String?
                 }
 
-                type decision = :unknown | :accept | :reject | :review
+                type decision = :accept | :reject | :review
 
                 module Decision
                   extend Straddle::Internal::Type::Enum
 
-                  UNKNOWN: :unknown
                   ACCEPT: :accept
                   REJECT: :reject
                   REVIEW: :review
@@ -594,12 +592,11 @@ module Straddle
               end
             end
 
-            type decision = :unknown | :accept | :reject | :review
+            type decision = :accept | :reject | :review
 
             module Decision
               extend Straddle::Internal::Type::Enum
 
-              UNKNOWN: :unknown
               ACCEPT: :accept
               REJECT: :reject
               REVIEW: :review
