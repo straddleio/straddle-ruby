@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.4.0 (2025-11-21)
+
+Full Changelog: [v0.3.0...v0.4.0](https://github.com/straddleio/straddle-ruby/compare/v0.3.0...v0.4.0)
+
+### Features
+
+* **docs:** Release Updates to SDK based on Open API Spec (Final) ([327f383](https://github.com/straddleio/straddle-ruby/commit/327f38385cacf75acf5cffc2c3fd9e49d6d6b858))
+
+
+### Chores
+
+* explicitly require "base64" gem ([f100e97](https://github.com/straddleio/straddle-ruby/commit/f100e97c7e621d0b1ab88ad0c89ee76a0fe45396))
+
 ## 0.3.0 (2025-11-16)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/straddleio/straddle-ruby/compare/v0.2.0...v0.3.0)

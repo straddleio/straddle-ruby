@@ -529,7 +529,6 @@ module Straddle
                 module Decision
                   extend Straddle::Internal::Type::Enum
 
-                  UNKNOWN = :unknown
                   ACCEPT = :accept
                   REJECT = :reject
                   REVIEW = :review
@@ -590,7 +589,6 @@ module Straddle
                 module Decision
                   extend Straddle::Internal::Type::Enum
 
-                  UNKNOWN = :unknown
                   ACCEPT = :accept
                   REJECT = :reject
                   REVIEW = :review
@@ -605,7 +603,6 @@ module Straddle
             module Decision
               extend Straddle::Internal::Type::Enum
 
-              UNKNOWN = :unknown
               ACCEPT = :accept
               REJECT = :reject
               REVIEW = :review
