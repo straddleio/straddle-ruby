@@ -130,9 +130,7 @@ module Straddle
           extend Straddle::Internal::Type::Enum
 
           INDIVIDUAL = :individual
-          INDIVIDUAL_2 = :Individual
           BUSINESS = :business
-          BUSINESS_2 = :Business
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -217,9 +215,7 @@ module Straddle
           extend Straddle::Internal::Type::Enum
 
           ASC = :asc
-          ASC_2 = :Asc
           DESC = :desc
-          DESC_2 = :Desc
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -239,13 +235,9 @@ module Straddle
         extend Straddle::Internal::Type::Enum
 
         OBJECT = :object
-        OBJECT_2 = :Object
         ARRAY = :array
-        ARRAY_2 = :Array
         ERROR = :error
-        ERROR_2 = :Error
         NONE = :none
-        NONE_2 = :None
 
         # @!method self.values
         #   @return [Array<Symbol>]
