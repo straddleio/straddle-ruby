@@ -160,9 +160,19 @@ module Straddle
             :object,
             Straddle::Models::ReportCreateTotalCustomersByStatusResponse::ResponseType::TaggedSymbol
           )
+        OBJECT_2 =
+          T.let(
+            :Object,
+            Straddle::Models::ReportCreateTotalCustomersByStatusResponse::ResponseType::TaggedSymbol
+          )
         ARRAY =
           T.let(
             :array,
+            Straddle::Models::ReportCreateTotalCustomersByStatusResponse::ResponseType::TaggedSymbol
+          )
+        ARRAY_2 =
+          T.let(
+            :Array,
             Straddle::Models::ReportCreateTotalCustomersByStatusResponse::ResponseType::TaggedSymbol
           )
         ERROR =
@@ -170,9 +180,19 @@ module Straddle
             :error,
             Straddle::Models::ReportCreateTotalCustomersByStatusResponse::ResponseType::TaggedSymbol
           )
+        ERROR_2 =
+          T.let(
+            :Error,
+            Straddle::Models::ReportCreateTotalCustomersByStatusResponse::ResponseType::TaggedSymbol
+          )
         NONE =
           T.let(
             :none,
+            Straddle::Models::ReportCreateTotalCustomersByStatusResponse::ResponseType::TaggedSymbol
+          )
+        NONE_2 =
+          T.let(
+            :None,
             Straddle::Models::ReportCreateTotalCustomersByStatusResponse::ResponseType::TaggedSymbol
           )
 

@@ -129,13 +129,15 @@ module Straddle
           def self?.values: -> ::Array[Straddle::Models::CustomerV1::Data::status]
         end
 
-        type type_ = :individual | :business
+        type type_ = :individual | :business | :Individual | :Business
 
         module Type
           extend Straddle::Internal::Type::Enum
 
           INDIVIDUAL: :individual
+          INDIVIDUAL_2: :Individual
           BUSINESS: :business
+          BUSINESS_2: :Business
 
           def self?.values: -> ::Array[Straddle::Models::CustomerV1::Data::type_]
         end
@@ -279,15 +281,20 @@ module Straddle
         end
       end
 
-      type response_type = :object | :array | :error | :none
+      type response_type =
+        :object | :array | :error | :none | :Object | :Array | :Error | :None
 
       module ResponseType
         extend Straddle::Internal::Type::Enum
 
         OBJECT: :object
+        OBJECT_2: :Object
         ARRAY: :array
+        ARRAY_2: :Array
         ERROR: :error
+        ERROR_2: :Error
         NONE: :none
+        NONE_2: :None
 
         def self?.values: -> ::Array[Straddle::Models::CustomerV1::response_type]
       end

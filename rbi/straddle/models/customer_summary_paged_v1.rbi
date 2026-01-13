@@ -225,9 +225,19 @@ module Straddle
               :individual,
               Straddle::CustomerSummaryPagedV1::Data::Type::TaggedSymbol
             )
+          INDIVIDUAL_2 =
+            T.let(
+              :Individual,
+              Straddle::CustomerSummaryPagedV1::Data::Type::TaggedSymbol
+            )
           BUSINESS =
             T.let(
               :business,
+              Straddle::CustomerSummaryPagedV1::Data::Type::TaggedSymbol
+            )
+          BUSINESS_2 =
+            T.let(
+              :Business,
               Straddle::CustomerSummaryPagedV1::Data::Type::TaggedSymbol
             )
 
@@ -357,9 +367,19 @@ module Straddle
               :asc,
               Straddle::CustomerSummaryPagedV1::Meta::SortOrder::TaggedSymbol
             )
+          ASC_2 =
+            T.let(
+              :Asc,
+              Straddle::CustomerSummaryPagedV1::Meta::SortOrder::TaggedSymbol
+            )
           DESC =
             T.let(
               :desc,
+              Straddle::CustomerSummaryPagedV1::Meta::SortOrder::TaggedSymbol
+            )
+          DESC_2 =
+            T.let(
+              :Desc,
               Straddle::CustomerSummaryPagedV1::Meta::SortOrder::TaggedSymbol
             )
 
@@ -396,9 +416,19 @@ module Straddle
             :object,
             Straddle::CustomerSummaryPagedV1::ResponseType::TaggedSymbol
           )
+        OBJECT_2 =
+          T.let(
+            :Object,
+            Straddle::CustomerSummaryPagedV1::ResponseType::TaggedSymbol
+          )
         ARRAY =
           T.let(
             :array,
+            Straddle::CustomerSummaryPagedV1::ResponseType::TaggedSymbol
+          )
+        ARRAY_2 =
+          T.let(
+            :Array,
             Straddle::CustomerSummaryPagedV1::ResponseType::TaggedSymbol
           )
         ERROR =
@@ -406,9 +436,19 @@ module Straddle
             :error,
             Straddle::CustomerSummaryPagedV1::ResponseType::TaggedSymbol
           )
+        ERROR_2 =
+          T.let(
+            :Error,
+            Straddle::CustomerSummaryPagedV1::ResponseType::TaggedSymbol
+          )
         NONE =
           T.let(
             :none,
+            Straddle::CustomerSummaryPagedV1::ResponseType::TaggedSymbol
+          )
+        NONE_2 =
+          T.let(
+            :None,
             Straddle::CustomerSummaryPagedV1::ResponseType::TaggedSymbol
           )
 

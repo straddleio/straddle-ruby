@@ -62,9 +62,13 @@ module Straddle
         extend Straddle::Internal::Type::Enum
 
         OBJECT = :object
+        OBJECT_2 = :Object
         ARRAY = :array
+        ARRAY_2 = :Array
         ERROR = :error
+        ERROR_2 = :Error
         NONE = :none
+        NONE_2 = :None
 
         # @!method self.values
         #   @return [Array<Symbol>]

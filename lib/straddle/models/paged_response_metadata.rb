@@ -83,7 +83,9 @@ module Straddle
         extend Straddle::Internal::Type::Enum
 
         ASC = :asc
+        ASC_2 = :Asc
         DESC = :desc
+        DESC_2 = :Desc
 
         # @!method self.values
         #   @return [Array<Symbol>]

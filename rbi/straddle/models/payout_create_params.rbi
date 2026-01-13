@@ -217,9 +217,19 @@ module Straddle
               :standard,
               Straddle::PayoutCreateParams::Config::SandboxOutcome::TaggedSymbol
             )
+          STANDARD_2 =
+            T.let(
+              :Standard,
+              Straddle::PayoutCreateParams::Config::SandboxOutcome::TaggedSymbol
+            )
           PAID =
             T.let(
               :paid,
+              Straddle::PayoutCreateParams::Config::SandboxOutcome::TaggedSymbol
+            )
+          PAID_2 =
+            T.let(
+              :Paid,
               Straddle::PayoutCreateParams::Config::SandboxOutcome::TaggedSymbol
             )
           ON_HOLD_DAILY_LIMIT =
@@ -227,9 +237,19 @@ module Straddle
               :on_hold_daily_limit,
               Straddle::PayoutCreateParams::Config::SandboxOutcome::TaggedSymbol
             )
+          ON_HOLD_DAILY_LIMIT_2 =
+            T.let(
+              :OnHoldDailyLimit,
+              Straddle::PayoutCreateParams::Config::SandboxOutcome::TaggedSymbol
+            )
           CANCELLED_FOR_FRAUD_RISK =
             T.let(
               :cancelled_for_fraud_risk,
+              Straddle::PayoutCreateParams::Config::SandboxOutcome::TaggedSymbol
+            )
+          CANCELLED_FOR_FRAUD_RISK_2 =
+            T.let(
+              :CancelledForFraudRisk,
               Straddle::PayoutCreateParams::Config::SandboxOutcome::TaggedSymbol
             )
           CANCELLED_FOR_BALANCE_CHECK =
@@ -237,9 +257,19 @@ module Straddle
               :cancelled_for_balance_check,
               Straddle::PayoutCreateParams::Config::SandboxOutcome::TaggedSymbol
             )
+          CANCELLED_FOR_BALANCE_CHECK_2 =
+            T.let(
+              :CancelledForBalanceCheck,
+              Straddle::PayoutCreateParams::Config::SandboxOutcome::TaggedSymbol
+            )
           FAILED_INSUFFICIENT_FUNDS =
             T.let(
               :failed_insufficient_funds,
+              Straddle::PayoutCreateParams::Config::SandboxOutcome::TaggedSymbol
+            )
+          FAILED_INSUFFICIENT_FUNDS_2 =
+            T.let(
+              :FailedInsufficientFunds,
               Straddle::PayoutCreateParams::Config::SandboxOutcome::TaggedSymbol
             )
           REVERSED_INSUFFICIENT_FUNDS =
@@ -247,9 +277,19 @@ module Straddle
               :reversed_insufficient_funds,
               Straddle::PayoutCreateParams::Config::SandboxOutcome::TaggedSymbol
             )
+          REVERSED_INSUFFICIENT_FUNDS_2 =
+            T.let(
+              :ReversedInsufficientFunds,
+              Straddle::PayoutCreateParams::Config::SandboxOutcome::TaggedSymbol
+            )
           FAILED_CUSTOMER_DISPUTE =
             T.let(
               :failed_customer_dispute,
+              Straddle::PayoutCreateParams::Config::SandboxOutcome::TaggedSymbol
+            )
+          FAILED_CUSTOMER_DISPUTE_2 =
+            T.let(
+              :FailedCustomerDispute,
               Straddle::PayoutCreateParams::Config::SandboxOutcome::TaggedSymbol
             )
           REVERSED_CUSTOMER_DISPUTE =
@@ -257,14 +297,29 @@ module Straddle
               :reversed_customer_dispute,
               Straddle::PayoutCreateParams::Config::SandboxOutcome::TaggedSymbol
             )
+          REVERSED_CUSTOMER_DISPUTE_2 =
+            T.let(
+              :ReversedCustomerDispute,
+              Straddle::PayoutCreateParams::Config::SandboxOutcome::TaggedSymbol
+            )
           FAILED_CLOSED_BANK_ACCOUNT =
             T.let(
               :failed_closed_bank_account,
               Straddle::PayoutCreateParams::Config::SandboxOutcome::TaggedSymbol
             )
+          FAILED_CLOSED_BANK_ACCOUNT_2 =
+            T.let(
+              :FailedClosedBankAccount,
+              Straddle::PayoutCreateParams::Config::SandboxOutcome::TaggedSymbol
+            )
           REVERSED_CLOSED_BANK_ACCOUNT =
             T.let(
               :reversed_closed_bank_account,
+              Straddle::PayoutCreateParams::Config::SandboxOutcome::TaggedSymbol
+            )
+          REVERSED_CLOSED_BANK_ACCOUNT_2 =
+            T.let(
+              :ReversedClosedBankAccount,
               Straddle::PayoutCreateParams::Config::SandboxOutcome::TaggedSymbol
             )
 

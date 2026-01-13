@@ -141,13 +141,15 @@ module Straddle
         def self?.values: -> ::Array[Straddle::Models::CustomerListParams::sort_by]
       end
 
-      type sort_order = :asc | :desc
+      type sort_order = :asc | :desc | :Asc | :Desc
 
       module SortOrder
         extend Straddle::Internal::Type::Enum
 
         ASC: :asc
+        ASC_2: :Asc
         DESC: :desc
+        DESC_2: :Desc
 
         def self?.values: -> ::Array[Straddle::Models::CustomerListParams::sort_order]
       end
@@ -166,13 +168,15 @@ module Straddle
         def self?.values: -> ::Array[Straddle::Models::CustomerListParams::status]
       end
 
-      type type_ = :individual | :business
+      type type_ = :individual | :business | :Individual | :Business
 
       module Type
         extend Straddle::Internal::Type::Enum
 
         INDIVIDUAL: :individual
+        INDIVIDUAL_2: :Individual
         BUSINESS: :business
+        BUSINESS_2: :Business
 
         def self?.values: -> ::Array[Straddle::Models::CustomerListParams::type_]
       end
