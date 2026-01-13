@@ -14,7 +14,7 @@ module Straddle
       #
       # @param currency [String] Body param: The currency of the payout. Only USD is supported.
       #
-      # @param description [String] Body param: An arbitrary description for the payout.
+      # @param description [String, nil] Body param: An arbitrary description for the payout.
       #
       # @param device [Straddle::Models::DeviceInfoV1] Body param: Information about the device used when the customer authorized the p
       #
@@ -72,7 +72,7 @@ module Straddle
       #
       # @param amount [Integer] Body param: The amount of the payout in cents.
       #
-      # @param description [String] Body param: An arbitrary description for the payout.
+      # @param description [String, nil] Body param: An arbitrary description for the payout.
       #
       # @param payment_date [Date] Body param: The desired date on which the payment should be occur. For payouts,
       #

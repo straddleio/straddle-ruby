@@ -185,7 +185,8 @@ module Straddle
           def self?.values: -> ::Array[Straddle::Models::PaykeySummaryPagedV1::Data::source]
         end
 
-        type status = :pending | :active | :inactive | :rejected | :review
+        type status =
+          :pending | :active | :inactive | :rejected | :review | :blocked
 
         module Status
           extend Straddle::Internal::Type::Enum
@@ -195,6 +196,7 @@ module Straddle
           INACTIVE: :inactive
           REJECTED: :rejected
           REVIEW: :review
+          BLOCKED: :blocked
 
           def self?.values: -> ::Array[Straddle::Models::PaykeySummaryPagedV1::Data::status]
         end
@@ -294,30 +296,80 @@ module Straddle
             | :ok
             | :other_network_return
             | :payout_refused
+            | :cancel_request
+            | :failed_verification
+            | :require_review
+            | :blocked_by_system
+            | :watchtower_review
+            | :InsufficientFunds
+            | :ClosedBankAccount
+            | :InvalidBankAccount
+            | :InvalidRouting
+            | :Disputed
+            | :PaymentStopped
+            | :OwnerDeceased
+            | :FrozenBankAccount
+            | :RiskReview
+            | :Fraudulent
+            | :DuplicateEntry
+            | :InvalidPaykey
+            | :PaymentBlocked
+            | :AmountTooLarge
+            | :TooManyAttempts
+            | :InternalSystemError
+            | :UserRequest
+            | :Ok
+            | :OtherNetworkReturn
+            | :PayoutRefused
 
           module Reason
             extend Straddle::Internal::Type::Enum
 
             INSUFFICIENT_FUNDS: :insufficient_funds
+            INSUFFICIENT_FUNDS_2: :InsufficientFunds
             CLOSED_BANK_ACCOUNT: :closed_bank_account
+            CLOSED_BANK_ACCOUNT_2: :ClosedBankAccount
             INVALID_BANK_ACCOUNT: :invalid_bank_account
+            INVALID_BANK_ACCOUNT_2: :InvalidBankAccount
             INVALID_ROUTING: :invalid_routing
+            INVALID_ROUTING_2: :InvalidRouting
             DISPUTED: :disputed
+            DISPUTED_2: :Disputed
             PAYMENT_STOPPED: :payment_stopped
+            PAYMENT_STOPPED_2: :PaymentStopped
             OWNER_DECEASED: :owner_deceased
+            OWNER_DECEASED_2: :OwnerDeceased
             FROZEN_BANK_ACCOUNT: :frozen_bank_account
+            FROZEN_BANK_ACCOUNT_2: :FrozenBankAccount
             RISK_REVIEW: :risk_review
+            RISK_REVIEW_2: :RiskReview
             FRAUDULENT: :fraudulent
+            FRAUDULENT_2: :Fraudulent
             DUPLICATE_ENTRY: :duplicate_entry
+            DUPLICATE_ENTRY_2: :DuplicateEntry
             INVALID_PAYKEY: :invalid_paykey
+            INVALID_PAYKEY_2: :InvalidPaykey
             PAYMENT_BLOCKED: :payment_blocked
+            PAYMENT_BLOCKED_2: :PaymentBlocked
             AMOUNT_TOO_LARGE: :amount_too_large
+            AMOUNT_TOO_LARGE_2: :AmountTooLarge
             TOO_MANY_ATTEMPTS: :too_many_attempts
+            TOO_MANY_ATTEMPTS_2: :TooManyAttempts
             INTERNAL_SYSTEM_ERROR: :internal_system_error
+            INTERNAL_SYSTEM_ERROR_2: :InternalSystemError
             USER_REQUEST: :user_request
+            USER_REQUEST_2: :UserRequest
             OK: :ok
+            OK_2: :Ok
             OTHER_NETWORK_RETURN: :other_network_return
+            OTHER_NETWORK_RETURN_2: :OtherNetworkReturn
             PAYOUT_REFUSED: :payout_refused
+            PAYOUT_REFUSED_2: :PayoutRefused
+            CANCEL_REQUEST: :cancel_request
+            FAILED_VERIFICATION: :failed_verification
+            REQUIRE_REVIEW: :require_review
+            BLOCKED_BY_SYSTEM: :blocked_by_system
+            WATCHTOWER_REVIEW: :watchtower_review
 
             def self?.values: -> ::Array[Straddle::Models::PaykeySummaryPagedV1::Data::StatusDetails::reason]
           end
@@ -328,15 +380,25 @@ module Straddle
             | :customer_dispute
             | :user_action
             | :system
+            | :Watchtower
+            | :BankDecline
+            | :CustomerDispute
+            | :UserAction
+            | :System
 
           module Source
             extend Straddle::Internal::Type::Enum
 
             WATCHTOWER: :watchtower
+            WATCHTOWER_2: :Watchtower
             BANK_DECLINE: :bank_decline
+            BANK_DECLINE_2: :BankDecline
             CUSTOMER_DISPUTE: :customer_dispute
+            CUSTOMER_DISPUTE_2: :CustomerDispute
             USER_ACTION: :user_action
+            USER_ACTION_2: :UserAction
             SYSTEM: :system
+            SYSTEM_2: :System
 
             def self?.values: -> ::Array[Straddle::Models::PaykeySummaryPagedV1::Data::StatusDetails::source]
           end
@@ -399,27 +461,34 @@ module Straddle
           total_pages: Integer
         }
 
-        type sort_order = :asc | :desc
+        type sort_order = :asc | :desc | :Asc | :Desc
 
         module SortOrder
           extend Straddle::Internal::Type::Enum
 
           ASC: :asc
+          ASC_2: :Asc
           DESC: :desc
+          DESC_2: :Desc
 
           def self?.values: -> ::Array[Straddle::Models::PaykeySummaryPagedV1::Meta::sort_order]
         end
       end
 
-      type response_type = :object | :array | :error | :none
+      type response_type =
+        :object | :array | :error | :none | :Object | :Array | :Error | :None
 
       module ResponseType
         extend Straddle::Internal::Type::Enum
 
         OBJECT: :object
+        OBJECT_2: :Object
         ARRAY: :array
+        ARRAY_2: :Array
         ERROR: :error
+        ERROR_2: :Error
         NONE: :none
+        NONE_2: :None
 
         def self?.values: -> ::Array[Straddle::Models::PaykeySummaryPagedV1::response_type]
       end

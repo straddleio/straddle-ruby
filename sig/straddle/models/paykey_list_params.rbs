@@ -107,13 +107,15 @@ module Straddle
         def self?.values: -> ::Array[Straddle::Models::PaykeyListParams::sort_by]
       end
 
-      type sort_order = :asc | :desc
+      type sort_order = :asc | :desc | :Asc | :Desc
 
       module SortOrder
         extend Straddle::Internal::Type::Enum
 
         ASC: :asc
+        ASC_2: :Asc
         DESC: :desc
+        DESC_2: :Desc
 
         def self?.values: -> ::Array[Straddle::Models::PaykeyListParams::sort_order]
       end
@@ -133,7 +135,8 @@ module Straddle
         def self?.values: -> ::Array[Straddle::Models::PaykeyListParams::source]
       end
 
-      type status = :pending | :active | :inactive | :rejected | :review
+      type status =
+        :pending | :active | :inactive | :rejected | :review | :blocked
 
       module Status
         extend Straddle::Internal::Type::Enum
@@ -143,6 +146,7 @@ module Straddle
         INACTIVE: :inactive
         REJECTED: :rejected
         REVIEW: :review
+        BLOCKED: :blocked
 
         def self?.values: -> ::Array[Straddle::Models::PaykeyListParams::status]
       end

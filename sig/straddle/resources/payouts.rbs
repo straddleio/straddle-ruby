@@ -4,7 +4,7 @@ module Straddle
       def create: (
         amount: Integer,
         currency: String,
-        description: String,
+        description: String?,
         device: Straddle::DeviceInfoV1,
         external_id: String,
         paykey: String,
@@ -21,7 +21,7 @@ module Straddle
       def update: (
         String id,
         amount: Integer,
-        description: String,
+        description: String?,
         payment_date: Date,
         ?metadata: ::Hash[Symbol, String]?,
         ?correlation_id: String,

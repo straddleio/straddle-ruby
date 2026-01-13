@@ -16,8 +16,8 @@ module Straddle
       # @!attribute description
       #   An arbitrary description for the payout.
       #
-      #   @return [String]
-      required :description, String
+      #   @return [String, nil]
+      required :description, String, nil?: true
 
       # @!attribute payment_date
       #   The desired date on which the payment should be occur. For payouts, this means
@@ -59,7 +59,7 @@ module Straddle
       #
       #   @param amount [Integer] The amount of the payout in cents.
       #
-      #   @param description [String] An arbitrary description for the payout.
+      #   @param description [String, nil] An arbitrary description for the payout.
       #
       #   @param payment_date [Date] The desired date on which the payment should be occur. For payouts, this means t
       #

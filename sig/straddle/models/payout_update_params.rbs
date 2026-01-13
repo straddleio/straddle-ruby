@@ -3,7 +3,7 @@ module Straddle
     type payout_update_params =
       {
         amount: Integer,
-        description: String,
+        description: String?,
         payment_date: Date,
         metadata: ::Hash[Symbol, String]?,
         correlation_id: String,
@@ -19,7 +19,7 @@ module Straddle
 
       attr_accessor amount: Integer
 
-      attr_accessor description: String
+      attr_accessor description: String?
 
       attr_accessor payment_date: Date
 
@@ -43,7 +43,7 @@ module Straddle
 
       def initialize: (
         amount: Integer,
-        description: String,
+        description: String?,
         payment_date: Date,
         ?metadata: ::Hash[Symbol, String]?,
         ?correlation_id: String,
@@ -55,7 +55,7 @@ module Straddle
 
       def to_hash: -> {
         amount: Integer,
-        description: String,
+        description: String?,
         payment_date: Date,
         metadata: ::Hash[Symbol, String]?,
         correlation_id: String,

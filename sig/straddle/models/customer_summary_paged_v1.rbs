@@ -96,13 +96,15 @@ module Straddle
           def self?.values: -> ::Array[Straddle::Models::CustomerSummaryPagedV1::Data::status]
         end
 
-        type type_ = :individual | :business
+        type type_ = :individual | :business | :Individual | :Business
 
         module Type
           extend Straddle::Internal::Type::Enum
 
           INDIVIDUAL: :individual
+          INDIVIDUAL_2: :Individual
           BUSINESS: :business
+          BUSINESS_2: :Business
 
           def self?.values: -> ::Array[Straddle::Models::CustomerSummaryPagedV1::Data::type_]
         end
@@ -164,27 +166,34 @@ module Straddle
           total_pages: Integer
         }
 
-        type sort_order = :asc | :desc
+        type sort_order = :asc | :desc | :Asc | :Desc
 
         module SortOrder
           extend Straddle::Internal::Type::Enum
 
           ASC: :asc
+          ASC_2: :Asc
           DESC: :desc
+          DESC_2: :Desc
 
           def self?.values: -> ::Array[Straddle::Models::CustomerSummaryPagedV1::Meta::sort_order]
         end
       end
 
-      type response_type = :object | :array | :error | :none
+      type response_type =
+        :object | :array | :error | :none | :Object | :Array | :Error | :None
 
       module ResponseType
         extend Straddle::Internal::Type::Enum
 
         OBJECT: :object
+        OBJECT_2: :Object
         ARRAY: :array
+        ARRAY_2: :Array
         ERROR: :error
+        ERROR_2: :Error
         NONE: :none
+        NONE_2: :None
 
         def self?.values: -> ::Array[Straddle::Models::CustomerSummaryPagedV1::response_type]
       end

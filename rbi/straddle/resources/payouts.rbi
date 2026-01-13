@@ -8,7 +8,7 @@ module Straddle
         params(
           amount: Integer,
           currency: String,
-          description: String,
+          description: T.nilable(String),
           device: Straddle::DeviceInfoV1::OrHash,
           external_id: String,
           paykey: String,
@@ -65,7 +65,7 @@ module Straddle
         params(
           id: String,
           amount: Integer,
-          description: String,
+          description: T.nilable(String),
           payment_date: Date,
           metadata: T.nilable(T::Hash[Symbol, String]),
           correlation_id: String,
