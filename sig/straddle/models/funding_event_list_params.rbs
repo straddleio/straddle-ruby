@@ -8,7 +8,6 @@ module Straddle
         event_type: Straddle::Models::FundingEventListParams::event_type,
         page_number: Integer,
         page_size: Integer,
-        payment_status: ::Array[Straddle::Models::FundingEventListParams::payment_status]?,
         search_text: String?,
         sort_by: Straddle::Models::FundingEventListParams::sort_by,
         sort_order: Straddle::Models::FundingEventListParams::sort_order,
@@ -50,8 +49,6 @@ module Straddle
       attr_reader page_size: Integer?
 
       def page_size=: (Integer) -> Integer
-
-      attr_accessor payment_status: ::Array[Straddle::Models::FundingEventListParams::payment_status]?
 
       attr_accessor search_text: String?
 
@@ -96,7 +93,6 @@ module Straddle
         ?event_type: Straddle::Models::FundingEventListParams::event_type,
         ?page_number: Integer,
         ?page_size: Integer,
-        ?payment_status: ::Array[Straddle::Models::FundingEventListParams::payment_status]?,
         ?search_text: String?,
         ?sort_by: Straddle::Models::FundingEventListParams::sort_by,
         ?sort_order: Straddle::Models::FundingEventListParams::sort_order,
@@ -118,7 +114,6 @@ module Straddle
         event_type: Straddle::Models::FundingEventListParams::event_type,
         page_number: Integer,
         page_size: Integer,
-        payment_status: ::Array[Straddle::Models::FundingEventListParams::payment_status]?,
         search_text: String?,
         sort_by: Straddle::Models::FundingEventListParams::sort_by,
         sort_order: Straddle::Models::FundingEventListParams::sort_order,
@@ -167,47 +162,6 @@ module Straddle
         PAYOUT_WITHDRAWAL_2: :PayoutWithdrawal
 
         def self?.values: -> ::Array[Straddle::Models::FundingEventListParams::event_type]
-      end
-
-      type payment_status =
-        :created
-        | :scheduled
-        | :failed
-        | :cancelled
-        | :on_hold
-        | :pending
-        | :paid
-        | :reversed
-        | :Created
-        | :Scheduled
-        | :Failed
-        | :Cancelled
-        | :OnHold
-        | :Pending
-        | :Paid
-        | :Reversed
-
-      module PaymentStatus
-        extend Straddle::Internal::Type::Enum
-
-        CREATED: :created
-        CREATED_2: :Created
-        SCHEDULED: :scheduled
-        SCHEDULED_2: :Scheduled
-        FAILED: :failed
-        FAILED_2: :Failed
-        CANCELLED: :cancelled
-        CANCELLED_2: :Cancelled
-        ON_HOLD: :on_hold
-        ON_HOLD_2: :OnHold
-        PENDING: :pending
-        PENDING_2: :Pending
-        PAID: :paid
-        PAID_2: :Paid
-        REVERSED: :reversed
-        REVERSED_2: :Reversed
-
-        def self?.values: -> ::Array[Straddle::Models::FundingEventListParams::payment_status]
       end
 
       type sort_by =

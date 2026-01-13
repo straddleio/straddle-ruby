@@ -98,6 +98,12 @@ module Straddle
         sig { returns(Straddle::PaykeyV1::Data::Status::TaggedSymbol) }
         attr_accessor :status
 
+        # Indicates whether this paykey is eligible for client-initiated unblocking. Only
+        # true for paykeys blocked due to R29 returns that have not been previously
+        # unblocked.
+        sig { returns(T::Boolean) }
+        attr_accessor :unblock_eligible
+
         # Timestamp of the most recent update to the paykey.
         sig { returns(Time) }
         attr_accessor :updated_at
@@ -157,6 +163,7 @@ module Straddle
             paykey: String,
             source: Straddle::PaykeyV1::Data::Source::OrSymbol,
             status: Straddle::PaykeyV1::Data::Status::OrSymbol,
+            unblock_eligible: T::Boolean,
             updated_at: Time,
             balance: Straddle::PaykeyV1::Data::Balance::OrHash,
             bank_data: Straddle::PaykeyV1::Data::BankData::OrHash,
@@ -181,6 +188,10 @@ module Straddle
           paykey:,
           source:,
           status:,
+          # Indicates whether this paykey is eligible for client-initiated unblocking. Only
+          # true for paykeys blocked due to R29 returns that have not been previously
+          # unblocked.
+          unblock_eligible:,
           # Timestamp of the most recent update to the paykey.
           updated_at:,
           balance: nil,
@@ -211,6 +222,7 @@ module Straddle
               paykey: String,
               source: Straddle::PaykeyV1::Data::Source::TaggedSymbol,
               status: Straddle::PaykeyV1::Data::Status::TaggedSymbol,
+              unblock_eligible: T::Boolean,
               updated_at: Time,
               balance: Straddle::PaykeyV1::Data::Balance,
               bank_data: Straddle::PaykeyV1::Data::BankData,

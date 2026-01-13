@@ -45,16 +45,6 @@ module Straddle
       #   @return [Integer, nil]
       optional :page_size, Integer
 
-      # @!attribute payment_status
-      #   Payment status.
-      #
-      #   @return [Array<Symbol, Straddle::Models::FundingEventListParams::PaymentStatus>, nil]
-      optional :payment_status,
-               -> {
-                 Straddle::Internal::Type::ArrayOf[enum: Straddle::FundingEventListParams::PaymentStatus]
-               },
-               nil?: true
-
       # @!attribute search_text
       #   Search text.
       #
@@ -124,7 +114,7 @@ module Straddle
       #   @return [String, nil]
       optional :straddle_account_id, String
 
-      # @!method initialize(created_from: nil, created_to: nil, direction: nil, event_type: nil, page_number: nil, page_size: nil, payment_status: nil, search_text: nil, sort_by: nil, sort_order: nil, status: nil, status_reason: nil, status_source: nil, trace_id: nil, trace_number: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @!method initialize(created_from: nil, created_to: nil, direction: nil, event_type: nil, page_number: nil, page_size: nil, search_text: nil, sort_by: nil, sort_order: nil, status: nil, status_reason: nil, status_source: nil, trace_id: nil, trace_number: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Straddle::Models::FundingEventListParams} for more details.
       #
@@ -139,8 +129,6 @@ module Straddle
       #   @param page_number [Integer] Results page number. Starts at page 1.
       #
       #   @param page_size [Integer] Results page size. Max value: 1000
-      #
-      #   @param payment_status [Array<Symbol, Straddle::Models::FundingEventListParams::PaymentStatus>, nil] Payment status.
       #
       #   @param search_text [String, nil] Search text.
       #
@@ -191,31 +179,6 @@ module Straddle
         PAYOUT_RETURN_2 = :PayoutReturn
         PAYOUT_WITHDRAWAL = :payout_withdrawal
         PAYOUT_WITHDRAWAL_2 = :PayoutWithdrawal
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
-
-      # The current status of the `charge` or `payout`.
-      module PaymentStatus
-        extend Straddle::Internal::Type::Enum
-
-        CREATED = :created
-        CREATED_2 = :Created
-        SCHEDULED = :scheduled
-        SCHEDULED_2 = :Scheduled
-        FAILED = :failed
-        FAILED_2 = :Failed
-        CANCELLED = :cancelled
-        CANCELLED_2 = :Cancelled
-        ON_HOLD = :on_hold
-        ON_HOLD_2 = :OnHold
-        PENDING = :pending
-        PENDING_2 = :Pending
-        PAID = :paid
-        PAID_2 = :Paid
-        REVERSED = :reversed
-        REVERSED_2 = :Reversed
 
         # @!method self.values
         #   @return [Array<Symbol>]
