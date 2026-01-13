@@ -61,6 +61,7 @@ module Straddle
               paykey: String,
               source: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::source,
               status: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::status,
+              unblock_eligible: bool,
               updated_at: Time,
               balance: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Balance,
               bank_data: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::BankData,
@@ -86,6 +87,8 @@ module Straddle
             attr_accessor source: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::source
 
             attr_accessor status: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::status
+
+            attr_accessor unblock_eligible: bool
 
             attr_accessor updated_at: Time
 
@@ -125,6 +128,7 @@ module Straddle
               paykey: String,
               source: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::source,
               status: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::status,
+              unblock_eligible: bool,
               updated_at: Time,
               ?balance: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Balance,
               ?bank_data: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::BankData,
@@ -144,6 +148,7 @@ module Straddle
               paykey: String,
               source: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::source,
               status: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::status,
+              unblock_eligible: bool,
               updated_at: Time,
               balance: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Balance,
               bank_data: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::BankData,

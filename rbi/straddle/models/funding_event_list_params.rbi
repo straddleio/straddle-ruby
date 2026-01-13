@@ -65,16 +65,6 @@ module Straddle
       sig { params(page_size: Integer).void }
       attr_writer :page_size
 
-      # Payment status.
-      sig do
-        returns(
-          T.nilable(
-            T::Array[Straddle::FundingEventListParams::PaymentStatus::OrSymbol]
-          )
-        )
-      end
-      attr_accessor :payment_status
-
       # Search text.
       sig { returns(T.nilable(String)) }
       attr_accessor :search_text
@@ -169,12 +159,6 @@ module Straddle
           event_type: Straddle::FundingEventListParams::EventType::OrSymbol,
           page_number: Integer,
           page_size: Integer,
-          payment_status:
-            T.nilable(
-              T::Array[
-                Straddle::FundingEventListParams::PaymentStatus::OrSymbol
-              ]
-            ),
           search_text: T.nilable(String),
           sort_by: Straddle::FundingEventListParams::SortBy::OrSymbol,
           sort_order: Straddle::FundingEventListParams::SortOrder::OrSymbol,
@@ -213,8 +197,6 @@ module Straddle
         page_number: nil,
         # Results page size. Max value: 1000
         page_size: nil,
-        # Payment status.
-        payment_status: nil,
         # Search text.
         search_text: nil,
         # The field to sort the results by.
@@ -247,12 +229,6 @@ module Straddle
             event_type: Straddle::FundingEventListParams::EventType::OrSymbol,
             page_number: Integer,
             page_size: Integer,
-            payment_status:
-              T.nilable(
-                T::Array[
-                  Straddle::FundingEventListParams::PaymentStatus::OrSymbol
-                ]
-              ),
             search_text: T.nilable(String),
             sort_by: Straddle::FundingEventListParams::SortBy::OrSymbol,
             sort_order: Straddle::FundingEventListParams::SortOrder::OrSymbol,
@@ -370,108 +346,6 @@ module Straddle
         sig do
           override.returns(
             T::Array[Straddle::FundingEventListParams::EventType::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
-      end
-
-      # The current status of the `charge` or `payout`.
-      module PaymentStatus
-        extend Straddle::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Straddle::FundingEventListParams::PaymentStatus)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        CREATED =
-          T.let(
-            :created,
-            Straddle::FundingEventListParams::PaymentStatus::TaggedSymbol
-          )
-        CREATED_2 =
-          T.let(
-            :Created,
-            Straddle::FundingEventListParams::PaymentStatus::TaggedSymbol
-          )
-        SCHEDULED =
-          T.let(
-            :scheduled,
-            Straddle::FundingEventListParams::PaymentStatus::TaggedSymbol
-          )
-        SCHEDULED_2 =
-          T.let(
-            :Scheduled,
-            Straddle::FundingEventListParams::PaymentStatus::TaggedSymbol
-          )
-        FAILED =
-          T.let(
-            :failed,
-            Straddle::FundingEventListParams::PaymentStatus::TaggedSymbol
-          )
-        FAILED_2 =
-          T.let(
-            :Failed,
-            Straddle::FundingEventListParams::PaymentStatus::TaggedSymbol
-          )
-        CANCELLED =
-          T.let(
-            :cancelled,
-            Straddle::FundingEventListParams::PaymentStatus::TaggedSymbol
-          )
-        CANCELLED_2 =
-          T.let(
-            :Cancelled,
-            Straddle::FundingEventListParams::PaymentStatus::TaggedSymbol
-          )
-        ON_HOLD =
-          T.let(
-            :on_hold,
-            Straddle::FundingEventListParams::PaymentStatus::TaggedSymbol
-          )
-        ON_HOLD_2 =
-          T.let(
-            :OnHold,
-            Straddle::FundingEventListParams::PaymentStatus::TaggedSymbol
-          )
-        PENDING =
-          T.let(
-            :pending,
-            Straddle::FundingEventListParams::PaymentStatus::TaggedSymbol
-          )
-        PENDING_2 =
-          T.let(
-            :Pending,
-            Straddle::FundingEventListParams::PaymentStatus::TaggedSymbol
-          )
-        PAID =
-          T.let(
-            :paid,
-            Straddle::FundingEventListParams::PaymentStatus::TaggedSymbol
-          )
-        PAID_2 =
-          T.let(
-            :Paid,
-            Straddle::FundingEventListParams::PaymentStatus::TaggedSymbol
-          )
-        REVERSED =
-          T.let(
-            :reversed,
-            Straddle::FundingEventListParams::PaymentStatus::TaggedSymbol
-          )
-        REVERSED_2 =
-          T.let(
-            :Reversed,
-            Straddle::FundingEventListParams::PaymentStatus::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Straddle::FundingEventListParams::PaymentStatus::TaggedSymbol
-            ]
           )
         end
         def self.values

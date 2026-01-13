@@ -97,6 +97,14 @@ module Straddle
             #   @return [Symbol, Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Status]
             required :status, enum: -> { Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Status }
 
+            # @!attribute unblock_eligible
+            #   Indicates whether this paykey is eligible for client-initiated unblocking. Only
+            #   true for paykeys blocked due to R29 returns that have not been previously
+            #   unblocked.
+            #
+            #   @return [Boolean]
+            required :unblock_eligible, Straddle::Internal::Type::Boolean
+
             # @!attribute updated_at
             #   Timestamp of the most recent update to the paykey.
             #
@@ -151,7 +159,7 @@ module Straddle
             optional :status_details,
                      -> { Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails }
 
-            # @!method initialize(id:, config:, created_at:, label:, paykey:, source:, status:, updated_at:, balance: nil, bank_data: nil, customer_id: nil, expires_at: nil, external_id: nil, institution_name: nil, metadata: nil, status_details: nil)
+            # @!method initialize(id:, config:, created_at:, label:, paykey:, source:, status:, unblock_eligible:, updated_at:, balance: nil, bank_data: nil, customer_id: nil, expires_at: nil, external_id: nil, institution_name: nil, metadata: nil, status_details: nil)
             #   Some parameter documentations has been truncated, see
             #   {Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails} for more
             #   details.
@@ -169,6 +177,8 @@ module Straddle
             #   @param source [Symbol, Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Source]
             #
             #   @param status [Symbol, Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Status]
+            #
+            #   @param unblock_eligible [Boolean] Indicates whether this paykey is eligible for client-initiated unblocking. Only
             #
             #   @param updated_at [Time] Timestamp of the most recent update to the paykey.
             #
