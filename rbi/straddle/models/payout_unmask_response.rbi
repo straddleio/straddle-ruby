@@ -108,7 +108,7 @@ module Straddle
         attr_accessor :currency
 
         # Description.
-        sig { returns(String) }
+        sig { returns(T.nilable(String)) }
         attr_accessor :description
 
         sig { returns(Straddle::Models::PayoutUnmaskResponse::Data::Device) }
@@ -160,6 +160,10 @@ module Straddle
           )
         end
         attr_accessor :status_history
+
+        # Trace Ids.
+        sig { returns(T::Hash[Symbol, String]) }
+        attr_accessor :trace_ids
 
         # Created at.
         sig { returns(T.nilable(Time)) }
@@ -221,7 +225,7 @@ module Straddle
             config:
               Straddle::Models::PayoutUnmaskResponse::Data::Config::OrHash,
             currency: String,
-            description: String,
+            description: T.nilable(String),
             device:
               Straddle::Models::PayoutUnmaskResponse::Data::Device::OrHash,
             external_id: String,
@@ -235,6 +239,7 @@ module Straddle
               T::Array[
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::OrHash
               ],
+            trace_ids: T::Hash[Symbol, String],
             created_at: T.nilable(Time),
             customer_details: Straddle::CustomerDetailsV1::OrHash,
             effective_at: T.nilable(Time),
@@ -270,6 +275,8 @@ module Straddle
           status_details:,
           # Status history.
           status_history:,
+          # Trace Ids.
+          trace_ids:,
           # Created at.
           created_at: nil,
           # Information about the customer associated with the charge or payout.
@@ -295,7 +302,7 @@ module Straddle
               amount: Integer,
               config: Straddle::Models::PayoutUnmaskResponse::Data::Config,
               currency: String,
-              description: String,
+              description: T.nilable(String),
               device: Straddle::Models::PayoutUnmaskResponse::Data::Device,
               external_id: String,
               funding_ids: T::Array[String],
@@ -308,6 +315,7 @@ module Straddle
                 T::Array[
                   Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory
                 ],
+              trace_ids: T::Hash[Symbol, String],
               created_at: T.nilable(Time),
               customer_details: Straddle::CustomerDetailsV1,
               effective_at: T.nilable(Time),
@@ -391,9 +399,19 @@ module Straddle
                 :standard,
                 Straddle::Models::PayoutUnmaskResponse::Data::Config::SandboxOutcome::TaggedSymbol
               )
+            STANDARD_2 =
+              T.let(
+                :Standard,
+                Straddle::Models::PayoutUnmaskResponse::Data::Config::SandboxOutcome::TaggedSymbol
+              )
             PAID =
               T.let(
                 :paid,
+                Straddle::Models::PayoutUnmaskResponse::Data::Config::SandboxOutcome::TaggedSymbol
+              )
+            PAID_2 =
+              T.let(
+                :Paid,
                 Straddle::Models::PayoutUnmaskResponse::Data::Config::SandboxOutcome::TaggedSymbol
               )
             ON_HOLD_DAILY_LIMIT =
@@ -401,9 +419,19 @@ module Straddle
                 :on_hold_daily_limit,
                 Straddle::Models::PayoutUnmaskResponse::Data::Config::SandboxOutcome::TaggedSymbol
               )
+            ON_HOLD_DAILY_LIMIT_2 =
+              T.let(
+                :OnHoldDailyLimit,
+                Straddle::Models::PayoutUnmaskResponse::Data::Config::SandboxOutcome::TaggedSymbol
+              )
             CANCELLED_FOR_FRAUD_RISK =
               T.let(
                 :cancelled_for_fraud_risk,
+                Straddle::Models::PayoutUnmaskResponse::Data::Config::SandboxOutcome::TaggedSymbol
+              )
+            CANCELLED_FOR_FRAUD_RISK_2 =
+              T.let(
+                :CancelledForFraudRisk,
                 Straddle::Models::PayoutUnmaskResponse::Data::Config::SandboxOutcome::TaggedSymbol
               )
             CANCELLED_FOR_BALANCE_CHECK =
@@ -411,9 +439,19 @@ module Straddle
                 :cancelled_for_balance_check,
                 Straddle::Models::PayoutUnmaskResponse::Data::Config::SandboxOutcome::TaggedSymbol
               )
+            CANCELLED_FOR_BALANCE_CHECK_2 =
+              T.let(
+                :CancelledForBalanceCheck,
+                Straddle::Models::PayoutUnmaskResponse::Data::Config::SandboxOutcome::TaggedSymbol
+              )
             FAILED_INSUFFICIENT_FUNDS =
               T.let(
                 :failed_insufficient_funds,
+                Straddle::Models::PayoutUnmaskResponse::Data::Config::SandboxOutcome::TaggedSymbol
+              )
+            FAILED_INSUFFICIENT_FUNDS_2 =
+              T.let(
+                :FailedInsufficientFunds,
                 Straddle::Models::PayoutUnmaskResponse::Data::Config::SandboxOutcome::TaggedSymbol
               )
             REVERSED_INSUFFICIENT_FUNDS =
@@ -421,9 +459,19 @@ module Straddle
                 :reversed_insufficient_funds,
                 Straddle::Models::PayoutUnmaskResponse::Data::Config::SandboxOutcome::TaggedSymbol
               )
+            REVERSED_INSUFFICIENT_FUNDS_2 =
+              T.let(
+                :ReversedInsufficientFunds,
+                Straddle::Models::PayoutUnmaskResponse::Data::Config::SandboxOutcome::TaggedSymbol
+              )
             FAILED_CUSTOMER_DISPUTE =
               T.let(
                 :failed_customer_dispute,
+                Straddle::Models::PayoutUnmaskResponse::Data::Config::SandboxOutcome::TaggedSymbol
+              )
+            FAILED_CUSTOMER_DISPUTE_2 =
+              T.let(
+                :FailedCustomerDispute,
                 Straddle::Models::PayoutUnmaskResponse::Data::Config::SandboxOutcome::TaggedSymbol
               )
             REVERSED_CUSTOMER_DISPUTE =
@@ -431,14 +479,29 @@ module Straddle
                 :reversed_customer_dispute,
                 Straddle::Models::PayoutUnmaskResponse::Data::Config::SandboxOutcome::TaggedSymbol
               )
+            REVERSED_CUSTOMER_DISPUTE_2 =
+              T.let(
+                :ReversedCustomerDispute,
+                Straddle::Models::PayoutUnmaskResponse::Data::Config::SandboxOutcome::TaggedSymbol
+              )
             FAILED_CLOSED_BANK_ACCOUNT =
               T.let(
                 :failed_closed_bank_account,
                 Straddle::Models::PayoutUnmaskResponse::Data::Config::SandboxOutcome::TaggedSymbol
               )
+            FAILED_CLOSED_BANK_ACCOUNT_2 =
+              T.let(
+                :FailedClosedBankAccount,
+                Straddle::Models::PayoutUnmaskResponse::Data::Config::SandboxOutcome::TaggedSymbol
+              )
             REVERSED_CLOSED_BANK_ACCOUNT =
               T.let(
                 :reversed_closed_bank_account,
+                Straddle::Models::PayoutUnmaskResponse::Data::Config::SandboxOutcome::TaggedSymbol
+              )
+            REVERSED_CLOSED_BANK_ACCOUNT_2 =
+              T.let(
+                :ReversedClosedBankAccount,
                 Straddle::Models::PayoutUnmaskResponse::Data::Config::SandboxOutcome::TaggedSymbol
               )
 
@@ -497,9 +560,19 @@ module Straddle
               :created,
               Straddle::Models::PayoutUnmaskResponse::Data::Status::TaggedSymbol
             )
+          CREATED_2 =
+            T.let(
+              :Created,
+              Straddle::Models::PayoutUnmaskResponse::Data::Status::TaggedSymbol
+            )
           SCHEDULED =
             T.let(
               :scheduled,
+              Straddle::Models::PayoutUnmaskResponse::Data::Status::TaggedSymbol
+            )
+          SCHEDULED_2 =
+            T.let(
+              :Scheduled,
               Straddle::Models::PayoutUnmaskResponse::Data::Status::TaggedSymbol
             )
           FAILED =
@@ -507,9 +580,19 @@ module Straddle
               :failed,
               Straddle::Models::PayoutUnmaskResponse::Data::Status::TaggedSymbol
             )
+          FAILED_2 =
+            T.let(
+              :Failed,
+              Straddle::Models::PayoutUnmaskResponse::Data::Status::TaggedSymbol
+            )
           CANCELLED =
             T.let(
               :cancelled,
+              Straddle::Models::PayoutUnmaskResponse::Data::Status::TaggedSymbol
+            )
+          CANCELLED_2 =
+            T.let(
+              :Cancelled,
               Straddle::Models::PayoutUnmaskResponse::Data::Status::TaggedSymbol
             )
           ON_HOLD =
@@ -517,9 +600,19 @@ module Straddle
               :on_hold,
               Straddle::Models::PayoutUnmaskResponse::Data::Status::TaggedSymbol
             )
+          ON_HOLD_2 =
+            T.let(
+              :OnHold,
+              Straddle::Models::PayoutUnmaskResponse::Data::Status::TaggedSymbol
+            )
           PENDING =
             T.let(
               :pending,
+              Straddle::Models::PayoutUnmaskResponse::Data::Status::TaggedSymbol
+            )
+          PENDING_2 =
+            T.let(
+              :Pending,
               Straddle::Models::PayoutUnmaskResponse::Data::Status::TaggedSymbol
             )
           PAID =
@@ -527,9 +620,19 @@ module Straddle
               :paid,
               Straddle::Models::PayoutUnmaskResponse::Data::Status::TaggedSymbol
             )
+          PAID_2 =
+            T.let(
+              :Paid,
+              Straddle::Models::PayoutUnmaskResponse::Data::Status::TaggedSymbol
+            )
           REVERSED =
             T.let(
               :reversed,
+              Straddle::Models::PayoutUnmaskResponse::Data::Status::TaggedSymbol
+            )
+          REVERSED_2 =
+            T.let(
+              :Reversed,
               Straddle::Models::PayoutUnmaskResponse::Data::Status::TaggedSymbol
             )
 
@@ -659,9 +762,19 @@ module Straddle
                 :insufficient_funds,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
               )
+            INSUFFICIENT_FUNDS_2 =
+              T.let(
+                :InsufficientFunds,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
             CLOSED_BANK_ACCOUNT =
               T.let(
                 :closed_bank_account,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
+            CLOSED_BANK_ACCOUNT_2 =
+              T.let(
+                :ClosedBankAccount,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
               )
             INVALID_BANK_ACCOUNT =
@@ -669,9 +782,19 @@ module Straddle
                 :invalid_bank_account,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
               )
+            INVALID_BANK_ACCOUNT_2 =
+              T.let(
+                :InvalidBankAccount,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
             INVALID_ROUTING =
               T.let(
                 :invalid_routing,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
+            INVALID_ROUTING_2 =
+              T.let(
+                :InvalidRouting,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
               )
             DISPUTED =
@@ -679,9 +802,19 @@ module Straddle
                 :disputed,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
               )
+            DISPUTED_2 =
+              T.let(
+                :Disputed,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
             PAYMENT_STOPPED =
               T.let(
                 :payment_stopped,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
+            PAYMENT_STOPPED_2 =
+              T.let(
+                :PaymentStopped,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
               )
             OWNER_DECEASED =
@@ -689,9 +822,19 @@ module Straddle
                 :owner_deceased,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
               )
+            OWNER_DECEASED_2 =
+              T.let(
+                :OwnerDeceased,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
             FROZEN_BANK_ACCOUNT =
               T.let(
                 :frozen_bank_account,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
+            FROZEN_BANK_ACCOUNT_2 =
+              T.let(
+                :FrozenBankAccount,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
               )
             RISK_REVIEW =
@@ -699,9 +842,19 @@ module Straddle
                 :risk_review,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
               )
+            RISK_REVIEW_2 =
+              T.let(
+                :RiskReview,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
             FRAUDULENT =
               T.let(
                 :fraudulent,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
+            FRAUDULENT_2 =
+              T.let(
+                :Fraudulent,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
               )
             DUPLICATE_ENTRY =
@@ -709,9 +862,19 @@ module Straddle
                 :duplicate_entry,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
               )
+            DUPLICATE_ENTRY_2 =
+              T.let(
+                :DuplicateEntry,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
             INVALID_PAYKEY =
               T.let(
                 :invalid_paykey,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
+            INVALID_PAYKEY_2 =
+              T.let(
+                :InvalidPaykey,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
               )
             PAYMENT_BLOCKED =
@@ -719,9 +882,19 @@ module Straddle
                 :payment_blocked,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
               )
+            PAYMENT_BLOCKED_2 =
+              T.let(
+                :PaymentBlocked,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
             AMOUNT_TOO_LARGE =
               T.let(
                 :amount_too_large,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
+            AMOUNT_TOO_LARGE_2 =
+              T.let(
+                :AmountTooLarge,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
               )
             TOO_MANY_ATTEMPTS =
@@ -729,9 +902,19 @@ module Straddle
                 :too_many_attempts,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
               )
+            TOO_MANY_ATTEMPTS_2 =
+              T.let(
+                :TooManyAttempts,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
             INTERNAL_SYSTEM_ERROR =
               T.let(
                 :internal_system_error,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
+            INTERNAL_SYSTEM_ERROR_2 =
+              T.let(
+                :InternalSystemError,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
               )
             USER_REQUEST =
@@ -739,9 +922,19 @@ module Straddle
                 :user_request,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
               )
+            USER_REQUEST_2 =
+              T.let(
+                :UserRequest,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
             OK =
               T.let(
                 :ok,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
+            OK_2 =
+              T.let(
+                :Ok,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
               )
             OTHER_NETWORK_RETURN =
@@ -749,9 +942,44 @@ module Straddle
                 :other_network_return,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
               )
+            OTHER_NETWORK_RETURN_2 =
+              T.let(
+                :OtherNetworkReturn,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
             PAYOUT_REFUSED =
               T.let(
                 :payout_refused,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
+            PAYOUT_REFUSED_2 =
+              T.let(
+                :PayoutRefused,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
+            CANCEL_REQUEST =
+              T.let(
+                :cancel_request,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
+            FAILED_VERIFICATION =
+              T.let(
+                :failed_verification,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
+            REQUIRE_REVIEW =
+              T.let(
+                :require_review,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
+            BLOCKED_BY_SYSTEM =
+              T.let(
+                :blocked_by_system,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
+            WATCHTOWER_REVIEW =
+              T.let(
+                :watchtower_review,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
               )
 
@@ -785,9 +1013,19 @@ module Straddle
                 :watchtower,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Source::TaggedSymbol
               )
+            WATCHTOWER_2 =
+              T.let(
+                :Watchtower,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Source::TaggedSymbol
+              )
             BANK_DECLINE =
               T.let(
                 :bank_decline,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Source::TaggedSymbol
+              )
+            BANK_DECLINE_2 =
+              T.let(
+                :BankDecline,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Source::TaggedSymbol
               )
             CUSTOMER_DISPUTE =
@@ -795,14 +1033,29 @@ module Straddle
                 :customer_dispute,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Source::TaggedSymbol
               )
+            CUSTOMER_DISPUTE_2 =
+              T.let(
+                :CustomerDispute,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Source::TaggedSymbol
+              )
             USER_ACTION =
               T.let(
                 :user_action,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Source::TaggedSymbol
               )
+            USER_ACTION_2 =
+              T.let(
+                :UserAction,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Source::TaggedSymbol
+              )
             SYSTEM =
               T.let(
                 :system,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Source::TaggedSymbol
+              )
+            SYSTEM_2 =
+              T.let(
+                :System,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Source::TaggedSymbol
               )
 
@@ -835,9 +1088,19 @@ module Straddle
                 :created,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Status::TaggedSymbol
               )
+            CREATED_2 =
+              T.let(
+                :Created,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Status::TaggedSymbol
+              )
             SCHEDULED =
               T.let(
                 :scheduled,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Status::TaggedSymbol
+              )
+            SCHEDULED_2 =
+              T.let(
+                :Scheduled,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Status::TaggedSymbol
               )
             FAILED =
@@ -845,9 +1108,19 @@ module Straddle
                 :failed,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Status::TaggedSymbol
               )
+            FAILED_2 =
+              T.let(
+                :Failed,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Status::TaggedSymbol
+              )
             CANCELLED =
               T.let(
                 :cancelled,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Status::TaggedSymbol
+              )
+            CANCELLED_2 =
+              T.let(
+                :Cancelled,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Status::TaggedSymbol
               )
             ON_HOLD =
@@ -855,9 +1128,19 @@ module Straddle
                 :on_hold,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Status::TaggedSymbol
               )
+            ON_HOLD_2 =
+              T.let(
+                :OnHold,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Status::TaggedSymbol
+              )
             PENDING =
               T.let(
                 :pending,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Status::TaggedSymbol
+              )
+            PENDING_2 =
+              T.let(
+                :Pending,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Status::TaggedSymbol
               )
             PAID =
@@ -865,9 +1148,19 @@ module Straddle
                 :paid,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Status::TaggedSymbol
               )
+            PAID_2 =
+              T.let(
+                :Paid,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Status::TaggedSymbol
+              )
             REVERSED =
               T.let(
                 :reversed,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Status::TaggedSymbol
+              )
+            REVERSED_2 =
+              T.let(
+                :Reversed,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Status::TaggedSymbol
               )
 
@@ -899,6 +1192,11 @@ module Straddle
           ACH =
             T.let(
               :ach,
+              Straddle::Models::PayoutUnmaskResponse::Data::PaymentRail::TaggedSymbol
+            )
+          ACH_2 =
+            T.let(
+              :ACH,
               Straddle::Models::PayoutUnmaskResponse::Data::PaymentRail::TaggedSymbol
             )
 
@@ -935,9 +1233,19 @@ module Straddle
             :object,
             Straddle::Models::PayoutUnmaskResponse::ResponseType::TaggedSymbol
           )
+        OBJECT_2 =
+          T.let(
+            :Object,
+            Straddle::Models::PayoutUnmaskResponse::ResponseType::TaggedSymbol
+          )
         ARRAY =
           T.let(
             :array,
+            Straddle::Models::PayoutUnmaskResponse::ResponseType::TaggedSymbol
+          )
+        ARRAY_2 =
+          T.let(
+            :Array,
             Straddle::Models::PayoutUnmaskResponse::ResponseType::TaggedSymbol
           )
         ERROR =
@@ -945,9 +1253,19 @@ module Straddle
             :error,
             Straddle::Models::PayoutUnmaskResponse::ResponseType::TaggedSymbol
           )
+        ERROR_2 =
+          T.let(
+            :Error,
+            Straddle::Models::PayoutUnmaskResponse::ResponseType::TaggedSymbol
+          )
         NONE =
           T.let(
             :none,
+            Straddle::Models::PayoutUnmaskResponse::ResponseType::TaggedSymbol
+          )
+        NONE_2 =
+          T.let(
+            :None,
             Straddle::Models::PayoutUnmaskResponse::ResponseType::TaggedSymbol
           )
 

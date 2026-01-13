@@ -549,6 +549,11 @@ module Straddle
                 :review,
                 Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::Status::TaggedSymbol
               )
+            BLOCKED =
+              T.let(
+                :blocked,
+                Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::Status::TaggedSymbol
+              )
 
             sig do
               override.returns(
@@ -837,9 +842,19 @@ module Straddle
                   :insufficient_funds,
                   Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
                 )
+              INSUFFICIENT_FUNDS_2 =
+                T.let(
+                  :InsufficientFunds,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
               CLOSED_BANK_ACCOUNT =
                 T.let(
                   :closed_bank_account,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
+              CLOSED_BANK_ACCOUNT_2 =
+                T.let(
+                  :ClosedBankAccount,
                   Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
                 )
               INVALID_BANK_ACCOUNT =
@@ -847,9 +862,19 @@ module Straddle
                   :invalid_bank_account,
                   Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
                 )
+              INVALID_BANK_ACCOUNT_2 =
+                T.let(
+                  :InvalidBankAccount,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
               INVALID_ROUTING =
                 T.let(
                   :invalid_routing,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
+              INVALID_ROUTING_2 =
+                T.let(
+                  :InvalidRouting,
                   Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
                 )
               DISPUTED =
@@ -857,9 +882,19 @@ module Straddle
                   :disputed,
                   Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
                 )
+              DISPUTED_2 =
+                T.let(
+                  :Disputed,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
               PAYMENT_STOPPED =
                 T.let(
                   :payment_stopped,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
+              PAYMENT_STOPPED_2 =
+                T.let(
+                  :PaymentStopped,
                   Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
                 )
               OWNER_DECEASED =
@@ -867,9 +902,19 @@ module Straddle
                   :owner_deceased,
                   Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
                 )
+              OWNER_DECEASED_2 =
+                T.let(
+                  :OwnerDeceased,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
               FROZEN_BANK_ACCOUNT =
                 T.let(
                   :frozen_bank_account,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
+              FROZEN_BANK_ACCOUNT_2 =
+                T.let(
+                  :FrozenBankAccount,
                   Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
                 )
               RISK_REVIEW =
@@ -877,9 +922,19 @@ module Straddle
                   :risk_review,
                   Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
                 )
+              RISK_REVIEW_2 =
+                T.let(
+                  :RiskReview,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
               FRAUDULENT =
                 T.let(
                   :fraudulent,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
+              FRAUDULENT_2 =
+                T.let(
+                  :Fraudulent,
                   Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
                 )
               DUPLICATE_ENTRY =
@@ -887,9 +942,19 @@ module Straddle
                   :duplicate_entry,
                   Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
                 )
+              DUPLICATE_ENTRY_2 =
+                T.let(
+                  :DuplicateEntry,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
               INVALID_PAYKEY =
                 T.let(
                   :invalid_paykey,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
+              INVALID_PAYKEY_2 =
+                T.let(
+                  :InvalidPaykey,
                   Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
                 )
               PAYMENT_BLOCKED =
@@ -897,9 +962,19 @@ module Straddle
                   :payment_blocked,
                   Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
                 )
+              PAYMENT_BLOCKED_2 =
+                T.let(
+                  :PaymentBlocked,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
               AMOUNT_TOO_LARGE =
                 T.let(
                   :amount_too_large,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
+              AMOUNT_TOO_LARGE_2 =
+                T.let(
+                  :AmountTooLarge,
                   Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
                 )
               TOO_MANY_ATTEMPTS =
@@ -907,9 +982,19 @@ module Straddle
                   :too_many_attempts,
                   Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
                 )
+              TOO_MANY_ATTEMPTS_2 =
+                T.let(
+                  :TooManyAttempts,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
               INTERNAL_SYSTEM_ERROR =
                 T.let(
                   :internal_system_error,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
+              INTERNAL_SYSTEM_ERROR_2 =
+                T.let(
+                  :InternalSystemError,
                   Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
                 )
               USER_REQUEST =
@@ -917,9 +1002,19 @@ module Straddle
                   :user_request,
                   Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
                 )
+              USER_REQUEST_2 =
+                T.let(
+                  :UserRequest,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
               OK =
                 T.let(
                   :ok,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
+              OK_2 =
+                T.let(
+                  :Ok,
                   Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
                 )
               OTHER_NETWORK_RETURN =
@@ -927,9 +1022,44 @@ module Straddle
                   :other_network_return,
                   Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
                 )
+              OTHER_NETWORK_RETURN_2 =
+                T.let(
+                  :OtherNetworkReturn,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
               PAYOUT_REFUSED =
                 T.let(
                   :payout_refused,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
+              PAYOUT_REFUSED_2 =
+                T.let(
+                  :PayoutRefused,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
+              CANCEL_REQUEST =
+                T.let(
+                  :cancel_request,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
+              FAILED_VERIFICATION =
+                T.let(
+                  :failed_verification,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
+              REQUIRE_REVIEW =
+                T.let(
+                  :require_review,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
+              BLOCKED_BY_SYSTEM =
+                T.let(
+                  :blocked_by_system,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
+              WATCHTOWER_REVIEW =
+                T.let(
+                  :watchtower_review,
                   Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
                 )
 
@@ -961,9 +1091,19 @@ module Straddle
                   :watchtower,
                   Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Source::TaggedSymbol
                 )
+              WATCHTOWER_2 =
+                T.let(
+                  :Watchtower,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Source::TaggedSymbol
+                )
               BANK_DECLINE =
                 T.let(
                   :bank_decline,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Source::TaggedSymbol
+                )
+              BANK_DECLINE_2 =
+                T.let(
+                  :BankDecline,
                   Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Source::TaggedSymbol
                 )
               CUSTOMER_DISPUTE =
@@ -971,14 +1111,29 @@ module Straddle
                   :customer_dispute,
                   Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Source::TaggedSymbol
                 )
+              CUSTOMER_DISPUTE_2 =
+                T.let(
+                  :CustomerDispute,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Source::TaggedSymbol
+                )
               USER_ACTION =
                 T.let(
                   :user_action,
                   Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Source::TaggedSymbol
                 )
+              USER_ACTION_2 =
+                T.let(
+                  :UserAction,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Source::TaggedSymbol
+                )
               SYSTEM =
                 T.let(
                   :system,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Source::TaggedSymbol
+                )
+              SYSTEM_2 =
+                T.let(
+                  :System,
                   Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Source::TaggedSymbol
                 )
 
@@ -1019,9 +1174,19 @@ module Straddle
               :object,
               Straddle::Models::Bridge::LinkCreatePaykeyResponse::ResponseType::TaggedSymbol
             )
+          OBJECT_2 =
+            T.let(
+              :Object,
+              Straddle::Models::Bridge::LinkCreatePaykeyResponse::ResponseType::TaggedSymbol
+            )
           ARRAY =
             T.let(
               :array,
+              Straddle::Models::Bridge::LinkCreatePaykeyResponse::ResponseType::TaggedSymbol
+            )
+          ARRAY_2 =
+            T.let(
+              :Array,
               Straddle::Models::Bridge::LinkCreatePaykeyResponse::ResponseType::TaggedSymbol
             )
           ERROR =
@@ -1029,9 +1194,19 @@ module Straddle
               :error,
               Straddle::Models::Bridge::LinkCreatePaykeyResponse::ResponseType::TaggedSymbol
             )
+          ERROR_2 =
+            T.let(
+              :Error,
+              Straddle::Models::Bridge::LinkCreatePaykeyResponse::ResponseType::TaggedSymbol
+            )
           NONE =
             T.let(
               :none,
+              Straddle::Models::Bridge::LinkCreatePaykeyResponse::ResponseType::TaggedSymbol
+            )
+          NONE_2 =
+            T.let(
+              :None,
               Straddle::Models::Bridge::LinkCreatePaykeyResponse::ResponseType::TaggedSymbol
             )
 

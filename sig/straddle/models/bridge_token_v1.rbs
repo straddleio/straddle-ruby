@@ -36,15 +36,20 @@ module Straddle
         def to_hash: -> { bridge_token: String }
       end
 
-      type response_type = :object | :array | :error | :none
+      type response_type =
+        :object | :array | :error | :none | :Object | :Array | :Error | :None
 
       module ResponseType
         extend Straddle::Internal::Type::Enum
 
         OBJECT: :object
+        OBJECT_2: :Object
         ARRAY: :array
+        ARRAY_2: :Array
         ERROR: :error
+        ERROR_2: :Error
         NONE: :none
+        NONE_2: :None
 
         def self?.values: -> ::Array[Straddle::Models::BridgeTokenV1::response_type]
       end

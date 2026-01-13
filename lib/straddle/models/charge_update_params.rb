@@ -16,8 +16,8 @@ module Straddle
       # @!attribute description
       #   An arbitrary description for the charge.
       #
-      #   @return [String]
-      required :description, String
+      #   @return [String, nil]
+      required :description, String, nil?: true
 
       # @!attribute payment_date
       #   The desired date on which the payment should be occur. For charges, this means
@@ -59,7 +59,7 @@ module Straddle
       #
       #   @param amount [Integer] The amount of the charge in cents.
       #
-      #   @param description [String] An arbitrary description for the charge.
+      #   @param description [String, nil] An arbitrary description for the charge.
       #
       #   @param payment_date [Date] The desired date on which the payment should be occur. For charges, this means t
       #

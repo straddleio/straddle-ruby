@@ -56,13 +56,15 @@ module Straddle
         total_pages: Integer
       }
 
-      type sort_order = :asc | :desc
+      type sort_order = :asc | :desc | :Asc | :Desc
 
       module SortOrder
         extend Straddle::Internal::Type::Enum
 
         ASC: :asc
+        ASC_2: :Asc
         DESC: :desc
+        DESC_2: :Desc
 
         def self?.values: -> ::Array[Straddle::Models::PagedResponseMetadata::sort_order]
       end

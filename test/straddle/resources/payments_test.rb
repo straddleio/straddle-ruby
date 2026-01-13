@@ -23,7 +23,7 @@ class Straddle::Test::Resources::PaymentsTest < Straddle::Test::ResourceTest
         amount: Integer,
         created_at: Time,
         currency: String,
-        description: String,
+        description: String | nil,
         external_id: String,
         funding_ids: ^(Straddle::Internal::Type::ArrayOf[String]),
         paykey: String,

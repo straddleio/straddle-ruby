@@ -6,7 +6,7 @@ module Straddle
         config: Straddle::ChargeCreateParams::Config,
         consent_type: Straddle::Models::ChargeCreateParams::consent_type,
         currency: String,
-        description: String,
+        description: String?,
         device: Straddle::DeviceInfoV1,
         external_id: String,
         paykey: String,
@@ -31,7 +31,7 @@ module Straddle
 
       attr_accessor currency: String
 
-      attr_accessor description: String
+      attr_accessor description: String?
 
       attr_accessor device: Straddle::DeviceInfoV1
 
@@ -64,7 +64,7 @@ module Straddle
         config: Straddle::ChargeCreateParams::Config,
         consent_type: Straddle::Models::ChargeCreateParams::consent_type,
         currency: String,
-        description: String,
+        description: String?,
         device: Straddle::DeviceInfoV1,
         external_id: String,
         paykey: String,
@@ -82,7 +82,7 @@ module Straddle
         config: Straddle::ChargeCreateParams::Config,
         consent_type: Straddle::Models::ChargeCreateParams::consent_type,
         currency: String,
-        description: String,
+        description: String?,
         device: Straddle::DeviceInfoV1,
         external_id: String,
         paykey: String,
@@ -120,14 +120,18 @@ module Straddle
           sandbox_outcome: Straddle::Models::ChargeCreateParams::Config::sandbox_outcome
         }
 
-        type balance_check = :required | :enabled | :disabled
+        type balance_check =
+          :required | :enabled | :disabled | :Required | :Enabled | :Disabled
 
         module BalanceCheck
           extend Straddle::Internal::Type::Enum
 
           REQUIRED: :required
+          REQUIRED_2: :Required
           ENABLED: :enabled
+          ENABLED_2: :Enabled
           DISABLED: :disabled
+          DISABLED_2: :Disabled
 
           def self?.values: -> ::Array[Straddle::Models::ChargeCreateParams::Config::balance_check]
         end
@@ -144,33 +148,57 @@ module Straddle
           | :reversed_customer_dispute
           | :failed_closed_bank_account
           | :reversed_closed_bank_account
+          | :Standard
+          | :Paid
+          | :OnHoldDailyLimit
+          | :CancelledForFraudRisk
+          | :CancelledForBalanceCheck
+          | :FailedInsufficientFunds
+          | :ReversedInsufficientFunds
+          | :FailedCustomerDispute
+          | :ReversedCustomerDispute
+          | :FailedClosedBankAccount
+          | :ReversedClosedBankAccount
 
         module SandboxOutcome
           extend Straddle::Internal::Type::Enum
 
           STANDARD: :standard
+          STANDARD_2: :Standard
           PAID: :paid
+          PAID_2: :Paid
           ON_HOLD_DAILY_LIMIT: :on_hold_daily_limit
+          ON_HOLD_DAILY_LIMIT_2: :OnHoldDailyLimit
           CANCELLED_FOR_FRAUD_RISK: :cancelled_for_fraud_risk
+          CANCELLED_FOR_FRAUD_RISK_2: :CancelledForFraudRisk
           CANCELLED_FOR_BALANCE_CHECK: :cancelled_for_balance_check
+          CANCELLED_FOR_BALANCE_CHECK_2: :CancelledForBalanceCheck
           FAILED_INSUFFICIENT_FUNDS: :failed_insufficient_funds
+          FAILED_INSUFFICIENT_FUNDS_2: :FailedInsufficientFunds
           REVERSED_INSUFFICIENT_FUNDS: :reversed_insufficient_funds
+          REVERSED_INSUFFICIENT_FUNDS_2: :ReversedInsufficientFunds
           FAILED_CUSTOMER_DISPUTE: :failed_customer_dispute
+          FAILED_CUSTOMER_DISPUTE_2: :FailedCustomerDispute
           REVERSED_CUSTOMER_DISPUTE: :reversed_customer_dispute
+          REVERSED_CUSTOMER_DISPUTE_2: :ReversedCustomerDispute
           FAILED_CLOSED_BANK_ACCOUNT: :failed_closed_bank_account
+          FAILED_CLOSED_BANK_ACCOUNT_2: :FailedClosedBankAccount
           REVERSED_CLOSED_BANK_ACCOUNT: :reversed_closed_bank_account
+          REVERSED_CLOSED_BANK_ACCOUNT_2: :ReversedClosedBankAccount
 
           def self?.values: -> ::Array[Straddle::Models::ChargeCreateParams::Config::sandbox_outcome]
         end
       end
 
-      type consent_type = :internet | :signed
+      type consent_type = :internet | :signed | :Internet | :Signed
 
       module ConsentType
         extend Straddle::Internal::Type::Enum
 
         INTERNET: :internet
+        INTERNET_2: :Internet
         SIGNED: :signed
+        SIGNED_2: :Signed
 
         def self?.values: -> ::Array[Straddle::Models::ChargeCreateParams::consent_type]
       end

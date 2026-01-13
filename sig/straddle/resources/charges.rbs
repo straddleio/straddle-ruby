@@ -6,7 +6,7 @@ module Straddle
         config: Straddle::ChargeCreateParams::Config,
         consent_type: Straddle::Models::ChargeCreateParams::consent_type,
         currency: String,
-        description: String,
+        description: String?,
         device: Straddle::DeviceInfoV1,
         external_id: String,
         paykey: String,
@@ -22,7 +22,7 @@ module Straddle
       def update: (
         String id,
         amount: Integer,
-        description: String,
+        description: String?,
         payment_date: Date,
         ?metadata: ::Hash[Symbol, String]?,
         ?correlation_id: String,

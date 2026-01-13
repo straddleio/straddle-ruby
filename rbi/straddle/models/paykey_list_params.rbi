@@ -185,7 +185,10 @@ module Straddle
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ASC = T.let(:asc, Straddle::PaykeyListParams::SortOrder::TaggedSymbol)
+        ASC_2 = T.let(:Asc, Straddle::PaykeyListParams::SortOrder::TaggedSymbol)
         DESC = T.let(:desc, Straddle::PaykeyListParams::SortOrder::TaggedSymbol)
+        DESC_2 =
+          T.let(:Desc, Straddle::PaykeyListParams::SortOrder::TaggedSymbol)
 
         sig do
           override.returns(
@@ -239,6 +242,8 @@ module Straddle
           T.let(:rejected, Straddle::PaykeyListParams::Status::TaggedSymbol)
         REVIEW =
           T.let(:review, Straddle::PaykeyListParams::Status::TaggedSymbol)
+        BLOCKED =
+          T.let(:blocked, Straddle::PaykeyListParams::Status::TaggedSymbol)
 
         sig do
           override.returns(

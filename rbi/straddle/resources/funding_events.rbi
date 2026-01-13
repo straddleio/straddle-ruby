@@ -13,9 +13,24 @@ module Straddle
           event_type: Straddle::FundingEventListParams::EventType::OrSymbol,
           page_number: Integer,
           page_size: Integer,
+          payment_status:
+            T.nilable(
+              T::Array[
+                Straddle::FundingEventListParams::PaymentStatus::OrSymbol
+              ]
+            ),
           search_text: T.nilable(String),
           sort_by: Straddle::FundingEventListParams::SortBy::OrSymbol,
           sort_order: Straddle::FundingEventListParams::SortOrder::OrSymbol,
+          status_reason:
+            T.nilable(
+              T::Array[Straddle::FundingEventListParams::StatusReason::OrSymbol]
+            ),
+          status_source:
+            T.nilable(
+              T::Array[Straddle::FundingEventListParams::StatusSource::OrSymbol]
+            ),
+          trace_id: T.nilable(String),
           trace_number: T.nilable(String),
           correlation_id: String,
           request_id: String,
@@ -44,12 +59,20 @@ module Straddle
         page_number: nil,
         # Query param: Results page size. Max value: 1000
         page_size: nil,
+        # Query param: Payment status.
+        payment_status: nil,
         # Query param: Search text.
         search_text: nil,
         # Query param: The field to sort the results by.
         sort_by: nil,
         # Query param: The order in which to sort the results.
         sort_order: nil,
+        # Query param: Reason for latest payment status change.
+        status_reason: nil,
+        # Query param: Source of latest payment status change.
+        status_source: nil,
+        # Query param: Trace Id.
+        trace_id: nil,
         # Query param: Trace number.
         trace_number: nil,
         # Header param: Optional client generated identifier to trace and debug a series

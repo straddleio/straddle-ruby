@@ -18,7 +18,7 @@ module Straddle
       #
       # @param currency [String] Body param: The currency of the charge. Only USD is supported.
       #
-      # @param description [String] Body param: An arbitrary description for the charge.
+      # @param description [String, nil] Body param: An arbitrary description for the charge.
       #
       # @param device [Straddle::Models::DeviceInfoV1] Body param:
       #
@@ -74,7 +74,7 @@ module Straddle
       #
       # @param amount [Integer] Body param: The amount of the charge in cents.
       #
-      # @param description [String] Body param: An arbitrary description for the charge.
+      # @param description [String, nil] Body param: An arbitrary description for the charge.
       #
       # @param payment_date [Date] Body param: The desired date on which the payment should be occur. For charges,
       #

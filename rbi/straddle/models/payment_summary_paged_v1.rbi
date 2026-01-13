@@ -89,7 +89,7 @@ module Straddle
         attr_accessor :currency
 
         # An arbitrary description for the `charge` or `payout`.
-        sig { returns(String) }
+        sig { returns(T.nilable(String)) }
         attr_accessor :description
 
         # Unique identifier for the `charge` or `payout` in your database. This value must
@@ -173,7 +173,7 @@ module Straddle
             amount: Integer,
             created_at: Time,
             currency: String,
-            description: String,
+            description: T.nilable(String),
             external_id: String,
             funding_ids: T::Array[String],
             paykey: String,
@@ -243,7 +243,7 @@ module Straddle
               amount: Integer,
               created_at: Time,
               currency: String,
-              description: String,
+              description: T.nilable(String),
               external_id: String,
               funding_ids: T::Array[String],
               paykey: String,
@@ -280,9 +280,19 @@ module Straddle
               :charge,
               Straddle::PaymentSummaryPagedV1::Data::PaymentType::TaggedSymbol
             )
+          CHARGE_2 =
+            T.let(
+              :Charge,
+              Straddle::PaymentSummaryPagedV1::Data::PaymentType::TaggedSymbol
+            )
           PAYOUT =
             T.let(
               :payout,
+              Straddle::PaymentSummaryPagedV1::Data::PaymentType::TaggedSymbol
+            )
+          PAYOUT_2 =
+            T.let(
+              :Payout,
               Straddle::PaymentSummaryPagedV1::Data::PaymentType::TaggedSymbol
             )
 
@@ -312,9 +322,19 @@ module Straddle
               :created,
               Straddle::PaymentSummaryPagedV1::Data::Status::TaggedSymbol
             )
+          CREATED_2 =
+            T.let(
+              :Created,
+              Straddle::PaymentSummaryPagedV1::Data::Status::TaggedSymbol
+            )
           SCHEDULED =
             T.let(
               :scheduled,
+              Straddle::PaymentSummaryPagedV1::Data::Status::TaggedSymbol
+            )
+          SCHEDULED_2 =
+            T.let(
+              :Scheduled,
               Straddle::PaymentSummaryPagedV1::Data::Status::TaggedSymbol
             )
           FAILED =
@@ -322,9 +342,19 @@ module Straddle
               :failed,
               Straddle::PaymentSummaryPagedV1::Data::Status::TaggedSymbol
             )
+          FAILED_2 =
+            T.let(
+              :Failed,
+              Straddle::PaymentSummaryPagedV1::Data::Status::TaggedSymbol
+            )
           CANCELLED =
             T.let(
               :cancelled,
+              Straddle::PaymentSummaryPagedV1::Data::Status::TaggedSymbol
+            )
+          CANCELLED_2 =
+            T.let(
+              :Cancelled,
               Straddle::PaymentSummaryPagedV1::Data::Status::TaggedSymbol
             )
           ON_HOLD =
@@ -332,9 +362,19 @@ module Straddle
               :on_hold,
               Straddle::PaymentSummaryPagedV1::Data::Status::TaggedSymbol
             )
+          ON_HOLD_2 =
+            T.let(
+              :OnHold,
+              Straddle::PaymentSummaryPagedV1::Data::Status::TaggedSymbol
+            )
           PENDING =
             T.let(
               :pending,
+              Straddle::PaymentSummaryPagedV1::Data::Status::TaggedSymbol
+            )
+          PENDING_2 =
+            T.let(
+              :Pending,
               Straddle::PaymentSummaryPagedV1::Data::Status::TaggedSymbol
             )
           PAID =
@@ -342,9 +382,19 @@ module Straddle
               :paid,
               Straddle::PaymentSummaryPagedV1::Data::Status::TaggedSymbol
             )
+          PAID_2 =
+            T.let(
+              :Paid,
+              Straddle::PaymentSummaryPagedV1::Data::Status::TaggedSymbol
+            )
           REVERSED =
             T.let(
               :reversed,
+              Straddle::PaymentSummaryPagedV1::Data::Status::TaggedSymbol
+            )
+          REVERSED_2 =
+            T.let(
+              :Reversed,
               Straddle::PaymentSummaryPagedV1::Data::Status::TaggedSymbol
             )
 
@@ -474,9 +524,19 @@ module Straddle
               :asc,
               Straddle::PaymentSummaryPagedV1::Meta::SortOrder::TaggedSymbol
             )
+          ASC_2 =
+            T.let(
+              :Asc,
+              Straddle::PaymentSummaryPagedV1::Meta::SortOrder::TaggedSymbol
+            )
           DESC =
             T.let(
               :desc,
+              Straddle::PaymentSummaryPagedV1::Meta::SortOrder::TaggedSymbol
+            )
+          DESC_2 =
+            T.let(
+              :Desc,
               Straddle::PaymentSummaryPagedV1::Meta::SortOrder::TaggedSymbol
             )
 
@@ -513,9 +573,19 @@ module Straddle
             :object,
             Straddle::PaymentSummaryPagedV1::ResponseType::TaggedSymbol
           )
+        OBJECT_2 =
+          T.let(
+            :Object,
+            Straddle::PaymentSummaryPagedV1::ResponseType::TaggedSymbol
+          )
         ARRAY =
           T.let(
             :array,
+            Straddle::PaymentSummaryPagedV1::ResponseType::TaggedSymbol
+          )
+        ARRAY_2 =
+          T.let(
+            :Array,
             Straddle::PaymentSummaryPagedV1::ResponseType::TaggedSymbol
           )
         ERROR =
@@ -523,9 +593,19 @@ module Straddle
             :error,
             Straddle::PaymentSummaryPagedV1::ResponseType::TaggedSymbol
           )
+        ERROR_2 =
+          T.let(
+            :Error,
+            Straddle::PaymentSummaryPagedV1::ResponseType::TaggedSymbol
+          )
         NONE =
           T.let(
             :none,
+            Straddle::PaymentSummaryPagedV1::ResponseType::TaggedSymbol
+          )
+        NONE_2 =
+          T.let(
+            :None,
             Straddle::PaymentSummaryPagedV1::ResponseType::TaggedSymbol
           )
 

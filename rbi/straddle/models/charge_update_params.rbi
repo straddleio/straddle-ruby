@@ -16,7 +16,7 @@ module Straddle
       attr_accessor :amount
 
       # An arbitrary description for the charge.
-      sig { returns(String) }
+      sig { returns(T.nilable(String)) }
       attr_accessor :description
 
       # The desired date on which the payment should be occur. For charges, this means
@@ -56,7 +56,7 @@ module Straddle
       sig do
         params(
           amount: Integer,
-          description: String,
+          description: T.nilable(String),
           payment_date: Date,
           metadata: T.nilable(T::Hash[Symbol, String]),
           correlation_id: String,
@@ -89,7 +89,7 @@ module Straddle
         override.returns(
           {
             amount: Integer,
-            description: String,
+            description: T.nilable(String),
             payment_date: Date,
             metadata: T.nilable(T::Hash[Symbol, String]),
             correlation_id: String,

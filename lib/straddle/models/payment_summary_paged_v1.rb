@@ -63,8 +63,8 @@ module Straddle
         # @!attribute description
         #   An arbitrary description for the `charge` or `payout`.
         #
-        #   @return [String]
-        required :description, String
+        #   @return [String, nil]
+        required :description, String, nil?: true
 
         # @!attribute external_id
         #   Unique identifier for the `charge` or `payout` in your database. This value must
@@ -162,7 +162,7 @@ module Straddle
         #
         #   @param currency [String] The currency of the `charge` or `payout`. Only USD is supported.
         #
-        #   @param description [String] An arbitrary description for the `charge` or `payout`.
+        #   @param description [String, nil] An arbitrary description for the `charge` or `payout`.
         #
         #   @param external_id [String] Unique identifier for the `charge` or `payout` in your database. This value must
         #
@@ -197,7 +197,9 @@ module Straddle
           extend Straddle::Internal::Type::Enum
 
           CHARGE = :charge
+          CHARGE_2 = :Charge
           PAYOUT = :payout
+          PAYOUT_2 = :Payout
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -210,13 +212,21 @@ module Straddle
           extend Straddle::Internal::Type::Enum
 
           CREATED = :created
+          CREATED_2 = :Created
           SCHEDULED = :scheduled
+          SCHEDULED_2 = :Scheduled
           FAILED = :failed
+          FAILED_2 = :Failed
           CANCELLED = :cancelled
+          CANCELLED_2 = :Cancelled
           ON_HOLD = :on_hold
+          ON_HOLD_2 = :OnHold
           PENDING = :pending
+          PENDING_2 = :Pending
           PAID = :paid
+          PAID_2 = :Paid
           REVERSED = :reversed
+          REVERSED_2 = :Reversed
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -301,7 +311,9 @@ module Straddle
           extend Straddle::Internal::Type::Enum
 
           ASC = :asc
+          ASC_2 = :Asc
           DESC = :desc
+          DESC_2 = :Desc
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -321,9 +333,13 @@ module Straddle
         extend Straddle::Internal::Type::Enum
 
         OBJECT = :object
+        OBJECT_2 = :Object
         ARRAY = :array
+        ARRAY_2 = :Array
         ERROR = :error
+        ERROR_2 = :Error
         NONE = :none
+        NONE_2 = :None
 
         # @!method self.values
         #   @return [Array<Symbol>]

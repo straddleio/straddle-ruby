@@ -9,7 +9,7 @@ module Straddle
       # Retrieves a list of funding events for your account. This endpoint supports
       # advanced sorting and filtering options.
       #
-      # @overload list(created_from: nil, created_to: nil, direction: nil, event_type: nil, page_number: nil, page_size: nil, search_text: nil, sort_by: nil, sort_order: nil, trace_number: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @overload list(created_from: nil, created_to: nil, direction: nil, event_type: nil, page_number: nil, page_size: nil, payment_status: nil, search_text: nil, sort_by: nil, sort_order: nil, status_reason: nil, status_source: nil, trace_id: nil, trace_number: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
       # @param created_from [Date, nil] Query param: The start date of the range to filter by using the `YYYY-MM-DD` for
       #
@@ -23,11 +23,19 @@ module Straddle
       #
       # @param page_size [Integer] Query param: Results page size. Max value: 1000
       #
+      # @param payment_status [Array<Symbol, Straddle::Models::FundingEventListParams::PaymentStatus>, nil] Query param: Payment status.
+      #
       # @param search_text [String, nil] Query param: Search text.
       #
       # @param sort_by [Symbol, Straddle::Models::FundingEventListParams::SortBy] Query param: The field to sort the results by.
       #
       # @param sort_order [Symbol, Straddle::Models::FundingEventListParams::SortOrder] Query param: The order in which to sort the results.
+      #
+      # @param status_reason [Array<Symbol, Straddle::Models::FundingEventListParams::StatusReason>, nil] Query param: Reason for latest payment status change.
+      #
+      # @param status_source [Array<Symbol, Straddle::Models::FundingEventListParams::StatusSource>, nil] Query param: Source of latest payment status change.
+      #
+      # @param trace_id [String, nil] Query param: Trace Id.
       #
       # @param trace_number [String, nil] Query param: Trace number.
       #
@@ -52,9 +60,13 @@ module Straddle
             :event_type,
             :page_number,
             :page_size,
+            :payment_status,
             :search_text,
             :sort_by,
             :sort_order,
+            :status_reason,
+            :status_source,
+            :trace_id,
             :trace_number
           ]
         @client.request(
