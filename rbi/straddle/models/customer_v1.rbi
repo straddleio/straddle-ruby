@@ -258,12 +258,8 @@ module Straddle
 
           INDIVIDUAL =
             T.let(:individual, Straddle::CustomerV1::Data::Type::TaggedSymbol)
-          INDIVIDUAL_2 =
-            T.let(:Individual, Straddle::CustomerV1::Data::Type::TaggedSymbol)
           BUSINESS =
             T.let(:business, Straddle::CustomerV1::Data::Type::TaggedSymbol)
-          BUSINESS_2 =
-            T.let(:Business, Straddle::CustomerV1::Data::Type::TaggedSymbol)
 
           sig do
             override.returns(
@@ -652,16 +648,9 @@ module Straddle
 
         OBJECT =
           T.let(:object, Straddle::CustomerV1::ResponseType::TaggedSymbol)
-        OBJECT_2 =
-          T.let(:Object, Straddle::CustomerV1::ResponseType::TaggedSymbol)
         ARRAY = T.let(:array, Straddle::CustomerV1::ResponseType::TaggedSymbol)
-        ARRAY_2 =
-          T.let(:Array, Straddle::CustomerV1::ResponseType::TaggedSymbol)
         ERROR = T.let(:error, Straddle::CustomerV1::ResponseType::TaggedSymbol)
-        ERROR_2 =
-          T.let(:Error, Straddle::CustomerV1::ResponseType::TaggedSymbol)
         NONE = T.let(:none, Straddle::CustomerV1::ResponseType::TaggedSymbol)
-        NONE_2 = T.let(:None, Straddle::CustomerV1::ResponseType::TaggedSymbol)
 
         sig do
           override.returns(

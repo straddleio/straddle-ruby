@@ -99,15 +99,13 @@ module Straddle
         request_options: Straddle::RequestOptions
       }
 
-      type type_ = :individual | :business | :Individual | :Business
+      type type_ = :individual | :business
 
       module Type
         extend Straddle::Internal::Type::Enum
 
         INDIVIDUAL: :individual
-        INDIVIDUAL_2: :Individual
         BUSINESS: :business
-        BUSINESS_2: :Business
 
         def self?.values: -> ::Array[Straddle::Models::CustomerCreateParams::type_]
       end

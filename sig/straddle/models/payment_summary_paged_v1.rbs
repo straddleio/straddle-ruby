@@ -135,15 +135,13 @@ module Straddle
           paykey_details: Straddle::PaykeyDetailsV1
         }
 
-        type payment_type = :charge | :payout | :Charge | :Payout
+        type payment_type = :charge | :payout
 
         module PaymentType
           extend Straddle::Internal::Type::Enum
 
           CHARGE: :charge
-          CHARGE_2: :Charge
           PAYOUT: :payout
-          PAYOUT_2: :Payout
 
           def self?.values: -> ::Array[Straddle::Models::PaymentSummaryPagedV1::Data::payment_type]
         end
@@ -157,34 +155,18 @@ module Straddle
           | :pending
           | :paid
           | :reversed
-          | :Created
-          | :Scheduled
-          | :Failed
-          | :Cancelled
-          | :OnHold
-          | :Pending
-          | :Paid
-          | :Reversed
 
         module Status
           extend Straddle::Internal::Type::Enum
 
           CREATED: :created
-          CREATED_2: :Created
           SCHEDULED: :scheduled
-          SCHEDULED_2: :Scheduled
           FAILED: :failed
-          FAILED_2: :Failed
           CANCELLED: :cancelled
-          CANCELLED_2: :Cancelled
           ON_HOLD: :on_hold
-          ON_HOLD_2: :OnHold
           PENDING: :pending
-          PENDING_2: :Pending
           PAID: :paid
-          PAID_2: :Paid
           REVERSED: :reversed
-          REVERSED_2: :Reversed
 
           def self?.values: -> ::Array[Straddle::Models::PaymentSummaryPagedV1::Data::status]
         end
@@ -246,34 +228,27 @@ module Straddle
           total_pages: Integer
         }
 
-        type sort_order = :asc | :desc | :Asc | :Desc
+        type sort_order = :asc | :desc
 
         module SortOrder
           extend Straddle::Internal::Type::Enum
 
           ASC: :asc
-          ASC_2: :Asc
           DESC: :desc
-          DESC_2: :Desc
 
           def self?.values: -> ::Array[Straddle::Models::PaymentSummaryPagedV1::Meta::sort_order]
         end
       end
 
-      type response_type =
-        :object | :array | :error | :none | :Object | :Array | :Error | :None
+      type response_type = :object | :array | :error | :none
 
       module ResponseType
         extend Straddle::Internal::Type::Enum
 
         OBJECT: :object
-        OBJECT_2: :Object
         ARRAY: :array
-        ARRAY_2: :Array
         ERROR: :error
-        ERROR_2: :Error
         NONE: :none
-        NONE_2: :None
 
         def self?.values: -> ::Array[Straddle::Models::PaymentSummaryPagedV1::response_type]
       end

@@ -109,12 +109,8 @@ module Straddle
 
         ASC =
           T.let(:asc, Straddle::PagedResponseMetadata::SortOrder::TaggedSymbol)
-        ASC_2 =
-          T.let(:Asc, Straddle::PagedResponseMetadata::SortOrder::TaggedSymbol)
         DESC =
           T.let(:desc, Straddle::PagedResponseMetadata::SortOrder::TaggedSymbol)
-        DESC_2 =
-          T.let(:Desc, Straddle::PagedResponseMetadata::SortOrder::TaggedSymbol)
 
         sig do
           override.returns(
