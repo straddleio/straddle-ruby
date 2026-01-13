@@ -240,8 +240,12 @@ module Straddle
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ASC = T.let(:asc, Straddle::CustomerListParams::SortOrder::TaggedSymbol)
+        ASC_2 =
+          T.let(:Asc, Straddle::CustomerListParams::SortOrder::TaggedSymbol)
         DESC =
           T.let(:desc, Straddle::CustomerListParams::SortOrder::TaggedSymbol)
+        DESC_2 =
+          T.let(:Desc, Straddle::CustomerListParams::SortOrder::TaggedSymbol)
 
         sig do
           override.returns(
@@ -288,8 +292,12 @@ module Straddle
 
         INDIVIDUAL =
           T.let(:individual, Straddle::CustomerListParams::Type::TaggedSymbol)
+        INDIVIDUAL_2 =
+          T.let(:Individual, Straddle::CustomerListParams::Type::TaggedSymbol)
         BUSINESS =
           T.let(:business, Straddle::CustomerListParams::Type::TaggedSymbol)
+        BUSINESS_2 =
+          T.let(:Business, Straddle::CustomerListParams::Type::TaggedSymbol)
 
         sig do
           override.returns(

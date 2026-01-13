@@ -13,6 +13,12 @@ module Straddle
           event_type: Straddle::FundingEventListParams::EventType::OrSymbol,
           page_number: Integer,
           page_size: Integer,
+          payment_status:
+            T.nilable(
+              T::Array[
+                Straddle::FundingEventListParams::PaymentStatus::OrSymbol
+              ]
+            ),
           search_text: T.nilable(String),
           sort_by: Straddle::FundingEventListParams::SortBy::OrSymbol,
           sort_order: Straddle::FundingEventListParams::SortOrder::OrSymbol,
@@ -57,6 +63,8 @@ module Straddle
         page_number: nil,
         # Query param: Results page size. Max value: 1000
         page_size: nil,
+        # Query param: Payment status.
+        payment_status: nil,
         # Query param: Search text.
         search_text: nil,
         # Query param: The field to sort the results by.
