@@ -150,11 +150,8 @@ module Straddle
           extend Straddle::Internal::Type::Enum
 
           REQUIRED = :required
-          REQUIRED_2 = :Required
           ENABLED = :enabled
-          ENABLED_2 = :Enabled
           DISABLED = :disabled
-          DISABLED_2 = :Disabled
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -167,27 +164,16 @@ module Straddle
           extend Straddle::Internal::Type::Enum
 
           STANDARD = :standard
-          STANDARD_2 = :Standard
           PAID = :paid
-          PAID_2 = :Paid
           ON_HOLD_DAILY_LIMIT = :on_hold_daily_limit
-          ON_HOLD_DAILY_LIMIT_2 = :OnHoldDailyLimit
           CANCELLED_FOR_FRAUD_RISK = :cancelled_for_fraud_risk
-          CANCELLED_FOR_FRAUD_RISK_2 = :CancelledForFraudRisk
           CANCELLED_FOR_BALANCE_CHECK = :cancelled_for_balance_check
-          CANCELLED_FOR_BALANCE_CHECK_2 = :CancelledForBalanceCheck
           FAILED_INSUFFICIENT_FUNDS = :failed_insufficient_funds
-          FAILED_INSUFFICIENT_FUNDS_2 = :FailedInsufficientFunds
           REVERSED_INSUFFICIENT_FUNDS = :reversed_insufficient_funds
-          REVERSED_INSUFFICIENT_FUNDS_2 = :ReversedInsufficientFunds
           FAILED_CUSTOMER_DISPUTE = :failed_customer_dispute
-          FAILED_CUSTOMER_DISPUTE_2 = :FailedCustomerDispute
           REVERSED_CUSTOMER_DISPUTE = :reversed_customer_dispute
-          REVERSED_CUSTOMER_DISPUTE_2 = :ReversedCustomerDispute
           FAILED_CLOSED_BANK_ACCOUNT = :failed_closed_bank_account
-          FAILED_CLOSED_BANK_ACCOUNT_2 = :FailedClosedBankAccount
           REVERSED_CLOSED_BANK_ACCOUNT = :reversed_closed_bank_account
-          REVERSED_CLOSED_BANK_ACCOUNT_2 = :ReversedClosedBankAccount
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -202,9 +188,7 @@ module Straddle
         extend Straddle::Internal::Type::Enum
 
         INTERNET = :internet
-        INTERNET_2 = :Internet
         SIGNED = :signed
-        SIGNED_2 = :Signed
 
         # @!method self.values
         #   @return [Array<Symbol>]
