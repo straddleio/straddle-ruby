@@ -668,19 +668,9 @@ module Straddle
                 :insufficient_funds,
                 Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
-            INSUFFICIENT_FUNDS_2 =
-              T.let(
-                :InsufficientFunds,
-                Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
-              )
             CLOSED_BANK_ACCOUNT =
               T.let(
                 :closed_bank_account,
-                Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
-              )
-            CLOSED_BANK_ACCOUNT_2 =
-              T.let(
-                :ClosedBankAccount,
                 Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
             INVALID_BANK_ACCOUNT =
@@ -688,19 +678,9 @@ module Straddle
                 :invalid_bank_account,
                 Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
-            INVALID_BANK_ACCOUNT_2 =
-              T.let(
-                :InvalidBankAccount,
-                Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
-              )
             INVALID_ROUTING =
               T.let(
                 :invalid_routing,
-                Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
-              )
-            INVALID_ROUTING_2 =
-              T.let(
-                :InvalidRouting,
                 Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
             DISPUTED =
@@ -708,19 +688,9 @@ module Straddle
                 :disputed,
                 Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
-            DISPUTED_2 =
-              T.let(
-                :Disputed,
-                Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
-              )
             PAYMENT_STOPPED =
               T.let(
                 :payment_stopped,
-                Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
-              )
-            PAYMENT_STOPPED_2 =
-              T.let(
-                :PaymentStopped,
                 Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
             OWNER_DECEASED =
@@ -728,19 +698,9 @@ module Straddle
                 :owner_deceased,
                 Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
-            OWNER_DECEASED_2 =
-              T.let(
-                :OwnerDeceased,
-                Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
-              )
             FROZEN_BANK_ACCOUNT =
               T.let(
                 :frozen_bank_account,
-                Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
-              )
-            FROZEN_BANK_ACCOUNT_2 =
-              T.let(
-                :FrozenBankAccount,
                 Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
             RISK_REVIEW =
@@ -748,19 +708,9 @@ module Straddle
                 :risk_review,
                 Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
-            RISK_REVIEW_2 =
-              T.let(
-                :RiskReview,
-                Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
-              )
             FRAUDULENT =
               T.let(
                 :fraudulent,
-                Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
-              )
-            FRAUDULENT_2 =
-              T.let(
-                :Fraudulent,
                 Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
             DUPLICATE_ENTRY =
@@ -768,19 +718,9 @@ module Straddle
                 :duplicate_entry,
                 Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
-            DUPLICATE_ENTRY_2 =
-              T.let(
-                :DuplicateEntry,
-                Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
-              )
             INVALID_PAYKEY =
               T.let(
                 :invalid_paykey,
-                Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
-              )
-            INVALID_PAYKEY_2 =
-              T.let(
-                :InvalidPaykey,
                 Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
             PAYMENT_BLOCKED =
@@ -788,19 +728,9 @@ module Straddle
                 :payment_blocked,
                 Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
-            PAYMENT_BLOCKED_2 =
-              T.let(
-                :PaymentBlocked,
-                Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
-              )
             AMOUNT_TOO_LARGE =
               T.let(
                 :amount_too_large,
-                Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
-              )
-            AMOUNT_TOO_LARGE_2 =
-              T.let(
-                :AmountTooLarge,
                 Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
             TOO_MANY_ATTEMPTS =
@@ -808,19 +738,9 @@ module Straddle
                 :too_many_attempts,
                 Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
-            TOO_MANY_ATTEMPTS_2 =
-              T.let(
-                :TooManyAttempts,
-                Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
-              )
             INTERNAL_SYSTEM_ERROR =
               T.let(
                 :internal_system_error,
-                Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
-              )
-            INTERNAL_SYSTEM_ERROR_2 =
-              T.let(
-                :InternalSystemError,
                 Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
             USER_REQUEST =
@@ -828,19 +748,9 @@ module Straddle
                 :user_request,
                 Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
-            USER_REQUEST_2 =
-              T.let(
-                :UserRequest,
-                Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
-              )
             OK =
               T.let(
                 :ok,
-                Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
-              )
-            OK_2 =
-              T.let(
-                :Ok,
                 Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
             OTHER_NETWORK_RETURN =
@@ -848,19 +758,9 @@ module Straddle
                 :other_network_return,
                 Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
-            OTHER_NETWORK_RETURN_2 =
-              T.let(
-                :OtherNetworkReturn,
-                Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
-              )
             PAYOUT_REFUSED =
               T.let(
                 :payout_refused,
-                Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
-              )
-            PAYOUT_REFUSED_2 =
-              T.let(
-                :PayoutRefused,
                 Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
             CANCEL_REQUEST =
@@ -917,19 +817,9 @@ module Straddle
                 :watchtower,
                 Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Source::TaggedSymbol
               )
-            WATCHTOWER_2 =
-              T.let(
-                :Watchtower,
-                Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Source::TaggedSymbol
-              )
             BANK_DECLINE =
               T.let(
                 :bank_decline,
-                Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Source::TaggedSymbol
-              )
-            BANK_DECLINE_2 =
-              T.let(
-                :BankDecline,
                 Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Source::TaggedSymbol
               )
             CUSTOMER_DISPUTE =
@@ -937,29 +827,14 @@ module Straddle
                 :customer_dispute,
                 Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Source::TaggedSymbol
               )
-            CUSTOMER_DISPUTE_2 =
-              T.let(
-                :CustomerDispute,
-                Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Source::TaggedSymbol
-              )
             USER_ACTION =
               T.let(
                 :user_action,
                 Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Source::TaggedSymbol
               )
-            USER_ACTION_2 =
-              T.let(
-                :UserAction,
-                Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Source::TaggedSymbol
-              )
             SYSTEM =
               T.let(
                 :system,
-                Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Source::TaggedSymbol
-              )
-            SYSTEM_2 =
-              T.let(
-                :System,
                 Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Source::TaggedSymbol
               )
 
@@ -1088,19 +963,9 @@ module Straddle
               :asc,
               Straddle::PaykeySummaryPagedV1::Meta::SortOrder::TaggedSymbol
             )
-          ASC_2 =
-            T.let(
-              :Asc,
-              Straddle::PaykeySummaryPagedV1::Meta::SortOrder::TaggedSymbol
-            )
           DESC =
             T.let(
               :desc,
-              Straddle::PaykeySummaryPagedV1::Meta::SortOrder::TaggedSymbol
-            )
-          DESC_2 =
-            T.let(
-              :Desc,
               Straddle::PaykeySummaryPagedV1::Meta::SortOrder::TaggedSymbol
             )
 
@@ -1137,19 +1002,9 @@ module Straddle
             :object,
             Straddle::PaykeySummaryPagedV1::ResponseType::TaggedSymbol
           )
-        OBJECT_2 =
-          T.let(
-            :Object,
-            Straddle::PaykeySummaryPagedV1::ResponseType::TaggedSymbol
-          )
         ARRAY =
           T.let(
             :array,
-            Straddle::PaykeySummaryPagedV1::ResponseType::TaggedSymbol
-          )
-        ARRAY_2 =
-          T.let(
-            :Array,
             Straddle::PaykeySummaryPagedV1::ResponseType::TaggedSymbol
           )
         ERROR =
@@ -1157,19 +1012,9 @@ module Straddle
             :error,
             Straddle::PaykeySummaryPagedV1::ResponseType::TaggedSymbol
           )
-        ERROR_2 =
-          T.let(
-            :Error,
-            Straddle::PaykeySummaryPagedV1::ResponseType::TaggedSymbol
-          )
         NONE =
           T.let(
             :none,
-            Straddle::PaykeySummaryPagedV1::ResponseType::TaggedSymbol
-          )
-        NONE_2 =
-          T.let(
-            :None,
             Straddle::PaykeySummaryPagedV1::ResponseType::TaggedSymbol
           )
 

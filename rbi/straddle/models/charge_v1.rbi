@@ -395,29 +395,14 @@ module Straddle
                 :required,
                 Straddle::ChargeV1::Data::Config::BalanceCheck::TaggedSymbol
               )
-            REQUIRED_2 =
-              T.let(
-                :Required,
-                Straddle::ChargeV1::Data::Config::BalanceCheck::TaggedSymbol
-              )
             ENABLED =
               T.let(
                 :enabled,
                 Straddle::ChargeV1::Data::Config::BalanceCheck::TaggedSymbol
               )
-            ENABLED_2 =
-              T.let(
-                :Enabled,
-                Straddle::ChargeV1::Data::Config::BalanceCheck::TaggedSymbol
-              )
             DISABLED =
               T.let(
                 :disabled,
-                Straddle::ChargeV1::Data::Config::BalanceCheck::TaggedSymbol
-              )
-            DISABLED_2 =
-              T.let(
-                :Disabled,
                 Straddle::ChargeV1::Data::Config::BalanceCheck::TaggedSymbol
               )
 
@@ -447,19 +432,9 @@ module Straddle
                 :standard,
                 Straddle::ChargeV1::Data::Config::SandboxOutcome::TaggedSymbol
               )
-            STANDARD_2 =
-              T.let(
-                :Standard,
-                Straddle::ChargeV1::Data::Config::SandboxOutcome::TaggedSymbol
-              )
             PAID =
               T.let(
                 :paid,
-                Straddle::ChargeV1::Data::Config::SandboxOutcome::TaggedSymbol
-              )
-            PAID_2 =
-              T.let(
-                :Paid,
                 Straddle::ChargeV1::Data::Config::SandboxOutcome::TaggedSymbol
               )
             ON_HOLD_DAILY_LIMIT =
@@ -467,19 +442,9 @@ module Straddle
                 :on_hold_daily_limit,
                 Straddle::ChargeV1::Data::Config::SandboxOutcome::TaggedSymbol
               )
-            ON_HOLD_DAILY_LIMIT_2 =
-              T.let(
-                :OnHoldDailyLimit,
-                Straddle::ChargeV1::Data::Config::SandboxOutcome::TaggedSymbol
-              )
             CANCELLED_FOR_FRAUD_RISK =
               T.let(
                 :cancelled_for_fraud_risk,
-                Straddle::ChargeV1::Data::Config::SandboxOutcome::TaggedSymbol
-              )
-            CANCELLED_FOR_FRAUD_RISK_2 =
-              T.let(
-                :CancelledForFraudRisk,
                 Straddle::ChargeV1::Data::Config::SandboxOutcome::TaggedSymbol
               )
             CANCELLED_FOR_BALANCE_CHECK =
@@ -487,19 +452,9 @@ module Straddle
                 :cancelled_for_balance_check,
                 Straddle::ChargeV1::Data::Config::SandboxOutcome::TaggedSymbol
               )
-            CANCELLED_FOR_BALANCE_CHECK_2 =
-              T.let(
-                :CancelledForBalanceCheck,
-                Straddle::ChargeV1::Data::Config::SandboxOutcome::TaggedSymbol
-              )
             FAILED_INSUFFICIENT_FUNDS =
               T.let(
                 :failed_insufficient_funds,
-                Straddle::ChargeV1::Data::Config::SandboxOutcome::TaggedSymbol
-              )
-            FAILED_INSUFFICIENT_FUNDS_2 =
-              T.let(
-                :FailedInsufficientFunds,
                 Straddle::ChargeV1::Data::Config::SandboxOutcome::TaggedSymbol
               )
             REVERSED_INSUFFICIENT_FUNDS =
@@ -507,19 +462,9 @@ module Straddle
                 :reversed_insufficient_funds,
                 Straddle::ChargeV1::Data::Config::SandboxOutcome::TaggedSymbol
               )
-            REVERSED_INSUFFICIENT_FUNDS_2 =
-              T.let(
-                :ReversedInsufficientFunds,
-                Straddle::ChargeV1::Data::Config::SandboxOutcome::TaggedSymbol
-              )
             FAILED_CUSTOMER_DISPUTE =
               T.let(
                 :failed_customer_dispute,
-                Straddle::ChargeV1::Data::Config::SandboxOutcome::TaggedSymbol
-              )
-            FAILED_CUSTOMER_DISPUTE_2 =
-              T.let(
-                :FailedCustomerDispute,
                 Straddle::ChargeV1::Data::Config::SandboxOutcome::TaggedSymbol
               )
             REVERSED_CUSTOMER_DISPUTE =
@@ -527,29 +472,14 @@ module Straddle
                 :reversed_customer_dispute,
                 Straddle::ChargeV1::Data::Config::SandboxOutcome::TaggedSymbol
               )
-            REVERSED_CUSTOMER_DISPUTE_2 =
-              T.let(
-                :ReversedCustomerDispute,
-                Straddle::ChargeV1::Data::Config::SandboxOutcome::TaggedSymbol
-              )
             FAILED_CLOSED_BANK_ACCOUNT =
               T.let(
                 :failed_closed_bank_account,
                 Straddle::ChargeV1::Data::Config::SandboxOutcome::TaggedSymbol
               )
-            FAILED_CLOSED_BANK_ACCOUNT_2 =
-              T.let(
-                :FailedClosedBankAccount,
-                Straddle::ChargeV1::Data::Config::SandboxOutcome::TaggedSymbol
-              )
             REVERSED_CLOSED_BANK_ACCOUNT =
               T.let(
                 :reversed_closed_bank_account,
-                Straddle::ChargeV1::Data::Config::SandboxOutcome::TaggedSymbol
-              )
-            REVERSED_CLOSED_BANK_ACCOUNT_2 =
-              T.let(
-                :ReversedClosedBankAccount,
                 Straddle::ChargeV1::Data::Config::SandboxOutcome::TaggedSymbol
               )
 
@@ -583,15 +513,8 @@ module Straddle
               :internet,
               Straddle::ChargeV1::Data::ConsentType::TaggedSymbol
             )
-          INTERNET_2 =
-            T.let(
-              :Internet,
-              Straddle::ChargeV1::Data::ConsentType::TaggedSymbol
-            )
           SIGNED =
             T.let(:signed, Straddle::ChargeV1::Data::ConsentType::TaggedSymbol)
-          SIGNED_2 =
-            T.let(:Signed, Straddle::ChargeV1::Data::ConsentType::TaggedSymbol)
 
           sig do
             override.returns(
@@ -612,34 +535,19 @@ module Straddle
 
           CREATED =
             T.let(:created, Straddle::ChargeV1::Data::Status::TaggedSymbol)
-          CREATED_2 =
-            T.let(:Created, Straddle::ChargeV1::Data::Status::TaggedSymbol)
           SCHEDULED =
             T.let(:scheduled, Straddle::ChargeV1::Data::Status::TaggedSymbol)
-          SCHEDULED_2 =
-            T.let(:Scheduled, Straddle::ChargeV1::Data::Status::TaggedSymbol)
           FAILED =
             T.let(:failed, Straddle::ChargeV1::Data::Status::TaggedSymbol)
-          FAILED_2 =
-            T.let(:Failed, Straddle::ChargeV1::Data::Status::TaggedSymbol)
           CANCELLED =
             T.let(:cancelled, Straddle::ChargeV1::Data::Status::TaggedSymbol)
-          CANCELLED_2 =
-            T.let(:Cancelled, Straddle::ChargeV1::Data::Status::TaggedSymbol)
           ON_HOLD =
             T.let(:on_hold, Straddle::ChargeV1::Data::Status::TaggedSymbol)
-          ON_HOLD_2 =
-            T.let(:OnHold, Straddle::ChargeV1::Data::Status::TaggedSymbol)
           PENDING =
             T.let(:pending, Straddle::ChargeV1::Data::Status::TaggedSymbol)
-          PENDING_2 =
-            T.let(:Pending, Straddle::ChargeV1::Data::Status::TaggedSymbol)
           PAID = T.let(:paid, Straddle::ChargeV1::Data::Status::TaggedSymbol)
-          PAID_2 = T.let(:Paid, Straddle::ChargeV1::Data::Status::TaggedSymbol)
           REVERSED =
             T.let(:reversed, Straddle::ChargeV1::Data::Status::TaggedSymbol)
-          REVERSED_2 =
-            T.let(:Reversed, Straddle::ChargeV1::Data::Status::TaggedSymbol)
 
           sig do
             override.returns(
@@ -760,19 +668,9 @@ module Straddle
                 :insufficient_funds,
                 Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
               )
-            INSUFFICIENT_FUNDS_2 =
-              T.let(
-                :InsufficientFunds,
-                Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
-              )
             CLOSED_BANK_ACCOUNT =
               T.let(
                 :closed_bank_account,
-                Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
-              )
-            CLOSED_BANK_ACCOUNT_2 =
-              T.let(
-                :ClosedBankAccount,
                 Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
               )
             INVALID_BANK_ACCOUNT =
@@ -780,19 +678,9 @@ module Straddle
                 :invalid_bank_account,
                 Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
               )
-            INVALID_BANK_ACCOUNT_2 =
-              T.let(
-                :InvalidBankAccount,
-                Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
-              )
             INVALID_ROUTING =
               T.let(
                 :invalid_routing,
-                Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
-              )
-            INVALID_ROUTING_2 =
-              T.let(
-                :InvalidRouting,
                 Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
               )
             DISPUTED =
@@ -800,19 +688,9 @@ module Straddle
                 :disputed,
                 Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
               )
-            DISPUTED_2 =
-              T.let(
-                :Disputed,
-                Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
-              )
             PAYMENT_STOPPED =
               T.let(
                 :payment_stopped,
-                Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
-              )
-            PAYMENT_STOPPED_2 =
-              T.let(
-                :PaymentStopped,
                 Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
               )
             OWNER_DECEASED =
@@ -820,19 +698,9 @@ module Straddle
                 :owner_deceased,
                 Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
               )
-            OWNER_DECEASED_2 =
-              T.let(
-                :OwnerDeceased,
-                Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
-              )
             FROZEN_BANK_ACCOUNT =
               T.let(
                 :frozen_bank_account,
-                Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
-              )
-            FROZEN_BANK_ACCOUNT_2 =
-              T.let(
-                :FrozenBankAccount,
                 Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
               )
             RISK_REVIEW =
@@ -840,19 +708,9 @@ module Straddle
                 :risk_review,
                 Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
               )
-            RISK_REVIEW_2 =
-              T.let(
-                :RiskReview,
-                Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
-              )
             FRAUDULENT =
               T.let(
                 :fraudulent,
-                Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
-              )
-            FRAUDULENT_2 =
-              T.let(
-                :Fraudulent,
                 Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
               )
             DUPLICATE_ENTRY =
@@ -860,19 +718,9 @@ module Straddle
                 :duplicate_entry,
                 Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
               )
-            DUPLICATE_ENTRY_2 =
-              T.let(
-                :DuplicateEntry,
-                Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
-              )
             INVALID_PAYKEY =
               T.let(
                 :invalid_paykey,
-                Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
-              )
-            INVALID_PAYKEY_2 =
-              T.let(
-                :InvalidPaykey,
                 Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
               )
             PAYMENT_BLOCKED =
@@ -880,19 +728,9 @@ module Straddle
                 :payment_blocked,
                 Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
               )
-            PAYMENT_BLOCKED_2 =
-              T.let(
-                :PaymentBlocked,
-                Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
-              )
             AMOUNT_TOO_LARGE =
               T.let(
                 :amount_too_large,
-                Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
-              )
-            AMOUNT_TOO_LARGE_2 =
-              T.let(
-                :AmountTooLarge,
                 Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
               )
             TOO_MANY_ATTEMPTS =
@@ -900,19 +738,9 @@ module Straddle
                 :too_many_attempts,
                 Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
               )
-            TOO_MANY_ATTEMPTS_2 =
-              T.let(
-                :TooManyAttempts,
-                Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
-              )
             INTERNAL_SYSTEM_ERROR =
               T.let(
                 :internal_system_error,
-                Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
-              )
-            INTERNAL_SYSTEM_ERROR_2 =
-              T.let(
-                :InternalSystemError,
                 Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
               )
             USER_REQUEST =
@@ -920,19 +748,9 @@ module Straddle
                 :user_request,
                 Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
               )
-            USER_REQUEST_2 =
-              T.let(
-                :UserRequest,
-                Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
-              )
             OK =
               T.let(
                 :ok,
-                Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
-              )
-            OK_2 =
-              T.let(
-                :Ok,
                 Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
               )
             OTHER_NETWORK_RETURN =
@@ -940,19 +758,9 @@ module Straddle
                 :other_network_return,
                 Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
               )
-            OTHER_NETWORK_RETURN_2 =
-              T.let(
-                :OtherNetworkReturn,
-                Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
-              )
             PAYOUT_REFUSED =
               T.let(
                 :payout_refused,
-                Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
-              )
-            PAYOUT_REFUSED_2 =
-              T.let(
-                :PayoutRefused,
                 Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
               )
             CANCEL_REQUEST =
@@ -1008,19 +816,9 @@ module Straddle
                 :watchtower,
                 Straddle::ChargeV1::Data::StatusHistory::Source::TaggedSymbol
               )
-            WATCHTOWER_2 =
-              T.let(
-                :Watchtower,
-                Straddle::ChargeV1::Data::StatusHistory::Source::TaggedSymbol
-              )
             BANK_DECLINE =
               T.let(
                 :bank_decline,
-                Straddle::ChargeV1::Data::StatusHistory::Source::TaggedSymbol
-              )
-            BANK_DECLINE_2 =
-              T.let(
-                :BankDecline,
                 Straddle::ChargeV1::Data::StatusHistory::Source::TaggedSymbol
               )
             CUSTOMER_DISPUTE =
@@ -1028,29 +826,14 @@ module Straddle
                 :customer_dispute,
                 Straddle::ChargeV1::Data::StatusHistory::Source::TaggedSymbol
               )
-            CUSTOMER_DISPUTE_2 =
-              T.let(
-                :CustomerDispute,
-                Straddle::ChargeV1::Data::StatusHistory::Source::TaggedSymbol
-              )
             USER_ACTION =
               T.let(
                 :user_action,
                 Straddle::ChargeV1::Data::StatusHistory::Source::TaggedSymbol
               )
-            USER_ACTION_2 =
-              T.let(
-                :UserAction,
-                Straddle::ChargeV1::Data::StatusHistory::Source::TaggedSymbol
-              )
             SYSTEM =
               T.let(
                 :system,
-                Straddle::ChargeV1::Data::StatusHistory::Source::TaggedSymbol
-              )
-            SYSTEM_2 =
-              T.let(
-                :System,
                 Straddle::ChargeV1::Data::StatusHistory::Source::TaggedSymbol
               )
 
@@ -1080,19 +863,9 @@ module Straddle
                 :created,
                 Straddle::ChargeV1::Data::StatusHistory::Status::TaggedSymbol
               )
-            CREATED_2 =
-              T.let(
-                :Created,
-                Straddle::ChargeV1::Data::StatusHistory::Status::TaggedSymbol
-              )
             SCHEDULED =
               T.let(
                 :scheduled,
-                Straddle::ChargeV1::Data::StatusHistory::Status::TaggedSymbol
-              )
-            SCHEDULED_2 =
-              T.let(
-                :Scheduled,
                 Straddle::ChargeV1::Data::StatusHistory::Status::TaggedSymbol
               )
             FAILED =
@@ -1100,19 +873,9 @@ module Straddle
                 :failed,
                 Straddle::ChargeV1::Data::StatusHistory::Status::TaggedSymbol
               )
-            FAILED_2 =
-              T.let(
-                :Failed,
-                Straddle::ChargeV1::Data::StatusHistory::Status::TaggedSymbol
-              )
             CANCELLED =
               T.let(
                 :cancelled,
-                Straddle::ChargeV1::Data::StatusHistory::Status::TaggedSymbol
-              )
-            CANCELLED_2 =
-              T.let(
-                :Cancelled,
                 Straddle::ChargeV1::Data::StatusHistory::Status::TaggedSymbol
               )
             ON_HOLD =
@@ -1120,19 +883,9 @@ module Straddle
                 :on_hold,
                 Straddle::ChargeV1::Data::StatusHistory::Status::TaggedSymbol
               )
-            ON_HOLD_2 =
-              T.let(
-                :OnHold,
-                Straddle::ChargeV1::Data::StatusHistory::Status::TaggedSymbol
-              )
             PENDING =
               T.let(
                 :pending,
-                Straddle::ChargeV1::Data::StatusHistory::Status::TaggedSymbol
-              )
-            PENDING_2 =
-              T.let(
-                :Pending,
                 Straddle::ChargeV1::Data::StatusHistory::Status::TaggedSymbol
               )
             PAID =
@@ -1140,19 +893,9 @@ module Straddle
                 :paid,
                 Straddle::ChargeV1::Data::StatusHistory::Status::TaggedSymbol
               )
-            PAID_2 =
-              T.let(
-                :Paid,
-                Straddle::ChargeV1::Data::StatusHistory::Status::TaggedSymbol
-              )
             REVERSED =
               T.let(
                 :reversed,
-                Straddle::ChargeV1::Data::StatusHistory::Status::TaggedSymbol
-              )
-            REVERSED_2 =
-              T.let(
-                :Reversed,
                 Straddle::ChargeV1::Data::StatusHistory::Status::TaggedSymbol
               )
 
@@ -1179,8 +922,6 @@ module Straddle
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           ACH = T.let(:ach, Straddle::ChargeV1::Data::PaymentRail::TaggedSymbol)
-          ACH_2 =
-            T.let(:ACH, Straddle::ChargeV1::Data::PaymentRail::TaggedSymbol)
 
           sig do
             override.returns(
@@ -1207,14 +948,9 @@ module Straddle
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         OBJECT = T.let(:object, Straddle::ChargeV1::ResponseType::TaggedSymbol)
-        OBJECT_2 =
-          T.let(:Object, Straddle::ChargeV1::ResponseType::TaggedSymbol)
         ARRAY = T.let(:array, Straddle::ChargeV1::ResponseType::TaggedSymbol)
-        ARRAY_2 = T.let(:Array, Straddle::ChargeV1::ResponseType::TaggedSymbol)
         ERROR = T.let(:error, Straddle::ChargeV1::ResponseType::TaggedSymbol)
-        ERROR_2 = T.let(:Error, Straddle::ChargeV1::ResponseType::TaggedSymbol)
         NONE = T.let(:none, Straddle::ChargeV1::ResponseType::TaggedSymbol)
-        NONE_2 = T.let(:None, Straddle::ChargeV1::ResponseType::TaggedSymbol)
 
         sig do
           override.returns(

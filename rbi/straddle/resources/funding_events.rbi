@@ -13,15 +13,13 @@ module Straddle
           event_type: Straddle::FundingEventListParams::EventType::OrSymbol,
           page_number: Integer,
           page_size: Integer,
-          payment_status:
-            T.nilable(
-              T::Array[
-                Straddle::FundingEventListParams::PaymentStatus::OrSymbol
-              ]
-            ),
           search_text: T.nilable(String),
           sort_by: Straddle::FundingEventListParams::SortBy::OrSymbol,
           sort_order: Straddle::FundingEventListParams::SortOrder::OrSymbol,
+          status:
+            T.nilable(
+              T::Array[Straddle::FundingEventListParams::Status::OrSymbol]
+            ),
           status_reason:
             T.nilable(
               T::Array[Straddle::FundingEventListParams::StatusReason::OrSymbol]
@@ -59,14 +57,14 @@ module Straddle
         page_number: nil,
         # Query param: Results page size. Max value: 1000
         page_size: nil,
-        # Query param: Payment status.
-        payment_status: nil,
         # Query param: Search text.
         search_text: nil,
         # Query param: The field to sort the results by.
         sort_by: nil,
         # Query param: The order in which to sort the results.
         sort_order: nil,
+        # Query param: Funding Event status.
+        status: nil,
         # Query param: Reason for latest payment status change.
         status_reason: nil,
         # Query param: Source of latest payment status change.

@@ -430,19 +430,9 @@ module Straddle
             :created_at,
             Straddle::PaymentListParams::DefaultSort::TaggedSymbol
           )
-        CREATED_AT_2 =
-          T.let(
-            :CreatedAt,
-            Straddle::PaymentListParams::DefaultSort::TaggedSymbol
-          )
         PAYMENT_DATE =
           T.let(
             :payment_date,
-            Straddle::PaymentListParams::DefaultSort::TaggedSymbol
-          )
-        PAYMENT_DATE_2 =
-          T.let(
-            :PaymentDate,
             Straddle::PaymentListParams::DefaultSort::TaggedSymbol
           )
         EFFECTIVE_AT =
@@ -450,18 +440,9 @@ module Straddle
             :effective_at,
             Straddle::PaymentListParams::DefaultSort::TaggedSymbol
           )
-        EFFECTIVE_AT_2 =
-          T.let(
-            :EffectiveAt,
-            Straddle::PaymentListParams::DefaultSort::TaggedSymbol
-          )
         ID = T.let(:id, Straddle::PaymentListParams::DefaultSort::TaggedSymbol)
-        ID_2 =
-          T.let(:Id, Straddle::PaymentListParams::DefaultSort::TaggedSymbol)
         AMOUNT =
           T.let(:amount, Straddle::PaymentListParams::DefaultSort::TaggedSymbol)
-        AMOUNT_2 =
-          T.let(:Amount, Straddle::PaymentListParams::DefaultSort::TaggedSymbol)
 
         sig do
           override.returns(
@@ -486,19 +467,9 @@ module Straddle
             :asc,
             Straddle::PaymentListParams::DefaultSortOrder::TaggedSymbol
           )
-        ASC_2 =
-          T.let(
-            :Asc,
-            Straddle::PaymentListParams::DefaultSortOrder::TaggedSymbol
-          )
         DESC =
           T.let(
             :desc,
-            Straddle::PaymentListParams::DefaultSortOrder::TaggedSymbol
-          )
-        DESC_2 =
-          T.let(
-            :Desc,
             Straddle::PaymentListParams::DefaultSortOrder::TaggedSymbol
           )
 
@@ -528,19 +499,9 @@ module Straddle
             :created,
             Straddle::PaymentListParams::PaymentStatus::TaggedSymbol
           )
-        CREATED_2 =
-          T.let(
-            :Created,
-            Straddle::PaymentListParams::PaymentStatus::TaggedSymbol
-          )
         SCHEDULED =
           T.let(
             :scheduled,
-            Straddle::PaymentListParams::PaymentStatus::TaggedSymbol
-          )
-        SCHEDULED_2 =
-          T.let(
-            :Scheduled,
             Straddle::PaymentListParams::PaymentStatus::TaggedSymbol
           )
         FAILED =
@@ -548,19 +509,9 @@ module Straddle
             :failed,
             Straddle::PaymentListParams::PaymentStatus::TaggedSymbol
           )
-        FAILED_2 =
-          T.let(
-            :Failed,
-            Straddle::PaymentListParams::PaymentStatus::TaggedSymbol
-          )
         CANCELLED =
           T.let(
             :cancelled,
-            Straddle::PaymentListParams::PaymentStatus::TaggedSymbol
-          )
-        CANCELLED_2 =
-          T.let(
-            :Cancelled,
             Straddle::PaymentListParams::PaymentStatus::TaggedSymbol
           )
         ON_HOLD =
@@ -568,33 +519,16 @@ module Straddle
             :on_hold,
             Straddle::PaymentListParams::PaymentStatus::TaggedSymbol
           )
-        ON_HOLD_2 =
-          T.let(
-            :OnHold,
-            Straddle::PaymentListParams::PaymentStatus::TaggedSymbol
-          )
         PENDING =
           T.let(
             :pending,
             Straddle::PaymentListParams::PaymentStatus::TaggedSymbol
           )
-        PENDING_2 =
-          T.let(
-            :Pending,
-            Straddle::PaymentListParams::PaymentStatus::TaggedSymbol
-          )
         PAID =
           T.let(:paid, Straddle::PaymentListParams::PaymentStatus::TaggedSymbol)
-        PAID_2 =
-          T.let(:Paid, Straddle::PaymentListParams::PaymentStatus::TaggedSymbol)
         REVERSED =
           T.let(
             :reversed,
-            Straddle::PaymentListParams::PaymentStatus::TaggedSymbol
-          )
-        REVERSED_2 =
-          T.let(
-            :Reversed,
             Straddle::PaymentListParams::PaymentStatus::TaggedSymbol
           )
 
@@ -619,12 +553,8 @@ module Straddle
 
         CHARGE =
           T.let(:charge, Straddle::PaymentListParams::PaymentType::TaggedSymbol)
-        CHARGE_2 =
-          T.let(:Charge, Straddle::PaymentListParams::PaymentType::TaggedSymbol)
         PAYOUT =
           T.let(:payout, Straddle::PaymentListParams::PaymentType::TaggedSymbol)
-        PAYOUT_2 =
-          T.let(:Payout, Straddle::PaymentListParams::PaymentType::TaggedSymbol)
 
         sig do
           override.returns(
@@ -645,28 +575,19 @@ module Straddle
 
         CREATED_AT =
           T.let(:created_at, Straddle::PaymentListParams::SortBy::TaggedSymbol)
-        CREATED_AT_2 =
-          T.let(:CreatedAt, Straddle::PaymentListParams::SortBy::TaggedSymbol)
         PAYMENT_DATE =
           T.let(
             :payment_date,
             Straddle::PaymentListParams::SortBy::TaggedSymbol
           )
-        PAYMENT_DATE_2 =
-          T.let(:PaymentDate, Straddle::PaymentListParams::SortBy::TaggedSymbol)
         EFFECTIVE_AT =
           T.let(
             :effective_at,
             Straddle::PaymentListParams::SortBy::TaggedSymbol
           )
-        EFFECTIVE_AT_2 =
-          T.let(:EffectiveAt, Straddle::PaymentListParams::SortBy::TaggedSymbol)
         ID = T.let(:id, Straddle::PaymentListParams::SortBy::TaggedSymbol)
-        ID_2 = T.let(:Id, Straddle::PaymentListParams::SortBy::TaggedSymbol)
         AMOUNT =
           T.let(:amount, Straddle::PaymentListParams::SortBy::TaggedSymbol)
-        AMOUNT_2 =
-          T.let(:Amount, Straddle::PaymentListParams::SortBy::TaggedSymbol)
 
         sig do
           override.returns(
@@ -685,12 +606,8 @@ module Straddle
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ASC = T.let(:asc, Straddle::PaymentListParams::SortOrder::TaggedSymbol)
-        ASC_2 =
-          T.let(:Asc, Straddle::PaymentListParams::SortOrder::TaggedSymbol)
         DESC =
           T.let(:desc, Straddle::PaymentListParams::SortOrder::TaggedSymbol)
-        DESC_2 =
-          T.let(:Desc, Straddle::PaymentListParams::SortOrder::TaggedSymbol)
 
         sig do
           override.returns(
@@ -715,19 +632,9 @@ module Straddle
             :insufficient_funds,
             Straddle::PaymentListParams::StatusReason::TaggedSymbol
           )
-        INSUFFICIENT_FUNDS_2 =
-          T.let(
-            :InsufficientFunds,
-            Straddle::PaymentListParams::StatusReason::TaggedSymbol
-          )
         CLOSED_BANK_ACCOUNT =
           T.let(
             :closed_bank_account,
-            Straddle::PaymentListParams::StatusReason::TaggedSymbol
-          )
-        CLOSED_BANK_ACCOUNT_2 =
-          T.let(
-            :ClosedBankAccount,
             Straddle::PaymentListParams::StatusReason::TaggedSymbol
           )
         INVALID_BANK_ACCOUNT =
@@ -735,19 +642,9 @@ module Straddle
             :invalid_bank_account,
             Straddle::PaymentListParams::StatusReason::TaggedSymbol
           )
-        INVALID_BANK_ACCOUNT_2 =
-          T.let(
-            :InvalidBankAccount,
-            Straddle::PaymentListParams::StatusReason::TaggedSymbol
-          )
         INVALID_ROUTING =
           T.let(
             :invalid_routing,
-            Straddle::PaymentListParams::StatusReason::TaggedSymbol
-          )
-        INVALID_ROUTING_2 =
-          T.let(
-            :InvalidRouting,
             Straddle::PaymentListParams::StatusReason::TaggedSymbol
           )
         DISPUTED =
@@ -755,19 +652,9 @@ module Straddle
             :disputed,
             Straddle::PaymentListParams::StatusReason::TaggedSymbol
           )
-        DISPUTED_2 =
-          T.let(
-            :Disputed,
-            Straddle::PaymentListParams::StatusReason::TaggedSymbol
-          )
         PAYMENT_STOPPED =
           T.let(
             :payment_stopped,
-            Straddle::PaymentListParams::StatusReason::TaggedSymbol
-          )
-        PAYMENT_STOPPED_2 =
-          T.let(
-            :PaymentStopped,
             Straddle::PaymentListParams::StatusReason::TaggedSymbol
           )
         OWNER_DECEASED =
@@ -775,19 +662,9 @@ module Straddle
             :owner_deceased,
             Straddle::PaymentListParams::StatusReason::TaggedSymbol
           )
-        OWNER_DECEASED_2 =
-          T.let(
-            :OwnerDeceased,
-            Straddle::PaymentListParams::StatusReason::TaggedSymbol
-          )
         FROZEN_BANK_ACCOUNT =
           T.let(
             :frozen_bank_account,
-            Straddle::PaymentListParams::StatusReason::TaggedSymbol
-          )
-        FROZEN_BANK_ACCOUNT_2 =
-          T.let(
-            :FrozenBankAccount,
             Straddle::PaymentListParams::StatusReason::TaggedSymbol
           )
         RISK_REVIEW =
@@ -795,19 +672,9 @@ module Straddle
             :risk_review,
             Straddle::PaymentListParams::StatusReason::TaggedSymbol
           )
-        RISK_REVIEW_2 =
-          T.let(
-            :RiskReview,
-            Straddle::PaymentListParams::StatusReason::TaggedSymbol
-          )
         FRAUDULENT =
           T.let(
             :fraudulent,
-            Straddle::PaymentListParams::StatusReason::TaggedSymbol
-          )
-        FRAUDULENT_2 =
-          T.let(
-            :Fraudulent,
             Straddle::PaymentListParams::StatusReason::TaggedSymbol
           )
         DUPLICATE_ENTRY =
@@ -815,19 +682,9 @@ module Straddle
             :duplicate_entry,
             Straddle::PaymentListParams::StatusReason::TaggedSymbol
           )
-        DUPLICATE_ENTRY_2 =
-          T.let(
-            :DuplicateEntry,
-            Straddle::PaymentListParams::StatusReason::TaggedSymbol
-          )
         INVALID_PAYKEY =
           T.let(
             :invalid_paykey,
-            Straddle::PaymentListParams::StatusReason::TaggedSymbol
-          )
-        INVALID_PAYKEY_2 =
-          T.let(
-            :InvalidPaykey,
             Straddle::PaymentListParams::StatusReason::TaggedSymbol
           )
         PAYMENT_BLOCKED =
@@ -835,19 +692,9 @@ module Straddle
             :payment_blocked,
             Straddle::PaymentListParams::StatusReason::TaggedSymbol
           )
-        PAYMENT_BLOCKED_2 =
-          T.let(
-            :PaymentBlocked,
-            Straddle::PaymentListParams::StatusReason::TaggedSymbol
-          )
         AMOUNT_TOO_LARGE =
           T.let(
             :amount_too_large,
-            Straddle::PaymentListParams::StatusReason::TaggedSymbol
-          )
-        AMOUNT_TOO_LARGE_2 =
-          T.let(
-            :AmountTooLarge,
             Straddle::PaymentListParams::StatusReason::TaggedSymbol
           )
         TOO_MANY_ATTEMPTS =
@@ -855,19 +702,9 @@ module Straddle
             :too_many_attempts,
             Straddle::PaymentListParams::StatusReason::TaggedSymbol
           )
-        TOO_MANY_ATTEMPTS_2 =
-          T.let(
-            :TooManyAttempts,
-            Straddle::PaymentListParams::StatusReason::TaggedSymbol
-          )
         INTERNAL_SYSTEM_ERROR =
           T.let(
             :internal_system_error,
-            Straddle::PaymentListParams::StatusReason::TaggedSymbol
-          )
-        INTERNAL_SYSTEM_ERROR_2 =
-          T.let(
-            :InternalSystemError,
             Straddle::PaymentListParams::StatusReason::TaggedSymbol
           )
         USER_REQUEST =
@@ -875,32 +712,15 @@ module Straddle
             :user_request,
             Straddle::PaymentListParams::StatusReason::TaggedSymbol
           )
-        USER_REQUEST_2 =
-          T.let(
-            :UserRequest,
-            Straddle::PaymentListParams::StatusReason::TaggedSymbol
-          )
         OK = T.let(:ok, Straddle::PaymentListParams::StatusReason::TaggedSymbol)
-        OK_2 =
-          T.let(:Ok, Straddle::PaymentListParams::StatusReason::TaggedSymbol)
         OTHER_NETWORK_RETURN =
           T.let(
             :other_network_return,
             Straddle::PaymentListParams::StatusReason::TaggedSymbol
           )
-        OTHER_NETWORK_RETURN_2 =
-          T.let(
-            :OtherNetworkReturn,
-            Straddle::PaymentListParams::StatusReason::TaggedSymbol
-          )
         PAYOUT_REFUSED =
           T.let(
             :payout_refused,
-            Straddle::PaymentListParams::StatusReason::TaggedSymbol
-          )
-        PAYOUT_REFUSED_2 =
-          T.let(
-            :PayoutRefused,
             Straddle::PaymentListParams::StatusReason::TaggedSymbol
           )
         CANCEL_REQUEST =
@@ -952,19 +772,9 @@ module Straddle
             :watchtower,
             Straddle::PaymentListParams::StatusSource::TaggedSymbol
           )
-        WATCHTOWER_2 =
-          T.let(
-            :Watchtower,
-            Straddle::PaymentListParams::StatusSource::TaggedSymbol
-          )
         BANK_DECLINE =
           T.let(
             :bank_decline,
-            Straddle::PaymentListParams::StatusSource::TaggedSymbol
-          )
-        BANK_DECLINE_2 =
-          T.let(
-            :BankDecline,
             Straddle::PaymentListParams::StatusSource::TaggedSymbol
           )
         CUSTOMER_DISPUTE =
@@ -972,29 +782,14 @@ module Straddle
             :customer_dispute,
             Straddle::PaymentListParams::StatusSource::TaggedSymbol
           )
-        CUSTOMER_DISPUTE_2 =
-          T.let(
-            :CustomerDispute,
-            Straddle::PaymentListParams::StatusSource::TaggedSymbol
-          )
         USER_ACTION =
           T.let(
             :user_action,
             Straddle::PaymentListParams::StatusSource::TaggedSymbol
           )
-        USER_ACTION_2 =
-          T.let(
-            :UserAction,
-            Straddle::PaymentListParams::StatusSource::TaggedSymbol
-          )
         SYSTEM =
           T.let(
             :system,
-            Straddle::PaymentListParams::StatusSource::TaggedSymbol
-          )
-        SYSTEM_2 =
-          T.let(
-            :System,
             Straddle::PaymentListParams::StatusSource::TaggedSymbol
           )
 
