@@ -51,11 +51,11 @@ module Straddle
       def list(
         # Query param: Search using the `customer_id` of a `charge` or `payout`.
         customer_id: nil,
-        # Query param:
+        # Query param
         default_page_size: nil,
         # Query param: The field to sort the results by.
         default_sort: nil,
-        # Query param:
+        # Query param
         default_sort_order: nil,
         # Query param: Search using the `external_id` of a `charge` or `payout`.
         external_id: nil,
@@ -98,7 +98,7 @@ module Straddle
         search_text: nil,
         # Query param: The field to sort the results by.
         sort_by: nil,
-        # Query param:
+        # Query param
         sort_order: nil,
         # Query param: Reason for latest payment status change.
         status_reason: nil,

@@ -11,9 +11,9 @@ module Straddle
         #
         # @overload decision(id, status:, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
         #
-        # @param id [String] Path param:
+        # @param id [String] Path param
         #
-        # @param status [Symbol, Straddle::Models::Paykeys::ReviewDecisionParams::Status] Body param:
+        # @param status [Symbol, Straddle::Models::Paykeys::ReviewDecisionParams::Status] Body param
         #
         # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
         #

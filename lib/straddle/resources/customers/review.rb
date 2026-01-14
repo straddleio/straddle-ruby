@@ -14,7 +14,7 @@ module Straddle
         #
         # @overload decision(id, status:, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
         #
-        # @param id [String] Path param:
+        # @param id [String] Path param
         #
         # @param status [Symbol, Straddle::Models::Customers::ReviewDecisionParams::Status] Body param: The final status of the customer review.
         #

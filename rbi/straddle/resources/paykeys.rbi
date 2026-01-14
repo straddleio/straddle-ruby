@@ -34,9 +34,9 @@ module Straddle
         page_number: nil,
         # Query param: Number of results per page. Maximum: 1000.
         page_size: nil,
-        # Query param:
+        # Query param
         sort_by: nil,
-        # Query param:
+        # Query param
         sort_order: nil,
         # Query param: Filter paykeys by their source.
         source: nil,
@@ -66,9 +66,9 @@ module Straddle
         ).returns(Straddle::PaykeyV1)
       end
       def cancel(
-        # Path param:
+        # Path param
         id,
-        # Body param:
+        # Body param
         reason: nil,
         # Header param: Optional client generated identifier to trace and debug a series
         # of requests.

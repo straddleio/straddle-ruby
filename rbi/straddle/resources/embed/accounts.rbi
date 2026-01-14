@@ -35,7 +35,7 @@ module Straddle
           # Body param: The type of account to be created. Currently, only `business` is
           # supported.
           account_type:,
-          # Body param:
+          # Body param
           business_profile:,
           # Body param: The unique identifier of the organization related to this account.
           organization_id:,
@@ -71,9 +71,9 @@ module Straddle
           ).returns(Straddle::Embed::AccountV1)
         end
         def update(
-          # Path param:
+          # Path param
           account_id,
-          # Body param:
+          # Body param
           business_profile:,
           # Body param: Unique identifier for the account in your database, used for
           # cross-referencing between Straddle and your systems.
@@ -119,15 +119,15 @@ module Straddle
           page_number: nil,
           # Query param: Page size. Default value: 100. Max value: 1000
           page_size: nil,
-          # Query param:
+          # Query param
           search_text: nil,
           # Query param: Sort By. Default value: 'id'.
           sort_by: nil,
           # Query param: Sort Order. Default value: 'asc'.
           sort_order: nil,
-          # Query param:
+          # Query param
           status: nil,
-          # Query param:
+          # Query param
           type: nil,
           # Header param: Optional client generated identifier to trace and debug a series
           # of requests.
@@ -174,9 +174,9 @@ module Straddle
           ).returns(Straddle::Embed::AccountV1)
         end
         def onboard(
-          # Path param:
+          # Path param
           account_id,
-          # Body param:
+          # Body param
           terms_of_service:,
           # Header param: Optional client generated identifier to trace and debug a series
           # of requests.
@@ -203,9 +203,9 @@ module Straddle
           ).returns(Straddle::Embed::AccountV1)
         end
         def simulate(
-          # Path param:
+          # Path param
           account_id,
-          # Query param:
+          # Query param
           final_status: nil,
           # Header param: Optional client generated identifier to trace and debug a series
           # of requests.

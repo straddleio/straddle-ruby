@@ -35,7 +35,7 @@ module Straddle
         ).returns(Straddle::CustomerV1)
       end
       def create(
-        # Body param:
+        # Body param
         device:,
         # Body param: The customer's email address.
         email:,
@@ -44,7 +44,7 @@ module Straddle
         # Body param: The customer's phone number in E.164 format. Mobile number is
         # preferred.
         phone:,
-        # Body param:
+        # Body param
         type:,
         # Body param: An object containing the customer's address. **This is optional.**
         # If used, all required fields must be present.
@@ -53,7 +53,7 @@ module Straddle
         # optional.** If all required fields must be present for the appropriate customer
         # type.
         compliance_profile: nil,
-        # Body param:
+        # Body param
         config: nil,
         # Body param: Unique identifier for the customer in your database, used for
         # cross-referencing between Straddle and your systems.
@@ -103,9 +103,9 @@ module Straddle
         ).returns(Straddle::CustomerV1)
       end
       def update(
-        # Path param:
+        # Path param
         id,
-        # Body param:
+        # Body param
         device:,
         # Body param: The customer's email address.
         email:,
@@ -113,7 +113,7 @@ module Straddle
         name:,
         # Body param: The customer's phone number in E.164 format.
         phone:,
-        # Body param:
+        # Body param
         status:,
         # Body param: An object containing the customer's address. This is optional, but
         # if provided, all required fields must be present.
@@ -186,9 +186,9 @@ module Straddle
         page_size: nil,
         # Query param: General search term to filter customers.
         search_text: nil,
-        # Query param:
+        # Query param
         sort_by: nil,
-        # Query param:
+        # Query param
         sort_order: nil,
         # Query param: Filter customers by their current `status`.
         status: nil,

@@ -14,7 +14,7 @@ module Straddle
           #
           # @overload create(account_id, businesses: nil, charges: nil, individuals: nil, internet: nil, payouts: nil, signed_agreement: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
           #
-          # @param account_id [String] Path param:
+          # @param account_id [String] Path param
           #
           # @param businesses [Straddle::Models::Embed::Accounts::CapabilityRequestCreateParams::Businesses] Body param: Allows the account to accept payments from businesses.
           #
@@ -63,7 +63,7 @@ module Straddle
           #
           # @overload list(account_id, category: nil, page_number: nil, page_size: nil, sort_by: nil, sort_order: nil, status: nil, type: nil, correlation_id: nil, request_id: nil, request_options: {})
           #
-          # @param account_id [String] Path param:
+          # @param account_id [String] Path param
           #
           # @param category [Symbol, Straddle::Models::Embed::Accounts::CapabilityRequestListParams::Category] Query param: Filter capability requests by category.
           #

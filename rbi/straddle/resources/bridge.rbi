@@ -23,7 +23,7 @@ module Straddle
         # Body param: The Straddle generated unique identifier of the `customer` to create
         # a bridge token for.
         customer_id:,
-        # Body param:
+        # Body param
         config: nil,
         # Body param: Unique identifier for the paykey in your database, used for
         # cross-referencing between Straddle and your systems.

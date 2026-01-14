@@ -25,7 +25,7 @@ module Straddle
         #
         # @param mobile_number [String] Body param: The mobile phone number of the representative.
         #
-        # @param relationship [Straddle::Models::Embed::RepresentativeCreateParams::Relationship] Body param:
+        # @param relationship [Straddle::Models::Embed::RepresentativeCreateParams::Relationship] Body param
         #
         # @param ssn_last4 [String] Body param: The last 4 digits of the representative's Social Security Number.
         #
@@ -67,7 +67,7 @@ module Straddle
         #
         # @overload update(representative_id, dob:, email:, first_name:, last_name:, mobile_number:, relationship:, ssn_last4:, external_id: nil, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
         #
-        # @param representative_id [String] Path param:
+        # @param representative_id [String] Path param
         #
         # @param dob [Date] Body param: The date of birth of the representative, in ISO 8601 format (YYYY-MM
         #
@@ -79,7 +79,7 @@ module Straddle
         #
         # @param mobile_number [String] Body param: The mobile phone number of the representative.
         #
-        # @param relationship [Straddle::Models::Embed::RepresentativeUpdateParams::Relationship] Body param:
+        # @param relationship [Straddle::Models::Embed::RepresentativeUpdateParams::Relationship] Body param
         #
         # @param ssn_last4 [String] Body param: The last 4 digits of the representative's Social Security Number.
         #
@@ -124,15 +124,15 @@ module Straddle
         #
         # @param account_id [String] Query param: The unique identifier of the account to list representatives for.
         #
-        # @param level [Symbol, Straddle::Models::Embed::RepresentativeListParams::Level] Query param:
+        # @param level [Symbol, Straddle::Models::Embed::RepresentativeListParams::Level] Query param
         #
-        # @param organization_id [String] Query param:
+        # @param organization_id [String] Query param
         #
         # @param page_number [Integer] Query param: Results page number. Starts at page 1.
         #
         # @param page_size [Integer] Query param: Page size. Max value: 1000
         #
-        # @param platform_id [String] Query param:
+        # @param platform_id [String] Query param
         #
         # @param sort_by [String] Query param: Sort By.
         #

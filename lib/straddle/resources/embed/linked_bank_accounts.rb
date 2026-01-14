@@ -16,7 +16,7 @@ module Straddle
         #
         # @param account_id [String, nil] Body param: The unique identifier of the Straddle account to associate this bank
         #
-        # @param bank_account [Straddle::Models::Embed::LinkedBankAccountCreateParams::BankAccount] Body param:
+        # @param bank_account [Straddle::Models::Embed::LinkedBankAccountCreateParams::BankAccount] Body param
         #
         # @param description [String, nil] Body param: Optional description for the bank account.
         #
@@ -61,9 +61,9 @@ module Straddle
         #
         # @overload update(linked_bank_account_id, bank_account:, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
         #
-        # @param linked_bank_account_id [String] Path param:
+        # @param linked_bank_account_id [String] Path param
         #
-        # @param bank_account [Straddle::Models::Embed::LinkedBankAccountUpdateParams::BankAccount] Body param:
+        # @param bank_account [Straddle::Models::Embed::LinkedBankAccountUpdateParams::BankAccount] Body param
         #
         # @param metadata [Hash{Symbol=>String, nil}, nil] Body param: Up to 20 additional user-defined key-value pairs. Useful for storing
         #
@@ -104,7 +104,7 @@ module Straddle
         #
         # @param account_id [String] Query param: The unique identifier of the related account.
         #
-        # @param level [Symbol, Straddle::Models::Embed::LinkedBankAccountListParams::Level] Query param:
+        # @param level [Symbol, Straddle::Models::Embed::LinkedBankAccountListParams::Level] Query param
         #
         # @param page_number [Integer] Query param: Results page number. Starts at page 1.
         #

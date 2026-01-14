@@ -20,7 +20,7 @@ module Straddle
           ).returns(Straddle::CustomerV1)
         end
         def decision(
-          # Path param:
+          # Path param
           id,
           # Body param: The final status of the customer review.
           status:,

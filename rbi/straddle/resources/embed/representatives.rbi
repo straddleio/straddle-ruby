@@ -41,7 +41,7 @@ module Straddle
           last_name:,
           # Body param: The mobile phone number of the representative.
           mobile_number:,
-          # Body param:
+          # Body param
           relationship:,
           # Body param: The last 4 digits of the representative's Social Security Number.
           ssn_last4:,
@@ -85,7 +85,7 @@ module Straddle
           ).returns(Straddle::Embed::Representative)
         end
         def update(
-          # Path param:
+          # Path param
           representative_id,
           # Body param: The date of birth of the representative, in ISO 8601 format
           # (YYYY-MM-DD).
@@ -98,7 +98,7 @@ module Straddle
           last_name:,
           # Body param: The mobile phone number of the representative.
           mobile_number:,
-          # Body param:
+          # Body param
           relationship:,
           # Body param: The last 4 digits of the representative's Social Security Number.
           ssn_last4:,
@@ -146,15 +146,15 @@ module Straddle
         def list(
           # Query param: The unique identifier of the account to list representatives for.
           account_id: nil,
-          # Query param:
+          # Query param
           level: nil,
-          # Query param:
+          # Query param
           organization_id: nil,
           # Query param: Results page number. Starts at page 1.
           page_number: nil,
           # Query param: Page size. Max value: 1000
           page_size: nil,
-          # Query param:
+          # Query param
           platform_id: nil,
           # Query param: Sort By.
           sort_by: nil,

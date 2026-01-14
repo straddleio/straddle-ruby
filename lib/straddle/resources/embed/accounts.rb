@@ -20,7 +20,7 @@ module Straddle
         #
         # @param account_type [Symbol, Straddle::Models::Embed::AccountCreateParams::AccountType] Body param: The type of account to be created. Currently, only `business` is sup
         #
-        # @param business_profile [Straddle::Models::Embed::BusinessProfileV1] Body param:
+        # @param business_profile [Straddle::Models::Embed::BusinessProfileV1] Body param
         #
         # @param organization_id [String] Body param: The unique identifier of the organization related to this account.
         #
@@ -61,9 +61,9 @@ module Straddle
         #
         # @overload update(account_id, business_profile:, external_id: nil, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
         #
-        # @param account_id [String] Path param:
+        # @param account_id [String] Path param
         #
-        # @param business_profile [Straddle::Models::Embed::BusinessProfileV1] Body param:
+        # @param business_profile [Straddle::Models::Embed::BusinessProfileV1] Body param
         #
         # @param external_id [String, nil] Body param: Unique identifier for the account in your database, used for cross-r
         #
@@ -108,15 +108,15 @@ module Straddle
         #
         # @param page_size [Integer] Query param: Page size. Default value: 100. Max value: 1000
         #
-        # @param search_text [String] Query param:
+        # @param search_text [String] Query param
         #
         # @param sort_by [String] Query param: Sort By. Default value: 'id'.
         #
         # @param sort_order [Symbol, Straddle::Models::Embed::AccountListParams::SortOrder] Query param: Sort Order. Default value: 'asc'.
         #
-        # @param status [Symbol, Straddle::Models::Embed::AccountListParams::Status] Query param:
+        # @param status [Symbol, Straddle::Models::Embed::AccountListParams::Status] Query param
         #
-        # @param type [Symbol, Straddle::Models::Embed::AccountListParams::Type] Query param:
+        # @param type [Symbol, Straddle::Models::Embed::AccountListParams::Type] Query param
         #
         # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
         #
@@ -181,9 +181,9 @@ module Straddle
         #
         # @overload onboard(account_id, terms_of_service:, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
         #
-        # @param account_id [String] Path param:
+        # @param account_id [String] Path param
         #
-        # @param terms_of_service [Straddle::Models::Embed::TermsOfServiceV1] Body param:
+        # @param terms_of_service [Straddle::Models::Embed::TermsOfServiceV1] Body param
         #
         # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
         #
@@ -218,9 +218,9 @@ module Straddle
         #
         # @overload simulate(account_id, final_status: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
         #
-        # @param account_id [String] Path param:
+        # @param account_id [String] Path param
         #
-        # @param final_status [Symbol, Straddle::Models::Embed::AccountSimulateParams::FinalStatus] Query param:
+        # @param final_status [Symbol, Straddle::Models::Embed::AccountSimulateParams::FinalStatus] Query param
         #
         # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
         #
