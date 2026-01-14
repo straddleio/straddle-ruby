@@ -17,9 +17,9 @@ module Straddle
           ).returns(Straddle::PaykeyV1)
         end
         def decision(
-          # Path param:
+          # Path param
           id,
-          # Body param:
+          # Body param
           status:,
           # Header param: Optional client generated identifier to trace and debug a series
           # of requests.

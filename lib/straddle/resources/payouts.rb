@@ -24,7 +24,7 @@ module Straddle
       #
       # @param payment_date [Date] Body param: The desired date on which the payout should be occur. For payouts, t
       #
-      # @param config [Straddle::Models::PayoutCreateParams::Config] Body param:
+      # @param config [Straddle::Models::PayoutCreateParams::Config] Body param
       #
       # @param metadata [Hash{Symbol=>String}, nil] Body param: Up to 20 additional user-defined key-value pairs. Useful for storing
       #
@@ -68,7 +68,7 @@ module Straddle
       #
       # @overload update(id, amount:, description:, payment_date:, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
-      # @param id [String] Path param:
+      # @param id [String] Path param
       #
       # @param amount [Integer] Body param: The amount of the payout in cents.
       #
@@ -118,7 +118,7 @@ module Straddle
       #
       # @overload cancel(id, reason:, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
-      # @param id [String] Path param:
+      # @param id [String] Path param
       #
       # @param reason [String] Body param: Details about why the payout status was updated.
       #
@@ -195,7 +195,7 @@ module Straddle
       #
       # @overload hold(id, reason:, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
-      # @param id [String] Path param:
+      # @param id [String] Path param
       #
       # @param reason [String] Body param: Details about why the payout status was updated.
       #
@@ -239,7 +239,7 @@ module Straddle
       #
       # @overload release(id, reason:, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
-      # @param id [String] Path param:
+      # @param id [String] Path param
       #
       # @param reason [String] Body param: Details about why the payout status was updated.
       #

@@ -26,7 +26,7 @@ module Straddle
       def create(
         # Body param: The amount of the charge in cents.
         amount:,
-        # Body param:
+        # Body param
         config:,
         # Body param: The channel or mechanism through which the payment was authorized.
         # Use `internet` for payments made online or through a mobile app and `signed` for
@@ -37,7 +37,7 @@ module Straddle
         currency:,
         # Body param: An arbitrary description for the charge.
         description:,
-        # Body param:
+        # Body param
         device:,
         # Body param: Unique identifier for the charge in your database. This value must
         # be unique across all charges.
@@ -81,7 +81,7 @@ module Straddle
         ).returns(Straddle::ChargeV1)
       end
       def update(
-        # Path param:
+        # Path param
         id,
         # Body param: The amount of the charge in cents.
         amount:,
@@ -121,7 +121,7 @@ module Straddle
         ).returns(Straddle::ChargeV1)
       end
       def cancel(
-        # Path param:
+        # Path param
         id,
         # Body param: Details about why the charge status was updated.
         reason: nil,
@@ -176,7 +176,7 @@ module Straddle
         ).returns(Straddle::ChargeV1)
       end
       def hold(
-        # Path param:
+        # Path param
         id,
         # Body param: Details about why the charge status was updated.
         reason: nil,
@@ -208,7 +208,7 @@ module Straddle
         ).returns(Straddle::ChargeV1)
       end
       def release(
-        # Path param:
+        # Path param
         id,
         # Body param: Details about why the charge status was updated.
         reason: nil,

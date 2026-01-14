@@ -20,9 +20,9 @@ module Straddle
       #
       # @param page_size [Integer] Query param: Number of results per page. Maximum: 1000.
       #
-      # @param sort_by [Symbol, Straddle::Models::PaykeyListParams::SortBy] Query param:
+      # @param sort_by [Symbol, Straddle::Models::PaykeyListParams::SortBy] Query param
       #
-      # @param sort_order [Symbol, Straddle::Models::PaykeyListParams::SortOrder] Query param:
+      # @param sort_order [Symbol, Straddle::Models::PaykeyListParams::SortOrder] Query param
       #
       # @param source [Array<Symbol, Straddle::Models::PaykeyListParams::Source>] Query param: Filter paykeys by their source.
       #
@@ -62,9 +62,9 @@ module Straddle
       #
       # @overload cancel(id, reason: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
-      # @param id [String] Path param:
+      # @param id [String] Path param
       #
-      # @param reason [String, nil] Body param:
+      # @param reason [String, nil] Body param
       #
       # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
       #

@@ -15,7 +15,7 @@ module Straddle
       #
       # @param customer_id [String] Body param: The Straddle generated unique identifier of the `customer` to create
       #
-      # @param config [Straddle::Models::BridgeInitializeParams::Config] Body param:
+      # @param config [Straddle::Models::BridgeInitializeParams::Config] Body param
       #
       # @param external_id [String, nil] Body param: Unique identifier for the paykey in your database, used for cross-re
       #

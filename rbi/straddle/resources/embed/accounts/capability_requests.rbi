@@ -29,7 +29,7 @@ module Straddle
             ).returns(Straddle::Embed::Accounts::CapabilityRequestPagedV1)
           end
           def create(
-            # Path param:
+            # Path param
             account_id,
             # Body param: Allows the account to accept payments from businesses.
             businesses: nil,
@@ -83,7 +83,7 @@ module Straddle
             )
           end
           def list(
-            # Path param:
+            # Path param
             account_id,
             # Query param: Filter capability requests by category.
             category: nil,

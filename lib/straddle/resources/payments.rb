@@ -13,11 +13,11 @@ module Straddle
       #
       # @param customer_id [String] Query param: Search using the `customer_id` of a `charge` or `payout`.
       #
-      # @param default_page_size [Integer] Query param:
+      # @param default_page_size [Integer] Query param
       #
       # @param default_sort [Symbol, Straddle::Models::PaymentListParams::DefaultSort] Query param: The field to sort the results by.
       #
-      # @param default_sort_order [Symbol, Straddle::Models::PaymentListParams::DefaultSortOrder] Query param:
+      # @param default_sort_order [Symbol, Straddle::Models::PaymentListParams::DefaultSortOrder] Query param
       #
       # @param external_id [String] Query param: Search using the `external_id` of a `charge` or `payout`.
       #
@@ -57,7 +57,7 @@ module Straddle
       #
       # @param sort_by [Symbol, Straddle::Models::PaymentListParams::SortBy] Query param: The field to sort the results by.
       #
-      # @param sort_order [Symbol, Straddle::Models::PaymentListParams::SortOrder] Query param:
+      # @param sort_order [Symbol, Straddle::Models::PaymentListParams::SortOrder] Query param
       #
       # @param status_reason [Array<Symbol, Straddle::Models::PaymentListParams::StatusReason>] Query param: Reason for latest payment status change.
       #
