@@ -11,6 +11,7 @@ module Straddle
         ?sort_order: Straddle::Models::PaykeyListParams::sort_order,
         ?source: ::Array[Straddle::Models::PaykeyListParams::source],
         ?status: ::Array[Straddle::Models::PaykeyListParams::status],
+        ?unblock_eligible: bool,
         ?correlation_id: String,
         ?request_id: String,
         ?straddle_account_id: String,

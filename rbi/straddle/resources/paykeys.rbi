@@ -17,6 +17,7 @@ module Straddle
           sort_order: Straddle::PaykeyListParams::SortOrder::OrSymbol,
           source: T::Array[Straddle::PaykeyListParams::Source::OrSymbol],
           status: T::Array[Straddle::PaykeyListParams::Status::OrSymbol],
+          unblock_eligible: T::Boolean,
           correlation_id: String,
           request_id: String,
           straddle_account_id: String,
@@ -42,6 +43,11 @@ module Straddle
         source: nil,
         # Query param: Filter paykeys by their current status.
         status: nil,
+        # Query param: Filter paykeys by unblock eligibility. When true, returns only
+        # blocked paykeys eligible for client-initiated unblocking (blocked due to R29
+        # returns and not previously unblocked). When false, returns only blocked paykeys
+        # that are not eligible for unblocking.
+        unblock_eligible: nil,
         # Header param: Optional client generated identifier to trace and debug a series
         # of requests.
         correlation_id: nil,

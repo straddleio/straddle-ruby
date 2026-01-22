@@ -32,7 +32,8 @@ class Straddle::Test::Resources::PaykeysTest < Straddle::Test::ResourceTest
         expires_at: Time | nil,
         external_id: String | nil,
         institution_name: String | nil,
-        status_details: Straddle::PaykeySummaryPagedV1::Data::StatusDetails | nil
+        status_details: Straddle::PaykeySummaryPagedV1::Data::StatusDetails | nil,
+        unblock_eligible: Straddle::Internal::Type::Boolean | nil
       }
     end
   end

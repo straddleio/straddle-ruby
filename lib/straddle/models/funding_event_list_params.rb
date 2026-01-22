@@ -172,9 +172,13 @@ module Straddle
         extend Straddle::Internal::Type::Enum
 
         CHARGE_DEPOSIT = :charge_deposit
+        CHARGE_DEPOSIT_2 = :ChargeDeposit
         CHARGE_REVERSAL = :charge_reversal
+        CHARGE_REVERSAL_2 = :ChargeReversal
         PAYOUT_RETURN = :payout_return
+        PAYOUT_RETURN_2 = :PayoutReturn
         PAYOUT_WITHDRAWAL = :payout_withdrawal
+        PAYOUT_WITHDRAWAL_2 = :PayoutWithdrawal
 
         # @!method self.values
         #   @return [Array<Symbol>]
@@ -185,8 +189,11 @@ module Straddle
         extend Straddle::Internal::Type::Enum
 
         TRANSFER_DATE = :transfer_date
+        TRANSFER_DATE_2 = :TransferDate
         ID = :id
+        ID_2 = :Id
         AMOUNT = :amount
+        AMOUNT_2 = :Amount
 
         # @!method self.values
         #   @return [Array<Symbol>]
@@ -197,7 +204,9 @@ module Straddle
         extend Straddle::Internal::Type::Enum
 
         ASC = :asc
+        ASC_2 = :Asc
         DESC = :desc
+        DESC_2 = :Desc
 
         # @!method self.values
         #   @return [Array<Symbol>]
@@ -208,13 +217,21 @@ module Straddle
         extend Straddle::Internal::Type::Enum
 
         CREATED = :created
+        CREATED_2 = :Created
         SCHEDULED = :scheduled
+        SCHEDULED_2 = :Scheduled
         FAILED = :failed
+        FAILED_2 = :Failed
         CANCELLED = :cancelled
+        CANCELLED_2 = :Cancelled
         ON_HOLD = :on_hold
+        ON_HOLD_2 = :OnHold
         PENDING = :pending
+        PENDING_2 = :Pending
         PAID = :paid
+        PAID_2 = :Paid
         REVERSED = :reversed
+        REVERSED_2 = :Reversed
 
         # @!method self.values
         #   @return [Array<Symbol>]
@@ -224,25 +241,45 @@ module Straddle
         extend Straddle::Internal::Type::Enum
 
         INSUFFICIENT_FUNDS = :insufficient_funds
+        INSUFFICIENT_FUNDS_2 = :InsufficientFunds
         CLOSED_BANK_ACCOUNT = :closed_bank_account
+        CLOSED_BANK_ACCOUNT_2 = :ClosedBankAccount
         INVALID_BANK_ACCOUNT = :invalid_bank_account
+        INVALID_BANK_ACCOUNT_2 = :InvalidBankAccount
         INVALID_ROUTING = :invalid_routing
+        INVALID_ROUTING_2 = :InvalidRouting
         DISPUTED = :disputed
+        DISPUTED_2 = :Disputed
         PAYMENT_STOPPED = :payment_stopped
+        PAYMENT_STOPPED_2 = :PaymentStopped
         OWNER_DECEASED = :owner_deceased
+        OWNER_DECEASED_2 = :OwnerDeceased
         FROZEN_BANK_ACCOUNT = :frozen_bank_account
+        FROZEN_BANK_ACCOUNT_2 = :FrozenBankAccount
         RISK_REVIEW = :risk_review
+        RISK_REVIEW_2 = :RiskReview
         FRAUDULENT = :fraudulent
+        FRAUDULENT_2 = :Fraudulent
         DUPLICATE_ENTRY = :duplicate_entry
+        DUPLICATE_ENTRY_2 = :DuplicateEntry
         INVALID_PAYKEY = :invalid_paykey
+        INVALID_PAYKEY_2 = :InvalidPaykey
         PAYMENT_BLOCKED = :payment_blocked
+        PAYMENT_BLOCKED_2 = :PaymentBlocked
         AMOUNT_TOO_LARGE = :amount_too_large
+        AMOUNT_TOO_LARGE_2 = :AmountTooLarge
         TOO_MANY_ATTEMPTS = :too_many_attempts
+        TOO_MANY_ATTEMPTS_2 = :TooManyAttempts
         INTERNAL_SYSTEM_ERROR = :internal_system_error
+        INTERNAL_SYSTEM_ERROR_2 = :InternalSystemError
         USER_REQUEST = :user_request
+        USER_REQUEST_2 = :UserRequest
         OK = :ok
+        OK_2 = :Ok
         OTHER_NETWORK_RETURN = :other_network_return
+        OTHER_NETWORK_RETURN_2 = :OtherNetworkReturn
         PAYOUT_REFUSED = :payout_refused
+        PAYOUT_REFUSED_2 = :PayoutRefused
         CANCEL_REQUEST = :cancel_request
         FAILED_VERIFICATION = :failed_verification
         REQUIRE_REVIEW = :require_review
@@ -257,10 +294,15 @@ module Straddle
         extend Straddle::Internal::Type::Enum
 
         WATCHTOWER = :watchtower
+        WATCHTOWER_2 = :Watchtower
         BANK_DECLINE = :bank_decline
+        BANK_DECLINE_2 = :BankDecline
         CUSTOMER_DISPUTE = :customer_dispute
+        CUSTOMER_DISPUTE_2 = :CustomerDispute
         USER_ACTION = :user_action
+        USER_ACTION_2 = :UserAction
         SYSTEM = :system
+        SYSTEM_2 = :System
 
         # @!method self.values
         #   @return [Array<Symbol>]

@@ -47,6 +47,15 @@ module Straddle
       #   @return [Array<Symbol, Straddle::Models::PaykeyListParams::Status>, nil]
       optional :status, -> { Straddle::Internal::Type::ArrayOf[enum: Straddle::PaykeyListParams::Status] }
 
+      # @!attribute unblock_eligible
+      #   Filter paykeys by unblock eligibility. When true, returns only blocked paykeys
+      #   eligible for client-initiated unblocking (blocked due to R29 returns and not
+      #   previously unblocked). When false, returns only blocked paykeys that are not
+      #   eligible for unblocking.
+      #
+      #   @return [Boolean, nil]
+      optional :unblock_eligible, Straddle::Internal::Type::Boolean
+
       # @!attribute correlation_id
       #
       #   @return [String, nil]
@@ -62,7 +71,10 @@ module Straddle
       #   @return [String, nil]
       optional :straddle_account_id, String
 
-      # @!method initialize(customer_id: nil, page_number: nil, page_size: nil, sort_by: nil, sort_order: nil, source: nil, status: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @!method initialize(customer_id: nil, page_number: nil, page_size: nil, sort_by: nil, sort_order: nil, source: nil, status: nil, unblock_eligible: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      #   Some parameter documentations has been truncated, see
+      #   {Straddle::Models::PaykeyListParams} for more details.
+      #
       #   @param customer_id [String] Filter paykeys by related customer ID.
       #
       #   @param page_number [Integer] Page number for paginated results. Starts at 1.
@@ -76,6 +88,8 @@ module Straddle
       #   @param source [Array<Symbol, Straddle::Models::PaykeyListParams::Source>] Filter paykeys by their source.
       #
       #   @param status [Array<Symbol, Straddle::Models::PaykeyListParams::Status>] Filter paykeys by their current status.
+      #
+      #   @param unblock_eligible [Boolean] Filter paykeys by unblock eligibility. When true, returns only blocked paykeys e
       #
       #   @param correlation_id [String]
       #
@@ -100,7 +114,9 @@ module Straddle
         extend Straddle::Internal::Type::Enum
 
         ASC = :asc
+        ASC_2 = :Asc
         DESC = :desc
+        DESC_2 = :Desc
 
         # @!method self.values
         #   @return [Array<Symbol>]
