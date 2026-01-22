@@ -303,9 +303,19 @@ module Straddle
               :charge_deposit,
               Straddle::FundingEventSummaryPagedV1::Data::EventType::TaggedSymbol
             )
+          CHARGE_DEPOSIT_2 =
+            T.let(
+              :ChargeDeposit,
+              Straddle::FundingEventSummaryPagedV1::Data::EventType::TaggedSymbol
+            )
           CHARGE_REVERSAL =
             T.let(
               :charge_reversal,
+              Straddle::FundingEventSummaryPagedV1::Data::EventType::TaggedSymbol
+            )
+          CHARGE_REVERSAL_2 =
+            T.let(
+              :ChargeReversal,
               Straddle::FundingEventSummaryPagedV1::Data::EventType::TaggedSymbol
             )
           PAYOUT_RETURN =
@@ -313,9 +323,19 @@ module Straddle
               :payout_return,
               Straddle::FundingEventSummaryPagedV1::Data::EventType::TaggedSymbol
             )
+          PAYOUT_RETURN_2 =
+            T.let(
+              :PayoutReturn,
+              Straddle::FundingEventSummaryPagedV1::Data::EventType::TaggedSymbol
+            )
           PAYOUT_WITHDRAWAL =
             T.let(
               :payout_withdrawal,
+              Straddle::FundingEventSummaryPagedV1::Data::EventType::TaggedSymbol
+            )
+          PAYOUT_WITHDRAWAL_2 =
+            T.let(
+              :PayoutWithdrawal,
               Straddle::FundingEventSummaryPagedV1::Data::EventType::TaggedSymbol
             )
 
@@ -345,9 +365,19 @@ module Straddle
               :created,
               Straddle::FundingEventSummaryPagedV1::Data::Status::TaggedSymbol
             )
+          CREATED_2 =
+            T.let(
+              :Created,
+              Straddle::FundingEventSummaryPagedV1::Data::Status::TaggedSymbol
+            )
           SCHEDULED =
             T.let(
               :scheduled,
+              Straddle::FundingEventSummaryPagedV1::Data::Status::TaggedSymbol
+            )
+          SCHEDULED_2 =
+            T.let(
+              :Scheduled,
               Straddle::FundingEventSummaryPagedV1::Data::Status::TaggedSymbol
             )
           FAILED =
@@ -355,9 +385,19 @@ module Straddle
               :failed,
               Straddle::FundingEventSummaryPagedV1::Data::Status::TaggedSymbol
             )
+          FAILED_2 =
+            T.let(
+              :Failed,
+              Straddle::FundingEventSummaryPagedV1::Data::Status::TaggedSymbol
+            )
           CANCELLED =
             T.let(
               :cancelled,
+              Straddle::FundingEventSummaryPagedV1::Data::Status::TaggedSymbol
+            )
+          CANCELLED_2 =
+            T.let(
+              :Cancelled,
               Straddle::FundingEventSummaryPagedV1::Data::Status::TaggedSymbol
             )
           ON_HOLD =
@@ -365,9 +405,19 @@ module Straddle
               :on_hold,
               Straddle::FundingEventSummaryPagedV1::Data::Status::TaggedSymbol
             )
+          ON_HOLD_2 =
+            T.let(
+              :OnHold,
+              Straddle::FundingEventSummaryPagedV1::Data::Status::TaggedSymbol
+            )
           PENDING =
             T.let(
               :pending,
+              Straddle::FundingEventSummaryPagedV1::Data::Status::TaggedSymbol
+            )
+          PENDING_2 =
+            T.let(
+              :Pending,
               Straddle::FundingEventSummaryPagedV1::Data::Status::TaggedSymbol
             )
           PAID =
@@ -375,9 +425,19 @@ module Straddle
               :paid,
               Straddle::FundingEventSummaryPagedV1::Data::Status::TaggedSymbol
             )
+          PAID_2 =
+            T.let(
+              :Paid,
+              Straddle::FundingEventSummaryPagedV1::Data::Status::TaggedSymbol
+            )
           REVERSED =
             T.let(
               :reversed,
+              Straddle::FundingEventSummaryPagedV1::Data::Status::TaggedSymbol
+            )
+          REVERSED_2 =
+            T.let(
+              :Reversed,
               Straddle::FundingEventSummaryPagedV1::Data::Status::TaggedSymbol
             )
 
@@ -483,9 +543,19 @@ module Straddle
                 :insufficient_funds,
                 Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
+            INSUFFICIENT_FUNDS_2 =
+              T.let(
+                :InsufficientFunds,
+                Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
             CLOSED_BANK_ACCOUNT =
               T.let(
                 :closed_bank_account,
+                Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
+            CLOSED_BANK_ACCOUNT_2 =
+              T.let(
+                :ClosedBankAccount,
                 Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
             INVALID_BANK_ACCOUNT =
@@ -493,9 +563,19 @@ module Straddle
                 :invalid_bank_account,
                 Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
+            INVALID_BANK_ACCOUNT_2 =
+              T.let(
+                :InvalidBankAccount,
+                Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
             INVALID_ROUTING =
               T.let(
                 :invalid_routing,
+                Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
+            INVALID_ROUTING_2 =
+              T.let(
+                :InvalidRouting,
                 Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
             DISPUTED =
@@ -503,9 +583,19 @@ module Straddle
                 :disputed,
                 Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
+            DISPUTED_2 =
+              T.let(
+                :Disputed,
+                Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
             PAYMENT_STOPPED =
               T.let(
                 :payment_stopped,
+                Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
+            PAYMENT_STOPPED_2 =
+              T.let(
+                :PaymentStopped,
                 Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
             OWNER_DECEASED =
@@ -513,9 +603,19 @@ module Straddle
                 :owner_deceased,
                 Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
+            OWNER_DECEASED_2 =
+              T.let(
+                :OwnerDeceased,
+                Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
             FROZEN_BANK_ACCOUNT =
               T.let(
                 :frozen_bank_account,
+                Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
+            FROZEN_BANK_ACCOUNT_2 =
+              T.let(
+                :FrozenBankAccount,
                 Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
             RISK_REVIEW =
@@ -523,9 +623,19 @@ module Straddle
                 :risk_review,
                 Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
+            RISK_REVIEW_2 =
+              T.let(
+                :RiskReview,
+                Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
             FRAUDULENT =
               T.let(
                 :fraudulent,
+                Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
+            FRAUDULENT_2 =
+              T.let(
+                :Fraudulent,
                 Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
             DUPLICATE_ENTRY =
@@ -533,9 +643,19 @@ module Straddle
                 :duplicate_entry,
                 Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
+            DUPLICATE_ENTRY_2 =
+              T.let(
+                :DuplicateEntry,
+                Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
             INVALID_PAYKEY =
               T.let(
                 :invalid_paykey,
+                Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
+            INVALID_PAYKEY_2 =
+              T.let(
+                :InvalidPaykey,
                 Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
             PAYMENT_BLOCKED =
@@ -543,9 +663,19 @@ module Straddle
                 :payment_blocked,
                 Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
+            PAYMENT_BLOCKED_2 =
+              T.let(
+                :PaymentBlocked,
+                Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
             AMOUNT_TOO_LARGE =
               T.let(
                 :amount_too_large,
+                Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
+            AMOUNT_TOO_LARGE_2 =
+              T.let(
+                :AmountTooLarge,
                 Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
             TOO_MANY_ATTEMPTS =
@@ -553,9 +683,19 @@ module Straddle
                 :too_many_attempts,
                 Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
+            TOO_MANY_ATTEMPTS_2 =
+              T.let(
+                :TooManyAttempts,
+                Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
             INTERNAL_SYSTEM_ERROR =
               T.let(
                 :internal_system_error,
+                Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
+            INTERNAL_SYSTEM_ERROR_2 =
+              T.let(
+                :InternalSystemError,
                 Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
             USER_REQUEST =
@@ -563,9 +703,19 @@ module Straddle
                 :user_request,
                 Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
+            USER_REQUEST_2 =
+              T.let(
+                :UserRequest,
+                Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
             OK =
               T.let(
                 :ok,
+                Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
+            OK_2 =
+              T.let(
+                :Ok,
                 Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
             OTHER_NETWORK_RETURN =
@@ -573,9 +723,19 @@ module Straddle
                 :other_network_return,
                 Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
+            OTHER_NETWORK_RETURN_2 =
+              T.let(
+                :OtherNetworkReturn,
+                Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
             PAYOUT_REFUSED =
               T.let(
                 :payout_refused,
+                Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
+            PAYOUT_REFUSED_2 =
+              T.let(
+                :PayoutRefused,
                 Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
             CANCEL_REQUEST =
@@ -632,9 +792,19 @@ module Straddle
                 :watchtower,
                 Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Source::TaggedSymbol
               )
+            WATCHTOWER_2 =
+              T.let(
+                :Watchtower,
+                Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Source::TaggedSymbol
+              )
             BANK_DECLINE =
               T.let(
                 :bank_decline,
+                Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Source::TaggedSymbol
+              )
+            BANK_DECLINE_2 =
+              T.let(
+                :BankDecline,
                 Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Source::TaggedSymbol
               )
             CUSTOMER_DISPUTE =
@@ -642,14 +812,29 @@ module Straddle
                 :customer_dispute,
                 Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Source::TaggedSymbol
               )
+            CUSTOMER_DISPUTE_2 =
+              T.let(
+                :CustomerDispute,
+                Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Source::TaggedSymbol
+              )
             USER_ACTION =
               T.let(
                 :user_action,
                 Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Source::TaggedSymbol
               )
+            USER_ACTION_2 =
+              T.let(
+                :UserAction,
+                Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Source::TaggedSymbol
+              )
             SYSTEM =
               T.let(
                 :system,
+                Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Source::TaggedSymbol
+              )
+            SYSTEM_2 =
+              T.let(
+                :System,
                 Straddle::FundingEventSummaryPagedV1::Data::StatusDetails::Source::TaggedSymbol
               )
 
@@ -783,9 +968,19 @@ module Straddle
               :asc,
               Straddle::FundingEventSummaryPagedV1::Meta::SortOrder::TaggedSymbol
             )
+          ASC_2 =
+            T.let(
+              :Asc,
+              Straddle::FundingEventSummaryPagedV1::Meta::SortOrder::TaggedSymbol
+            )
           DESC =
             T.let(
               :desc,
+              Straddle::FundingEventSummaryPagedV1::Meta::SortOrder::TaggedSymbol
+            )
+          DESC_2 =
+            T.let(
+              :Desc,
               Straddle::FundingEventSummaryPagedV1::Meta::SortOrder::TaggedSymbol
             )
 
@@ -822,9 +1017,19 @@ module Straddle
             :object,
             Straddle::FundingEventSummaryPagedV1::ResponseType::TaggedSymbol
           )
+        OBJECT_2 =
+          T.let(
+            :Object,
+            Straddle::FundingEventSummaryPagedV1::ResponseType::TaggedSymbol
+          )
         ARRAY =
           T.let(
             :array,
+            Straddle::FundingEventSummaryPagedV1::ResponseType::TaggedSymbol
+          )
+        ARRAY_2 =
+          T.let(
+            :Array,
             Straddle::FundingEventSummaryPagedV1::ResponseType::TaggedSymbol
           )
         ERROR =
@@ -832,9 +1037,19 @@ module Straddle
             :error,
             Straddle::FundingEventSummaryPagedV1::ResponseType::TaggedSymbol
           )
+        ERROR_2 =
+          T.let(
+            :Error,
+            Straddle::FundingEventSummaryPagedV1::ResponseType::TaggedSymbol
+          )
         NONE =
           T.let(
             :none,
+            Straddle::FundingEventSummaryPagedV1::ResponseType::TaggedSymbol
+          )
+        NONE_2 =
+          T.let(
+            :None,
             Straddle::FundingEventSummaryPagedV1::ResponseType::TaggedSymbol
           )
 

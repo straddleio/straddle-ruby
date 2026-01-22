@@ -78,6 +78,16 @@ module Straddle
       end
       attr_writer :status
 
+      # Filter paykeys by unblock eligibility. When true, returns only blocked paykeys
+      # eligible for client-initiated unblocking (blocked due to R29 returns and not
+      # previously unblocked). When false, returns only blocked paykeys that are not
+      # eligible for unblocking.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :unblock_eligible
+
+      sig { params(unblock_eligible: T::Boolean).void }
+      attr_writer :unblock_eligible
+
       sig { returns(T.nilable(String)) }
       attr_reader :correlation_id
 
@@ -105,6 +115,7 @@ module Straddle
           sort_order: Straddle::PaykeyListParams::SortOrder::OrSymbol,
           source: T::Array[Straddle::PaykeyListParams::Source::OrSymbol],
           status: T::Array[Straddle::PaykeyListParams::Status::OrSymbol],
+          unblock_eligible: T::Boolean,
           correlation_id: String,
           request_id: String,
           straddle_account_id: String,
@@ -124,6 +135,11 @@ module Straddle
         source: nil,
         # Filter paykeys by their current status.
         status: nil,
+        # Filter paykeys by unblock eligibility. When true, returns only blocked paykeys
+        # eligible for client-initiated unblocking (blocked due to R29 returns and not
+        # previously unblocked). When false, returns only blocked paykeys that are not
+        # eligible for unblocking.
+        unblock_eligible: nil,
         correlation_id: nil,
         request_id: nil,
         straddle_account_id: nil,
@@ -141,6 +157,7 @@ module Straddle
             sort_order: Straddle::PaykeyListParams::SortOrder::OrSymbol,
             source: T::Array[Straddle::PaykeyListParams::Source::OrSymbol],
             status: T::Array[Straddle::PaykeyListParams::Status::OrSymbol],
+            unblock_eligible: T::Boolean,
             correlation_id: String,
             request_id: String,
             straddle_account_id: String,
@@ -185,7 +202,10 @@ module Straddle
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ASC = T.let(:asc, Straddle::PaykeyListParams::SortOrder::TaggedSymbol)
+        ASC_2 = T.let(:Asc, Straddle::PaykeyListParams::SortOrder::TaggedSymbol)
         DESC = T.let(:desc, Straddle::PaykeyListParams::SortOrder::TaggedSymbol)
+        DESC_2 =
+          T.let(:Desc, Straddle::PaykeyListParams::SortOrder::TaggedSymbol)
 
         sig do
           override.returns(

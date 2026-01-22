@@ -9,6 +9,7 @@ module Straddle
         sort_order: Straddle::Models::PaykeyListParams::sort_order,
         source: ::Array[Straddle::Models::PaykeyListParams::source],
         status: ::Array[Straddle::Models::PaykeyListParams::status],
+        unblock_eligible: bool,
         correlation_id: String,
         request_id: String,
         straddle_account_id: String
@@ -55,6 +56,10 @@ module Straddle
         ::Array[Straddle::Models::PaykeyListParams::status]
       ) -> ::Array[Straddle::Models::PaykeyListParams::status]
 
+      attr_reader unblock_eligible: bool?
+
+      def unblock_eligible=: (bool) -> bool
+
       attr_reader correlation_id: String?
 
       def correlation_id=: (String) -> String
@@ -75,6 +80,7 @@ module Straddle
         ?sort_order: Straddle::Models::PaykeyListParams::sort_order,
         ?source: ::Array[Straddle::Models::PaykeyListParams::source],
         ?status: ::Array[Straddle::Models::PaykeyListParams::status],
+        ?unblock_eligible: bool,
         ?correlation_id: String,
         ?request_id: String,
         ?straddle_account_id: String,
@@ -89,6 +95,7 @@ module Straddle
         sort_order: Straddle::Models::PaykeyListParams::sort_order,
         source: ::Array[Straddle::Models::PaykeyListParams::source],
         status: ::Array[Straddle::Models::PaykeyListParams::status],
+        unblock_eligible: bool,
         correlation_id: String,
         request_id: String,
         straddle_account_id: String,
@@ -107,13 +114,15 @@ module Straddle
         def self?.values: -> ::Array[Straddle::Models::PaykeyListParams::sort_by]
       end
 
-      type sort_order = :asc | :desc
+      type sort_order = :asc | :desc | :Asc | :Desc
 
       module SortOrder
         extend Straddle::Internal::Type::Enum
 
         ASC: :asc
+        ASC_2: :Asc
         DESC: :desc
+        DESC_2: :Desc
 
         def self?.values: -> ::Array[Straddle::Models::PaykeyListParams::sort_order]
       end

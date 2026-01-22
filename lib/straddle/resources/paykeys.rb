@@ -12,7 +12,7 @@ module Straddle
       # Returns a list of paykeys associated with a Straddle account. This endpoint
       # supports advanced sorting and filtering options.
       #
-      # @overload list(customer_id: nil, page_number: nil, page_size: nil, sort_by: nil, sort_order: nil, source: nil, status: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @overload list(customer_id: nil, page_number: nil, page_size: nil, sort_by: nil, sort_order: nil, source: nil, status: nil, unblock_eligible: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
       # @param customer_id [String] Query param: Filter paykeys by related customer ID.
       #
@@ -28,6 +28,8 @@ module Straddle
       #
       # @param status [Array<Symbol, Straddle::Models::PaykeyListParams::Status>] Query param: Filter paykeys by their current status.
       #
+      # @param unblock_eligible [Boolean] Query param: Filter paykeys by unblock eligibility. When true, returns only bloc
+      #
       # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
       #
       # @param request_id [String] Header param: Optional client generated identifier to trace and debug a request.
@@ -41,7 +43,8 @@ module Straddle
       # @see Straddle::Models::PaykeyListParams
       def list(params = {})
         parsed, options = Straddle::PaykeyListParams.dump_request(params)
-        query_params = [:customer_id, :page_number, :page_size, :sort_by, :sort_order, :source, :status]
+        query_params =
+          [:customer_id, :page_number, :page_size, :sort_by, :sort_order, :source, :status, :unblock_eligible]
         @client.request(
           method: :get,
           path: "v1/paykeys",
