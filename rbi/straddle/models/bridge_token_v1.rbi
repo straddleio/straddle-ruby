@@ -103,19 +103,11 @@ module Straddle
 
         OBJECT =
           T.let(:object, Straddle::BridgeTokenV1::ResponseType::TaggedSymbol)
-        OBJECT_2 =
-          T.let(:Object, Straddle::BridgeTokenV1::ResponseType::TaggedSymbol)
         ARRAY =
           T.let(:array, Straddle::BridgeTokenV1::ResponseType::TaggedSymbol)
-        ARRAY_2 =
-          T.let(:Array, Straddle::BridgeTokenV1::ResponseType::TaggedSymbol)
         ERROR =
           T.let(:error, Straddle::BridgeTokenV1::ResponseType::TaggedSymbol)
-        ERROR_2 =
-          T.let(:Error, Straddle::BridgeTokenV1::ResponseType::TaggedSymbol)
         NONE = T.let(:none, Straddle::BridgeTokenV1::ResponseType::TaggedSymbol)
-        NONE_2 =
-          T.let(:None, Straddle::BridgeTokenV1::ResponseType::TaggedSymbol)
 
         sig do
           override.returns(

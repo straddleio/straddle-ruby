@@ -412,19 +412,9 @@ module Straddle
                   :individual,
                   Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::Type::TaggedSymbol
                 )
-              INDIVIDUAL_2 =
-                T.let(
-                  :Individual,
-                  Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::Type::TaggedSymbol
-                )
               BUSINESS =
                 T.let(
                   :business,
-                  Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::Type::TaggedSymbol
-                )
-              BUSINESS_2 =
-                T.let(
-                  :Business,
                   Straddle::Customers::CustomerReviewV1::Data::CustomerDetails::Type::TaggedSymbol
                 )
 
@@ -2180,19 +2170,9 @@ module Straddle
               :object,
               Straddle::Customers::CustomerReviewV1::ResponseType::TaggedSymbol
             )
-          OBJECT_2 =
-            T.let(
-              :Object,
-              Straddle::Customers::CustomerReviewV1::ResponseType::TaggedSymbol
-            )
           ARRAY =
             T.let(
               :array,
-              Straddle::Customers::CustomerReviewV1::ResponseType::TaggedSymbol
-            )
-          ARRAY_2 =
-            T.let(
-              :Array,
               Straddle::Customers::CustomerReviewV1::ResponseType::TaggedSymbol
             )
           ERROR =
@@ -2200,19 +2180,9 @@ module Straddle
               :error,
               Straddle::Customers::CustomerReviewV1::ResponseType::TaggedSymbol
             )
-          ERROR_2 =
-            T.let(
-              :Error,
-              Straddle::Customers::CustomerReviewV1::ResponseType::TaggedSymbol
-            )
           NONE =
             T.let(
               :none,
-              Straddle::Customers::CustomerReviewV1::ResponseType::TaggedSymbol
-            )
-          NONE_2 =
-            T.let(
-              :None,
               Straddle::Customers::CustomerReviewV1::ResponseType::TaggedSymbol
             )
 

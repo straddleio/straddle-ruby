@@ -192,12 +192,8 @@ module Straddle
 
         INDIVIDUAL =
           T.let(:individual, Straddle::CustomerCreateParams::Type::TaggedSymbol)
-        INDIVIDUAL_2 =
-          T.let(:Individual, Straddle::CustomerCreateParams::Type::TaggedSymbol)
         BUSINESS =
           T.let(:business, Straddle::CustomerCreateParams::Type::TaggedSymbol)
-        BUSINESS_2 =
-          T.let(:Business, Straddle::CustomerCreateParams::Type::TaggedSymbol)
 
         sig do
           override.returns(

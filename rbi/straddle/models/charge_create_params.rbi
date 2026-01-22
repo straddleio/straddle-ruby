@@ -238,29 +238,14 @@ module Straddle
               :required,
               Straddle::ChargeCreateParams::Config::BalanceCheck::TaggedSymbol
             )
-          REQUIRED_2 =
-            T.let(
-              :Required,
-              Straddle::ChargeCreateParams::Config::BalanceCheck::TaggedSymbol
-            )
           ENABLED =
             T.let(
               :enabled,
               Straddle::ChargeCreateParams::Config::BalanceCheck::TaggedSymbol
             )
-          ENABLED_2 =
-            T.let(
-              :Enabled,
-              Straddle::ChargeCreateParams::Config::BalanceCheck::TaggedSymbol
-            )
           DISABLED =
             T.let(
               :disabled,
-              Straddle::ChargeCreateParams::Config::BalanceCheck::TaggedSymbol
-            )
-          DISABLED_2 =
-            T.let(
-              :Disabled,
               Straddle::ChargeCreateParams::Config::BalanceCheck::TaggedSymbol
             )
 
@@ -293,19 +278,9 @@ module Straddle
               :standard,
               Straddle::ChargeCreateParams::Config::SandboxOutcome::TaggedSymbol
             )
-          STANDARD_2 =
-            T.let(
-              :Standard,
-              Straddle::ChargeCreateParams::Config::SandboxOutcome::TaggedSymbol
-            )
           PAID =
             T.let(
               :paid,
-              Straddle::ChargeCreateParams::Config::SandboxOutcome::TaggedSymbol
-            )
-          PAID_2 =
-            T.let(
-              :Paid,
               Straddle::ChargeCreateParams::Config::SandboxOutcome::TaggedSymbol
             )
           ON_HOLD_DAILY_LIMIT =
@@ -313,19 +288,9 @@ module Straddle
               :on_hold_daily_limit,
               Straddle::ChargeCreateParams::Config::SandboxOutcome::TaggedSymbol
             )
-          ON_HOLD_DAILY_LIMIT_2 =
-            T.let(
-              :OnHoldDailyLimit,
-              Straddle::ChargeCreateParams::Config::SandboxOutcome::TaggedSymbol
-            )
           CANCELLED_FOR_FRAUD_RISK =
             T.let(
               :cancelled_for_fraud_risk,
-              Straddle::ChargeCreateParams::Config::SandboxOutcome::TaggedSymbol
-            )
-          CANCELLED_FOR_FRAUD_RISK_2 =
-            T.let(
-              :CancelledForFraudRisk,
               Straddle::ChargeCreateParams::Config::SandboxOutcome::TaggedSymbol
             )
           CANCELLED_FOR_BALANCE_CHECK =
@@ -333,19 +298,9 @@ module Straddle
               :cancelled_for_balance_check,
               Straddle::ChargeCreateParams::Config::SandboxOutcome::TaggedSymbol
             )
-          CANCELLED_FOR_BALANCE_CHECK_2 =
-            T.let(
-              :CancelledForBalanceCheck,
-              Straddle::ChargeCreateParams::Config::SandboxOutcome::TaggedSymbol
-            )
           FAILED_INSUFFICIENT_FUNDS =
             T.let(
               :failed_insufficient_funds,
-              Straddle::ChargeCreateParams::Config::SandboxOutcome::TaggedSymbol
-            )
-          FAILED_INSUFFICIENT_FUNDS_2 =
-            T.let(
-              :FailedInsufficientFunds,
               Straddle::ChargeCreateParams::Config::SandboxOutcome::TaggedSymbol
             )
           REVERSED_INSUFFICIENT_FUNDS =
@@ -353,19 +308,9 @@ module Straddle
               :reversed_insufficient_funds,
               Straddle::ChargeCreateParams::Config::SandboxOutcome::TaggedSymbol
             )
-          REVERSED_INSUFFICIENT_FUNDS_2 =
-            T.let(
-              :ReversedInsufficientFunds,
-              Straddle::ChargeCreateParams::Config::SandboxOutcome::TaggedSymbol
-            )
           FAILED_CUSTOMER_DISPUTE =
             T.let(
               :failed_customer_dispute,
-              Straddle::ChargeCreateParams::Config::SandboxOutcome::TaggedSymbol
-            )
-          FAILED_CUSTOMER_DISPUTE_2 =
-            T.let(
-              :FailedCustomerDispute,
               Straddle::ChargeCreateParams::Config::SandboxOutcome::TaggedSymbol
             )
           REVERSED_CUSTOMER_DISPUTE =
@@ -373,29 +318,14 @@ module Straddle
               :reversed_customer_dispute,
               Straddle::ChargeCreateParams::Config::SandboxOutcome::TaggedSymbol
             )
-          REVERSED_CUSTOMER_DISPUTE_2 =
-            T.let(
-              :ReversedCustomerDispute,
-              Straddle::ChargeCreateParams::Config::SandboxOutcome::TaggedSymbol
-            )
           FAILED_CLOSED_BANK_ACCOUNT =
             T.let(
               :failed_closed_bank_account,
               Straddle::ChargeCreateParams::Config::SandboxOutcome::TaggedSymbol
             )
-          FAILED_CLOSED_BANK_ACCOUNT_2 =
-            T.let(
-              :FailedClosedBankAccount,
-              Straddle::ChargeCreateParams::Config::SandboxOutcome::TaggedSymbol
-            )
           REVERSED_CLOSED_BANK_ACCOUNT =
             T.let(
               :reversed_closed_bank_account,
-              Straddle::ChargeCreateParams::Config::SandboxOutcome::TaggedSymbol
-            )
-          REVERSED_CLOSED_BANK_ACCOUNT_2 =
-            T.let(
-              :ReversedClosedBankAccount,
               Straddle::ChargeCreateParams::Config::SandboxOutcome::TaggedSymbol
             )
 
@@ -429,19 +359,9 @@ module Straddle
             :internet,
             Straddle::ChargeCreateParams::ConsentType::TaggedSymbol
           )
-        INTERNET_2 =
-          T.let(
-            :Internet,
-            Straddle::ChargeCreateParams::ConsentType::TaggedSymbol
-          )
         SIGNED =
           T.let(
             :signed,
-            Straddle::ChargeCreateParams::ConsentType::TaggedSymbol
-          )
-        SIGNED_2 =
-          T.let(
-            :Signed,
             Straddle::ChargeCreateParams::ConsentType::TaggedSymbol
           )
 
