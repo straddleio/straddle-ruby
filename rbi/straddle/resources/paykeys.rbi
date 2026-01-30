@@ -114,10 +114,9 @@ module Straddle
       )
       end
 
-      # Retrieves the details of a paykey that has previously been created, including
-      # unmasked bank account fields. Supply the unique paykey ID that was returned from
-      # your previous request, and Straddle will return the corresponding paykey
-      # information.
+      # Retrieves the details of a paykey that has previously been created. Supply the
+      # unique paykey ID that was returned from your previous request, and Straddle will
+      # return the corresponding paykey information including the unmasked token.
       sig do
         params(
           id: String,
