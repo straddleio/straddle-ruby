@@ -144,19 +144,13 @@ module Straddle
         #   @return [String, nil]
         optional :funding_id, String, nil?: true
 
-        # @!attribute metadata
-        #   Metadata for payment - only included if requested.
-        #
-        #   @return [Hash{Symbol=>String}, nil]
-        optional :metadata, Straddle::Internal::Type::HashOf[String], nil?: true
-
         # @!attribute paykey_details
         #   Information about the paykey used for the `charge` or `payout`.
         #
         #   @return [Straddle::Models::PaykeyDetailsV1, nil]
         optional :paykey_details, -> { Straddle::PaykeyDetailsV1 }
 
-        # @!method initialize(id:, amount:, created_at:, currency:, description:, external_id:, funding_ids:, paykey:, payment_date:, payment_type:, status:, status_details:, trace_ids:, updated_at:, customer_details: nil, effective_at: nil, funding_id: nil, metadata: nil, paykey_details: nil)
+        # @!method initialize(id:, amount:, created_at:, currency:, description:, external_id:, funding_ids:, paykey:, payment_date:, payment_type:, status:, status_details:, trace_ids:, updated_at:, customer_details: nil, effective_at: nil, funding_id: nil, paykey_details: nil)
         #   Some parameter documentations has been truncated, see
         #   {Straddle::Models::PaymentSummaryPagedV1::Data} for more details.
         #
@@ -193,8 +187,6 @@ module Straddle
         #   @param effective_at [Time, nil] The actual date on which the payment occurred. For charges, this is the date the
         #
         #   @param funding_id [String, nil] Unique identifier for the funding event associated with the `charge` or `payout`
-        #
-        #   @param metadata [Hash{Symbol=>String}, nil] Metadata for payment - only included if requested.
         #
         #   @param paykey_details [Straddle::Models::PaykeyDetailsV1] Information about the paykey used for the `charge` or `payout`.
 
