@@ -45,6 +45,7 @@ module Straddle
           customer_details: Straddle::CustomerDetailsV1,
           effective_at: Time?,
           funding_id: String?,
+          metadata: ::Hash[Symbol, String]?,
           paykey_details: Straddle::PaykeyDetailsV1
         }
 
@@ -87,6 +88,8 @@ module Straddle
 
         attr_accessor funding_id: String?
 
+        attr_accessor metadata: ::Hash[Symbol, String]?
+
         attr_reader paykey_details: Straddle::PaykeyDetailsV1?
 
         def paykey_details=: (
@@ -111,6 +114,7 @@ module Straddle
           ?customer_details: Straddle::CustomerDetailsV1,
           ?effective_at: Time?,
           ?funding_id: String?,
+          ?metadata: ::Hash[Symbol, String]?,
           ?paykey_details: Straddle::PaykeyDetailsV1
         ) -> void
 
@@ -132,6 +136,7 @@ module Straddle
           customer_details: Straddle::CustomerDetailsV1,
           effective_at: Time?,
           funding_id: String?,
+          metadata: ::Hash[Symbol, String]?,
           paykey_details: Straddle::PaykeyDetailsV1
         }
 
