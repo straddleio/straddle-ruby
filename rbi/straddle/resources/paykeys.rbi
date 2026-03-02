@@ -13,6 +13,7 @@ module Straddle
           customer_id: String,
           page_number: Integer,
           page_size: Integer,
+          search_text: String,
           sort_by: Straddle::PaykeyListParams::SortBy::OrSymbol,
           sort_order: Straddle::PaykeyListParams::SortOrder::OrSymbol,
           source: T::Array[Straddle::PaykeyListParams::Source::OrSymbol],
@@ -35,6 +36,8 @@ module Straddle
         page_number: nil,
         # Query param: Number of results per page. Maximum: 1000.
         page_size: nil,
+        # Query param: General search term to filter paykeys.
+        search_text: nil,
         # Query param
         sort_by: nil,
         # Query param

@@ -66,6 +66,13 @@ module Straddle
       sig { params(funding_id: String).void }
       attr_writer :funding_id
 
+      # Include the metadata for payments in the returned data.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :include_metadata
+
+      sig { params(include_metadata: T::Boolean).void }
+      attr_writer :include_metadata
+
       # Search using a maximum `amount` of a `charge` or `payout`.
       sig { returns(T.nilable(Integer)) }
       attr_reader :max_amount
@@ -284,6 +291,7 @@ module Straddle
             Straddle::PaymentListParams::DefaultSortOrder::OrSymbol,
           external_id: String,
           funding_id: String,
+          include_metadata: T::Boolean,
           max_amount: Integer,
           max_created_at: Time,
           max_effective_at: Time,
@@ -325,6 +333,8 @@ module Straddle
         external_id: nil,
         # Search using the `funding_id` of a `charge` or `payout`.
         funding_id: nil,
+        # Include the metadata for payments in the returned data.
+        include_metadata: nil,
         # Search using a maximum `amount` of a `charge` or `payout`.
         max_amount: nil,
         # Search using the latest `created_at` date of a `charge` or `payout`.
@@ -381,6 +391,7 @@ module Straddle
               Straddle::PaymentListParams::DefaultSortOrder::OrSymbol,
             external_id: String,
             funding_id: String,
+            include_metadata: T::Boolean,
             max_amount: Integer,
             max_created_at: Time,
             max_effective_at: Time,
