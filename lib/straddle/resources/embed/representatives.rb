@@ -3,6 +3,12 @@
 module Straddle
   module Resources
     class Embed
+      # Representatives are individuals who have legal authority or significant
+      # responsibility within a business entity associated with a Straddle account. Each
+      # representative undergoes automated verification as part of KYC/KYB compliance.
+      # Use representatives to collect and verify beneficial owners, control persons,
+      # and authorized signers required for account onboarding. Representatives also
+      # determine who can legally operate the account and make important changes.
       class Representatives
         # Some parameter documentations has been truncated, see
         # {Straddle::Models::Embed::RepresentativeCreateParams} for more details.
@@ -148,7 +154,6 @@ module Straddle
         #
         # @see Straddle::Models::Embed::RepresentativeListParams
         def list(params = {})
-          parsed, options = Straddle::Embed::RepresentativeListParams.dump_request(params)
           query_params =
             [
               :account_id,
@@ -160,10 +165,12 @@ module Straddle
               :sort_by,
               :sort_order
             ]
+          parsed, options = Straddle::Embed::RepresentativeListParams.dump_request(params)
+          query = Straddle::Internal::Util.encode_query_params(parsed.slice(*query_params))
           @client.request(
             method: :get,
             path: "v1/representatives",
-            query: parsed.slice(*query_params),
+            query: query,
             headers: parsed.except(*query_params).transform_keys(
               correlation_id: "correlation-id",
               request_id: "request-id"

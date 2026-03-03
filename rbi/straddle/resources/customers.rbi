@@ -2,7 +2,19 @@
 
 module Straddle
   module Resources
+    # Customers represent the end users who send or receive payments through your
+    # integration. Each customer undergoes automatic identity verification and fraud
+    # screening upon creation. Use customers to track payment history, manage bank
+    # account connections, and maintain a secure record of all transactions associated
+    # with a user. Customers can be either individuals or businesses with appropriate
+    # compliance checks for each type.
     class Customers
+      # Customers represent the end users who send or receive payments through your
+      # integration. Each customer undergoes automatic identity verification and fraud
+      # screening upon creation. Use customers to track payment history, manage bank
+      # account connections, and maintain a secure record of all transactions associated
+      # with a user. Customers can be either individuals or businesses with appropriate
+      # compliance checks for each type.
       sig { returns(Straddle::Resources::Customers::Review) }
       attr_reader :review
 

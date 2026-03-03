@@ -2,7 +2,17 @@
 
 module Straddle
   module Resources
+    # Paykeys are secure tokens that link verified customer identities to their bank
+    # accounts. Each Paykey includes built-in balance checking, fraud detection
+    # through LSTM machine learning models, and can be reused for subscriptions and
+    # recurring payments without storing sensitive data. Paykeys eliminate fraud by
+    # ensuring the person initiating payment owns the funding account.
     class Paykeys
+      # Paykeys are secure tokens that link verified customer identities to their bank
+      # accounts. Each Paykey includes built-in balance checking, fraud detection
+      # through LSTM machine learning models, and can be reused for subscriptions and
+      # recurring payments without storing sensitive data. Paykeys eliminate fraud by
+      # ensuring the person initiating payment owns the funding account.
       # @return [Straddle::Resources::Paykeys::Review]
       attr_reader :review
 
@@ -42,13 +52,14 @@ module Straddle
       #
       # @see Straddle::Models::PaykeyListParams
       def list(params = {})
-        parsed, options = Straddle::PaykeyListParams.dump_request(params)
         query_params =
           [:customer_id, :page_number, :page_size, :sort_by, :sort_order, :source, :status, :unblock_eligible]
+        parsed, options = Straddle::PaykeyListParams.dump_request(params)
+        query = Straddle::Internal::Util.encode_query_params(parsed.slice(*query_params))
         @client.request(
           method: :get,
           path: "v1/paykeys",
-          query: parsed.slice(*query_params),
+          query: query,
           headers: parsed.except(*query_params).transform_keys(
             correlation_id: "correlation-id",
             request_id: "request-id",

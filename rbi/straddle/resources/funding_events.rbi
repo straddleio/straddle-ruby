@@ -2,6 +2,12 @@
 
 module Straddle
   module Resources
+    # Funding events represent all money movement between Straddle and an Account's
+    # external bank accounts. They are automatically generated when charges settle or
+    # payouts are initiated. Each event provides detailed tracking of settlement
+    # status, fee breakdowns, and reconciliation data across both incoming and
+    # outgoing transfers. Use funding events to monitor your platform's entire money
+    # movement lifecycle.
     class FundingEvents
       # Retrieves a list of funding events for your account. This endpoint supports
       # advanced sorting and filtering options.

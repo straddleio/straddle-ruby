@@ -2,6 +2,12 @@
 
 module Straddle
   module Resources
+    # Funding events represent all money movement between Straddle and an Account's
+    # external bank accounts. They are automatically generated when charges settle or
+    # payouts are initiated. Each event provides detailed tracking of settlement
+    # status, fee breakdowns, and reconciliation data across both incoming and
+    # outgoing transfers. Use funding events to monitor your platform's entire money
+    # movement lifecycle.
     class FundingEvents
       # Some parameter documentations has been truncated, see
       # {Straddle::Models::FundingEventListParams} for more details.
@@ -51,7 +57,6 @@ module Straddle
       #
       # @see Straddle::Models::FundingEventListParams
       def list(params = {})
-        parsed, options = Straddle::FundingEventListParams.dump_request(params)
         query_params =
           [
             :created_from,
@@ -69,10 +74,12 @@ module Straddle
             :trace_id,
             :trace_number
           ]
+        parsed, options = Straddle::FundingEventListParams.dump_request(params)
+        query = Straddle::Internal::Util.encode_query_params(parsed.slice(*query_params))
         @client.request(
           method: :get,
           path: "v1/funding_events",
-          query: parsed.slice(*query_params),
+          query: query,
           headers: parsed.except(*query_params).transform_keys(
             correlation_id: "correlation-id",
             request_id: "request-id",

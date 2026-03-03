@@ -2,6 +2,11 @@
 
 module Straddle
   module Resources
+    # Charges represent attempts to debit money from a customer's bank account using a
+    # Paykey. Each charge includes automatic balance verification, real-time fraud
+    # screening, and multi-rail optimization and detailed status tracking throughout
+    # the payment lifecycle. Use charges to accept bank payments with confidence
+    # knowing every transaction is protected.
     class Charges
       # Some parameter documentations has been truncated, see
       # {Straddle::Models::ChargeCreateParams} for more details.

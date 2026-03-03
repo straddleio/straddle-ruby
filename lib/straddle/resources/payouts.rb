@@ -2,6 +2,10 @@
 
 module Straddle
   module Resources
+    # Payouts represent transfers from Straddle to customer bank accounts. Create
+    # payouts to handle disbursements, process refunds, or manage marketplace
+    # settlements. Use payouts to send money quickly and securely with the most
+    # cost-effective rail automatically selected.
     class Payouts
       # Some parameter documentations has been truncated, see
       # {Straddle::Models::PayoutCreateParams} for more details.

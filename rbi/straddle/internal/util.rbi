@@ -303,6 +303,26 @@ module Straddle
       class << self
         # @api private
         sig do
+          params(query: Straddle::Internal::AnyHash).returns(
+            Straddle::Internal::AnyHash
+          )
+        end
+        def encode_query_params(query)
+        end
+
+        # @api private
+        sig do
+          params(
+            collection: Straddle::Internal::AnyHash,
+            key: String,
+            element: T.anything
+          ).void
+        end
+        private def write_query_param_element!(collection, key, element)
+        end
+
+        # @api private
+        sig do
           params(
             y: Enumerator::Yielder,
             val: T.anything,

@@ -3,6 +3,12 @@
 module Straddle
   module Resources
     class Customers
+      # Customers represent the end users who send or receive payments through your
+      # integration. Each customer undergoes automatic identity verification and fraud
+      # screening upon creation. Use customers to track payment history, manage bank
+      # account connections, and maintain a secure record of all transactions associated
+      # with a user. Customers can be either individuals or businesses with appropriate
+      # compliance checks for each type.
       class Review
         # Some parameter documentations has been truncated, see
         # {Straddle::Models::Customers::ReviewDecisionParams} for more details.

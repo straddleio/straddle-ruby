@@ -3,6 +3,10 @@
 module Straddle
   module Resources
     class Embed
+      # Linked bank accounts connect your platform users' external bank accounts to
+      # Straddle for settlements and payment funding. Each linked account undergoes
+      # automated verification and continuous monitoring. Use linked accounts to manage
+      # where clients receive deposits, fund payouts, and track settlement preferences.
       class LinkedBankAccounts
         # Creates a new linked bank account associated with a Straddle account. This
         # endpoint allows you to associate external bank accounts with a Straddle account

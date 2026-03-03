@@ -3,7 +3,16 @@
 module Straddle
   module Resources
     class Embed
+      # Accounts represent businesses using Straddle through your platform. Each account
+      # must complete automated verification before processing payments. Use accounts to
+      # manage your users' payment capabilities, track verification status, and control
+      # access to features. Accounts can be instantly created in sandbox and require
+      # additional verification for production access.
       class Accounts
+        # Capabilities enable specific features and services for an Account. Use
+        # capability requests to unlock higher processing limits, new payment types, or
+        # additional platform features as your users' businesses grow. Track approval
+        # status and manage documentation requirements through a single interface.
         sig do
           returns(Straddle::Resources::Embed::Accounts::CapabilityRequests)
         end

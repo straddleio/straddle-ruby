@@ -4,6 +4,10 @@ module Straddle
   module Resources
     class Embed
       class Accounts
+        # Capabilities enable specific features and services for an Account. Use
+        # capability requests to unlock higher processing limits, new payment types, or
+        # additional platform features as your users' businesses grow. Track approval
+        # status and manage documentation requirements through a single interface.
         class CapabilityRequests
           # Submits a request to enable a specific capability for an account. Use this
           # endpoint to request additional features or services for an account.

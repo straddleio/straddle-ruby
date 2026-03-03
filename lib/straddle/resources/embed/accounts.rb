@@ -3,7 +3,16 @@
 module Straddle
   module Resources
     class Embed
+      # Accounts represent businesses using Straddle through your platform. Each account
+      # must complete automated verification before processing payments. Use accounts to
+      # manage your users' payment capabilities, track verification status, and control
+      # access to features. Accounts can be instantly created in sandbox and require
+      # additional verification for production access.
       class Accounts
+        # Capabilities enable specific features and services for an Account. Use
+        # capability requests to unlock higher processing limits, new payment types, or
+        # additional platform features as your users' businesses grow. Track approval
+        # status and manage documentation requirements through a single interface.
         # @return [Straddle::Resources::Embed::Accounts::CapabilityRequests]
         attr_reader :capability_requests
 
@@ -128,12 +137,13 @@ module Straddle
         #
         # @see Straddle::Models::Embed::AccountListParams
         def list(params = {})
-          parsed, options = Straddle::Embed::AccountListParams.dump_request(params)
           query_params = [:page_number, :page_size, :search_text, :sort_by, :sort_order, :status, :type]
+          parsed, options = Straddle::Embed::AccountListParams.dump_request(params)
+          query = Straddle::Internal::Util.encode_query_params(parsed.slice(*query_params))
           @client.request(
             method: :get,
             path: "v1/accounts",
-            query: parsed.slice(*query_params),
+            query: query,
             headers: parsed.except(*query_params).transform_keys(
               correlation_id: "correlation-id",
               request_id: "request-id"
@@ -234,12 +244,13 @@ module Straddle
         #
         # @see Straddle::Models::Embed::AccountSimulateParams
         def simulate(account_id, params = {})
-          parsed, options = Straddle::Embed::AccountSimulateParams.dump_request(params)
           query_params = [:final_status]
+          parsed, options = Straddle::Embed::AccountSimulateParams.dump_request(params)
+          query = Straddle::Internal::Util.encode_query_params(parsed.slice(*query_params))
           @client.request(
             method: :post,
             path: ["v1/accounts/%1$s/simulate", account_id],
-            query: parsed.slice(*query_params),
+            query: query,
             headers: parsed.except(*query_params).transform_keys(
               correlation_id: "correlation-id",
               idempotency_key: "idempotency-key",
