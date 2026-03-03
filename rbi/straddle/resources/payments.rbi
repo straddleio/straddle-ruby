@@ -2,6 +2,8 @@
 
 module Straddle
   module Resources
+    # Payments provide endpoints to filter both Charges and Payouts with multiple
+    # different parameters.
     class Payments
       # Search for payments, including `charges` and `payouts`, using a variety of
       # criteria. This endpoint supports advanced sorting and filtering options.

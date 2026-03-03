@@ -3,6 +3,10 @@
 module Straddle
   module Resources
     class Embed
+      # Organizations are a powerful feature in Straddle that allow you to manage
+      # multiple accounts under a single umbrella. This hierarchical structure is
+      # particularly useful for businesses with complex operations, multiple
+      # departments, or legally related entities.
       class Organizations
         # Some parameter documentations has been truncated, see
         # {Straddle::Models::Embed::OrganizationCreateParams} for more details.
@@ -76,12 +80,13 @@ module Straddle
         #
         # @see Straddle::Models::Embed::OrganizationListParams
         def list(params = {})
-          parsed, options = Straddle::Embed::OrganizationListParams.dump_request(params)
           query_params = [:external_id, :name, :page_number, :page_size, :sort_by, :sort_order]
+          parsed, options = Straddle::Embed::OrganizationListParams.dump_request(params)
+          query = Straddle::Internal::Util.encode_query_params(parsed.slice(*query_params))
           @client.request(
             method: :get,
             path: "v1/organizations",
-            query: parsed.slice(*query_params),
+            query: query,
             headers: parsed.except(*query_params).transform_keys(
               correlation_id: "correlation-id",
               request_id: "request-id"

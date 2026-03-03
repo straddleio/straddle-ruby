@@ -2,6 +2,8 @@
 
 module Straddle
   module Resources
+    # Payments provide endpoints to filter both Charges and Payouts with multiple
+    # different parameters.
     class Payments
       # Some parameter documentations has been truncated, see
       # {Straddle::Models::PaymentListParams} for more details.
@@ -75,7 +77,6 @@ module Straddle
       #
       # @see Straddle::Models::PaymentListParams
       def list(params = {})
-        parsed, options = Straddle::PaymentListParams.dump_request(params)
         query_params =
           [
             :customer_id,
@@ -105,10 +106,12 @@ module Straddle
             :status_reason,
             :status_source
           ]
+        parsed, options = Straddle::PaymentListParams.dump_request(params)
+        query = Straddle::Internal::Util.encode_query_params(parsed.slice(*query_params))
         @client.request(
           method: :get,
           path: "v1/payments",
-          query: parsed.slice(*query_params),
+          query: query,
           headers: parsed.except(*query_params).transform_keys(
             correlation_id: "correlation-id",
             request_id: "request-id",

@@ -3,6 +3,10 @@
 module Straddle
   module Resources
     class Embed
+      # Linked bank accounts connect your platform users' external bank accounts to
+      # Straddle for settlements and payment funding. Each linked account undergoes
+      # automated verification and continuous monitoring. Use linked accounts to manage
+      # where clients receive deposits, fund payouts, and track settlement preferences.
       class LinkedBankAccounts
         # Some parameter documentations has been truncated, see
         # {Straddle::Models::Embed::LinkedBankAccountCreateParams} for more details.
@@ -128,7 +132,6 @@ module Straddle
         #
         # @see Straddle::Models::Embed::LinkedBankAccountListParams
         def list(params = {})
-          parsed, options = Straddle::Embed::LinkedBankAccountListParams.dump_request(params)
           query_params = [
             :account_id,
             :level,
@@ -139,10 +142,12 @@ module Straddle
             :sort_order,
             :status
           ]
+          parsed, options = Straddle::Embed::LinkedBankAccountListParams.dump_request(params)
+          query = Straddle::Internal::Util.encode_query_params(parsed.slice(*query_params))
           @client.request(
             method: :get,
             path: "v1/linked_bank_accounts",
-            query: parsed.slice(*query_params),
+            query: query,
             headers: parsed.except(*query_params).transform_keys(
               correlation_id: "correlation-id",
               request_id: "request-id"

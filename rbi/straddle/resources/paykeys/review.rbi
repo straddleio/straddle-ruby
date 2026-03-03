@@ -3,6 +3,11 @@
 module Straddle
   module Resources
     class Paykeys
+      # Paykeys are secure tokens that link verified customer identities to their bank
+      # accounts. Each Paykey includes built-in balance checking, fraud detection
+      # through LSTM machine learning models, and can be reused for subscriptions and
+      # recurring payments without storing sensitive data. Paykeys eliminate fraud by
+      # ensuring the person initiating payment owns the funding account.
       class Review
         # Update the status of a paykey when in review status
         sig do

@@ -3,6 +3,12 @@
 module Straddle
   module Resources
     class Bridge
+      # Bridge provides a comprehensive suite of tools for connecting customer bank
+      # accounts. Use it to generate secure widget sessions for instant account
+      # verification, accept tokens from major providers like Plaid and Finicity, or
+      # verify accounts directly via our API. Bridge handles all sensitive banking
+      # credentials and ensures secure, compliant connections with support for 90% of US
+      # bank accounts.
       class Link
         # Use Bridge to create a new paykey using a bank routing and account number as the
         # source. This endpoint allows you to create a secure payment token linked to a

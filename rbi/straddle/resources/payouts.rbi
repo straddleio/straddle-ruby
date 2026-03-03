@@ -2,6 +2,10 @@
 
 module Straddle
   module Resources
+    # Payouts represent transfers from Straddle to customer bank accounts. Create
+    # payouts to handle disbursements, process refunds, or manage marketplace
+    # settlements. Use payouts to send money quickly and securely with the most
+    # cost-effective rail automatically selected.
     class Payouts
       # Use payouts to send money to your customers.
       sig do
