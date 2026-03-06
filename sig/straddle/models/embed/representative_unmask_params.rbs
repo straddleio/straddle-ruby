@@ -2,12 +2,18 @@ module Straddle
   module Models
     module Embed
       type representative_unmask_params =
-        { correlation_id: String, request_id: String }
+        {
+          representative_id: String,
+          correlation_id: String,
+          request_id: String
+        }
         & Straddle::Internal::Type::request_parameters
 
       class RepresentativeUnmaskParams < Straddle::Internal::Type::BaseModel
         extend Straddle::Internal::Type::RequestParameters::Converter
         include Straddle::Internal::Type::RequestParameters
+
+        attr_accessor representative_id: String
 
         attr_reader correlation_id: String?
 
@@ -18,12 +24,14 @@ module Straddle
         def request_id=: (String) -> String
 
         def initialize: (
+          representative_id: String,
           ?correlation_id: String,
           ?request_id: String,
           ?request_options: Straddle::request_opts
         ) -> void
 
         def to_hash: -> {
+          representative_id: String,
           correlation_id: String,
           request_id: String,
           request_options: Straddle::RequestOptions

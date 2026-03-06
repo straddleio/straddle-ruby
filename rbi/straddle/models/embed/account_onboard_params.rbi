@@ -15,6 +15,9 @@ module Straddle
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :account_id
+
         sig { returns(Straddle::Embed::TermsOfServiceV1) }
         attr_reader :terms_of_service
 
@@ -45,6 +48,7 @@ module Straddle
 
         sig do
           params(
+            account_id: String,
             terms_of_service: Straddle::Embed::TermsOfServiceV1::OrHash,
             correlation_id: String,
             idempotency_key: String,
@@ -53,6 +57,7 @@ module Straddle
           ).returns(T.attached_class)
         end
         def self.new(
+          account_id:,
           terms_of_service:,
           correlation_id: nil,
           idempotency_key: nil,
@@ -64,6 +69,7 @@ module Straddle
         sig do
           override.returns(
             {
+              account_id: String,
               terms_of_service: Straddle::Embed::TermsOfServiceV1,
               correlation_id: String,
               idempotency_key: String,

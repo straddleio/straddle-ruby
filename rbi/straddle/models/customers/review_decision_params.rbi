@@ -15,6 +15,9 @@ module Straddle
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         # The final status of the customer review.
         sig do
           returns(Straddle::Customers::ReviewDecisionParams::Status::OrSymbol)
@@ -47,6 +50,7 @@ module Straddle
 
         sig do
           params(
+            id: String,
             status: Straddle::Customers::ReviewDecisionParams::Status::OrSymbol,
             correlation_id: String,
             idempotency_key: String,
@@ -56,6 +60,7 @@ module Straddle
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           # The final status of the customer review.
           status:,
           correlation_id: nil,
@@ -69,6 +74,7 @@ module Straddle
         sig do
           override.returns(
             {
+              id: String,
               status:
                 Straddle::Customers::ReviewDecisionParams::Status::OrSymbol,
               correlation_id: String,

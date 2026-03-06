@@ -16,6 +16,9 @@ module Straddle
               )
             end
 
+          sig { returns(String) }
+          attr_accessor :account_id
+
           # Filter capability requests by category.
           sig do
             returns(
@@ -123,6 +126,7 @@ module Straddle
 
           sig do
             params(
+              account_id: String,
               category:
                 Straddle::Embed::Accounts::CapabilityRequestListParams::Category::OrSymbol,
               page_number: Integer,
@@ -140,6 +144,7 @@ module Straddle
             ).returns(T.attached_class)
           end
           def self.new(
+            account_id:,
             # Filter capability requests by category.
             category: nil,
             # Results page number. Starts at page 1.
@@ -163,6 +168,7 @@ module Straddle
           sig do
             override.returns(
               {
+                account_id: String,
                 category:
                   Straddle::Embed::Accounts::CapabilityRequestListParams::Category::OrSymbol,
                 page_number: Integer,

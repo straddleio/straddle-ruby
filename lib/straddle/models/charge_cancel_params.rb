@@ -7,6 +7,11 @@ module Straddle
       extend Straddle::Internal::Type::RequestParameters::Converter
       include Straddle::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute reason
       #   Details about why the charge status was updated.
       #
@@ -33,7 +38,9 @@ module Straddle
       #   @return [String, nil]
       optional :straddle_account_id, String
 
-      # @!method initialize(reason: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @!method initialize(id:, reason: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      #   @param id [String]
+      #
       #   @param reason [String, nil] Details about why the charge status was updated.
       #
       #   @param correlation_id [String]

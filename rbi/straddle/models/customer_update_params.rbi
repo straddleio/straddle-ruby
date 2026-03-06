@@ -11,6 +11,9 @@ module Straddle
           T.any(Straddle::CustomerUpdateParams, Straddle::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       sig { returns(Straddle::DeviceUnmaskedV1) }
       attr_reader :device
 
@@ -91,6 +94,7 @@ module Straddle
 
       sig do
         params(
+          id: String,
           device: Straddle::DeviceUnmaskedV1::OrHash,
           email: String,
           name: String,
@@ -114,6 +118,7 @@ module Straddle
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         device:,
         # The customer's email address.
         email:,
@@ -144,6 +149,7 @@ module Straddle
       sig do
         override.returns(
           {
+            id: String,
             device: Straddle::DeviceUnmaskedV1,
             email: String,
             name: String,

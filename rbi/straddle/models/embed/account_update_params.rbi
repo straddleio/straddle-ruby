@@ -15,6 +15,9 @@ module Straddle
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :account_id
+
         sig { returns(Straddle::Embed::BusinessProfileV1) }
         attr_reader :business_profile
 
@@ -55,6 +58,7 @@ module Straddle
 
         sig do
           params(
+            account_id: String,
             business_profile: Straddle::Embed::BusinessProfileV1::OrHash,
             external_id: T.nilable(String),
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -65,6 +69,7 @@ module Straddle
           ).returns(T.attached_class)
         end
         def self.new(
+          account_id:,
           business_profile:,
           # Unique identifier for the account in your database, used for cross-referencing
           # between Straddle and your systems.
@@ -82,6 +87,7 @@ module Straddle
         sig do
           override.returns(
             {
+              account_id: String,
               business_profile: Straddle::Embed::BusinessProfileV1,
               external_id: T.nilable(String),
               metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),

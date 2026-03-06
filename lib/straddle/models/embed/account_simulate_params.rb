@@ -8,6 +8,11 @@ module Straddle
         extend Straddle::Internal::Type::RequestParameters::Converter
         include Straddle::Internal::Type::RequestParameters
 
+        # @!attribute account_id
+        #
+        #   @return [String]
+        required :account_id, String
+
         # @!attribute final_status
         #
         #   @return [Symbol, Straddle::Models::Embed::AccountSimulateParams::FinalStatus, nil]
@@ -28,7 +33,8 @@ module Straddle
         #   @return [String, nil]
         optional :request_id, String
 
-        # @!method initialize(final_status: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
+        # @!method initialize(account_id:, final_status: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
+        #   @param account_id [String]
         #   @param final_status [Symbol, Straddle::Models::Embed::AccountSimulateParams::FinalStatus]
         #   @param correlation_id [String]
         #   @param idempotency_key [String]

@@ -11,6 +11,9 @@ module Straddle
           T.any(Straddle::ChargeReleaseParams, Straddle::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # Details about why the charge status was updated.
       sig { returns(T.nilable(String)) }
       attr_accessor :reason
@@ -41,6 +44,7 @@ module Straddle
 
       sig do
         params(
+          id: String,
           reason: T.nilable(String),
           correlation_id: String,
           idempotency_key: String,
@@ -50,6 +54,7 @@ module Straddle
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # Details about why the charge status was updated.
         reason: nil,
         correlation_id: nil,
@@ -63,6 +68,7 @@ module Straddle
       sig do
         override.returns(
           {
+            id: String,
             reason: T.nilable(String),
             correlation_id: String,
             idempotency_key: String,

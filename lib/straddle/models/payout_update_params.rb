@@ -7,6 +7,11 @@ module Straddle
       extend Straddle::Internal::Type::RequestParameters::Converter
       include Straddle::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute amount
       #   The amount of the payout in cents.
       #
@@ -53,9 +58,11 @@ module Straddle
       #   @return [String, nil]
       optional :straddle_account_id, String
 
-      # @!method initialize(amount:, description:, payment_date:, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @!method initialize(id:, amount:, description:, payment_date:, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Straddle::Models::PayoutUpdateParams} for more details.
+      #
+      #   @param id [String]
       #
       #   @param amount [Integer] The amount of the payout in cents.
       #

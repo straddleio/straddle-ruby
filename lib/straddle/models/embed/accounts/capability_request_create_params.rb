@@ -9,6 +9,11 @@ module Straddle
           extend Straddle::Internal::Type::RequestParameters::Converter
           include Straddle::Internal::Type::RequestParameters
 
+          # @!attribute account_id
+          #
+          #   @return [String]
+          required :account_id, String
+
           # @!attribute businesses
           #   Allows the account to accept payments from businesses.
           #
@@ -63,10 +68,12 @@ module Straddle
           #   @return [String, nil]
           optional :request_id, String
 
-          # @!method initialize(businesses: nil, charges: nil, individuals: nil, internet: nil, payouts: nil, signed_agreement: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
+          # @!method initialize(account_id:, businesses: nil, charges: nil, individuals: nil, internet: nil, payouts: nil, signed_agreement: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {Straddle::Models::Embed::Accounts::CapabilityRequestCreateParams} for more
           #   details.
+          #
+          #   @param account_id [String]
           #
           #   @param businesses [Straddle::Models::Embed::Accounts::CapabilityRequestCreateParams::Businesses] Allows the account to accept payments from businesses.
           #
