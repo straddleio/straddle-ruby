@@ -3,6 +3,7 @@ module Straddle
     module Embed
       type account_onboard_params =
         {
+          account_id: String,
           terms_of_service: Straddle::Embed::TermsOfServiceV1,
           correlation_id: String,
           idempotency_key: String,
@@ -13,6 +14,8 @@ module Straddle
       class AccountOnboardParams < Straddle::Internal::Type::BaseModel
         extend Straddle::Internal::Type::RequestParameters::Converter
         include Straddle::Internal::Type::RequestParameters
+
+        attr_accessor account_id: String
 
         attr_accessor terms_of_service: Straddle::Embed::TermsOfServiceV1
 
@@ -29,6 +32,7 @@ module Straddle
         def request_id=: (String) -> String
 
         def initialize: (
+          account_id: String,
           terms_of_service: Straddle::Embed::TermsOfServiceV1,
           ?correlation_id: String,
           ?idempotency_key: String,
@@ -37,6 +41,7 @@ module Straddle
         ) -> void
 
         def to_hash: -> {
+          account_id: String,
           terms_of_service: Straddle::Embed::TermsOfServiceV1,
           correlation_id: String,
           idempotency_key: String,

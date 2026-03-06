@@ -3,6 +3,7 @@ module Straddle
     module Embed
       type account_update_params =
         {
+          account_id: String,
           business_profile: Straddle::Embed::BusinessProfileV1,
           external_id: String?,
           metadata: ::Hash[Symbol, String?]?,
@@ -15,6 +16,8 @@ module Straddle
       class AccountUpdateParams < Straddle::Internal::Type::BaseModel
         extend Straddle::Internal::Type::RequestParameters::Converter
         include Straddle::Internal::Type::RequestParameters
+
+        attr_accessor account_id: String
 
         attr_accessor business_profile: Straddle::Embed::BusinessProfileV1
 
@@ -35,6 +38,7 @@ module Straddle
         def request_id=: (String) -> String
 
         def initialize: (
+          account_id: String,
           business_profile: Straddle::Embed::BusinessProfileV1,
           ?external_id: String?,
           ?metadata: ::Hash[Symbol, String?]?,
@@ -45,6 +49,7 @@ module Straddle
         ) -> void
 
         def to_hash: -> {
+          account_id: String,
           business_profile: Straddle::Embed::BusinessProfileV1,
           external_id: String?,
           metadata: ::Hash[Symbol, String?]?,

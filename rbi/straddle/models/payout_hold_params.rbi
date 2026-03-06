@@ -11,6 +11,9 @@ module Straddle
           T.any(Straddle::PayoutHoldParams, Straddle::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # Details about why the payout status was updated.
       sig { returns(String) }
       attr_accessor :reason
@@ -41,6 +44,7 @@ module Straddle
 
       sig do
         params(
+          id: String,
           reason: String,
           correlation_id: String,
           idempotency_key: String,
@@ -50,6 +54,7 @@ module Straddle
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # Details about why the payout status was updated.
         reason:,
         correlation_id: nil,
@@ -63,6 +68,7 @@ module Straddle
       sig do
         override.returns(
           {
+            id: String,
             reason: String,
             correlation_id: String,
             idempotency_key: String,

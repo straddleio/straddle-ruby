@@ -15,6 +15,9 @@ module Straddle
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :linked_bank_account_id
+
         sig do
           returns(Straddle::Embed::LinkedBankAccountUpdateParams::BankAccount)
         end
@@ -53,6 +56,7 @@ module Straddle
 
         sig do
           params(
+            linked_bank_account_id: String,
             bank_account:
               Straddle::Embed::LinkedBankAccountUpdateParams::BankAccount::OrHash,
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -63,6 +67,7 @@ module Straddle
           ).returns(T.attached_class)
         end
         def self.new(
+          linked_bank_account_id:,
           bank_account:,
           # Up to 20 additional user-defined key-value pairs. Useful for storing additional
           # information about the linked bank account in a structured format.
@@ -77,6 +82,7 @@ module Straddle
         sig do
           override.returns(
             {
+              linked_bank_account_id: String,
               bank_account:
                 Straddle::Embed::LinkedBankAccountUpdateParams::BankAccount,
               metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),

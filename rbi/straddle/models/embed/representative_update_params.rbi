@@ -15,6 +15,9 @@ module Straddle
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :representative_id
+
         # The date of birth of the representative, in ISO 8601 format (YYYY-MM-DD).
         sig { returns(Date) }
         attr_accessor :dob
@@ -82,6 +85,7 @@ module Straddle
 
         sig do
           params(
+            representative_id: String,
             dob: Date,
             email: String,
             first_name: String,
@@ -99,6 +103,7 @@ module Straddle
           ).returns(T.attached_class)
         end
         def self.new(
+          representative_id:,
           # The date of birth of the representative, in ISO 8601 format (YYYY-MM-DD).
           dob:,
           # The email address of the representative.
@@ -128,6 +133,7 @@ module Straddle
         sig do
           override.returns(
             {
+              representative_id: String,
               dob: Date,
               email: String,
               first_name: String,

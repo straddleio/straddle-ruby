@@ -3,6 +3,7 @@ module Straddle
     module Customers
       type review_refresh_review_params =
         {
+          id: String,
           correlation_id: String,
           idempotency_key: String,
           request_id: String,
@@ -13,6 +14,8 @@ module Straddle
       class ReviewRefreshReviewParams < Straddle::Internal::Type::BaseModel
         extend Straddle::Internal::Type::RequestParameters::Converter
         include Straddle::Internal::Type::RequestParameters
+
+        attr_accessor id: String
 
         attr_reader correlation_id: String?
 
@@ -31,6 +34,7 @@ module Straddle
         def straddle_account_id=: (String) -> String
 
         def initialize: (
+          id: String,
           ?correlation_id: String,
           ?idempotency_key: String,
           ?request_id: String,
@@ -39,6 +43,7 @@ module Straddle
         ) -> void
 
         def to_hash: -> {
+          id: String,
           correlation_id: String,
           idempotency_key: String,
           request_id: String,

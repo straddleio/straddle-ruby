@@ -4,6 +4,7 @@ module Straddle
       module Accounts
         type capability_request_list_params =
           {
+            account_id: String,
             category: Straddle::Models::Embed::Accounts::CapabilityRequestListParams::category,
             page_number: Integer,
             page_size: Integer,
@@ -19,6 +20,8 @@ module Straddle
         class CapabilityRequestListParams < Straddle::Internal::Type::BaseModel
           extend Straddle::Internal::Type::RequestParameters::Converter
           include Straddle::Internal::Type::RequestParameters
+
+          attr_accessor account_id: String
 
           attr_reader category: Straddle::Models::Embed::Accounts::CapabilityRequestListParams::category?
 
@@ -65,6 +68,7 @@ module Straddle
           def request_id=: (String) -> String
 
           def initialize: (
+            account_id: String,
             ?category: Straddle::Models::Embed::Accounts::CapabilityRequestListParams::category,
             ?page_number: Integer,
             ?page_size: Integer,
@@ -78,6 +82,7 @@ module Straddle
           ) -> void
 
           def to_hash: -> {
+            account_id: String,
             category: Straddle::Models::Embed::Accounts::CapabilityRequestListParams::category,
             page_number: Integer,
             page_size: Integer,

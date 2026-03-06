@@ -3,6 +3,7 @@ module Straddle
     module Embed
       type account_simulate_params =
         {
+          account_id: String,
           final_status: Straddle::Models::Embed::AccountSimulateParams::final_status,
           correlation_id: String,
           idempotency_key: String,
@@ -13,6 +14,8 @@ module Straddle
       class AccountSimulateParams < Straddle::Internal::Type::BaseModel
         extend Straddle::Internal::Type::RequestParameters::Converter
         include Straddle::Internal::Type::RequestParameters
+
+        attr_accessor account_id: String
 
         attr_reader final_status: Straddle::Models::Embed::AccountSimulateParams::final_status?
 
@@ -33,6 +36,7 @@ module Straddle
         def request_id=: (String) -> String
 
         def initialize: (
+          account_id: String,
           ?final_status: Straddle::Models::Embed::AccountSimulateParams::final_status,
           ?correlation_id: String,
           ?idempotency_key: String,
@@ -41,6 +45,7 @@ module Straddle
         ) -> void
 
         def to_hash: -> {
+          account_id: String,
           final_status: Straddle::Models::Embed::AccountSimulateParams::final_status,
           correlation_id: String,
           idempotency_key: String,

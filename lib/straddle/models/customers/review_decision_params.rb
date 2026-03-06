@@ -8,6 +8,11 @@ module Straddle
         extend Straddle::Internal::Type::RequestParameters::Converter
         include Straddle::Internal::Type::RequestParameters
 
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
         # @!attribute status
         #   The final status of the customer review.
         #
@@ -34,7 +39,9 @@ module Straddle
         #   @return [String, nil]
         optional :straddle_account_id, String
 
-        # @!method initialize(status:, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+        # @!method initialize(id:, status:, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+        #   @param id [String]
+        #
         #   @param status [Symbol, Straddle::Models::Customers::ReviewDecisionParams::Status] The final status of the customer review.
         #
         #   @param correlation_id [String]
