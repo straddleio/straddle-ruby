@@ -439,6 +439,8 @@ module Straddle
                 ONE_DAY = :one_day
                 TWO_DAY = :two_day
                 THREE_DAY = :three_day
+                FOUR_DAY = :four_day
+                FIVE_DAY = :five_day
 
                 # @!method self.values
                 #   @return [Array<Symbol>]
@@ -512,6 +514,8 @@ module Straddle
                 ONE_DAY = :one_day
                 TWO_DAY = :two_day
                 THREE_DAY = :three_day
+                FOUR_DAY = :four_day
+                FIVE_DAY = :five_day
 
                 # @!method self.values
                 #   @return [Array<Symbol>]

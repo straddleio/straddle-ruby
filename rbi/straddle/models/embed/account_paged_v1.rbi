@@ -966,6 +966,16 @@ module Straddle
                     :three_day,
                     Straddle::Embed::AccountPagedV1::Data::Settings::Charges::FundingTime::TaggedSymbol
                   )
+                FOUR_DAY =
+                  T.let(
+                    :four_day,
+                    Straddle::Embed::AccountPagedV1::Data::Settings::Charges::FundingTime::TaggedSymbol
+                  )
+                FIVE_DAY =
+                  T.let(
+                    :five_day,
+                    Straddle::Embed::AccountPagedV1::Data::Settings::Charges::FundingTime::TaggedSymbol
+                  )
 
                 sig do
                   override.returns(
@@ -1098,6 +1108,16 @@ module Straddle
                 THREE_DAY =
                   T.let(
                     :three_day,
+                    Straddle::Embed::AccountPagedV1::Data::Settings::Payouts::FundingTime::TaggedSymbol
+                  )
+                FOUR_DAY =
+                  T.let(
+                    :four_day,
+                    Straddle::Embed::AccountPagedV1::Data::Settings::Payouts::FundingTime::TaggedSymbol
+                  )
+                FIVE_DAY =
+                  T.let(
+                    :five_day,
                     Straddle::Embed::AccountPagedV1::Data::Settings::Payouts::FundingTime::TaggedSymbol
                   )
 
