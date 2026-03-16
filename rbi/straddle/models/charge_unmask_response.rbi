@@ -229,6 +229,19 @@ module Straddle
         sig { returns(T.nilable(Time)) }
         attr_accessor :processed_at
 
+        # Related payments.
+        sig do
+          returns(
+            T.nilable(
+              T::Hash[
+                Symbol,
+                Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::TaggedSymbol
+              ]
+            )
+          )
+        end
+        attr_accessor :related_payments
+
         sig do
           params(
             id: String,
@@ -261,7 +274,14 @@ module Straddle
             paykey_details: Straddle::PaykeyDetailsV1::OrHash,
             payment_rail:
               Straddle::Models::ChargeUnmaskResponse::Data::PaymentRail::OrSymbol,
-            processed_at: T.nilable(Time)
+            processed_at: T.nilable(Time),
+            related_payments:
+              T.nilable(
+                T::Hash[
+                  Symbol,
+                  Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::OrSymbol
+                ]
+              )
           ).returns(T.attached_class)
         end
         def self.new(
@@ -309,7 +329,9 @@ module Straddle
           # The payment rail used for the charge or payout.
           payment_rail: nil,
           # Processed at.
-          processed_at: nil
+          processed_at: nil,
+          # Related payments.
+          related_payments: nil
         )
         end
 
@@ -344,7 +366,14 @@ module Straddle
               paykey_details: Straddle::PaykeyDetailsV1,
               payment_rail:
                 Straddle::Models::ChargeUnmaskResponse::Data::PaymentRail::TaggedSymbol,
-              processed_at: T.nilable(Time)
+              processed_at: T.nilable(Time),
+              related_payments:
+                T.nilable(
+                  T::Hash[
+                    Symbol,
+                    Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::TaggedSymbol
+                  ]
+                )
             }
           )
         end
@@ -652,6 +681,11 @@ module Straddle
               :reversed,
               Straddle::Models::ChargeUnmaskResponse::Data::Status::TaggedSymbol
             )
+          VALIDATING =
+            T.let(
+              :validating,
+              Straddle::Models::ChargeUnmaskResponse::Data::Status::TaggedSymbol
+            )
 
           sig do
             override.returns(
@@ -899,6 +933,11 @@ module Straddle
                 :watchtower_review,
                 Straddle::Models::ChargeUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
               )
+            VALIDATING =
+              T.let(
+                :validating,
+                Straddle::Models::ChargeUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
 
             sig do
               override.returns(
@@ -1015,6 +1054,11 @@ module Straddle
                 :reversed,
                 Straddle::Models::ChargeUnmaskResponse::Data::StatusHistory::Status::TaggedSymbol
               )
+            VALIDATING =
+              T.let(
+                :validating,
+                Straddle::Models::ChargeUnmaskResponse::Data::StatusHistory::Status::TaggedSymbol
+              )
 
             sig do
               override.returns(
@@ -1051,6 +1095,50 @@ module Straddle
             override.returns(
               T::Array[
                 Straddle::Models::ChargeUnmaskResponse::Data::PaymentRail::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        module RelatedPayment
+          extend Straddle::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          UNKNOWN =
+            T.let(
+              :unknown,
+              Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::TaggedSymbol
+            )
+          ORIGINAL =
+            T.let(
+              :original,
+              Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::TaggedSymbol
+            )
+          RESUBMIT =
+            T.let(
+              :resubmit,
+              Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::TaggedSymbol
+            )
+          REFUND =
+            T.let(
+              :refund,
+              Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::TaggedSymbol
               ]
             )
           end

@@ -171,13 +171,21 @@ module Straddle
         #   @return [Time, nil]
         optional :processed_at, Time, nil?: true
 
+        # @!attribute related_payments
+        #   Related payments.
+        #
+        #   @return [Hash{Symbol=>Symbol, Straddle::Models::PayoutV1::Data::RelatedPayment}, nil]
+        optional :related_payments,
+                 -> { Straddle::Internal::Type::HashOf[enum: Straddle::PayoutV1::Data::RelatedPayment] },
+                 nil?: true
+
         # @!attribute updated_at
         #   The time the payout was last updated.
         #
         #   @return [Time, nil]
         optional :updated_at, Time, nil?: true
 
-        # @!method initialize(id:, amount:, config:, currency:, description:, device:, external_id:, funding_ids:, paykey:, payment_date:, status:, status_details:, status_history:, trace_ids:, created_at: nil, customer_details: nil, effective_at: nil, metadata: nil, paykey_details: nil, payment_rail: nil, processed_at: nil, updated_at: nil)
+        # @!method initialize(id:, amount:, config:, currency:, description:, device:, external_id:, funding_ids:, paykey:, payment_date:, status:, status_details:, status_history:, trace_ids:, created_at: nil, customer_details: nil, effective_at: nil, metadata: nil, paykey_details: nil, payment_rail: nil, processed_at: nil, related_payments: nil, updated_at: nil)
         #   Some parameter documentations has been truncated, see
         #   {Straddle::Models::PayoutV1::Data} for more details.
         #
@@ -222,6 +230,8 @@ module Straddle
         #   @param payment_rail [Symbol, Straddle::Models::PayoutV1::Data::PaymentRail] The payment rail used for the payout.
         #
         #   @param processed_at [Time, nil] The time the payout was processed by Straddle and originated to the payment rail
+        #
+        #   @param related_payments [Hash{Symbol=>Symbol, Straddle::Models::PayoutV1::Data::RelatedPayment}, nil] Related payments.
         #
         #   @param updated_at [Time, nil] The time the payout was last updated.
 
@@ -275,6 +285,7 @@ module Straddle
           PENDING = :pending
           PAID = :paid
           REVERSED = :reversed
+          VALIDATING = :validating
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -367,6 +378,7 @@ module Straddle
             REQUIRE_REVIEW = :require_review
             BLOCKED_BY_SYSTEM = :blocked_by_system
             WATCHTOWER_REVIEW = :watchtower_review
+            VALIDATING = :validating
 
             # @!method self.values
             #   @return [Array<Symbol>]
@@ -403,6 +415,7 @@ module Straddle
             PENDING = :pending
             PAID = :paid
             REVERSED = :reversed
+            VALIDATING = :validating
 
             # @!method self.values
             #   @return [Array<Symbol>]
@@ -416,6 +429,18 @@ module Straddle
           extend Straddle::Internal::Type::Enum
 
           ACH = :ach
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        module RelatedPayment
+          extend Straddle::Internal::Type::Enum
+
+          UNKNOWN = :unknown
+          ORIGINAL = :original
+          RESUBMIT = :resubmit
+          REFUND = :refund
 
           # @!method self.values
           #   @return [Array<Symbol>]

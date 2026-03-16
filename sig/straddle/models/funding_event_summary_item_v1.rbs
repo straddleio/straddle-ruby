@@ -147,6 +147,7 @@ module Straddle
           | :pending
           | :paid
           | :reversed
+          | :validating
 
         module Status
           extend Straddle::Internal::Type::Enum
@@ -159,6 +160,7 @@ module Straddle
           PENDING: :pending
           PAID: :paid
           REVERSED: :reversed
+          VALIDATING: :validating
 
           def self?.values: -> ::Array[Straddle::Models::FundingEventSummaryItemV1::Data::status]
         end
@@ -225,6 +227,7 @@ module Straddle
             | :require_review
             | :blocked_by_system
             | :watchtower_review
+            | :validating
 
           module Reason
             extend Straddle::Internal::Type::Enum
@@ -254,6 +257,7 @@ module Straddle
             REQUIRE_REVIEW: :require_review
             BLOCKED_BY_SYSTEM: :blocked_by_system
             WATCHTOWER_REVIEW: :watchtower_review
+            VALIDATING: :validating
 
             def self?.values: -> ::Array[Straddle::Models::FundingEventSummaryItemV1::Data::StatusDetails::reason]
           end

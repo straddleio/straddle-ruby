@@ -382,6 +382,11 @@ module Straddle
               :reversed,
               Straddle::FundingEventSummaryItemV1::Data::Status::TaggedSymbol
             )
+          VALIDATING =
+            T.let(
+              :validating,
+              Straddle::FundingEventSummaryItemV1::Data::Status::TaggedSymbol
+            )
 
           sig do
             override.returns(
@@ -603,6 +608,11 @@ module Straddle
             WATCHTOWER_REVIEW =
               T.let(
                 :watchtower_review,
+                Straddle::FundingEventSummaryItemV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
+            VALIDATING =
+              T.let(
+                :validating,
                 Straddle::FundingEventSummaryItemV1::Data::StatusDetails::Reason::TaggedSymbol
               )
 

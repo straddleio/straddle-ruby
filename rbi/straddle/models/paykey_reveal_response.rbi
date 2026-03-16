@@ -943,6 +943,11 @@ module Straddle
                 :watchtower_review,
                 Straddle::Models::PaykeyRevealResponse::Data::StatusDetails::Reason::TaggedSymbol
               )
+            VALIDATING =
+              T.let(
+                :validating,
+                Straddle::Models::PaykeyRevealResponse::Data::StatusDetails::Reason::TaggedSymbol
+              )
 
             sig do
               override.returns(

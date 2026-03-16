@@ -1033,6 +1033,11 @@ module Straddle
                     :watchtower_review,
                     Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails::Reason::TaggedSymbol
                   )
+                VALIDATING =
+                  T.let(
+                    :validating,
+                    Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails::Reason::TaggedSymbol
+                  )
 
                 sig do
                   override.returns(

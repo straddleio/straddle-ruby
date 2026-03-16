@@ -49,6 +49,7 @@ module Straddle
           paykey_details: Straddle::PaykeyDetailsV1,
           payment_rail: Straddle::Models::PayoutV1::Data::payment_rail,
           processed_at: Time?,
+          related_payments: ::Hash[Symbol, Straddle::Models::PayoutV1::Data::related_payment]?,
           updated_at: Time?
         }
 
@@ -107,6 +108,8 @@ module Straddle
 
         attr_accessor processed_at: Time?
 
+        attr_accessor related_payments: ::Hash[Symbol, Straddle::Models::PayoutV1::Data::related_payment]?
+
         attr_accessor updated_at: Time?
 
         def initialize: (
@@ -131,6 +134,7 @@ module Straddle
           ?paykey_details: Straddle::PaykeyDetailsV1,
           ?payment_rail: Straddle::Models::PayoutV1::Data::payment_rail,
           ?processed_at: Time?,
+          ?related_payments: ::Hash[Symbol, Straddle::Models::PayoutV1::Data::related_payment]?,
           ?updated_at: Time?
         ) -> void
 
@@ -156,6 +160,7 @@ module Straddle
           paykey_details: Straddle::PaykeyDetailsV1,
           payment_rail: Straddle::Models::PayoutV1::Data::payment_rail,
           processed_at: Time?,
+          related_payments: ::Hash[Symbol, Straddle::Models::PayoutV1::Data::related_payment]?,
           updated_at: Time?
         }
 
@@ -220,6 +225,7 @@ module Straddle
           | :pending
           | :paid
           | :reversed
+          | :validating
 
         module Status
           extend Straddle::Internal::Type::Enum
@@ -232,6 +238,7 @@ module Straddle
           PENDING: :pending
           PAID: :paid
           REVERSED: :reversed
+          VALIDATING: :validating
 
           def self?.values: -> ::Array[Straddle::Models::PayoutV1::Data::status]
         end
@@ -303,6 +310,7 @@ module Straddle
             | :require_review
             | :blocked_by_system
             | :watchtower_review
+            | :validating
 
           module Reason
             extend Straddle::Internal::Type::Enum
@@ -332,6 +340,7 @@ module Straddle
             REQUIRE_REVIEW: :require_review
             BLOCKED_BY_SYSTEM: :blocked_by_system
             WATCHTOWER_REVIEW: :watchtower_review
+            VALIDATING: :validating
 
             def self?.values: -> ::Array[Straddle::Models::PayoutV1::Data::StatusHistory::reason]
           end
@@ -364,6 +373,7 @@ module Straddle
             | :pending
             | :paid
             | :reversed
+            | :validating
 
           module Status
             extend Straddle::Internal::Type::Enum
@@ -376,6 +386,7 @@ module Straddle
             PENDING: :pending
             PAID: :paid
             REVERSED: :reversed
+            VALIDATING: :validating
 
             def self?.values: -> ::Array[Straddle::Models::PayoutV1::Data::StatusHistory::status]
           end
@@ -389,6 +400,19 @@ module Straddle
           ACH: :ach
 
           def self?.values: -> ::Array[Straddle::Models::PayoutV1::Data::payment_rail]
+        end
+
+        type related_payment = :unknown | :original | :resubmit | :refund
+
+        module RelatedPayment
+          extend Straddle::Internal::Type::Enum
+
+          UNKNOWN: :unknown
+          ORIGINAL: :original
+          RESUBMIT: :resubmit
+          REFUND: :refund
+
+          def self?.values: -> ::Array[Straddle::Models::PayoutV1::Data::related_payment]
         end
       end
 
