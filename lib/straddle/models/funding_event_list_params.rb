@@ -215,6 +215,7 @@ module Straddle
         PENDING = :pending
         PAID = :paid
         REVERSED = :reversed
+        VALIDATING = :validating
 
         # @!method self.values
         #   @return [Array<Symbol>]
@@ -248,6 +249,7 @@ module Straddle
         REQUIRE_REVIEW = :require_review
         BLOCKED_BY_SYSTEM = :blocked_by_system
         WATCHTOWER_REVIEW = :watchtower_review
+        VALIDATING = :validating
 
         # @!method self.values
         #   @return [Array<Symbol>]

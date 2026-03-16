@@ -962,6 +962,11 @@ module Straddle
                   :watchtower_review,
                   Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
                 )
+              VALIDATING =
+                T.let(
+                  :validating,
+                  Straddle::Models::Bridge::LinkCreatePaykeyResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
 
               sig do
                 override.returns(

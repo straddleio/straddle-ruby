@@ -32,6 +32,13 @@ module Straddle
       sig { params(page_size: Integer).void }
       attr_writer :page_size
 
+      # General search term to filter paykeys.
+      sig { returns(T.nilable(String)) }
+      attr_reader :search_text
+
+      sig { params(search_text: String).void }
+      attr_writer :search_text
+
       sig { returns(T.nilable(Straddle::PaykeyListParams::SortBy::OrSymbol)) }
       attr_reader :sort_by
 
@@ -111,6 +118,7 @@ module Straddle
           customer_id: String,
           page_number: Integer,
           page_size: Integer,
+          search_text: String,
           sort_by: Straddle::PaykeyListParams::SortBy::OrSymbol,
           sort_order: Straddle::PaykeyListParams::SortOrder::OrSymbol,
           source: T::Array[Straddle::PaykeyListParams::Source::OrSymbol],
@@ -129,6 +137,8 @@ module Straddle
         page_number: nil,
         # Number of results per page. Maximum: 1000.
         page_size: nil,
+        # General search term to filter paykeys.
+        search_text: nil,
         sort_by: nil,
         sort_order: nil,
         # Filter paykeys by their source.
@@ -153,6 +163,7 @@ module Straddle
             customer_id: String,
             page_number: Integer,
             page_size: Integer,
+            search_text: String,
             sort_by: Straddle::PaykeyListParams::SortBy::OrSymbol,
             sort_order: Straddle::PaykeyListParams::SortOrder::OrSymbol,
             source: T::Array[Straddle::PaykeyListParams::Source::OrSymbol],
