@@ -25,6 +25,12 @@ module Straddle
       #   @return [Integer, nil]
       optional :page_size, Integer
 
+      # @!attribute search_text
+      #   General search term to filter paykeys.
+      #
+      #   @return [String, nil]
+      optional :search_text, String
+
       # @!attribute sort_by
       #
       #   @return [Symbol, Straddle::Models::PaykeyListParams::SortBy, nil]
@@ -71,7 +77,7 @@ module Straddle
       #   @return [String, nil]
       optional :straddle_account_id, String
 
-      # @!method initialize(customer_id: nil, page_number: nil, page_size: nil, sort_by: nil, sort_order: nil, source: nil, status: nil, unblock_eligible: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @!method initialize(customer_id: nil, page_number: nil, page_size: nil, search_text: nil, sort_by: nil, sort_order: nil, source: nil, status: nil, unblock_eligible: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Straddle::Models::PaykeyListParams} for more details.
       #
@@ -80,6 +86,8 @@ module Straddle
       #   @param page_number [Integer] Page number for paginated results. Starts at 1.
       #
       #   @param page_size [Integer] Number of results per page. Maximum: 1000.
+      #
+      #   @param search_text [String] General search term to filter paykeys.
       #
       #   @param sort_by [Symbol, Straddle::Models::PaykeyListParams::SortBy]
       #
