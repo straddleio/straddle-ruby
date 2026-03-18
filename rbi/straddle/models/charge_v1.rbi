@@ -197,6 +197,19 @@ module Straddle
         sig { returns(T.nilable(Time)) }
         attr_accessor :processed_at
 
+        # Related payments.
+        sig do
+          returns(
+            T.nilable(
+              T::Hash[
+                Symbol,
+                Straddle::ChargeV1::Data::RelatedPayment::TaggedSymbol
+              ]
+            )
+          )
+        end
+        attr_accessor :related_payments
+
         sig do
           params(
             id: String,
@@ -222,7 +235,14 @@ module Straddle
             metadata: T.nilable(T::Hash[Symbol, String]),
             paykey_details: Straddle::PaykeyDetailsV1::OrHash,
             payment_rail: Straddle::ChargeV1::Data::PaymentRail::OrSymbol,
-            processed_at: T.nilable(Time)
+            processed_at: T.nilable(Time),
+            related_payments:
+              T.nilable(
+                T::Hash[
+                  Symbol,
+                  Straddle::ChargeV1::Data::RelatedPayment::OrSymbol
+                ]
+              )
           ).returns(T.attached_class)
         end
         def self.new(
@@ -279,7 +299,9 @@ module Straddle
           payment_rail: nil,
           # Timestamp of when the charge was processed by Straddle and originated to the
           # payment rail.
-          processed_at: nil
+          processed_at: nil,
+          # Related payments.
+          related_payments: nil
         )
         end
 
@@ -308,7 +330,14 @@ module Straddle
               metadata: T.nilable(T::Hash[Symbol, String]),
               paykey_details: Straddle::PaykeyDetailsV1,
               payment_rail: Straddle::ChargeV1::Data::PaymentRail::TaggedSymbol,
-              processed_at: T.nilable(Time)
+              processed_at: T.nilable(Time),
+              related_payments:
+                T.nilable(
+                  T::Hash[
+                    Symbol,
+                    Straddle::ChargeV1::Data::RelatedPayment::TaggedSymbol
+                  ]
+                )
             }
           )
         end
@@ -331,6 +360,14 @@ module Straddle
             )
           end
           attr_accessor :balance_check
+
+          # Defines whether to automatically place this charge on hold after being created.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_accessor :auto_hold
+
+          # The reason the charge is being automatically held on creation.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :auto_hold_message
 
           # Payment will simulate processing if not Standard.
           sig do
@@ -355,6 +392,8 @@ module Straddle
             params(
               balance_check:
                 Straddle::ChargeV1::Data::Config::BalanceCheck::OrSymbol,
+              auto_hold: T.nilable(T::Boolean),
+              auto_hold_message: T.nilable(String),
               sandbox_outcome:
                 Straddle::ChargeV1::Data::Config::SandboxOutcome::OrSymbol
             ).returns(T.attached_class)
@@ -362,6 +401,10 @@ module Straddle
           def self.new(
             # Defines whether to check the customer's balance before processing the charge.
             balance_check:,
+            # Defines whether to automatically place this charge on hold after being created.
+            auto_hold: nil,
+            # The reason the charge is being automatically held on creation.
+            auto_hold_message: nil,
             # Payment will simulate processing if not Standard.
             sandbox_outcome: nil
           )
@@ -372,6 +415,8 @@ module Straddle
               {
                 balance_check:
                   Straddle::ChargeV1::Data::Config::BalanceCheck::TaggedSymbol,
+                auto_hold: T.nilable(T::Boolean),
+                auto_hold_message: T.nilable(String),
                 sandbox_outcome:
                   Straddle::ChargeV1::Data::Config::SandboxOutcome::TaggedSymbol
               }
@@ -548,6 +593,8 @@ module Straddle
           PAID = T.let(:paid, Straddle::ChargeV1::Data::Status::TaggedSymbol)
           REVERSED =
             T.let(:reversed, Straddle::ChargeV1::Data::Status::TaggedSymbol)
+          VALIDATING =
+            T.let(:validating, Straddle::ChargeV1::Data::Status::TaggedSymbol)
 
           sig do
             override.returns(
@@ -788,6 +835,16 @@ module Straddle
                 :watchtower_review,
                 Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
               )
+            VALIDATING =
+              T.let(
+                :validating,
+                Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
+              )
+            AUTO_HOLD =
+              T.let(
+                :auto_hold,
+                Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
+              )
 
             sig do
               override.returns(
@@ -898,6 +955,11 @@ module Straddle
                 :reversed,
                 Straddle::ChargeV1::Data::StatusHistory::Status::TaggedSymbol
               )
+            VALIDATING =
+              T.let(
+                :validating,
+                Straddle::ChargeV1::Data::StatusHistory::Status::TaggedSymbol
+              )
 
             sig do
               override.returns(
@@ -926,6 +988,45 @@ module Straddle
           sig do
             override.returns(
               T::Array[Straddle::ChargeV1::Data::PaymentRail::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
+        end
+
+        module RelatedPayment
+          extend Straddle::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Straddle::ChargeV1::Data::RelatedPayment)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          UNKNOWN =
+            T.let(
+              :unknown,
+              Straddle::ChargeV1::Data::RelatedPayment::TaggedSymbol
+            )
+          ORIGINAL =
+            T.let(
+              :original,
+              Straddle::ChargeV1::Data::RelatedPayment::TaggedSymbol
+            )
+          RESUBMIT =
+            T.let(
+              :resubmit,
+              Straddle::ChargeV1::Data::RelatedPayment::TaggedSymbol
+            )
+          REFUND =
+            T.let(
+              :refund,
+              Straddle::ChargeV1::Data::RelatedPayment::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[Straddle::ChargeV1::Data::RelatedPayment::TaggedSymbol]
             )
           end
           def self.values
