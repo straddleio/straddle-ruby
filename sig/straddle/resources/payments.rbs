@@ -8,6 +8,7 @@ module Straddle
         ?default_sort_order: Straddle::Models::PaymentListParams::default_sort_order,
         ?external_id: String,
         ?funding_id: String,
+        ?include_metadata: bool,
         ?max_amount: Integer,
         ?max_created_at: Time,
         ?max_effective_at: Time,
