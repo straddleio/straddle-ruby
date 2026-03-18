@@ -171,21 +171,13 @@ module Straddle
         #   @return [Time, nil]
         optional :processed_at, Time, nil?: true
 
-        # @!attribute related_payments
-        #   Related payments.
-        #
-        #   @return [Hash{Symbol=>Symbol, Straddle::Models::PayoutV1::Data::RelatedPayment}, nil]
-        optional :related_payments,
-                 -> { Straddle::Internal::Type::HashOf[enum: Straddle::PayoutV1::Data::RelatedPayment] },
-                 nil?: true
-
         # @!attribute updated_at
         #   The time the payout was last updated.
         #
         #   @return [Time, nil]
         optional :updated_at, Time, nil?: true
 
-        # @!method initialize(id:, amount:, config:, currency:, description:, device:, external_id:, funding_ids:, paykey:, payment_date:, status:, status_details:, status_history:, trace_ids:, created_at: nil, customer_details: nil, effective_at: nil, metadata: nil, paykey_details: nil, payment_rail: nil, processed_at: nil, related_payments: nil, updated_at: nil)
+        # @!method initialize(id:, amount:, config:, currency:, description:, device:, external_id:, funding_ids:, paykey:, payment_date:, status:, status_details:, status_history:, trace_ids:, created_at: nil, customer_details: nil, effective_at: nil, metadata: nil, paykey_details: nil, payment_rail: nil, processed_at: nil, updated_at: nil)
         #   Some parameter documentations has been truncated, see
         #   {Straddle::Models::PayoutV1::Data} for more details.
         #
@@ -231,36 +223,18 @@ module Straddle
         #
         #   @param processed_at [Time, nil] The time the payout was processed by Straddle and originated to the payment rail
         #
-        #   @param related_payments [Hash{Symbol=>Symbol, Straddle::Models::PayoutV1::Data::RelatedPayment}, nil] Related payments.
-        #
         #   @param updated_at [Time, nil] The time the payout was last updated.
 
         # @see Straddle::Models::PayoutV1::Data#config
         class Config < Straddle::Internal::Type::BaseModel
-          # @!attribute auto_hold
-          #   Defines whether to automatically place this charge on hold after being created.
-          #
-          #   @return [Boolean, nil]
-          optional :auto_hold, Straddle::Internal::Type::Boolean, nil?: true
-
-          # @!attribute auto_hold_message
-          #   The reason the payout is being automatically held on creation.
-          #
-          #   @return [String, nil]
-          optional :auto_hold_message, String, nil?: true
-
           # @!attribute sandbox_outcome
           #   Payment will simulate processing if not Standard.
           #
           #   @return [Symbol, Straddle::Models::PayoutV1::Data::Config::SandboxOutcome, nil]
           optional :sandbox_outcome, enum: -> { Straddle::PayoutV1::Data::Config::SandboxOutcome }
 
-          # @!method initialize(auto_hold: nil, auto_hold_message: nil, sandbox_outcome: nil)
+          # @!method initialize(sandbox_outcome: nil)
           #   Configuration for the payout.
-          #
-          #   @param auto_hold [Boolean, nil] Defines whether to automatically place this charge on hold after being created.
-          #
-          #   @param auto_hold_message [String, nil] The reason the payout is being automatically held on creation.
           #
           #   @param sandbox_outcome [Symbol, Straddle::Models::PayoutV1::Data::Config::SandboxOutcome] Payment will simulate processing if not Standard.
 
@@ -301,7 +275,6 @@ module Straddle
           PENDING = :pending
           PAID = :paid
           REVERSED = :reversed
-          VALIDATING = :validating
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -394,8 +367,6 @@ module Straddle
             REQUIRE_REVIEW = :require_review
             BLOCKED_BY_SYSTEM = :blocked_by_system
             WATCHTOWER_REVIEW = :watchtower_review
-            VALIDATING = :validating
-            AUTO_HOLD = :auto_hold
 
             # @!method self.values
             #   @return [Array<Symbol>]
@@ -432,7 +403,6 @@ module Straddle
             PENDING = :pending
             PAID = :paid
             REVERSED = :reversed
-            VALIDATING = :validating
 
             # @!method self.values
             #   @return [Array<Symbol>]
@@ -446,18 +416,6 @@ module Straddle
           extend Straddle::Internal::Type::Enum
 
           ACH = :ach
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-
-        module RelatedPayment
-          extend Straddle::Internal::Type::Enum
-
-          UNKNOWN = :unknown
-          ORIGINAL = :original
-          RESUBMIT = :resubmit
-          REFUND = :refund
 
           # @!method self.values
           #   @return [Array<Symbol>]

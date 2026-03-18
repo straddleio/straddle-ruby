@@ -155,7 +155,6 @@ module Straddle
           | :pending
           | :paid
           | :reversed
-          | :validating
 
         module Status
           extend Straddle::Internal::Type::Enum
@@ -168,7 +167,6 @@ module Straddle
           PENDING: :pending
           PAID: :paid
           REVERSED: :reversed
-          VALIDATING: :validating
 
           def self?.values: -> ::Array[Straddle::Models::PaymentSummaryPagedV1::Data::status]
         end
