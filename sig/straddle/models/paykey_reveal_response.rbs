@@ -354,8 +354,6 @@ module Straddle
             | :require_review
             | :blocked_by_system
             | :watchtower_review
-            | :validating
-            | :auto_hold
 
           module Reason
             extend Straddle::Internal::Type::Enum
@@ -385,8 +383,6 @@ module Straddle
             REQUIRE_REVIEW: :require_review
             BLOCKED_BY_SYSTEM: :blocked_by_system
             WATCHTOWER_REVIEW: :watchtower_review
-            VALIDATING: :validating
-            AUTO_HOLD: :auto_hold
 
             def self?.values: -> ::Array[Straddle::Models::PaykeyRevealResponse::Data::StatusDetails::reason]
           end
