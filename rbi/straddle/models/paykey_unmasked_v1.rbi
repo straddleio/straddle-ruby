@@ -875,6 +875,16 @@ module Straddle
                 :watchtower_review,
                 Straddle::PaykeyUnmaskedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
+            VALIDATING =
+              T.let(
+                :validating,
+                Straddle::PaykeyUnmaskedV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
+            AUTO_HOLD =
+              T.let(
+                :auto_hold,
+                Straddle::PaykeyUnmaskedV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
 
             sig do
               override.returns(

@@ -34,6 +34,7 @@ module Straddle
               account_id: String,
               category: Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data::category,
               created_at: Time,
+              enable: bool,
               status: Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data::status,
               type: Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data::type_,
               updated_at: Time,
@@ -49,6 +50,8 @@ module Straddle
 
             attr_accessor created_at: Time
 
+            attr_accessor enable: bool
+
             attr_accessor status: Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data::status
 
             attr_accessor type: Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data::type_
@@ -62,6 +65,7 @@ module Straddle
               account_id: String,
               category: Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data::category,
               created_at: Time,
+              enable: bool,
               status: Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data::status,
               type: Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data::type_,
               updated_at: Time,
@@ -73,6 +77,7 @@ module Straddle
               account_id: String,
               category: Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data::category,
               created_at: Time,
+              enable: bool,
               status: Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data::status,
               type: Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data::type_,
               updated_at: Time,
