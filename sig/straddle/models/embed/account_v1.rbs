@@ -384,7 +384,13 @@ module Straddle
               }
 
               type funding_time =
-                :immediate | :next_day | :one_day | :two_day | :three_day
+                :immediate
+                | :next_day
+                | :one_day
+                | :two_day
+                | :three_day
+                | :four_day
+                | :five_day
 
               module FundingTime
                 extend Straddle::Internal::Type::Enum
@@ -394,6 +400,8 @@ module Straddle
                 ONE_DAY: :one_day
                 TWO_DAY: :two_day
                 THREE_DAY: :three_day
+                FOUR_DAY: :four_day
+                FIVE_DAY: :five_day
 
                 def self?.values: -> ::Array[Straddle::Models::Embed::AccountV1::Data::Settings::Charges::funding_time]
               end
@@ -441,7 +449,13 @@ module Straddle
               }
 
               type funding_time =
-                :immediate | :next_day | :one_day | :two_day | :three_day
+                :immediate
+                | :next_day
+                | :one_day
+                | :two_day
+                | :three_day
+                | :four_day
+                | :five_day
 
               module FundingTime
                 extend Straddle::Internal::Type::Enum
@@ -451,6 +465,8 @@ module Straddle
                 ONE_DAY: :one_day
                 TWO_DAY: :two_day
                 THREE_DAY: :three_day
+                FOUR_DAY: :four_day
+                FIVE_DAY: :five_day
 
                 def self?.values: -> ::Array[Straddle::Models::Embed::AccountV1::Data::Settings::Payouts::funding_time]
               end

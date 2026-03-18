@@ -347,6 +347,11 @@ module Straddle
               :reversed,
               Straddle::PaymentSummaryPagedV1::Data::Status::TaggedSymbol
             )
+          VALIDATING =
+            T.let(
+              :validating,
+              Straddle::PaymentSummaryPagedV1::Data::Status::TaggedSymbol
+            )
 
           sig do
             override.returns(
