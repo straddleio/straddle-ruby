@@ -800,16 +800,6 @@ module Straddle
                 :watchtower_review,
                 Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
               )
-            VALIDATING =
-              T.let(
-                :validating,
-                Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
-              )
-            AUTO_HOLD =
-              T.let(
-                :auto_hold,
-                Straddle::PaykeySummaryPagedV1::Data::StatusDetails::Reason::TaggedSymbol
-              )
 
             sig do
               override.returns(

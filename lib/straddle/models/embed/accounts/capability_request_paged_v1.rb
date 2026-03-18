@@ -68,12 +68,6 @@ module Straddle
             #   @return [Time]
             required :created_at, Time
 
-            # @!attribute enable
-            #   Whether this capability request is to enable or disable the capability.
-            #
-            #   @return [Boolean]
-            required :enable, Straddle::Internal::Type::Boolean
-
             # @!attribute status
             #   The current status of the capability request.
             #
@@ -100,7 +94,7 @@ module Straddle
                      Straddle::Internal::Type::HashOf[Straddle::Internal::Type::Unknown],
                      nil?: true
 
-            # @!method initialize(id:, account_id:, category:, created_at:, enable:, status:, type:, updated_at:, settings: nil)
+            # @!method initialize(id:, account_id:, category:, created_at:, status:, type:, updated_at:, settings: nil)
             #   Some parameter documentations has been truncated, see
             #   {Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data} for more
             #   details.
@@ -112,8 +106,6 @@ module Straddle
             #   @param category [Symbol, Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data::Category] The category of the requested capability. Use `payment_type` for charges and pay
             #
             #   @param created_at [Time] Timestamp of when the capability request was created.
-            #
-            #   @param enable [Boolean] Whether this capability request is to enable or disable the capability.
             #
             #   @param status [Symbol, Straddle::Models::Embed::Accounts::CapabilityRequestPagedV1::Data::Status] The current status of the capability request.
             #

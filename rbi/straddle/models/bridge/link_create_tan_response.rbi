@@ -958,16 +958,6 @@ module Straddle
                   :watchtower_review,
                   Straddle::Models::Bridge::LinkCreateTanResponse::Data::StatusDetails::Reason::TaggedSymbol
                 )
-              VALIDATING =
-                T.let(
-                  :validating,
-                  Straddle::Models::Bridge::LinkCreateTanResponse::Data::StatusDetails::Reason::TaggedSymbol
-                )
-              AUTO_HOLD =
-                T.let(
-                  :auto_hold,
-                  Straddle::Models::Bridge::LinkCreateTanResponse::Data::StatusDetails::Reason::TaggedSymbol
-                )
 
               sig do
                 override.returns(

@@ -16,7 +16,6 @@ module Straddle
             Straddle::PaymentListParams::DefaultSortOrder::OrSymbol,
           external_id: String,
           funding_id: String,
-          include_metadata: T::Boolean,
           max_amount: Integer,
           max_created_at: Time,
           max_effective_at: Time,
@@ -64,8 +63,6 @@ module Straddle
         external_id: nil,
         # Query param: Search using the `funding_id` of a `charge` or `payout`.
         funding_id: nil,
-        # Query param: Include the metadata for payments in the returned data.
-        include_metadata: nil,
         # Query param: Search using a maximum `amount` of a `charge` or `payout`.
         max_amount: nil,
         # Query param: Search using the latest `created_at` date of a `charge` or

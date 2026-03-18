@@ -49,7 +49,6 @@ module Straddle
           paykey_details: Straddle::PaykeyDetailsV1,
           payment_rail: Straddle::Models::PayoutV1::Data::payment_rail,
           processed_at: Time?,
-          related_payments: ::Hash[Symbol, Straddle::Models::PayoutV1::Data::related_payment]?,
           updated_at: Time?
         }
 
@@ -108,8 +107,6 @@ module Straddle
 
         attr_accessor processed_at: Time?
 
-        attr_accessor related_payments: ::Hash[Symbol, Straddle::Models::PayoutV1::Data::related_payment]?
-
         attr_accessor updated_at: Time?
 
         def initialize: (
@@ -134,7 +131,6 @@ module Straddle
           ?paykey_details: Straddle::PaykeyDetailsV1,
           ?payment_rail: Straddle::Models::PayoutV1::Data::payment_rail,
           ?processed_at: Time?,
-          ?related_payments: ::Hash[Symbol, Straddle::Models::PayoutV1::Data::related_payment]?,
           ?updated_at: Time?
         ) -> void
 
@@ -160,22 +156,15 @@ module Straddle
           paykey_details: Straddle::PaykeyDetailsV1,
           payment_rail: Straddle::Models::PayoutV1::Data::payment_rail,
           processed_at: Time?,
-          related_payments: ::Hash[Symbol, Straddle::Models::PayoutV1::Data::related_payment]?,
           updated_at: Time?
         }
 
         type config =
           {
-            auto_hold: bool?,
-            auto_hold_message: String?,
             sandbox_outcome: Straddle::Models::PayoutV1::Data::Config::sandbox_outcome
           }
 
         class Config < Straddle::Internal::Type::BaseModel
-          attr_accessor auto_hold: bool?
-
-          attr_accessor auto_hold_message: String?
-
           attr_reader sandbox_outcome: Straddle::Models::PayoutV1::Data::Config::sandbox_outcome?
 
           def sandbox_outcome=: (
@@ -183,14 +172,10 @@ module Straddle
           ) -> Straddle::Models::PayoutV1::Data::Config::sandbox_outcome
 
           def initialize: (
-            ?auto_hold: bool?,
-            ?auto_hold_message: String?,
             ?sandbox_outcome: Straddle::Models::PayoutV1::Data::Config::sandbox_outcome
           ) -> void
 
           def to_hash: -> {
-            auto_hold: bool?,
-            auto_hold_message: String?,
             sandbox_outcome: Straddle::Models::PayoutV1::Data::Config::sandbox_outcome
           }
 
@@ -235,7 +220,6 @@ module Straddle
           | :pending
           | :paid
           | :reversed
-          | :validating
 
         module Status
           extend Straddle::Internal::Type::Enum
@@ -248,7 +232,6 @@ module Straddle
           PENDING: :pending
           PAID: :paid
           REVERSED: :reversed
-          VALIDATING: :validating
 
           def self?.values: -> ::Array[Straddle::Models::PayoutV1::Data::status]
         end
@@ -320,8 +303,6 @@ module Straddle
             | :require_review
             | :blocked_by_system
             | :watchtower_review
-            | :validating
-            | :auto_hold
 
           module Reason
             extend Straddle::Internal::Type::Enum
@@ -351,8 +332,6 @@ module Straddle
             REQUIRE_REVIEW: :require_review
             BLOCKED_BY_SYSTEM: :blocked_by_system
             WATCHTOWER_REVIEW: :watchtower_review
-            VALIDATING: :validating
-            AUTO_HOLD: :auto_hold
 
             def self?.values: -> ::Array[Straddle::Models::PayoutV1::Data::StatusHistory::reason]
           end
@@ -385,7 +364,6 @@ module Straddle
             | :pending
             | :paid
             | :reversed
-            | :validating
 
           module Status
             extend Straddle::Internal::Type::Enum
@@ -398,7 +376,6 @@ module Straddle
             PENDING: :pending
             PAID: :paid
             REVERSED: :reversed
-            VALIDATING: :validating
 
             def self?.values: -> ::Array[Straddle::Models::PayoutV1::Data::StatusHistory::status]
           end
@@ -412,19 +389,6 @@ module Straddle
           ACH: :ach
 
           def self?.values: -> ::Array[Straddle::Models::PayoutV1::Data::payment_rail]
-        end
-
-        type related_payment = :unknown | :original | :resubmit | :refund
-
-        module RelatedPayment
-          extend Straddle::Internal::Type::Enum
-
-          UNKNOWN: :unknown
-          ORIGINAL: :original
-          RESUBMIT: :resubmit
-          REFUND: :refund
-
-          def self?.values: -> ::Array[Straddle::Models::PayoutV1::Data::related_payment]
         end
       end
 
