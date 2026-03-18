@@ -158,6 +158,14 @@ module Straddle
             )
           end
 
+        # Defines whether to automatically place this charge on hold after being created.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_accessor :auto_hold
+
+        # The reason the payout is being automatically held on creation.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :auto_hold_message
+
         # Payment will simulate processing if not Standard.
         sig do
           returns(
@@ -178,11 +186,17 @@ module Straddle
 
         sig do
           params(
+            auto_hold: T.nilable(T::Boolean),
+            auto_hold_message: T.nilable(String),
             sandbox_outcome:
               Straddle::PayoutCreateParams::Config::SandboxOutcome::OrSymbol
           ).returns(T.attached_class)
         end
         def self.new(
+          # Defines whether to automatically place this charge on hold after being created.
+          auto_hold: nil,
+          # The reason the payout is being automatically held on creation.
+          auto_hold_message: nil,
           # Payment will simulate processing if not Standard.
           sandbox_outcome: nil
         )
@@ -191,6 +205,8 @@ module Straddle
         sig do
           override.returns(
             {
+              auto_hold: T.nilable(T::Boolean),
+              auto_hold_message: T.nilable(String),
               sandbox_outcome:
                 Straddle::PayoutCreateParams::Config::SandboxOutcome::OrSymbol
             }

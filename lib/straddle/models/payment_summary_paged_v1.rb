@@ -217,6 +217,7 @@ module Straddle
           PENDING = :pending
           PAID = :paid
           REVERSED = :reversed
+          VALIDATING = :validating
 
           # @!method self.values
           #   @return [Array<Symbol>]

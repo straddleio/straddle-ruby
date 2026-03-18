@@ -7,6 +7,7 @@ module Straddle
         ?customer_id: String,
         ?page_number: Integer,
         ?page_size: Integer,
+        ?search_text: String,
         ?sort_by: Straddle::Models::PaykeyListParams::sort_by,
         ?sort_order: Straddle::Models::PaykeyListParams::sort_order,
         ?source: ::Array[Straddle::Models::PaykeyListParams::source],
