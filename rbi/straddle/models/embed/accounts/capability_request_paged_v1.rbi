@@ -118,10 +118,6 @@ module Straddle
             sig { returns(Time) }
             attr_accessor :created_at
 
-            # Whether this capability request is to enable or disable the capability.
-            sig { returns(T::Boolean) }
-            attr_accessor :enable
-
             # The current status of the capability request.
             sig do
               returns(
@@ -153,7 +149,6 @@ module Straddle
                 category:
                   Straddle::Embed::Accounts::CapabilityRequestPagedV1::Data::Category::OrSymbol,
                 created_at: Time,
-                enable: T::Boolean,
                 status:
                   Straddle::Embed::Accounts::CapabilityRequestPagedV1::Data::Status::OrSymbol,
                 type:
@@ -173,8 +168,6 @@ module Straddle
               category:,
               # Timestamp of when the capability request was created.
               created_at:,
-              # Whether this capability request is to enable or disable the capability.
-              enable:,
               # The current status of the capability request.
               status:,
               # The specific type of capability being requested within the category.
@@ -194,7 +187,6 @@ module Straddle
                   category:
                     Straddle::Embed::Accounts::CapabilityRequestPagedV1::Data::Category::TaggedSymbol,
                   created_at: Time,
-                  enable: T::Boolean,
                   status:
                     Straddle::Embed::Accounts::CapabilityRequestPagedV1::Data::Status::TaggedSymbol,
                   type:

@@ -431,11 +431,6 @@ module Straddle
             :reversed,
             Straddle::FundingEventListParams::Status::TaggedSymbol
           )
-        VALIDATING =
-          T.let(
-            :validating,
-            Straddle::FundingEventListParams::Status::TaggedSymbol
-          )
 
         sig do
           override.returns(
@@ -578,16 +573,6 @@ module Straddle
         WATCHTOWER_REVIEW =
           T.let(
             :watchtower_review,
-            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
-          )
-        VALIDATING =
-          T.let(
-            :validating,
-            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
-          )
-        AUTO_HOLD =
-          T.let(
-            :auto_hold,
             Straddle::FundingEventListParams::StatusReason::TaggedSymbol
           )
 

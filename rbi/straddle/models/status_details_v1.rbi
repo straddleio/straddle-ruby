@@ -187,10 +187,6 @@ module Straddle
             :watchtower_review,
             Straddle::StatusDetailsV1::Reason::TaggedSymbol
           )
-        VALIDATING =
-          T.let(:validating, Straddle::StatusDetailsV1::Reason::TaggedSymbol)
-        AUTO_HOLD =
-          T.let(:auto_hold, Straddle::StatusDetailsV1::Reason::TaggedSymbol)
 
         sig do
           override.returns(
