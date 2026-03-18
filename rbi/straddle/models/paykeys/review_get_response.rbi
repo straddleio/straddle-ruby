@@ -1038,6 +1038,11 @@ module Straddle
                     :validating,
                     Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails::Reason::TaggedSymbol
                   )
+                AUTO_HOLD =
+                  T.let(
+                    :auto_hold,
+                    Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails::Reason::TaggedSymbol
+                  )
 
                 sig do
                   override.returns(

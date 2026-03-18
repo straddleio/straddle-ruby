@@ -585,6 +585,11 @@ module Straddle
             :validating,
             Straddle::FundingEventListParams::StatusReason::TaggedSymbol
           )
+        AUTO_HOLD =
+          T.let(
+            :auto_hold,
+            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
+          )
 
         sig do
           override.returns(

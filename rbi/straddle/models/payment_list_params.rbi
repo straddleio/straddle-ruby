@@ -769,6 +769,11 @@ module Straddle
             :validating,
             Straddle::PaymentListParams::StatusReason::TaggedSymbol
           )
+        AUTO_HOLD =
+          T.let(
+            :auto_hold,
+            Straddle::PaymentListParams::StatusReason::TaggedSymbol
+          )
 
         sig do
           override.returns(

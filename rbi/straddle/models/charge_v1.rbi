@@ -361,6 +361,14 @@ module Straddle
           end
           attr_accessor :balance_check
 
+          # Defines whether to automatically place this charge on hold after being created.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_accessor :auto_hold
+
+          # The reason the charge is being automatically held on creation.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :auto_hold_message
+
           # Payment will simulate processing if not Standard.
           sig do
             returns(
@@ -384,6 +392,8 @@ module Straddle
             params(
               balance_check:
                 Straddle::ChargeV1::Data::Config::BalanceCheck::OrSymbol,
+              auto_hold: T.nilable(T::Boolean),
+              auto_hold_message: T.nilable(String),
               sandbox_outcome:
                 Straddle::ChargeV1::Data::Config::SandboxOutcome::OrSymbol
             ).returns(T.attached_class)
@@ -391,6 +401,10 @@ module Straddle
           def self.new(
             # Defines whether to check the customer's balance before processing the charge.
             balance_check:,
+            # Defines whether to automatically place this charge on hold after being created.
+            auto_hold: nil,
+            # The reason the charge is being automatically held on creation.
+            auto_hold_message: nil,
             # Payment will simulate processing if not Standard.
             sandbox_outcome: nil
           )
@@ -401,6 +415,8 @@ module Straddle
               {
                 balance_check:
                   Straddle::ChargeV1::Data::Config::BalanceCheck::TaggedSymbol,
+                auto_hold: T.nilable(T::Boolean),
+                auto_hold_message: T.nilable(String),
                 sandbox_outcome:
                   Straddle::ChargeV1::Data::Config::SandboxOutcome::TaggedSymbol
               }
@@ -822,6 +838,11 @@ module Straddle
             VALIDATING =
               T.let(
                 :validating,
+                Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
+              )
+            AUTO_HOLD =
+              T.let(
+                :auto_hold,
                 Straddle::ChargeV1::Data::StatusHistory::Reason::TaggedSymbol
               )
 
