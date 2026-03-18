@@ -225,6 +225,18 @@ module Straddle
 
         # @see Straddle::Models::PayoutUnmaskResponse::Data#config
         class Config < Straddle::Internal::Type::BaseModel
+          # @!attribute auto_hold
+          #   Defines whether to automatically place this charge on hold after being created.
+          #
+          #   @return [Boolean, nil]
+          optional :auto_hold, Straddle::Internal::Type::Boolean, nil?: true
+
+          # @!attribute auto_hold_message
+          #   The reason the payout is being automatically held on creation.
+          #
+          #   @return [String, nil]
+          optional :auto_hold_message, String, nil?: true
+
           # @!attribute sandbox_outcome
           #   Payment will simulate processing if not Standard.
           #
@@ -232,7 +244,11 @@ module Straddle
           optional :sandbox_outcome,
                    enum: -> { Straddle::Models::PayoutUnmaskResponse::Data::Config::SandboxOutcome }
 
-          # @!method initialize(sandbox_outcome: nil)
+          # @!method initialize(auto_hold: nil, auto_hold_message: nil, sandbox_outcome: nil)
+          #   @param auto_hold [Boolean, nil] Defines whether to automatically place this charge on hold after being created.
+          #
+          #   @param auto_hold_message [String, nil] The reason the payout is being automatically held on creation.
+          #
           #   @param sandbox_outcome [Symbol, Straddle::Models::PayoutUnmaskResponse::Data::Config::SandboxOutcome] Payment will simulate processing if not Standard.
 
           # Payment will simulate processing if not Standard.
@@ -378,6 +394,7 @@ module Straddle
             BLOCKED_BY_SYSTEM = :blocked_by_system
             WATCHTOWER_REVIEW = :watchtower_review
             VALIDATING = :validating
+            AUTO_HOLD = :auto_hold
 
             # @!method self.values
             #   @return [Array<Symbol>]

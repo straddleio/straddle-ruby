@@ -98,11 +98,17 @@ module Straddle
       type config =
         {
           balance_check: Straddle::Models::ChargeCreateParams::Config::balance_check,
+          auto_hold: bool?,
+          auto_hold_message: String?,
           sandbox_outcome: Straddle::Models::ChargeCreateParams::Config::sandbox_outcome
         }
 
       class Config < Straddle::Internal::Type::BaseModel
         attr_accessor balance_check: Straddle::Models::ChargeCreateParams::Config::balance_check
+
+        attr_accessor auto_hold: bool?
+
+        attr_accessor auto_hold_message: String?
 
         attr_reader sandbox_outcome: Straddle::Models::ChargeCreateParams::Config::sandbox_outcome?
 
@@ -112,11 +118,15 @@ module Straddle
 
         def initialize: (
           balance_check: Straddle::Models::ChargeCreateParams::Config::balance_check,
+          ?auto_hold: bool?,
+          ?auto_hold_message: String?,
           ?sandbox_outcome: Straddle::Models::ChargeCreateParams::Config::sandbox_outcome
         ) -> void
 
         def to_hash: -> {
           balance_check: Straddle::Models::ChargeCreateParams::Config::balance_check,
+          auto_hold: bool?,
+          auto_hold_message: String?,
           sandbox_outcome: Straddle::Models::ChargeCreateParams::Config::sandbox_outcome
         }
 

@@ -245,6 +245,18 @@ module Straddle
           #   @return [Symbol, Straddle::Models::ChargeUnmaskResponse::Data::Config::BalanceCheck]
           required :balance_check, enum: -> { Straddle::Models::ChargeUnmaskResponse::Data::Config::BalanceCheck }
 
+          # @!attribute auto_hold
+          #   Defines whether to automatically place this charge on hold after being created.
+          #
+          #   @return [Boolean, nil]
+          optional :auto_hold, Straddle::Internal::Type::Boolean, nil?: true
+
+          # @!attribute auto_hold_message
+          #   The reason the charge is being automatically held on creation.
+          #
+          #   @return [String, nil]
+          optional :auto_hold_message, String, nil?: true
+
           # @!attribute sandbox_outcome
           #   Payment will simulate processing if not Standard.
           #
@@ -252,8 +264,12 @@ module Straddle
           optional :sandbox_outcome,
                    enum: -> { Straddle::Models::ChargeUnmaskResponse::Data::Config::SandboxOutcome }
 
-          # @!method initialize(balance_check:, sandbox_outcome: nil)
+          # @!method initialize(balance_check:, auto_hold: nil, auto_hold_message: nil, sandbox_outcome: nil)
           #   @param balance_check [Symbol, Straddle::Models::ChargeUnmaskResponse::Data::Config::BalanceCheck] Defines whether to check the customer's balance before processing the charge.
+          #
+          #   @param auto_hold [Boolean, nil] Defines whether to automatically place this charge on hold after being created.
+          #
+          #   @param auto_hold_message [String, nil] The reason the charge is being automatically held on creation.
           #
           #   @param sandbox_outcome [Symbol, Straddle::Models::ChargeUnmaskResponse::Data::Config::SandboxOutcome] Payment will simulate processing if not Standard.
 
@@ -430,6 +446,7 @@ module Straddle
             BLOCKED_BY_SYSTEM = :blocked_by_system
             WATCHTOWER_REVIEW = :watchtower_review
             VALIDATING = :validating
+            AUTO_HOLD = :auto_hold
 
             # @!method self.values
             #   @return [Array<Symbol>]

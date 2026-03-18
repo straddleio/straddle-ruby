@@ -963,6 +963,11 @@ module Straddle
                   :validating,
                   Straddle::Models::Bridge::LinkCreateTanResponse::Data::StatusDetails::Reason::TaggedSymbol
                 )
+              AUTO_HOLD =
+                T.let(
+                  :auto_hold,
+                  Straddle::Models::Bridge::LinkCreateTanResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
 
               sig do
                 override.returns(
