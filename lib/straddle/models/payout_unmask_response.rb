@@ -453,7 +453,6 @@ module Straddle
         module RelatedPayment
           extend Straddle::Internal::Type::Enum
 
-          UNKNOWN = :unknown
           ORIGINAL = :original
           RESUBMIT = :resubmit
           REFUND = :refund

@@ -414,12 +414,11 @@ module Straddle
           def self?.values: -> ::Array[Straddle::Models::PayoutV1::Data::payment_rail]
         end
 
-        type related_payment = :unknown | :original | :resubmit | :refund
+        type related_payment = :original | :resubmit | :refund
 
         module RelatedPayment
           extend Straddle::Internal::Type::Enum
 
-          UNKNOWN: :unknown
           ORIGINAL: :original
           RESUBMIT: :resubmit
           REFUND: :refund
