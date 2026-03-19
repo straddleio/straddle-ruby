@@ -1135,11 +1135,6 @@ module Straddle
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          UNKNOWN =
-            T.let(
-              :unknown,
-              Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::TaggedSymbol
-            )
           ORIGINAL =
             T.let(
               :original,
