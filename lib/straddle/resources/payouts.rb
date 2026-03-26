@@ -2,6 +2,10 @@
 
 module Straddle
   module Resources
+    # Payouts represent transfers from Straddle to customer bank accounts. Create
+    # payouts to handle disbursements, process refunds, or manage marketplace
+    # settlements. Use payouts to send money quickly and securely with the most
+    # cost-effective rail automatically selected.
     class Payouts
       # Some parameter documentations has been truncated, see
       # {Straddle::Models::PayoutCreateParams} for more details.
@@ -14,7 +18,7 @@ module Straddle
       #
       # @param currency [String] Body param: The currency of the payout. Only USD is supported.
       #
-      # @param description [String] Body param: An arbitrary description for the payout.
+      # @param description [String, nil] Body param: An arbitrary description for the payout.
       #
       # @param device [Straddle::Models::DeviceInfoV1] Body param: Information about the device used when the customer authorized the p
       #
@@ -24,7 +28,7 @@ module Straddle
       #
       # @param payment_date [Date] Body param: The desired date on which the payout should be occur. For payouts, t
       #
-      # @param config [Straddle::Models::PayoutCreateParams::Config] Body param:
+      # @param config [Straddle::Models::PayoutCreateParams::Config] Body param
       #
       # @param metadata [Hash{Symbol=>String}, nil] Body param: Up to 20 additional user-defined key-value pairs. Useful for storing
       #
@@ -68,11 +72,11 @@ module Straddle
       #
       # @overload update(id, amount:, description:, payment_date:, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
-      # @param id [String] Path param:
+      # @param id [String] Path param
       #
       # @param amount [Integer] Body param: The amount of the payout in cents.
       #
-      # @param description [String] Body param: An arbitrary description for the payout.
+      # @param description [String, nil] Body param: An arbitrary description for the payout.
       #
       # @param payment_date [Date] Body param: The desired date on which the payment should be occur. For payouts,
       #
@@ -118,7 +122,7 @@ module Straddle
       #
       # @overload cancel(id, reason:, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
-      # @param id [String] Path param:
+      # @param id [String] Path param
       #
       # @param reason [String] Body param: Details about why the payout status was updated.
       #
@@ -195,7 +199,7 @@ module Straddle
       #
       # @overload hold(id, reason:, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
-      # @param id [String] Path param:
+      # @param id [String] Path param
       #
       # @param reason [String] Body param: Details about why the payout status was updated.
       #
@@ -239,7 +243,7 @@ module Straddle
       #
       # @overload release(id, reason:, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
-      # @param id [String] Path param:
+      # @param id [String] Path param
       #
       # @param reason [String] Body param: Details about why the payout status was updated.
       #

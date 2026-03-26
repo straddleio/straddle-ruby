@@ -3,6 +3,10 @@
 module Straddle
   module Resources
     class Embed
+      # Organizations are a powerful feature in Straddle that allow you to manage
+      # multiple accounts under a single umbrella. This hierarchical structure is
+      # particularly useful for businesses with complex operations, multiple
+      # departments, or legally related entities.
       class Organizations
         # Creates a new organization related to your Straddle integration. Organizations
         # can be used to group related accounts and manage permissions across multiple

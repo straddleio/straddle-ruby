@@ -4,7 +4,7 @@ module Straddle
       {
         amount: Integer,
         currency: String,
-        description: String,
+        description: String?,
         device: Straddle::DeviceInfoV1,
         external_id: String,
         paykey: String,
@@ -26,7 +26,7 @@ module Straddle
 
       attr_accessor currency: String
 
-      attr_accessor description: String
+      attr_accessor description: String?
 
       attr_accessor device: Straddle::DeviceInfoV1
 
@@ -63,7 +63,7 @@ module Straddle
       def initialize: (
         amount: Integer,
         currency: String,
-        description: String,
+        description: String?,
         device: Straddle::DeviceInfoV1,
         external_id: String,
         paykey: String,
@@ -80,7 +80,7 @@ module Straddle
       def to_hash: -> {
         amount: Integer,
         currency: String,
-        description: String,
+        description: String?,
         device: Straddle::DeviceInfoV1,
         external_id: String,
         paykey: String,
@@ -96,10 +96,16 @@ module Straddle
 
       type config =
         {
+          auto_hold: bool?,
+          auto_hold_message: String?,
           sandbox_outcome: Straddle::Models::PayoutCreateParams::Config::sandbox_outcome
         }
 
       class Config < Straddle::Internal::Type::BaseModel
+        attr_accessor auto_hold: bool?
+
+        attr_accessor auto_hold_message: String?
+
         attr_reader sandbox_outcome: Straddle::Models::PayoutCreateParams::Config::sandbox_outcome?
 
         def sandbox_outcome=: (
@@ -107,10 +113,14 @@ module Straddle
         ) -> Straddle::Models::PayoutCreateParams::Config::sandbox_outcome
 
         def initialize: (
+          ?auto_hold: bool?,
+          ?auto_hold_message: String?,
           ?sandbox_outcome: Straddle::Models::PayoutCreateParams::Config::sandbox_outcome
         ) -> void
 
         def to_hash: -> {
+          auto_hold: bool?,
+          auto_hold_message: String?,
           sandbox_outcome: Straddle::Models::PayoutCreateParams::Config::sandbox_outcome
         }
 

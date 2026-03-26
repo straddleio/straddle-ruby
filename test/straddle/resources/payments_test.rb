@@ -23,7 +23,7 @@ class Straddle::Test::Resources::PaymentsTest < Straddle::Test::ResourceTest
         amount: Integer,
         created_at: Time,
         currency: String,
-        description: String,
+        description: String | nil,
         external_id: String,
         funding_ids: ^(Straddle::Internal::Type::ArrayOf[String]),
         paykey: String,
@@ -36,6 +36,7 @@ class Straddle::Test::Resources::PaymentsTest < Straddle::Test::ResourceTest
         customer_details: Straddle::CustomerDetailsV1 | nil,
         effective_at: Time | nil,
         funding_id: String | nil,
+        metadata: ^(Straddle::Internal::Type::HashOf[String]) | nil,
         paykey_details: Straddle::PaykeyDetailsV1 | nil
       }
     end

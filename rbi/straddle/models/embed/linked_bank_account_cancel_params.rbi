@@ -15,6 +15,9 @@ module Straddle
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :linked_bank_account_id
+
         sig { returns(T.nilable(String)) }
         attr_reader :correlation_id
 
@@ -35,6 +38,7 @@ module Straddle
 
         sig do
           params(
+            linked_bank_account_id: String,
             correlation_id: String,
             idempotency_key: String,
             request_id: String,
@@ -42,6 +46,7 @@ module Straddle
           ).returns(T.attached_class)
         end
         def self.new(
+          linked_bank_account_id:,
           correlation_id: nil,
           idempotency_key: nil,
           request_id: nil,
@@ -52,6 +57,7 @@ module Straddle
         sig do
           override.returns(
             {
+              linked_bank_account_id: String,
               correlation_id: String,
               idempotency_key: String,
               request_id: String,

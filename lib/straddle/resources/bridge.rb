@@ -2,7 +2,19 @@
 
 module Straddle
   module Resources
+    # Bridge provides a comprehensive suite of tools for connecting customer bank
+    # accounts. Use it to generate secure widget sessions for instant account
+    # verification, accept tokens from major providers like Plaid and Finicity, or
+    # verify accounts directly via our API. Bridge handles all sensitive banking
+    # credentials and ensures secure, compliant connections with support for 90% of US
+    # bank accounts.
     class Bridge
+      # Bridge provides a comprehensive suite of tools for connecting customer bank
+      # accounts. Use it to generate secure widget sessions for instant account
+      # verification, accept tokens from major providers like Plaid and Finicity, or
+      # verify accounts directly via our API. Bridge handles all sensitive banking
+      # credentials and ensures secure, compliant connections with support for 90% of US
+      # bank accounts.
       # @return [Straddle::Resources::Bridge::Link]
       attr_reader :link
 
@@ -15,7 +27,7 @@ module Straddle
       #
       # @param customer_id [String] Body param: The Straddle generated unique identifier of the `customer` to create
       #
-      # @param config [Straddle::Models::BridgeInitializeParams::Config] Body param:
+      # @param config [Straddle::Models::BridgeInitializeParams::Config] Body param
       #
       # @param external_id [String, nil] Body param: Unique identifier for the paykey in your database, used for cross-re
       #

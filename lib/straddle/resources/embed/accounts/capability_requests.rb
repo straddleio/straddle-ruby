@@ -4,6 +4,10 @@ module Straddle
   module Resources
     class Embed
       class Accounts
+        # Capabilities enable specific features and services for an Account. Use
+        # capability requests to unlock higher processing limits, new payment types, or
+        # additional platform features as your users' businesses grow. Track approval
+        # status and manage documentation requirements through a single interface.
         class CapabilityRequests
           # Some parameter documentations has been truncated, see
           # {Straddle::Models::Embed::Accounts::CapabilityRequestCreateParams} for more
@@ -14,7 +18,7 @@ module Straddle
           #
           # @overload create(account_id, businesses: nil, charges: nil, individuals: nil, internet: nil, payouts: nil, signed_agreement: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
           #
-          # @param account_id [String] Path param:
+          # @param account_id [String] Path param
           #
           # @param businesses [Straddle::Models::Embed::Accounts::CapabilityRequestCreateParams::Businesses] Body param: Allows the account to accept payments from businesses.
           #
@@ -63,7 +67,7 @@ module Straddle
           #
           # @overload list(account_id, category: nil, page_number: nil, page_size: nil, sort_by: nil, sort_order: nil, status: nil, type: nil, correlation_id: nil, request_id: nil, request_options: {})
           #
-          # @param account_id [String] Path param:
+          # @param account_id [String] Path param
           #
           # @param category [Symbol, Straddle::Models::Embed::Accounts::CapabilityRequestListParams::Category] Query param: Filter capability requests by category.
           #
@@ -89,12 +93,13 @@ module Straddle
           #
           # @see Straddle::Models::Embed::Accounts::CapabilityRequestListParams
           def list(account_id, params = {})
-            parsed, options = Straddle::Embed::Accounts::CapabilityRequestListParams.dump_request(params)
             query_params = [:category, :page_number, :page_size, :sort_by, :sort_order, :status, :type]
+            parsed, options = Straddle::Embed::Accounts::CapabilityRequestListParams.dump_request(params)
+            query = Straddle::Internal::Util.encode_query_params(parsed.slice(*query_params))
             @client.request(
               method: :get,
               path: ["v1/accounts/%1$s/capability_requests", account_id],
-              query: parsed.slice(*query_params),
+              query: query,
               headers: parsed.except(*query_params).transform_keys(
                 correlation_id: "correlation-id",
                 request_id: "request-id"

@@ -15,6 +15,9 @@ module Straddle
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :id
+
         sig do
           returns(Straddle::Paykeys::ReviewDecisionParams::Status::OrSymbol)
         end
@@ -46,6 +49,7 @@ module Straddle
 
         sig do
           params(
+            id: String,
             status: Straddle::Paykeys::ReviewDecisionParams::Status::OrSymbol,
             correlation_id: String,
             idempotency_key: String,
@@ -55,6 +59,7 @@ module Straddle
           ).returns(T.attached_class)
         end
         def self.new(
+          id:,
           status:,
           correlation_id: nil,
           idempotency_key: nil,
@@ -67,6 +72,7 @@ module Straddle
         sig do
           override.returns(
             {
+              id: String,
               status: Straddle::Paykeys::ReviewDecisionParams::Status::OrSymbol,
               correlation_id: String,
               idempotency_key: String,

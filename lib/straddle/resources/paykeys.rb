@@ -2,7 +2,17 @@
 
 module Straddle
   module Resources
+    # Paykeys are secure tokens that link verified customer identities to their bank
+    # accounts. Each Paykey includes built-in balance checking, fraud detection
+    # through LSTM machine learning models, and can be reused for subscriptions and
+    # recurring payments without storing sensitive data. Paykeys eliminate fraud by
+    # ensuring the person initiating payment owns the funding account.
     class Paykeys
+      # Paykeys are secure tokens that link verified customer identities to their bank
+      # accounts. Each Paykey includes built-in balance checking, fraud detection
+      # through LSTM machine learning models, and can be reused for subscriptions and
+      # recurring payments without storing sensitive data. Paykeys eliminate fraud by
+      # ensuring the person initiating payment owns the funding account.
       # @return [Straddle::Resources::Paykeys::Review]
       attr_reader :review
 
@@ -12,7 +22,7 @@ module Straddle
       # Returns a list of paykeys associated with a Straddle account. This endpoint
       # supports advanced sorting and filtering options.
       #
-      # @overload list(customer_id: nil, page_number: nil, page_size: nil, sort_by: nil, sort_order: nil, source: nil, status: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @overload list(customer_id: nil, page_number: nil, page_size: nil, search_text: nil, sort_by: nil, sort_order: nil, source: nil, status: nil, unblock_eligible: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
       # @param customer_id [String] Query param: Filter paykeys by related customer ID.
       #
@@ -20,13 +30,17 @@ module Straddle
       #
       # @param page_size [Integer] Query param: Number of results per page. Maximum: 1000.
       #
-      # @param sort_by [Symbol, Straddle::Models::PaykeyListParams::SortBy] Query param:
+      # @param search_text [String] Query param: General search term to filter paykeys.
       #
-      # @param sort_order [Symbol, Straddle::Models::PaykeyListParams::SortOrder] Query param:
+      # @param sort_by [Symbol, Straddle::Models::PaykeyListParams::SortBy] Query param
+      #
+      # @param sort_order [Symbol, Straddle::Models::PaykeyListParams::SortOrder] Query param
       #
       # @param source [Array<Symbol, Straddle::Models::PaykeyListParams::Source>] Query param: Filter paykeys by their source.
       #
       # @param status [Array<Symbol, Straddle::Models::PaykeyListParams::Status>] Query param: Filter paykeys by their current status.
+      #
+      # @param unblock_eligible [Boolean] Query param: Filter paykeys by unblock eligibility. When true, returns only bloc
       #
       # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
       #
@@ -40,12 +54,24 @@ module Straddle
       #
       # @see Straddle::Models::PaykeyListParams
       def list(params = {})
+        query_params =
+          [
+            :customer_id,
+            :page_number,
+            :page_size,
+            :search_text,
+            :sort_by,
+            :sort_order,
+            :source,
+            :status,
+            :unblock_eligible
+          ]
         parsed, options = Straddle::PaykeyListParams.dump_request(params)
-        query_params = [:customer_id, :page_number, :page_size, :sort_by, :sort_order, :source, :status]
+        query = Straddle::Internal::Util.encode_query_params(parsed.slice(*query_params))
         @client.request(
           method: :get,
           path: "v1/paykeys",
-          query: parsed.slice(*query_params),
+          query: query,
           headers: parsed.except(*query_params).transform_keys(
             correlation_id: "correlation-id",
             request_id: "request-id",
@@ -62,9 +88,9 @@ module Straddle
       #
       # @overload cancel(id, reason: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
-      # @param id [String] Path param:
+      # @param id [String] Path param
       #
-      # @param reason [String, nil] Body param:
+      # @param reason [String, nil] Body param
       #
       # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
       #
@@ -132,10 +158,9 @@ module Straddle
         )
       end
 
-      # Retrieves the details of a paykey that has previously been created, including
-      # unmasked bank account fields. Supply the unique paykey ID that was returned from
-      # your previous request, and Straddle will return the corresponding paykey
-      # information.
+      # Retrieves the details of a paykey that has previously been created. Supply the
+      # unique paykey ID that was returned from your previous request, and Straddle will
+      # return the corresponding paykey information including the unmasked token.
       #
       # @overload reveal(id, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #

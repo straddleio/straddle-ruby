@@ -238,6 +238,7 @@ module Straddle
             INACTIVE = :inactive
             REJECTED = :rejected
             REVIEW = :review
+            BLOCKED = :blocked
 
             # @!method self.values
             #   @return [Array<Symbol>]
@@ -393,6 +394,13 @@ module Straddle
               OK = :ok
               OTHER_NETWORK_RETURN = :other_network_return
               PAYOUT_REFUSED = :payout_refused
+              CANCEL_REQUEST = :cancel_request
+              FAILED_VERIFICATION = :failed_verification
+              REQUIRE_REVIEW = :require_review
+              BLOCKED_BY_SYSTEM = :blocked_by_system
+              WATCHTOWER_REVIEW = :watchtower_review
+              VALIDATING = :validating
+              AUTO_HOLD = :auto_hold
 
               # @!method self.values
               #   @return [Array<Symbol>]

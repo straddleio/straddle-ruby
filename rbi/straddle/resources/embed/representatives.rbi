@@ -3,6 +3,12 @@
 module Straddle
   module Resources
     class Embed
+      # Representatives are individuals who have legal authority or significant
+      # responsibility within a business entity associated with a Straddle account. Each
+      # representative undergoes automated verification as part of KYC/KYB compliance.
+      # Use representatives to collect and verify beneficial owners, control persons,
+      # and authorized signers required for account onboarding. Representatives also
+      # determine who can legally operate the account and make important changes.
       class Representatives
         # Creates a new representative associated with an account. Representatives are
         # individuals who have legal authority or significant responsibility within the
@@ -41,7 +47,7 @@ module Straddle
           last_name:,
           # Body param: The mobile phone number of the representative.
           mobile_number:,
-          # Body param:
+          # Body param
           relationship:,
           # Body param: The last 4 digits of the representative's Social Security Number.
           ssn_last4:,
@@ -85,7 +91,7 @@ module Straddle
           ).returns(Straddle::Embed::Representative)
         end
         def update(
-          # Path param:
+          # Path param
           representative_id,
           # Body param: The date of birth of the representative, in ISO 8601 format
           # (YYYY-MM-DD).
@@ -98,7 +104,7 @@ module Straddle
           last_name:,
           # Body param: The mobile phone number of the representative.
           mobile_number:,
-          # Body param:
+          # Body param
           relationship:,
           # Body param: The last 4 digits of the representative's Social Security Number.
           ssn_last4:,
@@ -146,15 +152,15 @@ module Straddle
         def list(
           # Query param: The unique identifier of the account to list representatives for.
           account_id: nil,
-          # Query param:
+          # Query param
           level: nil,
-          # Query param:
+          # Query param
           organization_id: nil,
           # Query param: Results page number. Starts at page 1.
           page_number: nil,
           # Query param: Page size. Max value: 1000
           page_size: nil,
-          # Query param:
+          # Query param
           platform_id: nil,
           # Query param: Sort By.
           sort_by: nil,

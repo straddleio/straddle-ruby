@@ -2,7 +2,19 @@
 
 module Straddle
   module Resources
+    # Customers represent the end users who send or receive payments through your
+    # integration. Each customer undergoes automatic identity verification and fraud
+    # screening upon creation. Use customers to track payment history, manage bank
+    # account connections, and maintain a secure record of all transactions associated
+    # with a user. Customers can be either individuals or businesses with appropriate
+    # compliance checks for each type.
     class Customers
+      # Customers represent the end users who send or receive payments through your
+      # integration. Each customer undergoes automatic identity verification and fraud
+      # screening upon creation. Use customers to track payment history, manage bank
+      # account connections, and maintain a secure record of all transactions associated
+      # with a user. Customers can be either individuals or businesses with appropriate
+      # compliance checks for each type.
       # @return [Straddle::Resources::Customers::Review]
       attr_reader :review
 
@@ -15,7 +27,7 @@ module Straddle
       #
       # @overload create(device:, email:, name:, phone:, type:, address: nil, compliance_profile: nil, config: nil, external_id: nil, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
-      # @param device [Straddle::Models::DeviceUnmaskedV1] Body param:
+      # @param device [Straddle::Models::DeviceUnmaskedV1] Body param
       #
       # @param email [String] Body param: The customer's email address.
       #
@@ -23,14 +35,14 @@ module Straddle
       #
       # @param phone [String] Body param: The customer's phone number in E.164 format. Mobile number is prefer
       #
-      # @param type [Symbol, Straddle::Models::CustomerCreateParams::Type] Body param:
+      # @param type [Symbol, Straddle::Models::CustomerCreateParams::Type] Body param
       #
       # @param address [Straddle::Models::CustomerAddressV1, nil] Body param: An object containing the customer's address. **This is optional.** I
       #
       # @param compliance_profile [Straddle::Models::CustomerCreateParams::ComplianceProfile::IndividualComplianceProfile, Straddle::Models::CustomerCreateParams::ComplianceProfile::BusinessComplianceProfile, nil] Body param: An object containing the customer's compliance profile. \*\*This is
       # op
       #
-      # @param config [Straddle::Models::CustomerCreateParams::Config] Body param:
+      # @param config [Straddle::Models::CustomerCreateParams::Config] Body param
       #
       # @param external_id [String, nil] Body param: Unique identifier for the customer in your database, used for cross-
       #
@@ -76,9 +88,9 @@ module Straddle
       #
       # @overload update(id, device:, email:, name:, phone:, status:, address: nil, compliance_profile: nil, external_id: nil, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
-      # @param id [String] Path param:
+      # @param id [String] Path param
       #
-      # @param device [Straddle::Models::DeviceUnmaskedV1] Body param:
+      # @param device [Straddle::Models::DeviceUnmaskedV1] Body param
       #
       # @param email [String] Body param: The customer's email address.
       #
@@ -86,7 +98,7 @@ module Straddle
       #
       # @param phone [String] Body param: The customer's phone number in E.164 format.
       #
-      # @param status [Symbol, Straddle::Models::CustomerUpdateParams::Status] Body param:
+      # @param status [Symbol, Straddle::Models::CustomerUpdateParams::Status] Body param
       #
       # @param address [Straddle::Models::CustomerAddressV1, nil] Body param: An object containing the customer's address. This is optional, but i
       #
@@ -154,9 +166,9 @@ module Straddle
       #
       # @param search_text [String] Query param: General search term to filter customers.
       #
-      # @param sort_by [Symbol, Straddle::Models::CustomerListParams::SortBy] Query param:
+      # @param sort_by [Symbol, Straddle::Models::CustomerListParams::SortBy] Query param
       #
-      # @param sort_order [Symbol, Straddle::Models::CustomerListParams::SortOrder] Query param:
+      # @param sort_order [Symbol, Straddle::Models::CustomerListParams::SortOrder] Query param
       #
       # @param status [Array<Symbol, Straddle::Models::CustomerListParams::Status>] Query param: Filter customers by their current `status`.
       #
@@ -174,7 +186,6 @@ module Straddle
       #
       # @see Straddle::Models::CustomerListParams
       def list(params = {})
-        parsed, options = Straddle::CustomerListParams.dump_request(params)
         query_params =
           [
             :created_from,
@@ -190,10 +201,12 @@ module Straddle
             :status,
             :types
           ]
+        parsed, options = Straddle::CustomerListParams.dump_request(params)
+        query = Straddle::Internal::Util.encode_query_params(parsed.slice(*query_params))
         @client.request(
           method: :get,
           path: "v1/customers",
-          query: parsed.slice(*query_params),
+          query: query,
           headers: parsed.except(*query_params).transform_keys(
             correlation_id: "correlation-id",
             request_id: "request-id",

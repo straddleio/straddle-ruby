@@ -2,12 +2,19 @@ module Straddle
   module Models
     module Embed
       type linked_bank_account_cancel_params =
-        { correlation_id: String, idempotency_key: String, request_id: String }
+        {
+          linked_bank_account_id: String,
+          correlation_id: String,
+          idempotency_key: String,
+          request_id: String
+        }
         & Straddle::Internal::Type::request_parameters
 
       class LinkedBankAccountCancelParams < Straddle::Internal::Type::BaseModel
         extend Straddle::Internal::Type::RequestParameters::Converter
         include Straddle::Internal::Type::RequestParameters
+
+        attr_accessor linked_bank_account_id: String
 
         attr_reader correlation_id: String?
 
@@ -22,6 +29,7 @@ module Straddle
         def request_id=: (String) -> String
 
         def initialize: (
+          linked_bank_account_id: String,
           ?correlation_id: String,
           ?idempotency_key: String,
           ?request_id: String,
@@ -29,6 +37,7 @@ module Straddle
         ) -> void
 
         def to_hash: -> {
+          linked_bank_account_id: String,
           correlation_id: String,
           idempotency_key: String,
           request_id: String,

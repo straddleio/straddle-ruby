@@ -89,7 +89,7 @@ module Straddle
         attr_accessor :currency
 
         # An arbitrary description for the `charge` or `payout`.
-        sig { returns(String) }
+        sig { returns(T.nilable(String)) }
         attr_accessor :description
 
         # Unique identifier for the `charge` or `payout` in your database. This value must
@@ -160,6 +160,10 @@ module Straddle
         sig { returns(T.nilable(String)) }
         attr_accessor :funding_id
 
+        # Metadata for payment - only included if requested.
+        sig { returns(T.nilable(T::Hash[Symbol, String])) }
+        attr_accessor :metadata
+
         # Information about the paykey used for the `charge` or `payout`.
         sig { returns(T.nilable(Straddle::PaykeyDetailsV1)) }
         attr_reader :paykey_details
@@ -173,7 +177,7 @@ module Straddle
             amount: Integer,
             created_at: Time,
             currency: String,
-            description: String,
+            description: T.nilable(String),
             external_id: String,
             funding_ids: T::Array[String],
             paykey: String,
@@ -187,6 +191,7 @@ module Straddle
             customer_details: Straddle::CustomerDetailsV1::OrHash,
             effective_at: T.nilable(Time),
             funding_id: T.nilable(String),
+            metadata: T.nilable(T::Hash[Symbol, String]),
             paykey_details: Straddle::PaykeyDetailsV1::OrHash
           ).returns(T.attached_class)
         end
@@ -231,6 +236,8 @@ module Straddle
           # Unique identifier for the funding event associated with the `charge` or
           # `payout`.
           funding_id: nil,
+          # Metadata for payment - only included if requested.
+          metadata: nil,
           # Information about the paykey used for the `charge` or `payout`.
           paykey_details: nil
         )
@@ -243,7 +250,7 @@ module Straddle
               amount: Integer,
               created_at: Time,
               currency: String,
-              description: String,
+              description: T.nilable(String),
               external_id: String,
               funding_ids: T::Array[String],
               paykey: String,
@@ -258,6 +265,7 @@ module Straddle
               customer_details: Straddle::CustomerDetailsV1,
               effective_at: T.nilable(Time),
               funding_id: T.nilable(String),
+              metadata: T.nilable(T::Hash[Symbol, String]),
               paykey_details: Straddle::PaykeyDetailsV1
             }
           )
@@ -345,6 +353,11 @@ module Straddle
           REVERSED =
             T.let(
               :reversed,
+              Straddle::PaymentSummaryPagedV1::Data::Status::TaggedSymbol
+            )
+          VALIDATING =
+            T.let(
+              :validating,
               Straddle::PaymentSummaryPagedV1::Data::Status::TaggedSymbol
             )
 

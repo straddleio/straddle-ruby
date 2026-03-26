@@ -2,12 +2,14 @@ module Straddle
   module Models
     module Embed
       type account_get_params =
-        { correlation_id: String, request_id: String }
+        { account_id: String, correlation_id: String, request_id: String }
         & Straddle::Internal::Type::request_parameters
 
       class AccountGetParams < Straddle::Internal::Type::BaseModel
         extend Straddle::Internal::Type::RequestParameters::Converter
         include Straddle::Internal::Type::RequestParameters
+
+        attr_accessor account_id: String
 
         attr_reader correlation_id: String?
 
@@ -18,12 +20,14 @@ module Straddle
         def request_id=: (String) -> String
 
         def initialize: (
+          account_id: String,
           ?correlation_id: String,
           ?request_id: String,
           ?request_options: Straddle::request_opts
         ) -> void
 
         def to_hash: -> {
+          account_id: String,
           correlation_id: String,
           request_id: String,
           request_options: Straddle::RequestOptions

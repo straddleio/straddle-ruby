@@ -8,6 +8,11 @@ module Straddle
         extend Straddle::Internal::Type::RequestParameters::Converter
         include Straddle::Internal::Type::RequestParameters
 
+        # @!attribute linked_bank_account_id
+        #
+        #   @return [String]
+        required :linked_bank_account_id, String
+
         # @!attribute correlation_id
         #
         #   @return [String, nil]
@@ -23,7 +28,8 @@ module Straddle
         #   @return [String, nil]
         optional :request_id, String
 
-        # @!method initialize(correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
+        # @!method initialize(linked_bank_account_id:, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
+        #   @param linked_bank_account_id [String]
         #   @param correlation_id [String]
         #   @param idempotency_key [String]
         #   @param request_id [String]

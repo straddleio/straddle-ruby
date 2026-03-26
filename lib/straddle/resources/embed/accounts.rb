@@ -3,7 +3,16 @@
 module Straddle
   module Resources
     class Embed
+      # Accounts represent businesses using Straddle through your platform. Each account
+      # must complete automated verification before processing payments. Use accounts to
+      # manage your users' payment capabilities, track verification status, and control
+      # access to features. Accounts can be instantly created in sandbox and require
+      # additional verification for production access.
       class Accounts
+        # Capabilities enable specific features and services for an Account. Use
+        # capability requests to unlock higher processing limits, new payment types, or
+        # additional platform features as your users' businesses grow. Track approval
+        # status and manage documentation requirements through a single interface.
         # @return [Straddle::Resources::Embed::Accounts::CapabilityRequests]
         attr_reader :capability_requests
 
@@ -20,7 +29,7 @@ module Straddle
         #
         # @param account_type [Symbol, Straddle::Models::Embed::AccountCreateParams::AccountType] Body param: The type of account to be created. Currently, only `business` is sup
         #
-        # @param business_profile [Straddle::Models::Embed::BusinessProfileV1] Body param:
+        # @param business_profile [Straddle::Models::Embed::BusinessProfileV1] Body param
         #
         # @param organization_id [String] Body param: The unique identifier of the organization related to this account.
         #
@@ -61,9 +70,9 @@ module Straddle
         #
         # @overload update(account_id, business_profile:, external_id: nil, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
         #
-        # @param account_id [String] Path param:
+        # @param account_id [String] Path param
         #
-        # @param business_profile [Straddle::Models::Embed::BusinessProfileV1] Body param:
+        # @param business_profile [Straddle::Models::Embed::BusinessProfileV1] Body param
         #
         # @param external_id [String, nil] Body param: Unique identifier for the account in your database, used for cross-r
         #
@@ -108,15 +117,15 @@ module Straddle
         #
         # @param page_size [Integer] Query param: Page size. Default value: 100. Max value: 1000
         #
-        # @param search_text [String] Query param:
+        # @param search_text [String] Query param
         #
         # @param sort_by [String] Query param: Sort By. Default value: 'id'.
         #
         # @param sort_order [Symbol, Straddle::Models::Embed::AccountListParams::SortOrder] Query param: Sort Order. Default value: 'asc'.
         #
-        # @param status [Symbol, Straddle::Models::Embed::AccountListParams::Status] Query param:
+        # @param status [Symbol, Straddle::Models::Embed::AccountListParams::Status] Query param
         #
-        # @param type [Symbol, Straddle::Models::Embed::AccountListParams::Type] Query param:
+        # @param type [Symbol, Straddle::Models::Embed::AccountListParams::Type] Query param
         #
         # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
         #
@@ -128,12 +137,13 @@ module Straddle
         #
         # @see Straddle::Models::Embed::AccountListParams
         def list(params = {})
-          parsed, options = Straddle::Embed::AccountListParams.dump_request(params)
           query_params = [:page_number, :page_size, :search_text, :sort_by, :sort_order, :status, :type]
+          parsed, options = Straddle::Embed::AccountListParams.dump_request(params)
+          query = Straddle::Internal::Util.encode_query_params(parsed.slice(*query_params))
           @client.request(
             method: :get,
             path: "v1/accounts",
-            query: parsed.slice(*query_params),
+            query: query,
             headers: parsed.except(*query_params).transform_keys(
               correlation_id: "correlation-id",
               request_id: "request-id"
@@ -181,9 +191,9 @@ module Straddle
         #
         # @overload onboard(account_id, terms_of_service:, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
         #
-        # @param account_id [String] Path param:
+        # @param account_id [String] Path param
         #
-        # @param terms_of_service [Straddle::Models::Embed::TermsOfServiceV1] Body param:
+        # @param terms_of_service [Straddle::Models::Embed::TermsOfServiceV1] Body param
         #
         # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
         #
@@ -218,9 +228,9 @@ module Straddle
         #
         # @overload simulate(account_id, final_status: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
         #
-        # @param account_id [String] Path param:
+        # @param account_id [String] Path param
         #
-        # @param final_status [Symbol, Straddle::Models::Embed::AccountSimulateParams::FinalStatus] Query param:
+        # @param final_status [Symbol, Straddle::Models::Embed::AccountSimulateParams::FinalStatus] Query param
         #
         # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
         #
@@ -234,12 +244,13 @@ module Straddle
         #
         # @see Straddle::Models::Embed::AccountSimulateParams
         def simulate(account_id, params = {})
-          parsed, options = Straddle::Embed::AccountSimulateParams.dump_request(params)
           query_params = [:final_status]
+          parsed, options = Straddle::Embed::AccountSimulateParams.dump_request(params)
+          query = Straddle::Internal::Util.encode_query_params(parsed.slice(*query_params))
           @client.request(
             method: :post,
             path: ["v1/accounts/%1$s/simulate", account_id],
-            query: parsed.slice(*query_params),
+            query: query,
             headers: parsed.except(*query_params).transform_keys(
               correlation_id: "correlation-id",
               idempotency_key: "idempotency-key",

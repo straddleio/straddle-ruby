@@ -8,6 +8,11 @@ module Straddle
         extend Straddle::Internal::Type::RequestParameters::Converter
         include Straddle::Internal::Type::RequestParameters
 
+        # @!attribute representative_id
+        #
+        #   @return [String]
+        required :representative_id, String
+
         # @!attribute dob
         #   The date of birth of the representative, in ISO 8601 format (YYYY-MM-DD).
         #
@@ -78,9 +83,11 @@ module Straddle
         #   @return [String, nil]
         optional :request_id, String
 
-        # @!method initialize(dob:, email:, first_name:, last_name:, mobile_number:, relationship:, ssn_last4:, external_id: nil, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
+        # @!method initialize(representative_id:, dob:, email:, first_name:, last_name:, mobile_number:, relationship:, ssn_last4:, external_id: nil, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Straddle::Models::Embed::RepresentativeUpdateParams} for more details.
+        #
+        #   @param representative_id [String]
         #
         #   @param dob [Date] The date of birth of the representative, in ISO 8601 format (YYYY-MM-DD).
         #

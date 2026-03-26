@@ -28,24 +28,58 @@ module Straddle
     # @return [Straddle::Resources::Embed]
     attr_reader :embed
 
+    # Bridge provides a comprehensive suite of tools for connecting customer bank
+    # accounts. Use it to generate secure widget sessions for instant account
+    # verification, accept tokens from major providers like Plaid and Finicity, or
+    # verify accounts directly via our API. Bridge handles all sensitive banking
+    # credentials and ensures secure, compliant connections with support for 90% of US
+    # bank accounts.
     # @return [Straddle::Resources::Bridge]
     attr_reader :bridge
 
+    # Customers represent the end users who send or receive payments through your
+    # integration. Each customer undergoes automatic identity verification and fraud
+    # screening upon creation. Use customers to track payment history, manage bank
+    # account connections, and maintain a secure record of all transactions associated
+    # with a user. Customers can be either individuals or businesses with appropriate
+    # compliance checks for each type.
     # @return [Straddle::Resources::Customers]
     attr_reader :customers
 
+    # Paykeys are secure tokens that link verified customer identities to their bank
+    # accounts. Each Paykey includes built-in balance checking, fraud detection
+    # through LSTM machine learning models, and can be reused for subscriptions and
+    # recurring payments without storing sensitive data. Paykeys eliminate fraud by
+    # ensuring the person initiating payment owns the funding account.
     # @return [Straddle::Resources::Paykeys]
     attr_reader :paykeys
 
+    # Charges represent attempts to debit money from a customer's bank account using a
+    # Paykey. Each charge includes automatic balance verification, real-time fraud
+    # screening, and multi-rail optimization and detailed status tracking throughout
+    # the payment lifecycle. Use charges to accept bank payments with confidence
+    # knowing every transaction is protected.
     # @return [Straddle::Resources::Charges]
     attr_reader :charges
 
+    # Funding events represent all money movement between Straddle and an Account's
+    # external bank accounts. They are automatically generated when charges settle or
+    # payouts are initiated. Each event provides detailed tracking of settlement
+    # status, fee breakdowns, and reconciliation data across both incoming and
+    # outgoing transfers. Use funding events to monitor your platform's entire money
+    # movement lifecycle.
     # @return [Straddle::Resources::FundingEvents]
     attr_reader :funding_events
 
+    # Payments provide endpoints to filter both Charges and Payouts with multiple
+    # different parameters.
     # @return [Straddle::Resources::Payments]
     attr_reader :payments
 
+    # Payouts represent transfers from Straddle to customer bank accounts. Create
+    # payouts to handle disbursements, process refunds, or manage marketplace
+    # settlements. Use payouts to send money quickly and securely with the most
+    # cost-effective rail automatically selected.
     # @return [Straddle::Resources::Payouts]
     attr_reader :payouts
 

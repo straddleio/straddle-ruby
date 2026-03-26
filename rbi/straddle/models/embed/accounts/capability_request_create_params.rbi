@@ -16,6 +16,9 @@ module Straddle
               )
             end
 
+          sig { returns(String) }
+          attr_accessor :account_id
+
           # Allows the account to accept payments from businesses.
           sig do
             returns(
@@ -146,6 +149,7 @@ module Straddle
 
           sig do
             params(
+              account_id: String,
               businesses:
                 Straddle::Embed::Accounts::CapabilityRequestCreateParams::Businesses::OrHash,
               charges:
@@ -165,6 +169,7 @@ module Straddle
             ).returns(T.attached_class)
           end
           def self.new(
+            account_id:,
             # Allows the account to accept payments from businesses.
             businesses: nil,
             # The charges capability settings for the account.
@@ -189,6 +194,7 @@ module Straddle
           sig do
             override.returns(
               {
+                account_id: String,
                 businesses:
                   Straddle::Embed::Accounts::CapabilityRequestCreateParams::Businesses,
                 charges:

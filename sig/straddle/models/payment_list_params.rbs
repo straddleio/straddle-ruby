@@ -8,6 +8,7 @@ module Straddle
         default_sort_order: Straddle::Models::PaymentListParams::default_sort_order,
         external_id: String,
         funding_id: String,
+        include_metadata: bool,
         max_amount: Integer,
         max_created_at: Time,
         max_effective_at: Time,
@@ -65,6 +66,10 @@ module Straddle
       attr_reader funding_id: String?
 
       def funding_id=: (String) -> String
+
+      attr_reader include_metadata: bool?
+
+      def include_metadata=: (bool) -> bool
 
       attr_reader max_amount: Integer?
 
@@ -177,6 +182,7 @@ module Straddle
         ?default_sort_order: Straddle::Models::PaymentListParams::default_sort_order,
         ?external_id: String,
         ?funding_id: String,
+        ?include_metadata: bool,
         ?max_amount: Integer,
         ?max_created_at: Time,
         ?max_effective_at: Time,
@@ -210,6 +216,7 @@ module Straddle
         default_sort_order: Straddle::Models::PaymentListParams::default_sort_order,
         external_id: String,
         funding_id: String,
+        include_metadata: bool,
         max_amount: Integer,
         max_created_at: Time,
         max_effective_at: Time,
@@ -271,6 +278,7 @@ module Straddle
         | :pending
         | :paid
         | :reversed
+        | :validating
 
       module PaymentStatus
         extend Straddle::Internal::Type::Enum
@@ -283,6 +291,7 @@ module Straddle
         PENDING: :pending
         PAID: :paid
         REVERSED: :reversed
+        VALIDATING: :validating
 
         def self?.values: -> ::Array[Straddle::Models::PaymentListParams::payment_status]
       end
@@ -344,6 +353,13 @@ module Straddle
         | :ok
         | :other_network_return
         | :payout_refused
+        | :cancel_request
+        | :failed_verification
+        | :require_review
+        | :blocked_by_system
+        | :watchtower_review
+        | :validating
+        | :auto_hold
 
       module StatusReason
         extend Straddle::Internal::Type::Enum
@@ -368,6 +384,13 @@ module Straddle
         OK: :ok
         OTHER_NETWORK_RETURN: :other_network_return
         PAYOUT_REFUSED: :payout_refused
+        CANCEL_REQUEST: :cancel_request
+        FAILED_VERIFICATION: :failed_verification
+        REQUIRE_REVIEW: :require_review
+        BLOCKED_BY_SYSTEM: :blocked_by_system
+        WATCHTOWER_REVIEW: :watchtower_review
+        VALIDATING: :validating
+        AUTO_HOLD: :auto_hold
 
         def self?.values: -> ::Array[Straddle::Models::PaymentListParams::status_reason]
       end

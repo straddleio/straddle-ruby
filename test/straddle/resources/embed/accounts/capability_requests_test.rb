@@ -39,6 +39,7 @@ class Straddle::Test::Resources::Embed::Accounts::CapabilityRequestsTest < Strad
         account_id: String,
         category: Straddle::Embed::Accounts::CapabilityRequestPagedV1::Data::Category,
         created_at: Time,
+        enable: Straddle::Internal::Type::Boolean,
         status: Straddle::Embed::Accounts::CapabilityRequestPagedV1::Data::Status,
         type: Straddle::Embed::Accounts::CapabilityRequestPagedV1::Data::Type,
         updated_at: Time,

@@ -2,6 +2,12 @@
 
 module Straddle
   module Resources
+    # Funding events represent all money movement between Straddle and an Account's
+    # external bank accounts. They are automatically generated when charges settle or
+    # payouts are initiated. Each event provides detailed tracking of settlement
+    # status, fee breakdowns, and reconciliation data across both incoming and
+    # outgoing transfers. Use funding events to monitor your platform's entire money
+    # movement lifecycle.
     class FundingEvents
       # Some parameter documentations has been truncated, see
       # {Straddle::Models::FundingEventListParams} for more details.
@@ -9,7 +15,7 @@ module Straddle
       # Retrieves a list of funding events for your account. This endpoint supports
       # advanced sorting and filtering options.
       #
-      # @overload list(created_from: nil, created_to: nil, direction: nil, event_type: nil, page_number: nil, page_size: nil, search_text: nil, sort_by: nil, sort_order: nil, trace_number: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @overload list(created_from: nil, created_to: nil, direction: nil, event_type: nil, page_number: nil, page_size: nil, search_text: nil, sort_by: nil, sort_order: nil, status: nil, status_reason: nil, status_source: nil, trace_id: nil, trace_number: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
       # @param created_from [Date, nil] Query param: The start date of the range to filter by using the `YYYY-MM-DD` for
       #
@@ -29,6 +35,14 @@ module Straddle
       #
       # @param sort_order [Symbol, Straddle::Models::FundingEventListParams::SortOrder] Query param: The order in which to sort the results.
       #
+      # @param status [Array<Symbol, Straddle::Models::FundingEventListParams::Status>, nil] Query param: Funding Event status.
+      #
+      # @param status_reason [Array<Symbol, Straddle::Models::FundingEventListParams::StatusReason>, nil] Query param: Reason for latest payment status change.
+      #
+      # @param status_source [Array<Symbol, Straddle::Models::FundingEventListParams::StatusSource>, nil] Query param: Source of latest payment status change.
+      #
+      # @param trace_id [String, nil] Query param: Trace Id.
+      #
       # @param trace_number [String, nil] Query param: Trace number.
       #
       # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
@@ -43,7 +57,6 @@ module Straddle
       #
       # @see Straddle::Models::FundingEventListParams
       def list(params = {})
-        parsed, options = Straddle::FundingEventListParams.dump_request(params)
         query_params =
           [
             :created_from,
@@ -55,12 +68,18 @@ module Straddle
             :search_text,
             :sort_by,
             :sort_order,
+            :status,
+            :status_reason,
+            :status_source,
+            :trace_id,
             :trace_number
           ]
+        parsed, options = Straddle::FundingEventListParams.dump_request(params)
+        query = Straddle::Internal::Util.encode_query_params(parsed.slice(*query_params))
         @client.request(
           method: :get,
           path: "v1/funding_events",
-          query: parsed.slice(*query_params),
+          query: query,
           headers: parsed.except(*query_params).transform_keys(
             correlation_id: "correlation-id",
             request_id: "request-id",

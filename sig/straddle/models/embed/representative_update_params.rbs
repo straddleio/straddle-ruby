@@ -3,6 +3,7 @@ module Straddle
     module Embed
       type representative_update_params =
         {
+          representative_id: String,
           dob: Date,
           email: String,
           first_name: String,
@@ -21,6 +22,8 @@ module Straddle
       class RepresentativeUpdateParams < Straddle::Internal::Type::BaseModel
         extend Straddle::Internal::Type::RequestParameters::Converter
         include Straddle::Internal::Type::RequestParameters
+
+        attr_accessor representative_id: String
 
         attr_accessor dob: Date
 
@@ -53,6 +56,7 @@ module Straddle
         def request_id=: (String) -> String
 
         def initialize: (
+          representative_id: String,
           dob: Date,
           email: String,
           first_name: String,
@@ -69,6 +73,7 @@ module Straddle
         ) -> void
 
         def to_hash: -> {
+          representative_id: String,
           dob: Date,
           email: String,
           first_name: String,

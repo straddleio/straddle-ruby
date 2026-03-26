@@ -95,6 +95,40 @@ module Straddle
       end
       attr_writer :sort_order
 
+      # Funding Event status.
+      sig do
+        returns(
+          T.nilable(
+            T::Array[Straddle::FundingEventListParams::Status::OrSymbol]
+          )
+        )
+      end
+      attr_accessor :status
+
+      # Reason for latest payment status change.
+      sig do
+        returns(
+          T.nilable(
+            T::Array[Straddle::FundingEventListParams::StatusReason::OrSymbol]
+          )
+        )
+      end
+      attr_accessor :status_reason
+
+      # Source of latest payment status change.
+      sig do
+        returns(
+          T.nilable(
+            T::Array[Straddle::FundingEventListParams::StatusSource::OrSymbol]
+          )
+        )
+      end
+      attr_accessor :status_source
+
+      # Trace Id.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :trace_id
+
       # Trace number.
       sig { returns(T.nilable(String)) }
       attr_accessor :trace_number
@@ -128,6 +162,19 @@ module Straddle
           search_text: T.nilable(String),
           sort_by: Straddle::FundingEventListParams::SortBy::OrSymbol,
           sort_order: Straddle::FundingEventListParams::SortOrder::OrSymbol,
+          status:
+            T.nilable(
+              T::Array[Straddle::FundingEventListParams::Status::OrSymbol]
+            ),
+          status_reason:
+            T.nilable(
+              T::Array[Straddle::FundingEventListParams::StatusReason::OrSymbol]
+            ),
+          status_source:
+            T.nilable(
+              T::Array[Straddle::FundingEventListParams::StatusSource::OrSymbol]
+            ),
+          trace_id: T.nilable(String),
           trace_number: T.nilable(String),
           correlation_id: String,
           request_id: String,
@@ -156,6 +203,14 @@ module Straddle
         sort_by: nil,
         # The order in which to sort the results.
         sort_order: nil,
+        # Funding Event status.
+        status: nil,
+        # Reason for latest payment status change.
+        status_reason: nil,
+        # Source of latest payment status change.
+        status_source: nil,
+        # Trace Id.
+        trace_id: nil,
         # Trace number.
         trace_number: nil,
         correlation_id: nil,
@@ -177,6 +232,23 @@ module Straddle
             search_text: T.nilable(String),
             sort_by: Straddle::FundingEventListParams::SortBy::OrSymbol,
             sort_order: Straddle::FundingEventListParams::SortOrder::OrSymbol,
+            status:
+              T.nilable(
+                T::Array[Straddle::FundingEventListParams::Status::OrSymbol]
+              ),
+            status_reason:
+              T.nilable(
+                T::Array[
+                  Straddle::FundingEventListParams::StatusReason::OrSymbol
+                ]
+              ),
+            status_source:
+              T.nilable(
+                T::Array[
+                  Straddle::FundingEventListParams::StatusSource::OrSymbol
+                ]
+              ),
+            trace_id: T.nilable(String),
             trace_number: T.nilable(String),
             correlation_id: String,
             request_id: String,
@@ -309,6 +381,267 @@ module Straddle
         sig do
           override.returns(
             T::Array[Straddle::FundingEventListParams::SortOrder::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
+      end
+
+      # The current status of the `charge` or `payout`.
+      module Status
+        extend Straddle::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Straddle::FundingEventListParams::Status)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        CREATED =
+          T.let(
+            :created,
+            Straddle::FundingEventListParams::Status::TaggedSymbol
+          )
+        SCHEDULED =
+          T.let(
+            :scheduled,
+            Straddle::FundingEventListParams::Status::TaggedSymbol
+          )
+        FAILED =
+          T.let(:failed, Straddle::FundingEventListParams::Status::TaggedSymbol)
+        CANCELLED =
+          T.let(
+            :cancelled,
+            Straddle::FundingEventListParams::Status::TaggedSymbol
+          )
+        ON_HOLD =
+          T.let(
+            :on_hold,
+            Straddle::FundingEventListParams::Status::TaggedSymbol
+          )
+        PENDING =
+          T.let(
+            :pending,
+            Straddle::FundingEventListParams::Status::TaggedSymbol
+          )
+        PAID =
+          T.let(:paid, Straddle::FundingEventListParams::Status::TaggedSymbol)
+        REVERSED =
+          T.let(
+            :reversed,
+            Straddle::FundingEventListParams::Status::TaggedSymbol
+          )
+        VALIDATING =
+          T.let(
+            :validating,
+            Straddle::FundingEventListParams::Status::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[Straddle::FundingEventListParams::Status::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
+      end
+
+      module StatusReason
+        extend Straddle::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Straddle::FundingEventListParams::StatusReason)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        INSUFFICIENT_FUNDS =
+          T.let(
+            :insufficient_funds,
+            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
+          )
+        CLOSED_BANK_ACCOUNT =
+          T.let(
+            :closed_bank_account,
+            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
+          )
+        INVALID_BANK_ACCOUNT =
+          T.let(
+            :invalid_bank_account,
+            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
+          )
+        INVALID_ROUTING =
+          T.let(
+            :invalid_routing,
+            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
+          )
+        DISPUTED =
+          T.let(
+            :disputed,
+            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
+          )
+        PAYMENT_STOPPED =
+          T.let(
+            :payment_stopped,
+            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
+          )
+        OWNER_DECEASED =
+          T.let(
+            :owner_deceased,
+            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
+          )
+        FROZEN_BANK_ACCOUNT =
+          T.let(
+            :frozen_bank_account,
+            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
+          )
+        RISK_REVIEW =
+          T.let(
+            :risk_review,
+            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
+          )
+        FRAUDULENT =
+          T.let(
+            :fraudulent,
+            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
+          )
+        DUPLICATE_ENTRY =
+          T.let(
+            :duplicate_entry,
+            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
+          )
+        INVALID_PAYKEY =
+          T.let(
+            :invalid_paykey,
+            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
+          )
+        PAYMENT_BLOCKED =
+          T.let(
+            :payment_blocked,
+            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
+          )
+        AMOUNT_TOO_LARGE =
+          T.let(
+            :amount_too_large,
+            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
+          )
+        TOO_MANY_ATTEMPTS =
+          T.let(
+            :too_many_attempts,
+            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
+          )
+        INTERNAL_SYSTEM_ERROR =
+          T.let(
+            :internal_system_error,
+            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
+          )
+        USER_REQUEST =
+          T.let(
+            :user_request,
+            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
+          )
+        OK =
+          T.let(
+            :ok,
+            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
+          )
+        OTHER_NETWORK_RETURN =
+          T.let(
+            :other_network_return,
+            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
+          )
+        PAYOUT_REFUSED =
+          T.let(
+            :payout_refused,
+            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
+          )
+        CANCEL_REQUEST =
+          T.let(
+            :cancel_request,
+            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
+          )
+        FAILED_VERIFICATION =
+          T.let(
+            :failed_verification,
+            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
+          )
+        REQUIRE_REVIEW =
+          T.let(
+            :require_review,
+            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
+          )
+        BLOCKED_BY_SYSTEM =
+          T.let(
+            :blocked_by_system,
+            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
+          )
+        WATCHTOWER_REVIEW =
+          T.let(
+            :watchtower_review,
+            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
+          )
+        VALIDATING =
+          T.let(
+            :validating,
+            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
+          )
+        AUTO_HOLD =
+          T.let(
+            :auto_hold,
+            Straddle::FundingEventListParams::StatusReason::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Straddle::FundingEventListParams::StatusReason::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
+      end
+
+      module StatusSource
+        extend Straddle::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Straddle::FundingEventListParams::StatusSource)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        WATCHTOWER =
+          T.let(
+            :watchtower,
+            Straddle::FundingEventListParams::StatusSource::TaggedSymbol
+          )
+        BANK_DECLINE =
+          T.let(
+            :bank_decline,
+            Straddle::FundingEventListParams::StatusSource::TaggedSymbol
+          )
+        CUSTOMER_DISPUTE =
+          T.let(
+            :customer_dispute,
+            Straddle::FundingEventListParams::StatusSource::TaggedSymbol
+          )
+        USER_ACTION =
+          T.let(
+            :user_action,
+            Straddle::FundingEventListParams::StatusSource::TaggedSymbol
+          )
+        SYSTEM =
+          T.let(
+            :system,
+            Straddle::FundingEventListParams::StatusSource::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Straddle::FundingEventListParams::StatusSource::TaggedSymbol
+            ]
           )
         end
         def self.values

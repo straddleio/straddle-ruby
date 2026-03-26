@@ -3,6 +3,10 @@
 module Straddle
   module Resources
     class Embed
+      # Linked bank accounts connect your platform users' external bank accounts to
+      # Straddle for settlements and payment funding. Each linked account undergoes
+      # automated verification and continuous monitoring. Use linked accounts to manage
+      # where clients receive deposits, fund payouts, and track settlement preferences.
       class LinkedBankAccounts
         # Creates a new linked bank account associated with a Straddle account. This
         # endpoint allows you to associate external bank accounts with a Straddle account
@@ -32,7 +36,7 @@ module Straddle
           # Body param: The unique identifier of the Straddle account to associate this bank
           # account with.
           account_id:,
-          # Body param:
+          # Body param
           bank_account:,
           # Body param: Optional description for the bank account.
           description: nil,
@@ -72,9 +76,9 @@ module Straddle
           ).returns(Straddle::Embed::LinkedBankAccountV1)
         end
         def update(
-          # Path param:
+          # Path param
           linked_bank_account_id,
-          # Body param:
+          # Body param
           bank_account:,
           # Body param: Up to 20 additional user-defined key-value pairs. Useful for storing
           # additional information about the linked bank account in a structured format.
@@ -120,7 +124,7 @@ module Straddle
         def list(
           # Query param: The unique identifier of the related account.
           account_id: nil,
-          # Query param:
+          # Query param
           level: nil,
           # Query param: Results page number. Starts at page 1.
           page_number: nil,

@@ -8,6 +8,11 @@ module Straddle
         extend Straddle::Internal::Type::RequestParameters::Converter
         include Straddle::Internal::Type::RequestParameters
 
+        # @!attribute linked_bank_account_id
+        #
+        #   @return [String]
+        required :linked_bank_account_id, String
+
         # @!attribute bank_account
         #
         #   @return [Straddle::Models::Embed::LinkedBankAccountUpdateParams::BankAccount]
@@ -35,9 +40,11 @@ module Straddle
         #   @return [String, nil]
         optional :request_id, String
 
-        # @!method initialize(bank_account:, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
+        # @!method initialize(linked_bank_account_id:, bank_account:, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Straddle::Models::Embed::LinkedBankAccountUpdateParams} for more details.
+        #
+        #   @param linked_bank_account_id [String]
         #
         #   @param bank_account [Straddle::Models::Embed::LinkedBankAccountUpdateParams::BankAccount]
         #

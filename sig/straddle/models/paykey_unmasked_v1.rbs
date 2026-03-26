@@ -199,7 +199,8 @@ module Straddle
           def self?.values: -> ::Array[Straddle::Models::PaykeyUnmaskedV1::Data::source]
         end
 
-        type status = :pending | :active | :inactive | :rejected | :review
+        type status =
+          :pending | :active | :inactive | :rejected | :review | :blocked
 
         module Status
           extend Straddle::Internal::Type::Enum
@@ -209,6 +210,7 @@ module Straddle
           INACTIVE: :inactive
           REJECTED: :rejected
           REVIEW: :review
+          BLOCKED: :blocked
 
           def self?.values: -> ::Array[Straddle::Models::PaykeyUnmaskedV1::Data::status]
         end
@@ -347,6 +349,13 @@ module Straddle
             | :ok
             | :other_network_return
             | :payout_refused
+            | :cancel_request
+            | :failed_verification
+            | :require_review
+            | :blocked_by_system
+            | :watchtower_review
+            | :validating
+            | :auto_hold
 
           module Reason
             extend Straddle::Internal::Type::Enum
@@ -371,6 +380,13 @@ module Straddle
             OK: :ok
             OTHER_NETWORK_RETURN: :other_network_return
             PAYOUT_REFUSED: :payout_refused
+            CANCEL_REQUEST: :cancel_request
+            FAILED_VERIFICATION: :failed_verification
+            REQUIRE_REVIEW: :require_review
+            BLOCKED_BY_SYSTEM: :blocked_by_system
+            WATCHTOWER_REVIEW: :watchtower_review
+            VALIDATING: :validating
+            AUTO_HOLD: :auto_hold
 
             def self?.values: -> ::Array[Straddle::Models::PaykeyUnmaskedV1::Data::StatusDetails::reason]
           end

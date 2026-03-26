@@ -108,7 +108,7 @@ module Straddle
         attr_accessor :currency
 
         # Description.
-        sig { returns(String) }
+        sig { returns(T.nilable(String)) }
         attr_accessor :description
 
         sig { returns(Straddle::Models::PayoutUnmaskResponse::Data::Device) }
@@ -161,6 +161,10 @@ module Straddle
         end
         attr_accessor :status_history
 
+        # Trace Ids.
+        sig { returns(T::Hash[Symbol, String]) }
+        attr_accessor :trace_ids
+
         # Created at.
         sig { returns(T.nilable(Time)) }
         attr_accessor :created_at
@@ -210,6 +214,19 @@ module Straddle
         sig { returns(T.nilable(Time)) }
         attr_accessor :processed_at
 
+        # Related payments.
+        sig do
+          returns(
+            T.nilable(
+              T::Hash[
+                Symbol,
+                Straddle::Models::PayoutUnmaskResponse::Data::RelatedPayment::TaggedSymbol
+              ]
+            )
+          )
+        end
+        attr_accessor :related_payments
+
         # Updated at.
         sig { returns(T.nilable(Time)) }
         attr_accessor :updated_at
@@ -221,7 +238,7 @@ module Straddle
             config:
               Straddle::Models::PayoutUnmaskResponse::Data::Config::OrHash,
             currency: String,
-            description: String,
+            description: T.nilable(String),
             device:
               Straddle::Models::PayoutUnmaskResponse::Data::Device::OrHash,
             external_id: String,
@@ -235,6 +252,7 @@ module Straddle
               T::Array[
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::OrHash
               ],
+            trace_ids: T::Hash[Symbol, String],
             created_at: T.nilable(Time),
             customer_details: Straddle::CustomerDetailsV1::OrHash,
             effective_at: T.nilable(Time),
@@ -243,6 +261,13 @@ module Straddle
             payment_rail:
               Straddle::Models::PayoutUnmaskResponse::Data::PaymentRail::OrSymbol,
             processed_at: T.nilable(Time),
+            related_payments:
+              T.nilable(
+                T::Hash[
+                  Symbol,
+                  Straddle::Models::PayoutUnmaskResponse::Data::RelatedPayment::OrSymbol
+                ]
+              ),
             updated_at: T.nilable(Time)
           ).returns(T.attached_class)
         end
@@ -270,6 +295,8 @@ module Straddle
           status_details:,
           # Status history.
           status_history:,
+          # Trace Ids.
+          trace_ids:,
           # Created at.
           created_at: nil,
           # Information about the customer associated with the charge or payout.
@@ -283,6 +310,8 @@ module Straddle
           payment_rail: nil,
           # Processed at.
           processed_at: nil,
+          # Related payments.
+          related_payments: nil,
           # Updated at.
           updated_at: nil
         )
@@ -295,7 +324,7 @@ module Straddle
               amount: Integer,
               config: Straddle::Models::PayoutUnmaskResponse::Data::Config,
               currency: String,
-              description: String,
+              description: T.nilable(String),
               device: Straddle::Models::PayoutUnmaskResponse::Data::Device,
               external_id: String,
               funding_ids: T::Array[String],
@@ -308,6 +337,7 @@ module Straddle
                 T::Array[
                   Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory
                 ],
+              trace_ids: T::Hash[Symbol, String],
               created_at: T.nilable(Time),
               customer_details: Straddle::CustomerDetailsV1,
               effective_at: T.nilable(Time),
@@ -316,6 +346,13 @@ module Straddle
               payment_rail:
                 Straddle::Models::PayoutUnmaskResponse::Data::PaymentRail::TaggedSymbol,
               processed_at: T.nilable(Time),
+              related_payments:
+                T.nilable(
+                  T::Hash[
+                    Symbol,
+                    Straddle::Models::PayoutUnmaskResponse::Data::RelatedPayment::TaggedSymbol
+                  ]
+                ),
               updated_at: T.nilable(Time)
             }
           )
@@ -331,6 +368,14 @@ module Straddle
                 Straddle::Internal::AnyHash
               )
             end
+
+          # Defines whether to automatically place this charge on hold after being created.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_accessor :auto_hold
+
+          # The reason the payout is being automatically held on creation.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :auto_hold_message
 
           # Payment will simulate processing if not Standard.
           sig do
@@ -352,11 +397,17 @@ module Straddle
 
           sig do
             params(
+              auto_hold: T.nilable(T::Boolean),
+              auto_hold_message: T.nilable(String),
               sandbox_outcome:
                 Straddle::Models::PayoutUnmaskResponse::Data::Config::SandboxOutcome::OrSymbol
             ).returns(T.attached_class)
           end
           def self.new(
+            # Defines whether to automatically place this charge on hold after being created.
+            auto_hold: nil,
+            # The reason the payout is being automatically held on creation.
+            auto_hold_message: nil,
             # Payment will simulate processing if not Standard.
             sandbox_outcome: nil
           )
@@ -365,6 +416,8 @@ module Straddle
           sig do
             override.returns(
               {
+                auto_hold: T.nilable(T::Boolean),
+                auto_hold_message: T.nilable(String),
                 sandbox_outcome:
                   Straddle::Models::PayoutUnmaskResponse::Data::Config::SandboxOutcome::TaggedSymbol
               }
@@ -530,6 +583,11 @@ module Straddle
           REVERSED =
             T.let(
               :reversed,
+              Straddle::Models::PayoutUnmaskResponse::Data::Status::TaggedSymbol
+            )
+          VALIDATING =
+            T.let(
+              :validating,
               Straddle::Models::PayoutUnmaskResponse::Data::Status::TaggedSymbol
             )
 
@@ -754,6 +812,41 @@ module Straddle
                 :payout_refused,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
               )
+            CANCEL_REQUEST =
+              T.let(
+                :cancel_request,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
+            FAILED_VERIFICATION =
+              T.let(
+                :failed_verification,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
+            REQUIRE_REVIEW =
+              T.let(
+                :require_review,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
+            BLOCKED_BY_SYSTEM =
+              T.let(
+                :blocked_by_system,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
+            WATCHTOWER_REVIEW =
+              T.let(
+                :watchtower_review,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
+            VALIDATING =
+              T.let(
+                :validating,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
+            AUTO_HOLD =
+              T.let(
+                :auto_hold,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Reason::TaggedSymbol
+              )
 
             sig do
               override.returns(
@@ -870,6 +963,11 @@ module Straddle
                 :reversed,
                 Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Status::TaggedSymbol
               )
+            VALIDATING =
+              T.let(
+                :validating,
+                Straddle::Models::PayoutUnmaskResponse::Data::StatusHistory::Status::TaggedSymbol
+              )
 
             sig do
               override.returns(
@@ -906,6 +1004,45 @@ module Straddle
             override.returns(
               T::Array[
                 Straddle::Models::PayoutUnmaskResponse::Data::PaymentRail::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        module RelatedPayment
+          extend Straddle::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Straddle::Models::PayoutUnmaskResponse::Data::RelatedPayment
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          ORIGINAL =
+            T.let(
+              :original,
+              Straddle::Models::PayoutUnmaskResponse::Data::RelatedPayment::TaggedSymbol
+            )
+          RESUBMIT =
+            T.let(
+              :resubmit,
+              Straddle::Models::PayoutUnmaskResponse::Data::RelatedPayment::TaggedSymbol
+            )
+          REFUND =
+            T.let(
+              :refund,
+              Straddle::Models::PayoutUnmaskResponse::Data::RelatedPayment::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Straddle::Models::PayoutUnmaskResponse::Data::RelatedPayment::TaggedSymbol
               ]
             )
           end

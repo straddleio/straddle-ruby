@@ -162,6 +162,35 @@ module Straddle
             :payout_refused,
             Straddle::StatusDetailsV1::Reason::TaggedSymbol
           )
+        CANCEL_REQUEST =
+          T.let(
+            :cancel_request,
+            Straddle::StatusDetailsV1::Reason::TaggedSymbol
+          )
+        FAILED_VERIFICATION =
+          T.let(
+            :failed_verification,
+            Straddle::StatusDetailsV1::Reason::TaggedSymbol
+          )
+        REQUIRE_REVIEW =
+          T.let(
+            :require_review,
+            Straddle::StatusDetailsV1::Reason::TaggedSymbol
+          )
+        BLOCKED_BY_SYSTEM =
+          T.let(
+            :blocked_by_system,
+            Straddle::StatusDetailsV1::Reason::TaggedSymbol
+          )
+        WATCHTOWER_REVIEW =
+          T.let(
+            :watchtower_review,
+            Straddle::StatusDetailsV1::Reason::TaggedSymbol
+          )
+        VALIDATING =
+          T.let(:validating, Straddle::StatusDetailsV1::Reason::TaggedSymbol)
+        AUTO_HOLD =
+          T.let(:auto_hold, Straddle::StatusDetailsV1::Reason::TaggedSymbol)
 
         sig do
           override.returns(

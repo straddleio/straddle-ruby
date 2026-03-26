@@ -2,6 +2,12 @@
 
 module Straddle
   module Resources
+    # Funding events represent all money movement between Straddle and an Account's
+    # external bank accounts. They are automatically generated when charges settle or
+    # payouts are initiated. Each event provides detailed tracking of settlement
+    # status, fee breakdowns, and reconciliation data across both incoming and
+    # outgoing transfers. Use funding events to monitor your platform's entire money
+    # movement lifecycle.
     class FundingEvents
       # Retrieves a list of funding events for your account. This endpoint supports
       # advanced sorting and filtering options.
@@ -16,6 +22,19 @@ module Straddle
           search_text: T.nilable(String),
           sort_by: Straddle::FundingEventListParams::SortBy::OrSymbol,
           sort_order: Straddle::FundingEventListParams::SortOrder::OrSymbol,
+          status:
+            T.nilable(
+              T::Array[Straddle::FundingEventListParams::Status::OrSymbol]
+            ),
+          status_reason:
+            T.nilable(
+              T::Array[Straddle::FundingEventListParams::StatusReason::OrSymbol]
+            ),
+          status_source:
+            T.nilable(
+              T::Array[Straddle::FundingEventListParams::StatusSource::OrSymbol]
+            ),
+          trace_id: T.nilable(String),
           trace_number: T.nilable(String),
           correlation_id: String,
           request_id: String,
@@ -50,6 +69,14 @@ module Straddle
         sort_by: nil,
         # Query param: The order in which to sort the results.
         sort_order: nil,
+        # Query param: Funding Event status.
+        status: nil,
+        # Query param: Reason for latest payment status change.
+        status_reason: nil,
+        # Query param: Source of latest payment status change.
+        status_source: nil,
+        # Query param: Trace Id.
+        trace_id: nil,
         # Query param: Trace number.
         trace_number: nil,
         # Header param: Optional client generated identifier to trace and debug a series

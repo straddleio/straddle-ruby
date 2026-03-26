@@ -5,10 +5,12 @@ module Straddle
         customer_id: String,
         page_number: Integer,
         page_size: Integer,
+        search_text: String,
         sort_by: Straddle::Models::PaykeyListParams::sort_by,
         sort_order: Straddle::Models::PaykeyListParams::sort_order,
         source: ::Array[Straddle::Models::PaykeyListParams::source],
         status: ::Array[Straddle::Models::PaykeyListParams::status],
+        unblock_eligible: bool,
         correlation_id: String,
         request_id: String,
         straddle_account_id: String
@@ -30,6 +32,10 @@ module Straddle
       attr_reader page_size: Integer?
 
       def page_size=: (Integer) -> Integer
+
+      attr_reader search_text: String?
+
+      def search_text=: (String) -> String
 
       attr_reader sort_by: Straddle::Models::PaykeyListParams::sort_by?
 
@@ -55,6 +61,10 @@ module Straddle
         ::Array[Straddle::Models::PaykeyListParams::status]
       ) -> ::Array[Straddle::Models::PaykeyListParams::status]
 
+      attr_reader unblock_eligible: bool?
+
+      def unblock_eligible=: (bool) -> bool
+
       attr_reader correlation_id: String?
 
       def correlation_id=: (String) -> String
@@ -71,10 +81,12 @@ module Straddle
         ?customer_id: String,
         ?page_number: Integer,
         ?page_size: Integer,
+        ?search_text: String,
         ?sort_by: Straddle::Models::PaykeyListParams::sort_by,
         ?sort_order: Straddle::Models::PaykeyListParams::sort_order,
         ?source: ::Array[Straddle::Models::PaykeyListParams::source],
         ?status: ::Array[Straddle::Models::PaykeyListParams::status],
+        ?unblock_eligible: bool,
         ?correlation_id: String,
         ?request_id: String,
         ?straddle_account_id: String,
@@ -85,10 +97,12 @@ module Straddle
         customer_id: String,
         page_number: Integer,
         page_size: Integer,
+        search_text: String,
         sort_by: Straddle::Models::PaykeyListParams::sort_by,
         sort_order: Straddle::Models::PaykeyListParams::sort_order,
         source: ::Array[Straddle::Models::PaykeyListParams::source],
         status: ::Array[Straddle::Models::PaykeyListParams::status],
+        unblock_eligible: bool,
         correlation_id: String,
         request_id: String,
         straddle_account_id: String,
@@ -133,7 +147,8 @@ module Straddle
         def self?.values: -> ::Array[Straddle::Models::PaykeyListParams::source]
       end
 
-      type status = :pending | :active | :inactive | :rejected | :review
+      type status =
+        :pending | :active | :inactive | :rejected | :review | :blocked
 
       module Status
         extend Straddle::Internal::Type::Enum
@@ -143,6 +158,7 @@ module Straddle
         INACTIVE: :inactive
         REJECTED: :rejected
         REVIEW: :review
+        BLOCKED: :blocked
 
         def self?.values: -> ::Array[Straddle::Models::PaykeyListParams::status]
       end

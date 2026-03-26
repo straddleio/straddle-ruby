@@ -15,6 +15,9 @@ module Straddle
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :account_id
+
         sig do
           returns(
             T.nilable(
@@ -52,6 +55,7 @@ module Straddle
 
         sig do
           params(
+            account_id: String,
             final_status:
               Straddle::Embed::AccountSimulateParams::FinalStatus::OrSymbol,
             correlation_id: String,
@@ -61,6 +65,7 @@ module Straddle
           ).returns(T.attached_class)
         end
         def self.new(
+          account_id:,
           final_status: nil,
           correlation_id: nil,
           idempotency_key: nil,
@@ -72,6 +77,7 @@ module Straddle
         sig do
           override.returns(
             {
+              account_id: String,
               final_status:
                 Straddle::Embed::AccountSimulateParams::FinalStatus::OrSymbol,
               correlation_id: String,

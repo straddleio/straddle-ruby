@@ -2,6 +2,8 @@
 
 module Straddle
   module Resources
+    # Payments provide endpoints to filter both Charges and Payouts with multiple
+    # different parameters.
     class Payments
       # Some parameter documentations has been truncated, see
       # {Straddle::Models::PaymentListParams} for more details.
@@ -9,19 +11,21 @@ module Straddle
       # Search for payments, including `charges` and `payouts`, using a variety of
       # criteria. This endpoint supports advanced sorting and filtering options.
       #
-      # @overload list(customer_id: nil, default_page_size: nil, default_sort: nil, default_sort_order: nil, external_id: nil, funding_id: nil, max_amount: nil, max_created_at: nil, max_effective_at: nil, max_payment_date: nil, min_amount: nil, min_created_at: nil, min_effective_at: nil, min_payment_date: nil, page_number: nil, page_size: nil, paykey: nil, paykey_id: nil, payment_id: nil, payment_status: nil, payment_type: nil, search_text: nil, sort_by: nil, sort_order: nil, status_reason: nil, status_source: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @overload list(customer_id: nil, default_page_size: nil, default_sort: nil, default_sort_order: nil, external_id: nil, funding_id: nil, include_metadata: nil, max_amount: nil, max_created_at: nil, max_effective_at: nil, max_payment_date: nil, min_amount: nil, min_created_at: nil, min_effective_at: nil, min_payment_date: nil, page_number: nil, page_size: nil, paykey: nil, paykey_id: nil, payment_id: nil, payment_status: nil, payment_type: nil, search_text: nil, sort_by: nil, sort_order: nil, status_reason: nil, status_source: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
       # @param customer_id [String] Query param: Search using the `customer_id` of a `charge` or `payout`.
       #
-      # @param default_page_size [Integer] Query param:
+      # @param default_page_size [Integer] Query param
       #
       # @param default_sort [Symbol, Straddle::Models::PaymentListParams::DefaultSort] Query param: The field to sort the results by.
       #
-      # @param default_sort_order [Symbol, Straddle::Models::PaymentListParams::DefaultSortOrder] Query param:
+      # @param default_sort_order [Symbol, Straddle::Models::PaymentListParams::DefaultSortOrder] Query param
       #
       # @param external_id [String] Query param: Search using the `external_id` of a `charge` or `payout`.
       #
       # @param funding_id [String] Query param: Search using the `funding_id` of a `charge` or `payout`.
+      #
+      # @param include_metadata [Boolean] Query param: Include the metadata for payments in the returned data.
       #
       # @param max_amount [Integer] Query param: Search using a maximum `amount` of a `charge` or `payout`.
       #
@@ -57,7 +61,7 @@ module Straddle
       #
       # @param sort_by [Symbol, Straddle::Models::PaymentListParams::SortBy] Query param: The field to sort the results by.
       #
-      # @param sort_order [Symbol, Straddle::Models::PaymentListParams::SortOrder] Query param:
+      # @param sort_order [Symbol, Straddle::Models::PaymentListParams::SortOrder] Query param
       #
       # @param status_reason [Array<Symbol, Straddle::Models::PaymentListParams::StatusReason>] Query param: Reason for latest payment status change.
       #
@@ -75,7 +79,6 @@ module Straddle
       #
       # @see Straddle::Models::PaymentListParams
       def list(params = {})
-        parsed, options = Straddle::PaymentListParams.dump_request(params)
         query_params =
           [
             :customer_id,
@@ -84,6 +87,7 @@ module Straddle
             :default_sort_order,
             :external_id,
             :funding_id,
+            :include_metadata,
             :max_amount,
             :max_created_at,
             :max_effective_at,
@@ -105,10 +109,12 @@ module Straddle
             :status_reason,
             :status_source
           ]
+        parsed, options = Straddle::PaymentListParams.dump_request(params)
+        query = Straddle::Internal::Util.encode_query_params(parsed.slice(*query_params))
         @client.request(
           method: :get,
           path: "v1/payments",
-          query: parsed.slice(*query_params),
+          query: query,
           headers: parsed.except(*query_params).transform_keys(
             correlation_id: "correlation-id",
             request_id: "request-id",

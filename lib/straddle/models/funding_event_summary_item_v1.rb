@@ -103,13 +103,24 @@ module Straddle
         #   @return [Time]
         required :updated_at, Time
 
+        # @!attribute status
+        #   The current status of the `charge` or `payout`.
+        #
+        #   @return [Symbol, Straddle::Models::FundingEventSummaryItemV1::Data::Status, nil]
+        optional :status, enum: -> { Straddle::FundingEventSummaryItemV1::Data::Status }
+
+        # @!attribute status_details
+        #
+        #   @return [Straddle::Models::FundingEventSummaryItemV1::Data::StatusDetails, nil]
+        optional :status_details, -> { Straddle::FundingEventSummaryItemV1::Data::StatusDetails }
+
         # @!attribute trace_number
         #   The trace number of the funding event.
         #
         #   @return [String, nil]
         optional :trace_number, String, nil?: true
 
-        # @!method initialize(id:, amount:, created_at:, direction:, event_type:, payment_count:, trace_ids:, trace_numbers:, transfer_date:, updated_at:, trace_number: nil)
+        # @!method initialize(id:, amount:, created_at:, direction:, event_type:, payment_count:, trace_ids:, trace_numbers:, transfer_date:, updated_at:, status: nil, status_details: nil, trace_number: nil)
         #   Some parameter documentations has been truncated, see
         #   {Straddle::Models::FundingEventSummaryItemV1::Data} for more details.
         #
@@ -132,6 +143,10 @@ module Straddle
         #   @param transfer_date [Date] The date on which the funding event occurred. For `deposits` and `returns`, this
         #
         #   @param updated_at [Time] Updated at.
+        #
+        #   @param status [Symbol, Straddle::Models::FundingEventSummaryItemV1::Data::Status] The current status of the `charge` or `payout`.
+        #
+        #   @param status_details [Straddle::Models::FundingEventSummaryItemV1::Data::StatusDetails]
         #
         #   @param trace_number [String, nil] The trace number of the funding event.
 
@@ -163,6 +178,118 @@ module Straddle
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        # The current status of the `charge` or `payout`.
+        #
+        # @see Straddle::Models::FundingEventSummaryItemV1::Data#status
+        module Status
+          extend Straddle::Internal::Type::Enum
+
+          CREATED = :created
+          SCHEDULED = :scheduled
+          FAILED = :failed
+          CANCELLED = :cancelled
+          ON_HOLD = :on_hold
+          PENDING = :pending
+          PAID = :paid
+          REVERSED = :reversed
+          VALIDATING = :validating
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # @see Straddle::Models::FundingEventSummaryItemV1::Data#status_details
+        class StatusDetails < Straddle::Internal::Type::BaseModel
+          # @!attribute changed_at
+          #   The time the status change occurred.
+          #
+          #   @return [Time]
+          required :changed_at, Time
+
+          # @!attribute message
+          #   A human-readable description of the current status.
+          #
+          #   @return [String]
+          required :message, String
+
+          # @!attribute reason
+          #
+          #   @return [Symbol, Straddle::Models::FundingEventSummaryItemV1::Data::StatusDetails::Reason]
+          required :reason, enum: -> { Straddle::FundingEventSummaryItemV1::Data::StatusDetails::Reason }
+
+          # @!attribute source
+          #
+          #   @return [Symbol, Straddle::Models::FundingEventSummaryItemV1::Data::StatusDetails::Source]
+          required :source, enum: -> { Straddle::FundingEventSummaryItemV1::Data::StatusDetails::Source }
+
+          # @!attribute code
+          #   The status code if applicable.
+          #
+          #   @return [String, nil]
+          optional :code, String, nil?: true
+
+          # @!method initialize(changed_at:, message:, reason:, source:, code: nil)
+          #   @param changed_at [Time] The time the status change occurred.
+          #
+          #   @param message [String] A human-readable description of the current status.
+          #
+          #   @param reason [Symbol, Straddle::Models::FundingEventSummaryItemV1::Data::StatusDetails::Reason]
+          #
+          #   @param source [Symbol, Straddle::Models::FundingEventSummaryItemV1::Data::StatusDetails::Source]
+          #
+          #   @param code [String, nil] The status code if applicable.
+
+          # @see Straddle::Models::FundingEventSummaryItemV1::Data::StatusDetails#reason
+          module Reason
+            extend Straddle::Internal::Type::Enum
+
+            INSUFFICIENT_FUNDS = :insufficient_funds
+            CLOSED_BANK_ACCOUNT = :closed_bank_account
+            INVALID_BANK_ACCOUNT = :invalid_bank_account
+            INVALID_ROUTING = :invalid_routing
+            DISPUTED = :disputed
+            PAYMENT_STOPPED = :payment_stopped
+            OWNER_DECEASED = :owner_deceased
+            FROZEN_BANK_ACCOUNT = :frozen_bank_account
+            RISK_REVIEW = :risk_review
+            FRAUDULENT = :fraudulent
+            DUPLICATE_ENTRY = :duplicate_entry
+            INVALID_PAYKEY = :invalid_paykey
+            PAYMENT_BLOCKED = :payment_blocked
+            AMOUNT_TOO_LARGE = :amount_too_large
+            TOO_MANY_ATTEMPTS = :too_many_attempts
+            INTERNAL_SYSTEM_ERROR = :internal_system_error
+            USER_REQUEST = :user_request
+            OK = :ok
+            OTHER_NETWORK_RETURN = :other_network_return
+            PAYOUT_REFUSED = :payout_refused
+            CANCEL_REQUEST = :cancel_request
+            FAILED_VERIFICATION = :failed_verification
+            REQUIRE_REVIEW = :require_review
+            BLOCKED_BY_SYSTEM = :blocked_by_system
+            WATCHTOWER_REVIEW = :watchtower_review
+            VALIDATING = :validating
+            AUTO_HOLD = :auto_hold
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # @see Straddle::Models::FundingEventSummaryItemV1::Data::StatusDetails#source
+          module Source
+            extend Straddle::Internal::Type::Enum
+
+            WATCHTOWER = :watchtower
+            BANK_DECLINE = :bank_decline
+            CUSTOMER_DISPUTE = :customer_dispute
+            USER_ACTION = :user_action
+            SYSTEM = :system
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
       end
 

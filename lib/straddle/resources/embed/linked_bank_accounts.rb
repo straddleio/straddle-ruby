@@ -3,6 +3,10 @@
 module Straddle
   module Resources
     class Embed
+      # Linked bank accounts connect your platform users' external bank accounts to
+      # Straddle for settlements and payment funding. Each linked account undergoes
+      # automated verification and continuous monitoring. Use linked accounts to manage
+      # where clients receive deposits, fund payouts, and track settlement preferences.
       class LinkedBankAccounts
         # Some parameter documentations has been truncated, see
         # {Straddle::Models::Embed::LinkedBankAccountCreateParams} for more details.
@@ -16,7 +20,7 @@ module Straddle
         #
         # @param account_id [String, nil] Body param: The unique identifier of the Straddle account to associate this bank
         #
-        # @param bank_account [Straddle::Models::Embed::LinkedBankAccountCreateParams::BankAccount] Body param:
+        # @param bank_account [Straddle::Models::Embed::LinkedBankAccountCreateParams::BankAccount] Body param
         #
         # @param description [String, nil] Body param: Optional description for the bank account.
         #
@@ -61,9 +65,9 @@ module Straddle
         #
         # @overload update(linked_bank_account_id, bank_account:, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
         #
-        # @param linked_bank_account_id [String] Path param:
+        # @param linked_bank_account_id [String] Path param
         #
-        # @param bank_account [Straddle::Models::Embed::LinkedBankAccountUpdateParams::BankAccount] Body param:
+        # @param bank_account [Straddle::Models::Embed::LinkedBankAccountUpdateParams::BankAccount] Body param
         #
         # @param metadata [Hash{Symbol=>String, nil}, nil] Body param: Up to 20 additional user-defined key-value pairs. Useful for storing
         #
@@ -104,7 +108,7 @@ module Straddle
         #
         # @param account_id [String] Query param: The unique identifier of the related account.
         #
-        # @param level [Symbol, Straddle::Models::Embed::LinkedBankAccountListParams::Level] Query param:
+        # @param level [Symbol, Straddle::Models::Embed::LinkedBankAccountListParams::Level] Query param
         #
         # @param page_number [Integer] Query param: Results page number. Starts at page 1.
         #
@@ -128,7 +132,6 @@ module Straddle
         #
         # @see Straddle::Models::Embed::LinkedBankAccountListParams
         def list(params = {})
-          parsed, options = Straddle::Embed::LinkedBankAccountListParams.dump_request(params)
           query_params = [
             :account_id,
             :level,
@@ -139,10 +142,12 @@ module Straddle
             :sort_order,
             :status
           ]
+          parsed, options = Straddle::Embed::LinkedBankAccountListParams.dump_request(params)
+          query = Straddle::Internal::Util.encode_query_params(parsed.slice(*query_params))
           @client.request(
             method: :get,
             path: "v1/linked_bank_accounts",
-            query: parsed.slice(*query_params),
+            query: query,
             headers: parsed.except(*query_params).transform_keys(
               correlation_id: "correlation-id",
               request_id: "request-id"

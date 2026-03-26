@@ -2,13 +2,17 @@
 
 module Straddle
   module Resources
+    # Payouts represent transfers from Straddle to customer bank accounts. Create
+    # payouts to handle disbursements, process refunds, or manage marketplace
+    # settlements. Use payouts to send money quickly and securely with the most
+    # cost-effective rail automatically selected.
     class Payouts
       # Use payouts to send money to your customers.
       sig do
         params(
           amount: Integer,
           currency: String,
-          description: String,
+          description: T.nilable(String),
           device: Straddle::DeviceInfoV1::OrHash,
           external_id: String,
           paykey: String,
@@ -40,7 +44,7 @@ module Straddle
         # Body param: The desired date on which the payout should be occur. For payouts,
         # this means the date you want the funds to be sent from your bank account.
         payment_date:,
-        # Body param:
+        # Body param
         config: nil,
         # Body param: Up to 20 additional user-defined key-value pairs. Useful for storing
         # additional information about the payout in a structured format.
@@ -65,7 +69,7 @@ module Straddle
         params(
           id: String,
           amount: Integer,
-          description: String,
+          description: T.nilable(String),
           payment_date: Date,
           metadata: T.nilable(T::Hash[Symbol, String]),
           correlation_id: String,
@@ -76,7 +80,7 @@ module Straddle
         ).returns(Straddle::PayoutV1)
       end
       def update(
-        # Path param:
+        # Path param
         id,
         # Body param: The amount of the payout in cents.
         amount:,
@@ -116,7 +120,7 @@ module Straddle
         ).returns(Straddle::PayoutV1)
       end
       def cancel(
-        # Path param:
+        # Path param
         id,
         # Body param: Details about why the payout status was updated.
         reason:,
@@ -171,7 +175,7 @@ module Straddle
         ).returns(Straddle::PayoutV1)
       end
       def hold(
-        # Path param:
+        # Path param
         id,
         # Body param: Details about why the payout status was updated.
         reason:,
@@ -203,7 +207,7 @@ module Straddle
         ).returns(Straddle::PayoutV1)
       end
       def release(
-        # Path param:
+        # Path param
         id,
         # Body param: Details about why the payout status was updated.
         reason:,

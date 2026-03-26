@@ -3,6 +3,12 @@
 module Straddle
   module Resources
     class Customers
+      # Customers represent the end users who send or receive payments through your
+      # integration. Each customer undergoes automatic identity verification and fraud
+      # screening upon creation. Use customers to track payment history, manage bank
+      # account connections, and maintain a secure record of all transactions associated
+      # with a user. Customers can be either individuals or businesses with appropriate
+      # compliance checks for each type.
       class Review
         # Updates the status of a customer's identity decision. This endpoint allows you
         # to modify the outcome of a customer risk screening and is useful for correcting
@@ -20,7 +26,7 @@ module Straddle
           ).returns(Straddle::CustomerV1)
         end
         def decision(
-          # Path param:
+          # Path param
           id,
           # Body param: The final status of the customer review.
           status:,

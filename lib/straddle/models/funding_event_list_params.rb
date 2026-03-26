@@ -63,6 +63,36 @@ module Straddle
       #   @return [Symbol, Straddle::Models::FundingEventListParams::SortOrder, nil]
       optional :sort_order, enum: -> { Straddle::FundingEventListParams::SortOrder }
 
+      # @!attribute status
+      #   Funding Event status.
+      #
+      #   @return [Array<Symbol, Straddle::Models::FundingEventListParams::Status>, nil]
+      optional :status,
+               -> { Straddle::Internal::Type::ArrayOf[enum: Straddle::FundingEventListParams::Status] },
+               nil?: true
+
+      # @!attribute status_reason
+      #   Reason for latest payment status change.
+      #
+      #   @return [Array<Symbol, Straddle::Models::FundingEventListParams::StatusReason>, nil]
+      optional :status_reason,
+               -> { Straddle::Internal::Type::ArrayOf[enum: Straddle::FundingEventListParams::StatusReason] },
+               nil?: true
+
+      # @!attribute status_source
+      #   Source of latest payment status change.
+      #
+      #   @return [Array<Symbol, Straddle::Models::FundingEventListParams::StatusSource>, nil]
+      optional :status_source,
+               -> { Straddle::Internal::Type::ArrayOf[enum: Straddle::FundingEventListParams::StatusSource] },
+               nil?: true
+
+      # @!attribute trace_id
+      #   Trace Id.
+      #
+      #   @return [String, nil]
+      optional :trace_id, String, nil?: true
+
       # @!attribute trace_number
       #   Trace number.
       #
@@ -84,7 +114,7 @@ module Straddle
       #   @return [String, nil]
       optional :straddle_account_id, String
 
-      # @!method initialize(created_from: nil, created_to: nil, direction: nil, event_type: nil, page_number: nil, page_size: nil, search_text: nil, sort_by: nil, sort_order: nil, trace_number: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @!method initialize(created_from: nil, created_to: nil, direction: nil, event_type: nil, page_number: nil, page_size: nil, search_text: nil, sort_by: nil, sort_order: nil, status: nil, status_reason: nil, status_source: nil, trace_id: nil, trace_number: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Straddle::Models::FundingEventListParams} for more details.
       #
@@ -105,6 +135,14 @@ module Straddle
       #   @param sort_by [Symbol, Straddle::Models::FundingEventListParams::SortBy] The field to sort the results by.
       #
       #   @param sort_order [Symbol, Straddle::Models::FundingEventListParams::SortOrder] The order in which to sort the results.
+      #
+      #   @param status [Array<Symbol, Straddle::Models::FundingEventListParams::Status>, nil] Funding Event status.
+      #
+      #   @param status_reason [Array<Symbol, Straddle::Models::FundingEventListParams::StatusReason>, nil] Reason for latest payment status change.
+      #
+      #   @param status_source [Array<Symbol, Straddle::Models::FundingEventListParams::StatusSource>, nil] Source of latest payment status change.
+      #
+      #   @param trace_id [String, nil] Trace Id.
       #
       #   @param trace_number [String, nil] Trace number.
       #
@@ -160,6 +198,72 @@ module Straddle
 
         ASC = :asc
         DESC = :desc
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+
+      # The current status of the `charge` or `payout`.
+      module Status
+        extend Straddle::Internal::Type::Enum
+
+        CREATED = :created
+        SCHEDULED = :scheduled
+        FAILED = :failed
+        CANCELLED = :cancelled
+        ON_HOLD = :on_hold
+        PENDING = :pending
+        PAID = :paid
+        REVERSED = :reversed
+        VALIDATING = :validating
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+
+      module StatusReason
+        extend Straddle::Internal::Type::Enum
+
+        INSUFFICIENT_FUNDS = :insufficient_funds
+        CLOSED_BANK_ACCOUNT = :closed_bank_account
+        INVALID_BANK_ACCOUNT = :invalid_bank_account
+        INVALID_ROUTING = :invalid_routing
+        DISPUTED = :disputed
+        PAYMENT_STOPPED = :payment_stopped
+        OWNER_DECEASED = :owner_deceased
+        FROZEN_BANK_ACCOUNT = :frozen_bank_account
+        RISK_REVIEW = :risk_review
+        FRAUDULENT = :fraudulent
+        DUPLICATE_ENTRY = :duplicate_entry
+        INVALID_PAYKEY = :invalid_paykey
+        PAYMENT_BLOCKED = :payment_blocked
+        AMOUNT_TOO_LARGE = :amount_too_large
+        TOO_MANY_ATTEMPTS = :too_many_attempts
+        INTERNAL_SYSTEM_ERROR = :internal_system_error
+        USER_REQUEST = :user_request
+        OK = :ok
+        OTHER_NETWORK_RETURN = :other_network_return
+        PAYOUT_REFUSED = :payout_refused
+        CANCEL_REQUEST = :cancel_request
+        FAILED_VERIFICATION = :failed_verification
+        REQUIRE_REVIEW = :require_review
+        BLOCKED_BY_SYSTEM = :blocked_by_system
+        WATCHTOWER_REVIEW = :watchtower_review
+        VALIDATING = :validating
+        AUTO_HOLD = :auto_hold
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+
+      module StatusSource
+        extend Straddle::Internal::Type::Enum
+
+        WATCHTOWER = :watchtower
+        BANK_DECLINE = :bank_decline
+        CUSTOMER_DISPUTE = :customer_dispute
+        USER_ACTION = :user_action
+        SYSTEM = :system
 
         # @!method self.values
         #   @return [Array<Symbol>]

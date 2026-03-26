@@ -2,7 +2,17 @@
 
 module Straddle
   module Resources
+    # Paykeys are secure tokens that link verified customer identities to their bank
+    # accounts. Each Paykey includes built-in balance checking, fraud detection
+    # through LSTM machine learning models, and can be reused for subscriptions and
+    # recurring payments without storing sensitive data. Paykeys eliminate fraud by
+    # ensuring the person initiating payment owns the funding account.
     class Paykeys
+      # Paykeys are secure tokens that link verified customer identities to their bank
+      # accounts. Each Paykey includes built-in balance checking, fraud detection
+      # through LSTM machine learning models, and can be reused for subscriptions and
+      # recurring payments without storing sensitive data. Paykeys eliminate fraud by
+      # ensuring the person initiating payment owns the funding account.
       sig { returns(Straddle::Resources::Paykeys::Review) }
       attr_reader :review
 
@@ -13,10 +23,12 @@ module Straddle
           customer_id: String,
           page_number: Integer,
           page_size: Integer,
+          search_text: String,
           sort_by: Straddle::PaykeyListParams::SortBy::OrSymbol,
           sort_order: Straddle::PaykeyListParams::SortOrder::OrSymbol,
           source: T::Array[Straddle::PaykeyListParams::Source::OrSymbol],
           status: T::Array[Straddle::PaykeyListParams::Status::OrSymbol],
+          unblock_eligible: T::Boolean,
           correlation_id: String,
           request_id: String,
           straddle_account_id: String,
@@ -34,14 +46,21 @@ module Straddle
         page_number: nil,
         # Query param: Number of results per page. Maximum: 1000.
         page_size: nil,
-        # Query param:
+        # Query param: General search term to filter paykeys.
+        search_text: nil,
+        # Query param
         sort_by: nil,
-        # Query param:
+        # Query param
         sort_order: nil,
         # Query param: Filter paykeys by their source.
         source: nil,
         # Query param: Filter paykeys by their current status.
         status: nil,
+        # Query param: Filter paykeys by unblock eligibility. When true, returns only
+        # blocked paykeys eligible for client-initiated unblocking (blocked due to R29
+        # returns and not previously unblocked). When false, returns only blocked paykeys
+        # that are not eligible for unblocking.
+        unblock_eligible: nil,
         # Header param: Optional client generated identifier to trace and debug a series
         # of requests.
         correlation_id: nil,
@@ -66,9 +85,9 @@ module Straddle
         ).returns(Straddle::PaykeyV1)
       end
       def cancel(
-        # Path param:
+        # Path param
         id,
-        # Body param:
+        # Body param
         reason: nil,
         # Header param: Optional client generated identifier to trace and debug a series
         # of requests.
@@ -108,10 +127,9 @@ module Straddle
       )
       end
 
-      # Retrieves the details of a paykey that has previously been created, including
-      # unmasked bank account fields. Supply the unique paykey ID that was returned from
-      # your previous request, and Straddle will return the corresponding paykey
-      # information.
+      # Retrieves the details of a paykey that has previously been created. Supply the
+      # unique paykey ID that was returned from your previous request, and Straddle will
+      # return the corresponding paykey information including the unmasked token.
       sig do
         params(
           id: String,

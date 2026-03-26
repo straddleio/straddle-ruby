@@ -8,6 +8,11 @@ module Straddle
         extend Straddle::Internal::Type::RequestParameters::Converter
         include Straddle::Internal::Type::RequestParameters
 
+        # @!attribute account_id
+        #
+        #   @return [String]
+        required :account_id, String
+
         # @!attribute business_profile
         #
         #   @return [Straddle::Models::Embed::BusinessProfileV1]
@@ -42,9 +47,11 @@ module Straddle
         #   @return [String, nil]
         optional :request_id, String
 
-        # @!method initialize(business_profile:, external_id: nil, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
+        # @!method initialize(account_id:, business_profile:, external_id: nil, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Straddle::Models::Embed::AccountUpdateParams} for more details.
+        #
+        #   @param account_id [String]
         #
         #   @param business_profile [Straddle::Models::Embed::BusinessProfileV1]
         #

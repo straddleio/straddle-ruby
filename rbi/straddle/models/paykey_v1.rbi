@@ -148,6 +148,12 @@ module Straddle
         end
         attr_writer :status_details
 
+        # Indicates whether this paykey is eligible for client-initiated unblocking. Only
+        # present for blocked paykeys. True when blocked due to R29 returns and not
+        # previously unblocked, false otherwise. Null when paykey is not blocked.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_accessor :unblock_eligible
+
         sig do
           params(
             id: String,
@@ -165,7 +171,8 @@ module Straddle
             external_id: T.nilable(String),
             institution_name: T.nilable(String),
             metadata: T.nilable(T::Hash[Symbol, String]),
-            status_details: Straddle::PaykeyV1::Data::StatusDetails::OrHash
+            status_details: Straddle::PaykeyV1::Data::StatusDetails::OrHash,
+            unblock_eligible: T.nilable(T::Boolean)
           ).returns(T.attached_class)
         end
         def self.new(
@@ -197,7 +204,11 @@ module Straddle
           # Up to 20 additional user-defined key-value pairs. Useful for storing additional
           # information about the paykey in a structured format.
           metadata: nil,
-          status_details: nil
+          status_details: nil,
+          # Indicates whether this paykey is eligible for client-initiated unblocking. Only
+          # present for blocked paykeys. True when blocked due to R29 returns and not
+          # previously unblocked, false otherwise. Null when paykey is not blocked.
+          unblock_eligible: nil
         )
         end
 
@@ -219,7 +230,8 @@ module Straddle
               external_id: T.nilable(String),
               institution_name: T.nilable(String),
               metadata: T.nilable(T::Hash[Symbol, String]),
-              status_details: Straddle::PaykeyV1::Data::StatusDetails
+              status_details: Straddle::PaykeyV1::Data::StatusDetails,
+              unblock_eligible: T.nilable(T::Boolean)
             }
           )
         end
@@ -417,6 +429,8 @@ module Straddle
             T.let(:rejected, Straddle::PaykeyV1::Data::Status::TaggedSymbol)
           REVIEW =
             T.let(:review, Straddle::PaykeyV1::Data::Status::TaggedSymbol)
+          BLOCKED =
+            T.let(:blocked, Straddle::PaykeyV1::Data::Status::TaggedSymbol)
 
           sig do
             override.returns(
@@ -781,6 +795,41 @@ module Straddle
             PAYOUT_REFUSED =
               T.let(
                 :payout_refused,
+                Straddle::PaykeyV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
+            CANCEL_REQUEST =
+              T.let(
+                :cancel_request,
+                Straddle::PaykeyV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
+            FAILED_VERIFICATION =
+              T.let(
+                :failed_verification,
+                Straddle::PaykeyV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
+            REQUIRE_REVIEW =
+              T.let(
+                :require_review,
+                Straddle::PaykeyV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
+            BLOCKED_BY_SYSTEM =
+              T.let(
+                :blocked_by_system,
+                Straddle::PaykeyV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
+            WATCHTOWER_REVIEW =
+              T.let(
+                :watchtower_review,
+                Straddle::PaykeyV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
+            VALIDATING =
+              T.let(
+                :validating,
+                Straddle::PaykeyV1::Data::StatusDetails::Reason::TaggedSymbol
+              )
+            AUTO_HOLD =
+              T.let(
+                :auto_hold,
                 Straddle::PaykeyV1::Data::StatusDetails::Reason::TaggedSymbol
               )
 

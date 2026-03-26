@@ -32,6 +32,13 @@ module Straddle
       sig { params(page_size: Integer).void }
       attr_writer :page_size
 
+      # General search term to filter paykeys.
+      sig { returns(T.nilable(String)) }
+      attr_reader :search_text
+
+      sig { params(search_text: String).void }
+      attr_writer :search_text
+
       sig { returns(T.nilable(Straddle::PaykeyListParams::SortBy::OrSymbol)) }
       attr_reader :sort_by
 
@@ -78,6 +85,16 @@ module Straddle
       end
       attr_writer :status
 
+      # Filter paykeys by unblock eligibility. When true, returns only blocked paykeys
+      # eligible for client-initiated unblocking (blocked due to R29 returns and not
+      # previously unblocked). When false, returns only blocked paykeys that are not
+      # eligible for unblocking.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :unblock_eligible
+
+      sig { params(unblock_eligible: T::Boolean).void }
+      attr_writer :unblock_eligible
+
       sig { returns(T.nilable(String)) }
       attr_reader :correlation_id
 
@@ -101,10 +118,12 @@ module Straddle
           customer_id: String,
           page_number: Integer,
           page_size: Integer,
+          search_text: String,
           sort_by: Straddle::PaykeyListParams::SortBy::OrSymbol,
           sort_order: Straddle::PaykeyListParams::SortOrder::OrSymbol,
           source: T::Array[Straddle::PaykeyListParams::Source::OrSymbol],
           status: T::Array[Straddle::PaykeyListParams::Status::OrSymbol],
+          unblock_eligible: T::Boolean,
           correlation_id: String,
           request_id: String,
           straddle_account_id: String,
@@ -118,12 +137,19 @@ module Straddle
         page_number: nil,
         # Number of results per page. Maximum: 1000.
         page_size: nil,
+        # General search term to filter paykeys.
+        search_text: nil,
         sort_by: nil,
         sort_order: nil,
         # Filter paykeys by their source.
         source: nil,
         # Filter paykeys by their current status.
         status: nil,
+        # Filter paykeys by unblock eligibility. When true, returns only blocked paykeys
+        # eligible for client-initiated unblocking (blocked due to R29 returns and not
+        # previously unblocked). When false, returns only blocked paykeys that are not
+        # eligible for unblocking.
+        unblock_eligible: nil,
         correlation_id: nil,
         request_id: nil,
         straddle_account_id: nil,
@@ -137,10 +163,12 @@ module Straddle
             customer_id: String,
             page_number: Integer,
             page_size: Integer,
+            search_text: String,
             sort_by: Straddle::PaykeyListParams::SortBy::OrSymbol,
             sort_order: Straddle::PaykeyListParams::SortOrder::OrSymbol,
             source: T::Array[Straddle::PaykeyListParams::Source::OrSymbol],
             status: T::Array[Straddle::PaykeyListParams::Status::OrSymbol],
+            unblock_eligible: T::Boolean,
             correlation_id: String,
             request_id: String,
             straddle_account_id: String,
@@ -239,6 +267,8 @@ module Straddle
           T.let(:rejected, Straddle::PaykeyListParams::Status::TaggedSymbol)
         REVIEW =
           T.let(:review, Straddle::PaykeyListParams::Status::TaggedSymbol)
+        BLOCKED =
+          T.let(:blocked, Straddle::PaykeyListParams::Status::TaggedSymbol)
 
         sig do
           override.returns(

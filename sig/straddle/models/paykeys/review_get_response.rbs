@@ -69,7 +69,8 @@ module Straddle
               external_id: String?,
               institution_name: String?,
               metadata: ::Hash[Symbol, String]?,
-              status_details: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails
+              status_details: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails,
+              unblock_eligible: bool?
             }
 
           class PaykeyDetails < Straddle::Internal::Type::BaseModel
@@ -117,6 +118,8 @@ module Straddle
               Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails
             ) -> Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails
 
+            attr_accessor unblock_eligible: bool?
+
             def initialize: (
               id: String,
               config: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Config,
@@ -133,7 +136,8 @@ module Straddle
               ?external_id: String?,
               ?institution_name: String?,
               ?metadata: ::Hash[Symbol, String]?,
-              ?status_details: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails
+              ?status_details: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails,
+              ?unblock_eligible: bool?
             ) -> void
 
             def to_hash: -> {
@@ -152,7 +156,8 @@ module Straddle
               external_id: String?,
               institution_name: String?,
               metadata: ::Hash[Symbol, String]?,
-              status_details: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails
+              status_details: Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails,
+              unblock_eligible: bool?
             }
 
             type config =
@@ -226,7 +231,8 @@ module Straddle
               def self?.values: -> ::Array[Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::source]
             end
 
-            type status = :pending | :active | :inactive | :rejected | :review
+            type status =
+              :pending | :active | :inactive | :rejected | :review | :blocked
 
             module Status
               extend Straddle::Internal::Type::Enum
@@ -236,6 +242,7 @@ module Straddle
               INACTIVE: :inactive
               REJECTED: :rejected
               REVIEW: :review
+              BLOCKED: :blocked
 
               def self?.values: -> ::Array[Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::status]
             end
@@ -374,6 +381,13 @@ module Straddle
                 | :ok
                 | :other_network_return
                 | :payout_refused
+                | :cancel_request
+                | :failed_verification
+                | :require_review
+                | :blocked_by_system
+                | :watchtower_review
+                | :validating
+                | :auto_hold
 
               module Reason
                 extend Straddle::Internal::Type::Enum
@@ -398,6 +412,13 @@ module Straddle
                 OK: :ok
                 OTHER_NETWORK_RETURN: :other_network_return
                 PAYOUT_REFUSED: :payout_refused
+                CANCEL_REQUEST: :cancel_request
+                FAILED_VERIFICATION: :failed_verification
+                REQUIRE_REVIEW: :require_review
+                BLOCKED_BY_SYSTEM: :blocked_by_system
+                WATCHTOWER_REVIEW: :watchtower_review
+                VALIDATING: :validating
+                AUTO_HOLD: :auto_hold
 
                 def self?.values: -> ::Array[Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::StatusDetails::reason]
               end
@@ -519,12 +540,11 @@ module Straddle
                   reason: String?
                 }
 
-                type decision = :unknown | :accept | :reject | :review
+                type decision = :accept | :reject | :review
 
                 module Decision
                   extend Straddle::Internal::Type::Enum
 
-                  UNKNOWN: :unknown
                   ACCEPT: :accept
                   REJECT: :reject
                   REVIEW: :review
@@ -579,12 +599,11 @@ module Straddle
                   reason: String?
                 }
 
-                type decision = :unknown | :accept | :reject | :review
+                type decision = :accept | :reject | :review
 
                 module Decision
                   extend Straddle::Internal::Type::Enum
 
-                  UNKNOWN: :unknown
                   ACCEPT: :accept
                   REJECT: :reject
                   REVIEW: :review
@@ -594,12 +613,11 @@ module Straddle
               end
             end
 
-            type decision = :unknown | :accept | :reject | :review
+            type decision = :accept | :reject | :review
 
             module Decision
               extend Straddle::Internal::Type::Enum
 
-              UNKNOWN: :unknown
               ACCEPT: :accept
               REJECT: :reject
               REVIEW: :review

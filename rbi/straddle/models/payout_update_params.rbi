@@ -11,12 +11,15 @@ module Straddle
           T.any(Straddle::PayoutUpdateParams, Straddle::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       # The amount of the payout in cents.
       sig { returns(Integer) }
       attr_accessor :amount
 
       # An arbitrary description for the payout.
-      sig { returns(String) }
+      sig { returns(T.nilable(String)) }
       attr_accessor :description
 
       # The desired date on which the payment should be occur. For payouts, this means
@@ -55,8 +58,9 @@ module Straddle
 
       sig do
         params(
+          id: String,
           amount: Integer,
-          description: String,
+          description: T.nilable(String),
           payment_date: Date,
           metadata: T.nilable(T::Hash[Symbol, String]),
           correlation_id: String,
@@ -67,6 +71,7 @@ module Straddle
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         # The amount of the payout in cents.
         amount:,
         # An arbitrary description for the payout.
@@ -88,8 +93,9 @@ module Straddle
       sig do
         override.returns(
           {
+            id: String,
             amount: Integer,
-            description: String,
+            description: T.nilable(String),
             payment_date: Date,
             metadata: T.nilable(T::Hash[Symbol, String]),
             correlation_id: String,

@@ -2,6 +2,7 @@ module Straddle
   module Models
     type customer_update_params =
       {
+        id: String,
         device: Straddle::DeviceUnmaskedV1,
         email: String,
         name: String,
@@ -21,6 +22,8 @@ module Straddle
     class CustomerUpdateParams < Straddle::Internal::Type::BaseModel
       extend Straddle::Internal::Type::RequestParameters::Converter
       include Straddle::Internal::Type::RequestParameters
+
+      attr_accessor id: String
 
       attr_accessor device: Straddle::DeviceUnmaskedV1
 
@@ -57,6 +60,7 @@ module Straddle
       def straddle_account_id=: (String) -> String
 
       def initialize: (
+        id: String,
         device: Straddle::DeviceUnmaskedV1,
         email: String,
         name: String,
@@ -74,6 +78,7 @@ module Straddle
       ) -> void
 
       def to_hash: -> {
+        id: String,
         device: Straddle::DeviceUnmaskedV1,
         email: String,
         name: String,

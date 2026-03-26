@@ -6,7 +6,7 @@ module Straddle
         config: Straddle::ChargeCreateParams::Config,
         consent_type: Straddle::Models::ChargeCreateParams::consent_type,
         currency: String,
-        description: String,
+        description: String?,
         device: Straddle::DeviceInfoV1,
         external_id: String,
         paykey: String,
@@ -31,7 +31,7 @@ module Straddle
 
       attr_accessor currency: String
 
-      attr_accessor description: String
+      attr_accessor description: String?
 
       attr_accessor device: Straddle::DeviceInfoV1
 
@@ -64,7 +64,7 @@ module Straddle
         config: Straddle::ChargeCreateParams::Config,
         consent_type: Straddle::Models::ChargeCreateParams::consent_type,
         currency: String,
-        description: String,
+        description: String?,
         device: Straddle::DeviceInfoV1,
         external_id: String,
         paykey: String,
@@ -82,7 +82,7 @@ module Straddle
         config: Straddle::ChargeCreateParams::Config,
         consent_type: Straddle::Models::ChargeCreateParams::consent_type,
         currency: String,
-        description: String,
+        description: String?,
         device: Straddle::DeviceInfoV1,
         external_id: String,
         paykey: String,
@@ -98,11 +98,17 @@ module Straddle
       type config =
         {
           balance_check: Straddle::Models::ChargeCreateParams::Config::balance_check,
+          auto_hold: bool?,
+          auto_hold_message: String?,
           sandbox_outcome: Straddle::Models::ChargeCreateParams::Config::sandbox_outcome
         }
 
       class Config < Straddle::Internal::Type::BaseModel
         attr_accessor balance_check: Straddle::Models::ChargeCreateParams::Config::balance_check
+
+        attr_accessor auto_hold: bool?
+
+        attr_accessor auto_hold_message: String?
 
         attr_reader sandbox_outcome: Straddle::Models::ChargeCreateParams::Config::sandbox_outcome?
 
@@ -112,11 +118,15 @@ module Straddle
 
         def initialize: (
           balance_check: Straddle::Models::ChargeCreateParams::Config::balance_check,
+          ?auto_hold: bool?,
+          ?auto_hold_message: String?,
           ?sandbox_outcome: Straddle::Models::ChargeCreateParams::Config::sandbox_outcome
         ) -> void
 
         def to_hash: -> {
           balance_check: Straddle::Models::ChargeCreateParams::Config::balance_check,
+          auto_hold: bool?,
+          auto_hold_message: String?,
           sandbox_outcome: Straddle::Models::ChargeCreateParams::Config::sandbox_outcome
         }
 

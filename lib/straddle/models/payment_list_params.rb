@@ -41,6 +41,12 @@ module Straddle
       #   @return [String, nil]
       optional :funding_id, String
 
+      # @!attribute include_metadata
+      #   Include the metadata for payments in the returned data.
+      #
+      #   @return [Boolean, nil]
+      optional :include_metadata, Straddle::Internal::Type::Boolean
+
       # @!attribute max_amount
       #   Search using a maximum `amount` of a `charge` or `payout`.
       #
@@ -179,7 +185,7 @@ module Straddle
       #   @return [String, nil]
       optional :straddle_account_id, String
 
-      # @!method initialize(customer_id: nil, default_page_size: nil, default_sort: nil, default_sort_order: nil, external_id: nil, funding_id: nil, max_amount: nil, max_created_at: nil, max_effective_at: nil, max_payment_date: nil, min_amount: nil, min_created_at: nil, min_effective_at: nil, min_payment_date: nil, page_number: nil, page_size: nil, paykey: nil, paykey_id: nil, payment_id: nil, payment_status: nil, payment_type: nil, search_text: nil, sort_by: nil, sort_order: nil, status_reason: nil, status_source: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @!method initialize(customer_id: nil, default_page_size: nil, default_sort: nil, default_sort_order: nil, external_id: nil, funding_id: nil, include_metadata: nil, max_amount: nil, max_created_at: nil, max_effective_at: nil, max_payment_date: nil, min_amount: nil, min_created_at: nil, min_effective_at: nil, min_payment_date: nil, page_number: nil, page_size: nil, paykey: nil, paykey_id: nil, payment_id: nil, payment_status: nil, payment_type: nil, search_text: nil, sort_by: nil, sort_order: nil, status_reason: nil, status_source: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #   @param customer_id [String] Search using the `customer_id` of a `charge` or `payout`.
       #
       #   @param default_page_size [Integer]
@@ -191,6 +197,8 @@ module Straddle
       #   @param external_id [String] Search using the `external_id` of a `charge` or `payout`.
       #
       #   @param funding_id [String] Search using the `funding_id` of a `charge` or `payout`.
+      #
+      #   @param include_metadata [Boolean] Include the metadata for payments in the returned data.
       #
       #   @param max_amount [Integer] Search using a maximum `amount` of a `charge` or `payout`.
       #
@@ -276,6 +284,7 @@ module Straddle
         PENDING = :pending
         PAID = :paid
         REVERSED = :reversed
+        VALIDATING = :validating
 
         # @!method self.values
         #   @return [Array<Symbol>]
@@ -339,6 +348,13 @@ module Straddle
         OK = :ok
         OTHER_NETWORK_RETURN = :other_network_return
         PAYOUT_REFUSED = :payout_refused
+        CANCEL_REQUEST = :cancel_request
+        FAILED_VERIFICATION = :failed_verification
+        REQUIRE_REVIEW = :require_review
+        BLOCKED_BY_SYSTEM = :blocked_by_system
+        WATCHTOWER_REVIEW = :watchtower_review
+        VALIDATING = :validating
+        AUTO_HOLD = :auto_hold
 
         # @!method self.values
         #   @return [Array<Symbol>]

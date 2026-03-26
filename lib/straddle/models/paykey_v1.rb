@@ -132,7 +132,15 @@ module Straddle
         #   @return [Straddle::Models::PaykeyV1::Data::StatusDetails, nil]
         optional :status_details, -> { Straddle::PaykeyV1::Data::StatusDetails }
 
-        # @!method initialize(id:, config:, created_at:, label:, paykey:, source:, status:, updated_at:, balance: nil, bank_data: nil, customer_id: nil, expires_at: nil, external_id: nil, institution_name: nil, metadata: nil, status_details: nil)
+        # @!attribute unblock_eligible
+        #   Indicates whether this paykey is eligible for client-initiated unblocking. Only
+        #   present for blocked paykeys. True when blocked due to R29 returns and not
+        #   previously unblocked, false otherwise. Null when paykey is not blocked.
+        #
+        #   @return [Boolean, nil]
+        optional :unblock_eligible, Straddle::Internal::Type::Boolean, nil?: true
+
+        # @!method initialize(id:, config:, created_at:, label:, paykey:, source:, status:, updated_at:, balance: nil, bank_data: nil, customer_id: nil, expires_at: nil, external_id: nil, institution_name: nil, metadata: nil, status_details: nil, unblock_eligible: nil)
         #   Some parameter documentations has been truncated, see
         #   {Straddle::Models::PaykeyV1::Data} for more details.
         #
@@ -167,6 +175,8 @@ module Straddle
         #   @param metadata [Hash{Symbol=>String}, nil] Up to 20 additional user-defined key-value pairs. Useful for storing additional
         #
         #   @param status_details [Straddle::Models::PaykeyV1::Data::StatusDetails]
+        #
+        #   @param unblock_eligible [Boolean, nil] Indicates whether this paykey is eligible for client-initiated unblocking. Only
 
         # @see Straddle::Models::PaykeyV1::Data#config
         class Config < Straddle::Internal::Type::BaseModel
@@ -234,6 +244,7 @@ module Straddle
           INACTIVE = :inactive
           REJECTED = :rejected
           REVIEW = :review
+          BLOCKED = :blocked
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -385,6 +396,13 @@ module Straddle
             OK = :ok
             OTHER_NETWORK_RETURN = :other_network_return
             PAYOUT_REFUSED = :payout_refused
+            CANCEL_REQUEST = :cancel_request
+            FAILED_VERIFICATION = :failed_verification
+            REQUIRE_REVIEW = :require_review
+            BLOCKED_BY_SYSTEM = :blocked_by_system
+            WATCHTOWER_REVIEW = :watchtower_review
+            VALIDATING = :validating
+            AUTO_HOLD = :auto_hold
 
             # @!method self.values
             #   @return [Array<Symbol>]

@@ -2,6 +2,8 @@
 
 module Straddle
   module Resources
+    # Payments provide endpoints to filter both Charges and Payouts with multiple
+    # different parameters.
     class Payments
       # Search for payments, including `charges` and `payouts`, using a variety of
       # criteria. This endpoint supports advanced sorting and filtering options.
@@ -14,6 +16,7 @@ module Straddle
             Straddle::PaymentListParams::DefaultSortOrder::OrSymbol,
           external_id: String,
           funding_id: String,
+          include_metadata: T::Boolean,
           max_amount: Integer,
           max_created_at: Time,
           max_effective_at: Time,
@@ -51,16 +54,18 @@ module Straddle
       def list(
         # Query param: Search using the `customer_id` of a `charge` or `payout`.
         customer_id: nil,
-        # Query param:
+        # Query param
         default_page_size: nil,
         # Query param: The field to sort the results by.
         default_sort: nil,
-        # Query param:
+        # Query param
         default_sort_order: nil,
         # Query param: Search using the `external_id` of a `charge` or `payout`.
         external_id: nil,
         # Query param: Search using the `funding_id` of a `charge` or `payout`.
         funding_id: nil,
+        # Query param: Include the metadata for payments in the returned data.
+        include_metadata: nil,
         # Query param: Search using a maximum `amount` of a `charge` or `payout`.
         max_amount: nil,
         # Query param: Search using the latest `created_at` date of a `charge` or
@@ -98,7 +103,7 @@ module Straddle
         search_text: nil,
         # Query param: The field to sort the results by.
         sort_by: nil,
-        # Query param:
+        # Query param
         sort_order: nil,
         # Query param: Reason for latest payment status change.
         status_reason: nil,

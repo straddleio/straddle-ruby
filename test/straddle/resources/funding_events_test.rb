@@ -29,6 +29,8 @@ class Straddle::Test::Resources::FundingEventsTest < Straddle::Test::ResourceTes
         trace_numbers: ^(Straddle::Internal::Type::ArrayOf[String]),
         transfer_date: Date,
         updated_at: Time,
+        status: Straddle::FundingEventSummaryPagedV1::Data::Status | nil,
+        status_details: Straddle::FundingEventSummaryPagedV1::Data::StatusDetails | nil,
         trace_number: String | nil
       }
     end

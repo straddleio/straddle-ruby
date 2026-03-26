@@ -22,8 +22,8 @@ module Straddle
       # @!attribute description
       #   An arbitrary description for the payout.
       #
-      #   @return [String]
-      required :description, String
+      #   @return [String, nil]
+      required :description, String, nil?: true
 
       # @!attribute device
       #   Information about the device used when the customer authorized the payout.
@@ -91,7 +91,7 @@ module Straddle
       #
       #   @param currency [String] The currency of the payout. Only USD is supported.
       #
-      #   @param description [String] An arbitrary description for the payout.
+      #   @param description [String, nil] An arbitrary description for the payout.
       #
       #   @param device [Straddle::Models::DeviceInfoV1] Information about the device used when the customer authorized the payout.
       #
@@ -116,13 +116,29 @@ module Straddle
       #   @param request_options [Straddle::RequestOptions, Hash{Symbol=>Object}]
 
       class Config < Straddle::Internal::Type::BaseModel
+        # @!attribute auto_hold
+        #   Defines whether to automatically place this charge on hold after being created.
+        #
+        #   @return [Boolean, nil]
+        optional :auto_hold, Straddle::Internal::Type::Boolean, nil?: true
+
+        # @!attribute auto_hold_message
+        #   The reason the payout is being automatically held on creation.
+        #
+        #   @return [String, nil]
+        optional :auto_hold_message, String, nil?: true
+
         # @!attribute sandbox_outcome
         #   Payment will simulate processing if not Standard.
         #
         #   @return [Symbol, Straddle::Models::PayoutCreateParams::Config::SandboxOutcome, nil]
         optional :sandbox_outcome, enum: -> { Straddle::PayoutCreateParams::Config::SandboxOutcome }
 
-        # @!method initialize(sandbox_outcome: nil)
+        # @!method initialize(auto_hold: nil, auto_hold_message: nil, sandbox_outcome: nil)
+        #   @param auto_hold [Boolean, nil] Defines whether to automatically place this charge on hold after being created.
+        #
+        #   @param auto_hold_message [String, nil] The reason the payout is being automatically held on creation.
+        #
         #   @param sandbox_outcome [Symbol, Straddle::Models::PayoutCreateParams::Config::SandboxOutcome] Payment will simulate processing if not Standard.
 
         # Payment will simulate processing if not Standard.

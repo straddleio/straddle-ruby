@@ -7,6 +7,11 @@ module Straddle
       extend Straddle::Internal::Type::RequestParameters::Converter
       include Straddle::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute amount
       #   The amount of the charge in cents.
       #
@@ -16,8 +21,8 @@ module Straddle
       # @!attribute description
       #   An arbitrary description for the charge.
       #
-      #   @return [String]
-      required :description, String
+      #   @return [String, nil]
+      required :description, String, nil?: true
 
       # @!attribute payment_date
       #   The desired date on which the payment should be occur. For charges, this means
@@ -53,13 +58,15 @@ module Straddle
       #   @return [String, nil]
       optional :straddle_account_id, String
 
-      # @!method initialize(amount:, description:, payment_date:, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @!method initialize(id:, amount:, description:, payment_date:, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Straddle::Models::ChargeUpdateParams} for more details.
       #
+      #   @param id [String]
+      #
       #   @param amount [Integer] The amount of the charge in cents.
       #
-      #   @param description [String] An arbitrary description for the charge.
+      #   @param description [String, nil] An arbitrary description for the charge.
       #
       #   @param payment_date [Date] The desired date on which the payment should be occur. For charges, this means t
       #

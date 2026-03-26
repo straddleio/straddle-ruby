@@ -545,6 +545,11 @@ module Straddle
                 :review,
                 Straddle::Models::Bridge::LinkCreateTanResponse::Data::Status::TaggedSymbol
               )
+            BLOCKED =
+              T.let(
+                :blocked,
+                Straddle::Models::Bridge::LinkCreateTanResponse::Data::Status::TaggedSymbol
+              )
 
             sig do
               override.returns(
@@ -926,6 +931,41 @@ module Straddle
               PAYOUT_REFUSED =
                 T.let(
                   :payout_refused,
+                  Straddle::Models::Bridge::LinkCreateTanResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
+              CANCEL_REQUEST =
+                T.let(
+                  :cancel_request,
+                  Straddle::Models::Bridge::LinkCreateTanResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
+              FAILED_VERIFICATION =
+                T.let(
+                  :failed_verification,
+                  Straddle::Models::Bridge::LinkCreateTanResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
+              REQUIRE_REVIEW =
+                T.let(
+                  :require_review,
+                  Straddle::Models::Bridge::LinkCreateTanResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
+              BLOCKED_BY_SYSTEM =
+                T.let(
+                  :blocked_by_system,
+                  Straddle::Models::Bridge::LinkCreateTanResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
+              WATCHTOWER_REVIEW =
+                T.let(
+                  :watchtower_review,
+                  Straddle::Models::Bridge::LinkCreateTanResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
+              VALIDATING =
+                T.let(
+                  :validating,
+                  Straddle::Models::Bridge::LinkCreateTanResponse::Data::StatusDetails::Reason::TaggedSymbol
+                )
+              AUTO_HOLD =
+                T.let(
+                  :auto_hold,
                   Straddle::Models::Bridge::LinkCreateTanResponse::Data::StatusDetails::Reason::TaggedSymbol
                 )
 

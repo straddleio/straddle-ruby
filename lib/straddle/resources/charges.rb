@@ -2,6 +2,11 @@
 
 module Straddle
   module Resources
+    # Charges represent attempts to debit money from a customer's bank account using a
+    # Paykey. Each charge includes automatic balance verification, real-time fraud
+    # screening, and multi-rail optimization and detailed status tracking throughout
+    # the payment lifecycle. Use charges to accept bank payments with confidence
+    # knowing every transaction is protected.
     class Charges
       # Some parameter documentations has been truncated, see
       # {Straddle::Models::ChargeCreateParams} for more details.
@@ -12,15 +17,15 @@ module Straddle
       #
       # @param amount [Integer] Body param: The amount of the charge in cents.
       #
-      # @param config [Straddle::Models::ChargeCreateParams::Config] Body param:
+      # @param config [Straddle::Models::ChargeCreateParams::Config] Body param
       #
       # @param consent_type [Symbol, Straddle::Models::ChargeCreateParams::ConsentType] Body param: The channel or mechanism through which the payment was authorized. U
       #
       # @param currency [String] Body param: The currency of the charge. Only USD is supported.
       #
-      # @param description [String] Body param: An arbitrary description for the charge.
+      # @param description [String, nil] Body param: An arbitrary description for the charge.
       #
-      # @param device [Straddle::Models::DeviceInfoV1] Body param:
+      # @param device [Straddle::Models::DeviceInfoV1] Body param
       #
       # @param external_id [String] Body param: Unique identifier for the charge in your database. This value must b
       #
@@ -70,11 +75,11 @@ module Straddle
       #
       # @overload update(id, amount:, description:, payment_date:, metadata: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
-      # @param id [String] Path param:
+      # @param id [String] Path param
       #
       # @param amount [Integer] Body param: The amount of the charge in cents.
       #
-      # @param description [String] Body param: An arbitrary description for the charge.
+      # @param description [String, nil] Body param: An arbitrary description for the charge.
       #
       # @param payment_date [Date] Body param: The desired date on which the payment should be occur. For charges,
       #
@@ -120,7 +125,7 @@ module Straddle
       #
       # @overload cancel(id, reason: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
-      # @param id [String] Path param:
+      # @param id [String] Path param
       #
       # @param reason [String, nil] Body param: Details about why the charge status was updated.
       #
@@ -197,7 +202,7 @@ module Straddle
       #
       # @overload hold(id, reason: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
-      # @param id [String] Path param:
+      # @param id [String] Path param
       #
       # @param reason [String, nil] Body param: Details about why the charge status was updated.
       #
@@ -241,7 +246,7 @@ module Straddle
       #
       # @overload release(id, reason: nil, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
-      # @param id [String] Path param:
+      # @param id [String] Path param
       #
       # @param reason [String, nil] Body param: Details about why the charge status was updated.
       #

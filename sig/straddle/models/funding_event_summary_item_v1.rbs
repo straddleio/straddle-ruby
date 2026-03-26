@@ -38,6 +38,8 @@ module Straddle
           trace_numbers: ::Array[String],
           transfer_date: Date,
           updated_at: Time,
+          status: Straddle::Models::FundingEventSummaryItemV1::Data::status,
+          status_details: Straddle::FundingEventSummaryItemV1::Data::StatusDetails,
           trace_number: String?
         }
 
@@ -62,6 +64,18 @@ module Straddle
 
         attr_accessor updated_at: Time
 
+        attr_reader status: Straddle::Models::FundingEventSummaryItemV1::Data::status?
+
+        def status=: (
+          Straddle::Models::FundingEventSummaryItemV1::Data::status
+        ) -> Straddle::Models::FundingEventSummaryItemV1::Data::status
+
+        attr_reader status_details: Straddle::FundingEventSummaryItemV1::Data::StatusDetails?
+
+        def status_details=: (
+          Straddle::FundingEventSummaryItemV1::Data::StatusDetails
+        ) -> Straddle::FundingEventSummaryItemV1::Data::StatusDetails
+
         attr_accessor trace_number: String?
 
         def initialize: (
@@ -75,6 +89,8 @@ module Straddle
           trace_numbers: ::Array[String],
           transfer_date: Date,
           updated_at: Time,
+          ?status: Straddle::Models::FundingEventSummaryItemV1::Data::status,
+          ?status_details: Straddle::FundingEventSummaryItemV1::Data::StatusDetails,
           ?trace_number: String?
         ) -> void
 
@@ -89,6 +105,8 @@ module Straddle
           trace_numbers: ::Array[String],
           transfer_date: Date,
           updated_at: Time,
+          status: Straddle::Models::FundingEventSummaryItemV1::Data::status,
+          status_details: Straddle::FundingEventSummaryItemV1::Data::StatusDetails,
           trace_number: String?
         }
 
@@ -118,6 +136,152 @@ module Straddle
           PAYOUT_WITHDRAWAL: :payout_withdrawal
 
           def self?.values: -> ::Array[Straddle::Models::FundingEventSummaryItemV1::Data::event_type]
+        end
+
+        type status =
+          :created
+          | :scheduled
+          | :failed
+          | :cancelled
+          | :on_hold
+          | :pending
+          | :paid
+          | :reversed
+          | :validating
+
+        module Status
+          extend Straddle::Internal::Type::Enum
+
+          CREATED: :created
+          SCHEDULED: :scheduled
+          FAILED: :failed
+          CANCELLED: :cancelled
+          ON_HOLD: :on_hold
+          PENDING: :pending
+          PAID: :paid
+          REVERSED: :reversed
+          VALIDATING: :validating
+
+          def self?.values: -> ::Array[Straddle::Models::FundingEventSummaryItemV1::Data::status]
+        end
+
+        type status_details =
+          {
+            changed_at: Time,
+            message: String,
+            reason: Straddle::Models::FundingEventSummaryItemV1::Data::StatusDetails::reason,
+            source: Straddle::Models::FundingEventSummaryItemV1::Data::StatusDetails::source,
+            code: String?
+          }
+
+        class StatusDetails < Straddle::Internal::Type::BaseModel
+          attr_accessor changed_at: Time
+
+          attr_accessor message: String
+
+          attr_accessor reason: Straddle::Models::FundingEventSummaryItemV1::Data::StatusDetails::reason
+
+          attr_accessor source: Straddle::Models::FundingEventSummaryItemV1::Data::StatusDetails::source
+
+          attr_accessor code: String?
+
+          def initialize: (
+            changed_at: Time,
+            message: String,
+            reason: Straddle::Models::FundingEventSummaryItemV1::Data::StatusDetails::reason,
+            source: Straddle::Models::FundingEventSummaryItemV1::Data::StatusDetails::source,
+            ?code: String?
+          ) -> void
+
+          def to_hash: -> {
+            changed_at: Time,
+            message: String,
+            reason: Straddle::Models::FundingEventSummaryItemV1::Data::StatusDetails::reason,
+            source: Straddle::Models::FundingEventSummaryItemV1::Data::StatusDetails::source,
+            code: String?
+          }
+
+          type reason =
+            :insufficient_funds
+            | :closed_bank_account
+            | :invalid_bank_account
+            | :invalid_routing
+            | :disputed
+            | :payment_stopped
+            | :owner_deceased
+            | :frozen_bank_account
+            | :risk_review
+            | :fraudulent
+            | :duplicate_entry
+            | :invalid_paykey
+            | :payment_blocked
+            | :amount_too_large
+            | :too_many_attempts
+            | :internal_system_error
+            | :user_request
+            | :ok
+            | :other_network_return
+            | :payout_refused
+            | :cancel_request
+            | :failed_verification
+            | :require_review
+            | :blocked_by_system
+            | :watchtower_review
+            | :validating
+            | :auto_hold
+
+          module Reason
+            extend Straddle::Internal::Type::Enum
+
+            INSUFFICIENT_FUNDS: :insufficient_funds
+            CLOSED_BANK_ACCOUNT: :closed_bank_account
+            INVALID_BANK_ACCOUNT: :invalid_bank_account
+            INVALID_ROUTING: :invalid_routing
+            DISPUTED: :disputed
+            PAYMENT_STOPPED: :payment_stopped
+            OWNER_DECEASED: :owner_deceased
+            FROZEN_BANK_ACCOUNT: :frozen_bank_account
+            RISK_REVIEW: :risk_review
+            FRAUDULENT: :fraudulent
+            DUPLICATE_ENTRY: :duplicate_entry
+            INVALID_PAYKEY: :invalid_paykey
+            PAYMENT_BLOCKED: :payment_blocked
+            AMOUNT_TOO_LARGE: :amount_too_large
+            TOO_MANY_ATTEMPTS: :too_many_attempts
+            INTERNAL_SYSTEM_ERROR: :internal_system_error
+            USER_REQUEST: :user_request
+            OK: :ok
+            OTHER_NETWORK_RETURN: :other_network_return
+            PAYOUT_REFUSED: :payout_refused
+            CANCEL_REQUEST: :cancel_request
+            FAILED_VERIFICATION: :failed_verification
+            REQUIRE_REVIEW: :require_review
+            BLOCKED_BY_SYSTEM: :blocked_by_system
+            WATCHTOWER_REVIEW: :watchtower_review
+            VALIDATING: :validating
+            AUTO_HOLD: :auto_hold
+
+            def self?.values: -> ::Array[Straddle::Models::FundingEventSummaryItemV1::Data::StatusDetails::reason]
+          end
+
+          type source =
+            :watchtower
+            | :bank_decline
+            | :customer_dispute
+            | :user_action
+            | :system
+
+          module Source
+            extend Straddle::Internal::Type::Enum
+
+            WATCHTOWER: :watchtower
+            BANK_DECLINE: :bank_decline
+            CUSTOMER_DISPUTE: :customer_dispute
+            USER_ACTION: :user_action
+            SYSTEM: :system
+
+            def self?.values: -> ::Array[Straddle::Models::FundingEventSummaryItemV1::Data::StatusDetails::source]
+          end
         end
       end
 
