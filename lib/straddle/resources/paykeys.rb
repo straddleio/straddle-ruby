@@ -22,7 +22,11 @@ module Straddle
       # Returns a list of paykeys associated with a Straddle account. This endpoint
       # supports advanced sorting and filtering options.
       #
-      # @overload list(customer_id: nil, page_number: nil, page_size: nil, search_text: nil, sort_by: nil, sort_order: nil, source: nil, status: nil, unblock_eligible: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @overload list(created_from: nil, created_to: nil, customer_id: nil, page_number: nil, page_size: nil, search_text: nil, sort_by: nil, sort_order: nil, source: nil, status: nil, unblock_eligible: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      #
+      # @param created_from [Time] Query param: Start date for filtering by creation date.
+      #
+      # @param created_to [Time] Query param: End date for filtering by creation date.
       #
       # @param customer_id [String] Query param: Filter paykeys by related customer ID.
       #
@@ -56,6 +60,8 @@ module Straddle
       def list(params = {})
         query_params =
           [
+            :created_from,
+            :created_to,
             :customer_id,
             :page_number,
             :page_size,
