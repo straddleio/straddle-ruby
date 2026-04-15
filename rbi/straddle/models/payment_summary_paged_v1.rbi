@@ -171,6 +171,19 @@ module Straddle
         sig { params(paykey_details: Straddle::PaykeyDetailsV1::OrHash).void }
         attr_writer :paykey_details
 
+        # Related payments.
+        sig do
+          returns(
+            T.nilable(
+              T::Hash[
+                Symbol,
+                Straddle::PaymentSummaryPagedV1::Data::RelatedPayment::TaggedSymbol
+              ]
+            )
+          )
+        end
+        attr_accessor :related_payments
+
         sig do
           params(
             id: String,
@@ -192,7 +205,14 @@ module Straddle
             effective_at: T.nilable(Time),
             funding_id: T.nilable(String),
             metadata: T.nilable(T::Hash[Symbol, String]),
-            paykey_details: Straddle::PaykeyDetailsV1::OrHash
+            paykey_details: Straddle::PaykeyDetailsV1::OrHash,
+            related_payments:
+              T.nilable(
+                T::Hash[
+                  Symbol,
+                  Straddle::PaymentSummaryPagedV1::Data::RelatedPayment::OrSymbol
+                ]
+              )
           ).returns(T.attached_class)
         end
         def self.new(
@@ -239,7 +259,9 @@ module Straddle
           # Metadata for payment - only included if requested.
           metadata: nil,
           # Information about the paykey used for the `charge` or `payout`.
-          paykey_details: nil
+          paykey_details: nil,
+          # Related payments.
+          related_payments: nil
         )
         end
 
@@ -266,7 +288,14 @@ module Straddle
               effective_at: T.nilable(Time),
               funding_id: T.nilable(String),
               metadata: T.nilable(T::Hash[Symbol, String]),
-              paykey_details: Straddle::PaykeyDetailsV1
+              paykey_details: Straddle::PaykeyDetailsV1,
+              related_payments:
+                T.nilable(
+                  T::Hash[
+                    Symbol,
+                    Straddle::PaymentSummaryPagedV1::Data::RelatedPayment::TaggedSymbol
+                  ]
+                )
             }
           )
         end
@@ -365,6 +394,45 @@ module Straddle
             override.returns(
               T::Array[
                 Straddle::PaymentSummaryPagedV1::Data::Status::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        module RelatedPayment
+          extend Straddle::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Straddle::PaymentSummaryPagedV1::Data::RelatedPayment
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          ORIGINAL =
+            T.let(
+              :original,
+              Straddle::PaymentSummaryPagedV1::Data::RelatedPayment::TaggedSymbol
+            )
+          RESUBMIT =
+            T.let(
+              :resubmit,
+              Straddle::PaymentSummaryPagedV1::Data::RelatedPayment::TaggedSymbol
+            )
+          REFUND =
+            T.let(
+              :refund,
+              Straddle::PaymentSummaryPagedV1::Data::RelatedPayment::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Straddle::PaymentSummaryPagedV1::Data::RelatedPayment::TaggedSymbol
               ]
             )
           end
