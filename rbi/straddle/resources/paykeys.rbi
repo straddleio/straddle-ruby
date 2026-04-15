@@ -20,6 +20,8 @@ module Straddle
       # supports advanced sorting and filtering options.
       sig do
         params(
+          created_from: Time,
+          created_to: Time,
           customer_id: String,
           page_number: Integer,
           page_size: Integer,
@@ -40,6 +42,10 @@ module Straddle
         )
       end
       def list(
+        # Query param: Start date for filtering by creation date.
+        created_from: nil,
+        # Query param: End date for filtering by creation date.
+        created_to: nil,
         # Query param: Filter paykeys by related customer ID.
         customer_id: nil,
         # Query param: Page number for paginated results. Starts at 1.
