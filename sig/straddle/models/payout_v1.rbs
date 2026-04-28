@@ -38,7 +38,6 @@ module Straddle
           funding_ids: ::Array[String],
           paykey: String,
           payment_date: Date,
-          refund: bool,
           status: Straddle::Models::PayoutV1::Data::status,
           status_details: Straddle::StatusDetailsV1,
           status_history: ::Array[Straddle::PayoutV1::Data::StatusHistory],
@@ -74,8 +73,6 @@ module Straddle
         attr_accessor paykey: String
 
         attr_accessor payment_date: Date
-
-        attr_accessor refund: bool
 
         attr_accessor status: Straddle::Models::PayoutV1::Data::status
 
@@ -126,7 +123,6 @@ module Straddle
           funding_ids: ::Array[String],
           paykey: String,
           payment_date: Date,
-          refund: bool,
           status: Straddle::Models::PayoutV1::Data::status,
           status_details: Straddle::StatusDetailsV1,
           status_history: ::Array[Straddle::PayoutV1::Data::StatusHistory],
@@ -153,7 +149,6 @@ module Straddle
           funding_ids: ::Array[String],
           paykey: String,
           payment_date: Date,
-          refund: bool,
           status: Straddle::Models::PayoutV1::Data::status,
           status_details: Straddle::StatusDetailsV1,
           status_history: ::Array[Straddle::PayoutV1::Data::StatusHistory],
