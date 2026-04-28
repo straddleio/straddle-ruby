@@ -37,8 +37,7 @@ class Straddle::Test::Resources::PaymentsTest < Straddle::Test::ResourceTest
         effective_at: Time | nil,
         funding_id: String | nil,
         metadata: ^(Straddle::Internal::Type::HashOf[String]) | nil,
-        paykey_details: Straddle::PaykeyDetailsV1 | nil,
-        related_payments: ^(Straddle::Internal::Type::HashOf[enum: Straddle::PaymentSummaryPagedV1::Data::RelatedPayment]) | nil
+        paykey_details: Straddle::PaykeyDetailsV1 | nil
       }
     end
   end

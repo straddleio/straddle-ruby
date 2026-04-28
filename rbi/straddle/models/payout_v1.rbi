@@ -117,10 +117,6 @@ module Straddle
         sig { returns(Date) }
         attr_accessor :payment_date
 
-        # Is the payout a refund.
-        sig { returns(T::Boolean) }
-        attr_accessor :refund
-
         # The current status of the payout.
         sig { returns(Straddle::PayoutV1::Data::Status::TaggedSymbol) }
         attr_accessor :status
@@ -219,7 +215,6 @@ module Straddle
             funding_ids: T::Array[String],
             paykey: String,
             payment_date: Date,
-            refund: T::Boolean,
             status: Straddle::PayoutV1::Data::Status::OrSymbol,
             status_details: Straddle::StatusDetailsV1::OrHash,
             status_history:
@@ -265,8 +260,6 @@ module Straddle
           # The desired date on which the payment should be occur. For payouts, this means
           # the date you want the funds to be sent from your bank account.
           payment_date:,
-          # Is the payout a refund.
-          refund:,
           # The current status of the payout.
           status:,
           # Details about the current status of the payout.
@@ -312,7 +305,6 @@ module Straddle
               funding_ids: T::Array[String],
               paykey: String,
               payment_date: Date,
-              refund: T::Boolean,
               status: Straddle::PayoutV1::Data::Status::TaggedSymbol,
               status_details: Straddle::StatusDetailsV1,
               status_history: T::Array[Straddle::PayoutV1::Data::StatusHistory],

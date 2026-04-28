@@ -97,12 +97,6 @@ module Straddle
         #   @return [Date]
         required :payment_date, Date
 
-        # @!attribute refund
-        #   Is the payout a refund.
-        #
-        #   @return [Boolean]
-        required :refund, Straddle::Internal::Type::Boolean
-
         # @!attribute status
         #   The current status of the `charge` or `payout`.
         #
@@ -182,7 +176,7 @@ module Straddle
         #   @return [Time, nil]
         optional :updated_at, Time, nil?: true
 
-        # @!method initialize(id:, amount:, config:, currency:, description:, device:, external_id:, funding_ids:, paykey:, payment_date:, refund:, status:, status_details:, status_history:, trace_ids:, created_at: nil, customer_details: nil, effective_at: nil, metadata: nil, paykey_details: nil, payment_rail: nil, processed_at: nil, related_payments: nil, updated_at: nil)
+        # @!method initialize(id:, amount:, config:, currency:, description:, device:, external_id:, funding_ids:, paykey:, payment_date:, status:, status_details:, status_history:, trace_ids:, created_at: nil, customer_details: nil, effective_at: nil, metadata: nil, paykey_details: nil, payment_rail: nil, processed_at: nil, related_payments: nil, updated_at: nil)
         #   @param id [String] Id.
         #
         #   @param amount [Integer] Amount.
@@ -202,8 +196,6 @@ module Straddle
         #   @param paykey [String] Paykey.
         #
         #   @param payment_date [Date] Payment date.
-        #
-        #   @param refund [Boolean] Is the payout a refund.
         #
         #   @param status [Symbol, Straddle::Models::PayoutUnmaskResponse::Data::Status] The current status of the `charge` or `payout`.
         #

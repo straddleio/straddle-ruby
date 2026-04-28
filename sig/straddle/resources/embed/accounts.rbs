@@ -29,7 +29,6 @@ module Straddle
         ) -> Straddle::Embed::AccountV1
 
         def list: (
-          ?external_id: String,
           ?page_number: Integer,
           ?page_size: Integer,
           ?search_text: String,
