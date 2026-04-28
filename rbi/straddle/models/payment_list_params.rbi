@@ -571,6 +571,8 @@ module Straddle
           T.let(:charge, Straddle::PaymentListParams::PaymentType::TaggedSymbol)
         PAYOUT =
           T.let(:payout, Straddle::PaymentListParams::PaymentType::TaggedSymbol)
+        REFUND =
+          T.let(:refund, Straddle::PaymentListParams::PaymentType::TaggedSymbol)
 
         sig do
           override.returns(
