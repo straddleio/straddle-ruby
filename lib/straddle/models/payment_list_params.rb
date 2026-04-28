@@ -296,7 +296,6 @@ module Straddle
 
         CHARGE = :charge
         PAYOUT = :payout
-        REFUND = :refund
 
         # @!method self.values
         #   @return [Array<Symbol>]
