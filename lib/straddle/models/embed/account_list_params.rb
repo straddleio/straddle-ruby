@@ -8,11 +8,6 @@ module Straddle
         extend Straddle::Internal::Type::RequestParameters::Converter
         include Straddle::Internal::Type::RequestParameters
 
-        # @!attribute external_id
-        #
-        #   @return [String, nil]
-        optional :external_id, String
-
         # @!attribute page_number
         #   Results page number. Starts at page 1. Default value: 1
         #
@@ -62,9 +57,7 @@ module Straddle
         #   @return [String, nil]
         optional :request_id, String
 
-        # @!method initialize(external_id: nil, page_number: nil, page_size: nil, search_text: nil, sort_by: nil, sort_order: nil, status: nil, type: nil, correlation_id: nil, request_id: nil, request_options: {})
-        #   @param external_id [String]
-        #
+        # @!method initialize(page_number: nil, page_size: nil, search_text: nil, sort_by: nil, sort_order: nil, status: nil, type: nil, correlation_id: nil, request_id: nil, request_options: {})
         #   @param page_number [Integer] Results page number. Starts at page 1. Default value: 1
         #
         #   @param page_size [Integer] Page size. Default value: 100. Max value: 1000
