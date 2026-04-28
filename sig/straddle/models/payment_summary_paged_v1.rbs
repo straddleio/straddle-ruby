@@ -46,8 +46,7 @@ module Straddle
           effective_at: Time?,
           funding_id: String?,
           metadata: ::Hash[Symbol, String]?,
-          paykey_details: Straddle::PaykeyDetailsV1,
-          related_payments: ::Hash[Symbol, Straddle::Models::PaymentSummaryPagedV1::Data::related_payment]?
+          paykey_details: Straddle::PaykeyDetailsV1
         }
 
       class Data < Straddle::Internal::Type::BaseModel
@@ -97,8 +96,6 @@ module Straddle
           Straddle::PaykeyDetailsV1
         ) -> Straddle::PaykeyDetailsV1
 
-        attr_accessor related_payments: ::Hash[Symbol, Straddle::Models::PaymentSummaryPagedV1::Data::related_payment]?
-
         def initialize: (
           id: String,
           amount: Integer,
@@ -118,8 +115,7 @@ module Straddle
           ?effective_at: Time?,
           ?funding_id: String?,
           ?metadata: ::Hash[Symbol, String]?,
-          ?paykey_details: Straddle::PaykeyDetailsV1,
-          ?related_payments: ::Hash[Symbol, Straddle::Models::PaymentSummaryPagedV1::Data::related_payment]?
+          ?paykey_details: Straddle::PaykeyDetailsV1
         ) -> void
 
         def to_hash: -> {
@@ -141,8 +137,7 @@ module Straddle
           effective_at: Time?,
           funding_id: String?,
           metadata: ::Hash[Symbol, String]?,
-          paykey_details: Straddle::PaykeyDetailsV1,
-          related_payments: ::Hash[Symbol, Straddle::Models::PaymentSummaryPagedV1::Data::related_payment]?
+          paykey_details: Straddle::PaykeyDetailsV1
         }
 
         type payment_type = :charge | :payout
@@ -181,18 +176,6 @@ module Straddle
           VALIDATING: :validating
 
           def self?.values: -> ::Array[Straddle::Models::PaymentSummaryPagedV1::Data::status]
-        end
-
-        type related_payment = :original | :resubmit | :refund
-
-        module RelatedPayment
-          extend Straddle::Internal::Type::Enum
-
-          ORIGINAL: :original
-          RESUBMIT: :resubmit
-          REFUND: :refund
-
-          def self?.values: -> ::Array[Straddle::Models::PaymentSummaryPagedV1::Data::related_payment]
         end
       end
 
