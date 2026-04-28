@@ -156,7 +156,17 @@ module Straddle
         #   @return [Straddle::Models::PaykeyDetailsV1, nil]
         optional :paykey_details, -> { Straddle::PaykeyDetailsV1 }
 
-        # @!method initialize(id:, amount:, created_at:, currency:, description:, external_id:, funding_ids:, paykey:, payment_date:, payment_type:, status:, status_details:, trace_ids:, updated_at:, customer_details: nil, effective_at: nil, funding_id: nil, metadata: nil, paykey_details: nil)
+        # @!attribute related_payments
+        #   Related payments.
+        #
+        #   @return [Hash{Symbol=>Symbol, Straddle::Models::PaymentSummaryPagedV1::Data::RelatedPayment}, nil]
+        optional :related_payments,
+                 -> {
+                   Straddle::Internal::Type::HashOf[enum: Straddle::PaymentSummaryPagedV1::Data::RelatedPayment]
+                 },
+                 nil?: true
+
+        # @!method initialize(id:, amount:, created_at:, currency:, description:, external_id:, funding_ids:, paykey:, payment_date:, payment_type:, status:, status_details:, trace_ids:, updated_at:, customer_details: nil, effective_at: nil, funding_id: nil, metadata: nil, paykey_details: nil, related_payments: nil)
         #   Some parameter documentations has been truncated, see
         #   {Straddle::Models::PaymentSummaryPagedV1::Data} for more details.
         #
@@ -197,6 +207,8 @@ module Straddle
         #   @param metadata [Hash{Symbol=>String}, nil] Metadata for payment - only included if requested.
         #
         #   @param paykey_details [Straddle::Models::PaykeyDetailsV1] Information about the paykey used for the `charge` or `payout`.
+        #
+        #   @param related_payments [Hash{Symbol=>Symbol, Straddle::Models::PaymentSummaryPagedV1::Data::RelatedPayment}, nil] Related payments.
 
         # The type of payment. Valid values are `charge` or `payout`.
         #
@@ -206,6 +218,7 @@ module Straddle
 
           CHARGE = :charge
           PAYOUT = :payout
+          REFUND = :refund
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -226,6 +239,17 @@ module Straddle
           PAID = :paid
           REVERSED = :reversed
           VALIDATING = :validating
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        module RelatedPayment
+          extend Straddle::Internal::Type::Enum
+
+          ORIGINAL = :original
+          RESUBMIT = :resubmit
+          REFUND = :refund
 
           # @!method self.values
           #   @return [Array<Symbol>]

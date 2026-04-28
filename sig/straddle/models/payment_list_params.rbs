@@ -296,13 +296,14 @@ module Straddle
         def self?.values: -> ::Array[Straddle::Models::PaymentListParams::payment_status]
       end
 
-      type payment_type = :charge | :payout
+      type payment_type = :charge | :payout | :refund
 
       module PaymentType
         extend Straddle::Internal::Type::Enum
 
         CHARGE: :charge
         PAYOUT: :payout
+        REFUND: :refund
 
         def self?.values: -> ::Array[Straddle::Models::PaymentListParams::payment_type]
       end

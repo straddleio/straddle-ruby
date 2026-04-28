@@ -137,6 +137,10 @@ module Straddle
         sig { returns(Date) }
         attr_accessor :payment_date
 
+        # Is the payout a refund.
+        sig { returns(T::Boolean) }
+        attr_accessor :refund
+
         # The current status of the `charge` or `payout`.
         sig do
           returns(
@@ -245,6 +249,7 @@ module Straddle
             funding_ids: T::Array[String],
             paykey: String,
             payment_date: Date,
+            refund: T::Boolean,
             status:
               Straddle::Models::PayoutUnmaskResponse::Data::Status::OrSymbol,
             status_details: Straddle::StatusDetailsV1::OrHash,
@@ -290,6 +295,8 @@ module Straddle
           paykey:,
           # Payment date.
           payment_date:,
+          # Is the payout a refund.
+          refund:,
           # The current status of the `charge` or `payout`.
           status:,
           status_details:,
@@ -330,6 +337,7 @@ module Straddle
               funding_ids: T::Array[String],
               paykey: String,
               payment_date: Date,
+              refund: T::Boolean,
               status:
                 Straddle::Models::PayoutUnmaskResponse::Data::Status::TaggedSymbol,
               status_details: Straddle::StatusDetailsV1,

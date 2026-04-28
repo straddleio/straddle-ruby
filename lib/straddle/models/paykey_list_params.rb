@@ -7,6 +7,18 @@ module Straddle
       extend Straddle::Internal::Type::RequestParameters::Converter
       include Straddle::Internal::Type::RequestParameters
 
+      # @!attribute created_from
+      #   Start date for filtering by creation date.
+      #
+      #   @return [Time, nil]
+      optional :created_from, Time
+
+      # @!attribute created_to
+      #   End date for filtering by creation date.
+      #
+      #   @return [Time, nil]
+      optional :created_to, Time
+
       # @!attribute customer_id
       #   Filter paykeys by related customer ID.
       #
@@ -77,9 +89,13 @@ module Straddle
       #   @return [String, nil]
       optional :straddle_account_id, String
 
-      # @!method initialize(customer_id: nil, page_number: nil, page_size: nil, search_text: nil, sort_by: nil, sort_order: nil, source: nil, status: nil, unblock_eligible: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @!method initialize(created_from: nil, created_to: nil, customer_id: nil, page_number: nil, page_size: nil, search_text: nil, sort_by: nil, sort_order: nil, source: nil, status: nil, unblock_eligible: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Straddle::Models::PaykeyListParams} for more details.
+      #
+      #   @param created_from [Time] Start date for filtering by creation date.
+      #
+      #   @param created_to [Time] End date for filtering by creation date.
       #
       #   @param customer_id [String] Filter paykeys by related customer ID.
       #
