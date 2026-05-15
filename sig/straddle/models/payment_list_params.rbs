@@ -8,7 +8,11 @@ module Straddle
         default_sort_order: Straddle::Models::PaymentListParams::default_sort_order,
         external_id: String,
         funding_id: String,
+        has_refund: bool,
+        has_resubmit: bool,
         include_metadata: bool,
+        is_refund: bool,
+        is_resubmit: bool,
         max_amount: Integer,
         max_created_at: Time,
         max_effective_at: Time,
@@ -67,9 +71,25 @@ module Straddle
 
       def funding_id=: (String) -> String
 
+      attr_reader has_refund: bool?
+
+      def has_refund=: (bool) -> bool
+
+      attr_reader has_resubmit: bool?
+
+      def has_resubmit=: (bool) -> bool
+
       attr_reader include_metadata: bool?
 
       def include_metadata=: (bool) -> bool
+
+      attr_reader is_refund: bool?
+
+      def is_refund=: (bool) -> bool
+
+      attr_reader is_resubmit: bool?
+
+      def is_resubmit=: (bool) -> bool
 
       attr_reader max_amount: Integer?
 
@@ -182,7 +202,11 @@ module Straddle
         ?default_sort_order: Straddle::Models::PaymentListParams::default_sort_order,
         ?external_id: String,
         ?funding_id: String,
+        ?has_refund: bool,
+        ?has_resubmit: bool,
         ?include_metadata: bool,
+        ?is_refund: bool,
+        ?is_resubmit: bool,
         ?max_amount: Integer,
         ?max_created_at: Time,
         ?max_effective_at: Time,
@@ -216,7 +240,11 @@ module Straddle
         default_sort_order: Straddle::Models::PaymentListParams::default_sort_order,
         external_id: String,
         funding_id: String,
+        has_refund: bool,
+        has_resubmit: bool,
         include_metadata: bool,
+        is_refund: bool,
+        is_resubmit: bool,
         max_amount: Integer,
         max_created_at: Time,
         max_effective_at: Time,
