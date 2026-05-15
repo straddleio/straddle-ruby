@@ -4,6 +4,8 @@ module Straddle
       attr_reader review: Straddle::Resources::Paykeys::Review
 
       def list: (
+        ?created_from: Time,
+        ?created_to: Time,
         ?customer_id: String,
         ?page_number: Integer,
         ?page_size: Integer,

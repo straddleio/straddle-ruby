@@ -100,6 +100,24 @@ module Straddle
         #   @return [Array<String>]
         required :funding_ids, Straddle::Internal::Type::ArrayOf[String]
 
+        # @!attribute has_refund
+        #   Has the charge been refunded by an associated payout.
+        #
+        #   @return [Boolean]
+        required :has_refund, Straddle::Internal::Type::Boolean
+
+        # @!attribute has_resubmit
+        #   Has the charge been resubmitted.
+        #
+        #   @return [Boolean]
+        required :has_resubmit, Straddle::Internal::Type::Boolean
+
+        # @!attribute is_resubmit
+        #   Is the charge a resubmit of an original charge.
+        #
+        #   @return [Boolean]
+        required :is_resubmit, Straddle::Internal::Type::Boolean
+
         # @!attribute paykey
         #   Paykey.
         #
@@ -185,7 +203,7 @@ module Straddle
                  -> { Straddle::Internal::Type::HashOf[enum: Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment] },
                  nil?: true
 
-        # @!method initialize(id:, amount:, config:, consent_type:, created_at:, currency:, description:, device:, external_id:, funding_ids:, paykey:, payment_date:, status:, status_details:, status_history:, trace_ids:, updated_at:, customer_details: nil, effective_at: nil, metadata: nil, paykey_details: nil, payment_rail: nil, processed_at: nil, related_payments: nil)
+        # @!method initialize(id:, amount:, config:, consent_type:, created_at:, currency:, description:, device:, external_id:, funding_ids:, has_refund:, has_resubmit:, is_resubmit:, paykey:, payment_date:, status:, status_details:, status_history:, trace_ids:, updated_at:, customer_details: nil, effective_at: nil, metadata: nil, paykey_details: nil, payment_rail: nil, processed_at: nil, related_payments: nil)
         #   Some parameter documentations has been truncated, see
         #   {Straddle::Models::ChargeUnmaskResponse::Data} for more details.
         #
@@ -208,6 +226,12 @@ module Straddle
         #   @param external_id [String] External id.
         #
         #   @param funding_ids [Array<String>] Funding Ids
+        #
+        #   @param has_refund [Boolean] Has the charge been refunded by an associated payout.
+        #
+        #   @param has_resubmit [Boolean] Has the charge been resubmitted.
+        #
+        #   @param is_resubmit [Boolean] Is the charge a resubmit of an original charge.
         #
         #   @param paykey [String] Paykey.
         #

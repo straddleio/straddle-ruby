@@ -79,6 +79,31 @@ module Straddle
         #   @return [Array<String>]
         required :funding_ids, Straddle::Internal::Type::ArrayOf[String]
 
+        # @!attribute has_refund
+        #   Has the payment been refunded by an associated payout (only applicable to
+        #   charges).
+        #
+        #   @return [Boolean]
+        required :has_refund, Straddle::Internal::Type::Boolean
+
+        # @!attribute has_resubmit
+        #   Has the payment been resubmitted.
+        #
+        #   @return [Boolean]
+        required :has_resubmit, Straddle::Internal::Type::Boolean
+
+        # @!attribute is_refund
+        #   Is the payment a refund of an original charge (only applicable to payouts).
+        #
+        #   @return [Boolean]
+        required :is_refund, Straddle::Internal::Type::Boolean
+
+        # @!attribute is_resubmit
+        #   Is the payment a resubmit of an original payment.
+        #
+        #   @return [Boolean]
+        required :is_resubmit, Straddle::Internal::Type::Boolean
+
         # @!attribute paykey
         #   Value of the `paykey` used for the `charge` or `payout`.
         #
@@ -156,7 +181,18 @@ module Straddle
         #   @return [Straddle::Models::PaykeyDetailsV1, nil]
         optional :paykey_details, -> { Straddle::PaykeyDetailsV1 }
 
-        # @!method initialize(id:, amount:, created_at:, currency:, description:, external_id:, funding_ids:, paykey:, payment_date:, payment_type:, status:, status_details:, trace_ids:, updated_at:, customer_details: nil, effective_at: nil, funding_id: nil, metadata: nil, paykey_details: nil)
+        # @!attribute related_payments
+        #   Payments related to this one (e.g. refunds, resubmissions), mapped by payment ID
+        #   to relationship type.
+        #
+        #   @return [Array<Straddle::Models::PaymentSummaryPagedV1::Data::RelatedPayment>, nil]
+        optional :related_payments,
+                 -> {
+                   Straddle::Internal::Type::ArrayOf[Straddle::PaymentSummaryPagedV1::Data::RelatedPayment]
+                 },
+                 nil?: true
+
+        # @!method initialize(id:, amount:, created_at:, currency:, description:, external_id:, funding_ids:, has_refund:, has_resubmit:, is_refund:, is_resubmit:, paykey:, payment_date:, payment_type:, status:, status_details:, trace_ids:, updated_at:, customer_details: nil, effective_at: nil, funding_id: nil, metadata: nil, paykey_details: nil, related_payments: nil)
         #   Some parameter documentations has been truncated, see
         #   {Straddle::Models::PaymentSummaryPagedV1::Data} for more details.
         #
@@ -173,6 +209,14 @@ module Straddle
         #   @param external_id [String] Unique identifier for the `charge` or `payout` in your database. This value must
         #
         #   @param funding_ids [Array<String>] Funding ids.
+        #
+        #   @param has_refund [Boolean] Has the payment been refunded by an associated payout (only applicable to charge
+        #
+        #   @param has_resubmit [Boolean] Has the payment been resubmitted.
+        #
+        #   @param is_refund [Boolean] Is the payment a refund of an original charge (only applicable to payouts).
+        #
+        #   @param is_resubmit [Boolean] Is the payment a resubmit of an original payment.
         #
         #   @param paykey [String] Value of the `paykey` used for the `charge` or `payout`.
         #
@@ -197,6 +241,8 @@ module Straddle
         #   @param metadata [Hash{Symbol=>String}, nil] Metadata for payment - only included if requested.
         #
         #   @param paykey_details [Straddle::Models::PaykeyDetailsV1] Information about the paykey used for the `charge` or `payout`.
+        #
+        #   @param related_payments [Array<Straddle::Models::PaymentSummaryPagedV1::Data::RelatedPayment>, nil] Payments related to this one (e.g. refunds, resubmissions), mapped by payment ID
 
         # The type of payment. Valid values are `charge` or `payout`.
         #
@@ -229,6 +275,57 @@ module Straddle
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        class RelatedPayment < Straddle::Internal::Type::BaseModel
+          # @!attribute id
+          #   Unique identifier of the related payment.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute payment_type
+          #   The type of payment.
+          #
+          #   @return [Symbol, Straddle::Models::PaymentSummaryPagedV1::Data::RelatedPayment::PaymentType]
+          required :payment_type, enum: -> { Straddle::PaymentSummaryPagedV1::Data::RelatedPayment::PaymentType }
+
+          # @!attribute relationship
+          #
+          #   @return [Symbol, Straddle::Models::PaymentSummaryPagedV1::Data::RelatedPayment::Relationship]
+          required :relationship, enum: -> { Straddle::PaymentSummaryPagedV1::Data::RelatedPayment::Relationship }
+
+          # @!method initialize(id:, payment_type:, relationship:)
+          #   @param id [String] Unique identifier of the related payment.
+          #
+          #   @param payment_type [Symbol, Straddle::Models::PaymentSummaryPagedV1::Data::RelatedPayment::PaymentType] The type of payment.
+          #
+          #   @param relationship [Symbol, Straddle::Models::PaymentSummaryPagedV1::Data::RelatedPayment::Relationship]
+
+          # The type of payment.
+          #
+          # @see Straddle::Models::PaymentSummaryPagedV1::Data::RelatedPayment#payment_type
+          module PaymentType
+            extend Straddle::Internal::Type::Enum
+
+            CHARGE = :charge
+            PAYOUT = :payout
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # @see Straddle::Models::PaymentSummaryPagedV1::Data::RelatedPayment#relationship
+          module Relationship
+            extend Straddle::Internal::Type::Enum
+
+            ORIGINAL = :original
+            RESUBMIT = :resubmit
+            REFUND = :refund
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
       end
 
