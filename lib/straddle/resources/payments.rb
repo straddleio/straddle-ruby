@@ -11,7 +11,7 @@ module Straddle
       # Search for payments, including `charges` and `payouts`, using a variety of
       # criteria. This endpoint supports advanced sorting and filtering options.
       #
-      # @overload list(customer_id: nil, default_page_size: nil, default_sort: nil, default_sort_order: nil, external_id: nil, funding_id: nil, include_metadata: nil, max_amount: nil, max_created_at: nil, max_effective_at: nil, max_payment_date: nil, min_amount: nil, min_created_at: nil, min_effective_at: nil, min_payment_date: nil, page_number: nil, page_size: nil, paykey: nil, paykey_id: nil, payment_id: nil, payment_status: nil, payment_type: nil, search_text: nil, sort_by: nil, sort_order: nil, status_reason: nil, status_source: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @overload list(customer_id: nil, default_page_size: nil, default_sort: nil, default_sort_order: nil, external_id: nil, funding_id: nil, has_refund: nil, has_resubmit: nil, include_metadata: nil, is_refund: nil, is_resubmit: nil, max_amount: nil, max_created_at: nil, max_effective_at: nil, max_payment_date: nil, min_amount: nil, min_created_at: nil, min_effective_at: nil, min_payment_date: nil, page_number: nil, page_size: nil, paykey: nil, paykey_id: nil, payment_id: nil, payment_status: nil, payment_type: nil, search_text: nil, sort_by: nil, sort_order: nil, status_reason: nil, status_source: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
       # @param customer_id [String] Query param: Search using the `customer_id` of a `charge` or `payout`.
       #
@@ -25,7 +25,15 @@ module Straddle
       #
       # @param funding_id [String] Query param: Search using the `funding_id` of a `charge` or `payout`.
       #
+      # @param has_refund [Boolean] Query param: Has the payment been refunded by an associated payout (only applica
+      #
+      # @param has_resubmit [Boolean] Query param: Has the payment been resubmitted.
+      #
       # @param include_metadata [Boolean] Query param: Include the metadata for payments in the returned data.
+      #
+      # @param is_refund [Boolean] Query param: Is the payment a refund of an original charge (only applicable to p
+      #
+      # @param is_resubmit [Boolean] Query param: Is the payment a resubmit of an original payment.
       #
       # @param max_amount [Integer] Query param: Search using a maximum `amount` of a `charge` or `payout`.
       #
@@ -87,7 +95,11 @@ module Straddle
             :default_sort_order,
             :external_id,
             :funding_id,
+            :has_refund,
+            :has_resubmit,
             :include_metadata,
+            :is_refund,
+            :is_resubmit,
             :max_amount,
             :max_created_at,
             :max_effective_at,
