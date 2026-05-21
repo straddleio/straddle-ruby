@@ -107,7 +107,6 @@ module Straddle
         # filtering options.
         sig do
           params(
-            external_id: String,
             page_number: Integer,
             page_size: Integer,
             search_text: String,
@@ -125,8 +124,6 @@ module Straddle
           )
         end
         def list(
-          # Query param
-          external_id: nil,
           # Query param: Results page number. Starts at page 1. Default value: 1
           page_number: nil,
           # Query param: Page size. Default value: 100. Max value: 1000
