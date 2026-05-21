@@ -85,24 +85,6 @@ module Straddle
         #   @return [Array<String>]
         required :funding_ids, Straddle::Internal::Type::ArrayOf[String]
 
-        # @!attribute has_resubmit
-        #   Has the payout been resubmitted.
-        #
-        #   @return [Boolean]
-        required :has_resubmit, Straddle::Internal::Type::Boolean
-
-        # @!attribute is_refund
-        #   Is the payout a refund of an original charge.
-        #
-        #   @return [Boolean]
-        required :is_refund, Straddle::Internal::Type::Boolean
-
-        # @!attribute is_resubmit
-        #   Is the payout a resubmit of an original payout.
-        #
-        #   @return [Boolean]
-        required :is_resubmit, Straddle::Internal::Type::Boolean
-
         # @!attribute paykey
         #   Paykey.
         #
@@ -183,9 +165,9 @@ module Straddle
         # @!attribute related_payments
         #   Related payments.
         #
-        #   @return [Hash{Symbol=>Symbol, Straddle::Models::PayoutUnmaskResponse::Data::RelatedPayment}, nil]
+        #   @return [Array<Straddle::Models::PayoutUnmaskResponse::Data::RelatedPayment>, nil]
         optional :related_payments,
-                 -> { Straddle::Internal::Type::HashOf[enum: Straddle::Models::PayoutUnmaskResponse::Data::RelatedPayment] },
+                 -> { Straddle::Internal::Type::ArrayOf[Straddle::Models::PayoutUnmaskResponse::Data::RelatedPayment] },
                  nil?: true
 
         # @!attribute updated_at
@@ -194,7 +176,7 @@ module Straddle
         #   @return [Time, nil]
         optional :updated_at, Time, nil?: true
 
-        # @!method initialize(id:, amount:, config:, currency:, description:, device:, external_id:, funding_ids:, has_resubmit:, is_refund:, is_resubmit:, paykey:, payment_date:, status:, status_details:, status_history:, trace_ids:, created_at: nil, customer_details: nil, effective_at: nil, metadata: nil, paykey_details: nil, payment_rail: nil, processed_at: nil, related_payments: nil, updated_at: nil)
+        # @!method initialize(id:, amount:, config:, currency:, description:, device:, external_id:, funding_ids:, paykey:, payment_date:, status:, status_details:, status_history:, trace_ids:, created_at: nil, customer_details: nil, effective_at: nil, metadata: nil, paykey_details: nil, payment_rail: nil, processed_at: nil, related_payments: nil, updated_at: nil)
         #   @param id [String] Id.
         #
         #   @param amount [Integer] Amount.
@@ -210,12 +192,6 @@ module Straddle
         #   @param external_id [String] External id.
         #
         #   @param funding_ids [Array<String>] Funding Ids
-        #
-        #   @param has_resubmit [Boolean] Has the payout been resubmitted.
-        #
-        #   @param is_refund [Boolean] Is the payout a refund of an original charge.
-        #
-        #   @param is_resubmit [Boolean] Is the payout a resubmit of an original payout.
         #
         #   @param paykey [String] Paykey.
         #
@@ -243,7 +219,7 @@ module Straddle
         #
         #   @param processed_at [Time, nil] Processed at.
         #
-        #   @param related_payments [Hash{Symbol=>Symbol, Straddle::Models::PayoutUnmaskResponse::Data::RelatedPayment}, nil] Related payments.
+        #   @param related_payments [Array<Straddle::Models::PayoutUnmaskResponse::Data::RelatedPayment>, nil] Related payments.
         #
         #   @param updated_at [Time, nil] Updated at.
 
@@ -474,15 +450,57 @@ module Straddle
           #   @return [Array<Symbol>]
         end
 
-        module RelatedPayment
-          extend Straddle::Internal::Type::Enum
+        class RelatedPayment < Straddle::Internal::Type::BaseModel
+          # @!attribute id
+          #   The ID of the related payment.
+          #
+          #   @return [String]
+          required :id, String
 
-          ORIGINAL = :original
-          RESUBMIT = :resubmit
-          REFUND = :refund
+          # @!attribute payment_type
+          #   The type of payment.
+          #
+          #   @return [Symbol, Straddle::Models::PayoutUnmaskResponse::Data::RelatedPayment::PaymentType]
+          required :payment_type,
+                   enum: -> { Straddle::Models::PayoutUnmaskResponse::Data::RelatedPayment::PaymentType }
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
+          # @!attribute relationship
+          #
+          #   @return [Symbol, Straddle::Models::PayoutUnmaskResponse::Data::RelatedPayment::Relationship]
+          required :relationship,
+                   enum: -> { Straddle::Models::PayoutUnmaskResponse::Data::RelatedPayment::Relationship }
+
+          # @!method initialize(id:, payment_type:, relationship:)
+          #   @param id [String] The ID of the related payment.
+          #
+          #   @param payment_type [Symbol, Straddle::Models::PayoutUnmaskResponse::Data::RelatedPayment::PaymentType] The type of payment.
+          #
+          #   @param relationship [Symbol, Straddle::Models::PayoutUnmaskResponse::Data::RelatedPayment::Relationship]
+
+          # The type of payment.
+          #
+          # @see Straddle::Models::PayoutUnmaskResponse::Data::RelatedPayment#payment_type
+          module PaymentType
+            extend Straddle::Internal::Type::Enum
+
+            CHARGE = :charge
+            PAYOUT = :payout
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # @see Straddle::Models::PayoutUnmaskResponse::Data::RelatedPayment#relationship
+          module Relationship
+            extend Straddle::Internal::Type::Enum
+
+            ORIGINAL = :original
+            RESUBMIT = :resubmit
+            REFUND = :refund
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
       end
 

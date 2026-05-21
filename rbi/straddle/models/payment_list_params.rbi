@@ -66,41 +66,12 @@ module Straddle
       sig { params(funding_id: String).void }
       attr_writer :funding_id
 
-      # Has the payment been refunded by an associated payout (only applicable to
-      # charges).
-      sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :has_refund
-
-      sig { params(has_refund: T::Boolean).void }
-      attr_writer :has_refund
-
-      # Has the payment been resubmitted.
-      sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :has_resubmit
-
-      sig { params(has_resubmit: T::Boolean).void }
-      attr_writer :has_resubmit
-
       # Include the metadata for payments in the returned data.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :include_metadata
 
       sig { params(include_metadata: T::Boolean).void }
       attr_writer :include_metadata
-
-      # Is the payment a refund of an original charge (only applicable to payouts).
-      sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :is_refund
-
-      sig { params(is_refund: T::Boolean).void }
-      attr_writer :is_refund
-
-      # Is the payment a resubmit of an original payment.
-      sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :is_resubmit
-
-      sig { params(is_resubmit: T::Boolean).void }
-      attr_writer :is_resubmit
 
       # Search using a maximum `amount` of a `charge` or `payout`.
       sig { returns(T.nilable(Integer)) }
@@ -320,11 +291,7 @@ module Straddle
             Straddle::PaymentListParams::DefaultSortOrder::OrSymbol,
           external_id: String,
           funding_id: String,
-          has_refund: T::Boolean,
-          has_resubmit: T::Boolean,
           include_metadata: T::Boolean,
-          is_refund: T::Boolean,
-          is_resubmit: T::Boolean,
           max_amount: Integer,
           max_created_at: Time,
           max_effective_at: Time,
@@ -366,17 +333,8 @@ module Straddle
         external_id: nil,
         # Search using the `funding_id` of a `charge` or `payout`.
         funding_id: nil,
-        # Has the payment been refunded by an associated payout (only applicable to
-        # charges).
-        has_refund: nil,
-        # Has the payment been resubmitted.
-        has_resubmit: nil,
         # Include the metadata for payments in the returned data.
         include_metadata: nil,
-        # Is the payment a refund of an original charge (only applicable to payouts).
-        is_refund: nil,
-        # Is the payment a resubmit of an original payment.
-        is_resubmit: nil,
         # Search using a maximum `amount` of a `charge` or `payout`.
         max_amount: nil,
         # Search using the latest `created_at` date of a `charge` or `payout`.
@@ -433,11 +391,7 @@ module Straddle
               Straddle::PaymentListParams::DefaultSortOrder::OrSymbol,
             external_id: String,
             funding_id: String,
-            has_refund: T::Boolean,
-            has_resubmit: T::Boolean,
             include_metadata: T::Boolean,
-            is_refund: T::Boolean,
-            is_resubmit: T::Boolean,
             max_amount: Integer,
             max_created_at: Time,
             max_effective_at: Time,

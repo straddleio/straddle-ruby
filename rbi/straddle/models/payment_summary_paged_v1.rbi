@@ -101,23 +101,6 @@ module Straddle
         sig { returns(T::Array[String]) }
         attr_accessor :funding_ids
 
-        # Has the payment been refunded by an associated payout (only applicable to
-        # charges).
-        sig { returns(T::Boolean) }
-        attr_accessor :has_refund
-
-        # Has the payment been resubmitted.
-        sig { returns(T::Boolean) }
-        attr_accessor :has_resubmit
-
-        # Is the payment a refund of an original charge (only applicable to payouts).
-        sig { returns(T::Boolean) }
-        attr_accessor :is_refund
-
-        # Is the payment a resubmit of an original payment.
-        sig { returns(T::Boolean) }
-        attr_accessor :is_resubmit
-
         # Value of the `paykey` used for the `charge` or `payout`.
         sig { returns(String) }
         attr_accessor :paykey
@@ -188,17 +171,6 @@ module Straddle
         sig { params(paykey_details: Straddle::PaykeyDetailsV1::OrHash).void }
         attr_writer :paykey_details
 
-        # Payments related to this one (e.g. refunds, resubmissions), mapped by payment ID
-        # to relationship type.
-        sig do
-          returns(
-            T.nilable(
-              T::Array[Straddle::PaymentSummaryPagedV1::Data::RelatedPayment]
-            )
-          )
-        end
-        attr_accessor :related_payments
-
         sig do
           params(
             id: String,
@@ -208,10 +180,6 @@ module Straddle
             description: T.nilable(String),
             external_id: String,
             funding_ids: T::Array[String],
-            has_refund: T::Boolean,
-            has_resubmit: T::Boolean,
-            is_refund: T::Boolean,
-            is_resubmit: T::Boolean,
             paykey: String,
             payment_date: Date,
             payment_type:
@@ -224,13 +192,7 @@ module Straddle
             effective_at: T.nilable(Time),
             funding_id: T.nilable(String),
             metadata: T.nilable(T::Hash[Symbol, String]),
-            paykey_details: Straddle::PaykeyDetailsV1::OrHash,
-            related_payments:
-              T.nilable(
-                T::Array[
-                  Straddle::PaymentSummaryPagedV1::Data::RelatedPayment::OrHash
-                ]
-              )
+            paykey_details: Straddle::PaykeyDetailsV1::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
@@ -249,15 +211,6 @@ module Straddle
           external_id:,
           # Funding ids.
           funding_ids:,
-          # Has the payment been refunded by an associated payout (only applicable to
-          # charges).
-          has_refund:,
-          # Has the payment been resubmitted.
-          has_resubmit:,
-          # Is the payment a refund of an original charge (only applicable to payouts).
-          is_refund:,
-          # Is the payment a resubmit of an original payment.
-          is_resubmit:,
           # Value of the `paykey` used for the `charge` or `payout`.
           paykey:,
           # The desired date on which the payment should be occur. For charges, this means
@@ -286,10 +239,7 @@ module Straddle
           # Metadata for payment - only included if requested.
           metadata: nil,
           # Information about the paykey used for the `charge` or `payout`.
-          paykey_details: nil,
-          # Payments related to this one (e.g. refunds, resubmissions), mapped by payment ID
-          # to relationship type.
-          related_payments: nil
+          paykey_details: nil
         )
         end
 
@@ -303,10 +253,6 @@ module Straddle
               description: T.nilable(String),
               external_id: String,
               funding_ids: T::Array[String],
-              has_refund: T::Boolean,
-              has_resubmit: T::Boolean,
-              is_refund: T::Boolean,
-              is_resubmit: T::Boolean,
               paykey: String,
               payment_date: Date,
               payment_type:
@@ -320,13 +266,7 @@ module Straddle
               effective_at: T.nilable(Time),
               funding_id: T.nilable(String),
               metadata: T.nilable(T::Hash[Symbol, String]),
-              paykey_details: Straddle::PaykeyDetailsV1,
-              related_payments:
-                T.nilable(
-                  T::Array[
-                    Straddle::PaymentSummaryPagedV1::Data::RelatedPayment
-                  ]
-                )
+              paykey_details: Straddle::PaykeyDetailsV1
             }
           )
         end
@@ -429,141 +369,6 @@ module Straddle
             )
           end
           def self.values
-          end
-        end
-
-        class RelatedPayment < Straddle::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Straddle::PaymentSummaryPagedV1::Data::RelatedPayment,
-                Straddle::Internal::AnyHash
-              )
-            end
-
-          # Unique identifier of the related payment.
-          sig { returns(String) }
-          attr_accessor :id
-
-          # The type of payment.
-          sig do
-            returns(
-              Straddle::PaymentSummaryPagedV1::Data::RelatedPayment::PaymentType::TaggedSymbol
-            )
-          end
-          attr_accessor :payment_type
-
-          sig do
-            returns(
-              Straddle::PaymentSummaryPagedV1::Data::RelatedPayment::Relationship::TaggedSymbol
-            )
-          end
-          attr_accessor :relationship
-
-          sig do
-            params(
-              id: String,
-              payment_type:
-                Straddle::PaymentSummaryPagedV1::Data::RelatedPayment::PaymentType::OrSymbol,
-              relationship:
-                Straddle::PaymentSummaryPagedV1::Data::RelatedPayment::Relationship::OrSymbol
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            # Unique identifier of the related payment.
-            id:,
-            # The type of payment.
-            payment_type:,
-            relationship:
-          )
-          end
-
-          sig do
-            override.returns(
-              {
-                id: String,
-                payment_type:
-                  Straddle::PaymentSummaryPagedV1::Data::RelatedPayment::PaymentType::TaggedSymbol,
-                relationship:
-                  Straddle::PaymentSummaryPagedV1::Data::RelatedPayment::Relationship::TaggedSymbol
-              }
-            )
-          end
-          def to_hash
-          end
-
-          # The type of payment.
-          module PaymentType
-            extend Straddle::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Straddle::PaymentSummaryPagedV1::Data::RelatedPayment::PaymentType
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            CHARGE =
-              T.let(
-                :charge,
-                Straddle::PaymentSummaryPagedV1::Data::RelatedPayment::PaymentType::TaggedSymbol
-              )
-            PAYOUT =
-              T.let(
-                :payout,
-                Straddle::PaymentSummaryPagedV1::Data::RelatedPayment::PaymentType::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Straddle::PaymentSummaryPagedV1::Data::RelatedPayment::PaymentType::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
-          end
-
-          module Relationship
-            extend Straddle::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Straddle::PaymentSummaryPagedV1::Data::RelatedPayment::Relationship
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            ORIGINAL =
-              T.let(
-                :original,
-                Straddle::PaymentSummaryPagedV1::Data::RelatedPayment::Relationship::TaggedSymbol
-              )
-            RESUBMIT =
-              T.let(
-                :resubmit,
-                Straddle::PaymentSummaryPagedV1::Data::RelatedPayment::Relationship::TaggedSymbol
-              )
-            REFUND =
-              T.let(
-                :refund,
-                Straddle::PaymentSummaryPagedV1::Data::RelatedPayment::Relationship::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Straddle::PaymentSummaryPagedV1::Data::RelatedPayment::Relationship::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
           end
         end
       end
