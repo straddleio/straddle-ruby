@@ -144,18 +144,6 @@ module Straddle
         sig { returns(T::Array[String]) }
         attr_accessor :funding_ids
 
-        # Has the charge been refunded by an associated payout.
-        sig { returns(T::Boolean) }
-        attr_accessor :has_refund
-
-        # Has the charge been resubmitted.
-        sig { returns(T::Boolean) }
-        attr_accessor :has_resubmit
-
-        # Is the charge a resubmit of an original charge.
-        sig { returns(T::Boolean) }
-        attr_accessor :is_resubmit
-
         # Paykey.
         sig { returns(String) }
         attr_accessor :paykey
@@ -245,9 +233,8 @@ module Straddle
         sig do
           returns(
             T.nilable(
-              T::Hash[
-                Symbol,
-                Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::TaggedSymbol
+              T::Array[
+                Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment
               ]
             )
           )
@@ -269,9 +256,6 @@ module Straddle
               Straddle::Models::ChargeUnmaskResponse::Data::Device::OrHash,
             external_id: String,
             funding_ids: T::Array[String],
-            has_refund: T::Boolean,
-            has_resubmit: T::Boolean,
-            is_resubmit: T::Boolean,
             paykey: String,
             payment_date: Date,
             status:
@@ -292,9 +276,8 @@ module Straddle
             processed_at: T.nilable(Time),
             related_payments:
               T.nilable(
-                T::Hash[
-                  Symbol,
-                  Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::OrSymbol
+                T::Array[
+                  Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::OrHash
                 ]
               )
           ).returns(T.attached_class)
@@ -321,12 +304,6 @@ module Straddle
           external_id:,
           # Funding Ids
           funding_ids:,
-          # Has the charge been refunded by an associated payout.
-          has_refund:,
-          # Has the charge been resubmitted.
-          has_resubmit:,
-          # Is the charge a resubmit of an original charge.
-          is_resubmit:,
           # Paykey.
           paykey:,
           # Payment date.
@@ -370,9 +347,6 @@ module Straddle
               device: Straddle::Models::ChargeUnmaskResponse::Data::Device,
               external_id: String,
               funding_ids: T::Array[String],
-              has_refund: T::Boolean,
-              has_resubmit: T::Boolean,
-              is_resubmit: T::Boolean,
               paykey: String,
               payment_date: Date,
               status:
@@ -393,9 +367,8 @@ module Straddle
               processed_at: T.nilable(Time),
               related_payments:
                 T.nilable(
-                  T::Hash[
-                    Symbol,
-                    Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::TaggedSymbol
+                  T::Array[
+                    Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment
                   ]
                 )
             }
@@ -1147,42 +1120,138 @@ module Straddle
           end
         end
 
-        module RelatedPayment
-          extend Straddle::Internal::Type::Enum
-
-          TaggedSymbol =
+        class RelatedPayment < Straddle::Internal::Type::BaseModel
+          OrHash =
             T.type_alias do
-              T.all(
-                Symbol,
-                Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment
+              T.any(
+                Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment,
+                Straddle::Internal::AnyHash
               )
             end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ORIGINAL =
-            T.let(
-              :original,
-              Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::TaggedSymbol
+          # The ID of the related payment.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The type of payment.
+          sig do
+            returns(
+              Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::PaymentType::TaggedSymbol
             )
-          RESUBMIT =
-            T.let(
-              :resubmit,
-              Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::TaggedSymbol
+          end
+          attr_accessor :payment_type
+
+          sig do
+            returns(
+              Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::Relationship::TaggedSymbol
             )
-          REFUND =
-            T.let(
-              :refund,
-              Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::TaggedSymbol
-            )
+          end
+          attr_accessor :relationship
+
+          sig do
+            params(
+              id: String,
+              payment_type:
+                Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::PaymentType::OrSymbol,
+              relationship:
+                Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::Relationship::OrSymbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The ID of the related payment.
+            id:,
+            # The type of payment.
+            payment_type:,
+            relationship:
+          )
+          end
 
           sig do
             override.returns(
-              T::Array[
-                Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::TaggedSymbol
-              ]
+              {
+                id: String,
+                payment_type:
+                  Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::PaymentType::TaggedSymbol,
+                relationship:
+                  Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::Relationship::TaggedSymbol
+              }
             )
           end
-          def self.values
+          def to_hash
+          end
+
+          # The type of payment.
+          module PaymentType
+            extend Straddle::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::PaymentType
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            CHARGE =
+              T.let(
+                :charge,
+                Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::PaymentType::TaggedSymbol
+              )
+            PAYOUT =
+              T.let(
+                :payout,
+                Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::PaymentType::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::PaymentType::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          module Relationship
+            extend Straddle::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::Relationship
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            ORIGINAL =
+              T.let(
+                :original,
+                Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::Relationship::TaggedSymbol
+              )
+            RESUBMIT =
+              T.let(
+                :resubmit,
+                Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::Relationship::TaggedSymbol
+              )
+            REFUND =
+              T.let(
+                :refund,
+                Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::Relationship::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Straddle::Models::ChargeUnmaskResponse::Data::RelatedPayment::Relationship::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
       end
