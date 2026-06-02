@@ -11,20 +11,6 @@ module Straddle
           T.any(Straddle::PaykeyListParams, Straddle::Internal::AnyHash)
         end
 
-      # Start date for filtering by creation date.
-      sig { returns(T.nilable(Time)) }
-      attr_reader :created_from
-
-      sig { params(created_from: Time).void }
-      attr_writer :created_from
-
-      # End date for filtering by creation date.
-      sig { returns(T.nilable(Time)) }
-      attr_reader :created_to
-
-      sig { params(created_to: Time).void }
-      attr_writer :created_to
-
       # Filter paykeys by related customer ID.
       sig { returns(T.nilable(String)) }
       attr_reader :customer_id
@@ -129,8 +115,6 @@ module Straddle
 
       sig do
         params(
-          created_from: Time,
-          created_to: Time,
           customer_id: String,
           page_number: Integer,
           page_size: Integer,
@@ -147,10 +131,6 @@ module Straddle
         ).returns(T.attached_class)
       end
       def self.new(
-        # Start date for filtering by creation date.
-        created_from: nil,
-        # End date for filtering by creation date.
-        created_to: nil,
         # Filter paykeys by related customer ID.
         customer_id: nil,
         # Page number for paginated results. Starts at 1.
@@ -180,8 +160,6 @@ module Straddle
       sig do
         override.returns(
           {
-            created_from: Time,
-            created_to: Time,
             customer_id: String,
             page_number: Integer,
             page_size: Integer,
