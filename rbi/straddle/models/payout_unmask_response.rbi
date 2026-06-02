@@ -129,6 +129,18 @@ module Straddle
         sig { returns(T::Array[String]) }
         attr_accessor :funding_ids
 
+        # Has the payout been resubmitted.
+        sig { returns(T::Boolean) }
+        attr_accessor :has_resubmit
+
+        # Is the payout a refund of an original charge.
+        sig { returns(T::Boolean) }
+        attr_accessor :is_refund
+
+        # Is the payout a resubmit of an original payout.
+        sig { returns(T::Boolean) }
+        attr_accessor :is_resubmit
+
         # Paykey.
         sig { returns(String) }
         attr_accessor :paykey
@@ -242,6 +254,9 @@ module Straddle
               Straddle::Models::PayoutUnmaskResponse::Data::Device::OrHash,
             external_id: String,
             funding_ids: T::Array[String],
+            has_resubmit: T::Boolean,
+            is_refund: T::Boolean,
+            is_resubmit: T::Boolean,
             paykey: String,
             payment_date: Date,
             status:
@@ -284,6 +299,12 @@ module Straddle
           external_id:,
           # Funding Ids
           funding_ids:,
+          # Has the payout been resubmitted.
+          has_resubmit:,
+          # Is the payout a refund of an original charge.
+          is_refund:,
+          # Is the payout a resubmit of an original payout.
+          is_resubmit:,
           # Paykey.
           paykey:,
           # Payment date.
@@ -326,6 +347,9 @@ module Straddle
               device: Straddle::Models::PayoutUnmaskResponse::Data::Device,
               external_id: String,
               funding_ids: T::Array[String],
+              has_resubmit: T::Boolean,
+              is_refund: T::Boolean,
+              is_resubmit: T::Boolean,
               paykey: String,
               payment_date: Date,
               status:
