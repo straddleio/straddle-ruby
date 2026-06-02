@@ -108,18 +108,6 @@ module Straddle
         sig { returns(T::Array[String]) }
         attr_accessor :funding_ids
 
-        # Has the payout been resubmitted.
-        sig { returns(T::Boolean) }
-        attr_accessor :has_resubmit
-
-        # Is the payout a refund of an original charge.
-        sig { returns(T::Boolean) }
-        attr_accessor :is_refund
-
-        # Is the payout a resubmit of an original payout.
-        sig { returns(T::Boolean) }
-        attr_accessor :is_resubmit
-
         # Value of the `paykey` used for the payout.
         sig { returns(String) }
         attr_accessor :paykey
@@ -218,9 +206,6 @@ module Straddle
             device: Straddle::DeviceInfoV1::OrHash,
             external_id: String,
             funding_ids: T::Array[String],
-            has_resubmit: T::Boolean,
-            is_refund: T::Boolean,
-            is_resubmit: T::Boolean,
             paykey: String,
             payment_date: Date,
             status: Straddle::PayoutV1::Data::Status::OrSymbol,
@@ -260,12 +245,6 @@ module Straddle
           external_id:,
           # Funding Ids
           funding_ids:,
-          # Has the payout been resubmitted.
-          has_resubmit:,
-          # Is the payout a refund of an original charge.
-          is_refund:,
-          # Is the payout a resubmit of an original payout.
-          is_resubmit:,
           # Value of the `paykey` used for the payout.
           paykey:,
           # The desired date on which the payment should be occur. For payouts, this means
@@ -314,9 +293,6 @@ module Straddle
               device: Straddle::DeviceInfoV1,
               external_id: String,
               funding_ids: T::Array[String],
-              has_resubmit: T::Boolean,
-              is_refund: T::Boolean,
-              is_resubmit: T::Boolean,
               paykey: String,
               payment_date: Date,
               status: Straddle::PayoutV1::Data::Status::TaggedSymbol,

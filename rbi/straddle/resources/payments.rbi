@@ -16,11 +16,7 @@ module Straddle
             Straddle::PaymentListParams::DefaultSortOrder::OrSymbol,
           external_id: String,
           funding_id: String,
-          has_refund: T::Boolean,
-          has_resubmit: T::Boolean,
           include_metadata: T::Boolean,
-          is_refund: T::Boolean,
-          is_resubmit: T::Boolean,
           max_amount: Integer,
           max_created_at: Time,
           max_effective_at: Time,
@@ -68,18 +64,8 @@ module Straddle
         external_id: nil,
         # Query param: Search using the `funding_id` of a `charge` or `payout`.
         funding_id: nil,
-        # Query param: Has the payment been refunded by an associated payout (only
-        # applicable to charges).
-        has_refund: nil,
-        # Query param: Has the payment been resubmitted.
-        has_resubmit: nil,
         # Query param: Include the metadata for payments in the returned data.
         include_metadata: nil,
-        # Query param: Is the payment a refund of an original charge (only applicable to
-        # payouts).
-        is_refund: nil,
-        # Query param: Is the payment a resubmit of an original payment.
-        is_resubmit: nil,
         # Query param: Search using a maximum `amount` of a `charge` or `payout`.
         max_amount: nil,
         # Query param: Search using the latest `created_at` date of a `charge` or

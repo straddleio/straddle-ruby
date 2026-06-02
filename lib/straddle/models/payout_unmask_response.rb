@@ -85,24 +85,6 @@ module Straddle
         #   @return [Array<String>]
         required :funding_ids, Straddle::Internal::Type::ArrayOf[String]
 
-        # @!attribute has_resubmit
-        #   Has the payout been resubmitted.
-        #
-        #   @return [Boolean]
-        required :has_resubmit, Straddle::Internal::Type::Boolean
-
-        # @!attribute is_refund
-        #   Is the payout a refund of an original charge.
-        #
-        #   @return [Boolean]
-        required :is_refund, Straddle::Internal::Type::Boolean
-
-        # @!attribute is_resubmit
-        #   Is the payout a resubmit of an original payout.
-        #
-        #   @return [Boolean]
-        required :is_resubmit, Straddle::Internal::Type::Boolean
-
         # @!attribute paykey
         #   Paykey.
         #
@@ -194,7 +176,7 @@ module Straddle
         #   @return [Time, nil]
         optional :updated_at, Time, nil?: true
 
-        # @!method initialize(id:, amount:, config:, currency:, description:, device:, external_id:, funding_ids:, has_resubmit:, is_refund:, is_resubmit:, paykey:, payment_date:, status:, status_details:, status_history:, trace_ids:, created_at: nil, customer_details: nil, effective_at: nil, metadata: nil, paykey_details: nil, payment_rail: nil, processed_at: nil, related_payments: nil, updated_at: nil)
+        # @!method initialize(id:, amount:, config:, currency:, description:, device:, external_id:, funding_ids:, paykey:, payment_date:, status:, status_details:, status_history:, trace_ids:, created_at: nil, customer_details: nil, effective_at: nil, metadata: nil, paykey_details: nil, payment_rail: nil, processed_at: nil, related_payments: nil, updated_at: nil)
         #   @param id [String] Id.
         #
         #   @param amount [Integer] Amount.
@@ -210,12 +192,6 @@ module Straddle
         #   @param external_id [String] External id.
         #
         #   @param funding_ids [Array<String>] Funding Ids
-        #
-        #   @param has_resubmit [Boolean] Has the payout been resubmitted.
-        #
-        #   @param is_refund [Boolean] Is the payout a refund of an original charge.
-        #
-        #   @param is_resubmit [Boolean] Is the payout a resubmit of an original payout.
         #
         #   @param paykey [String] Paykey.
         #
