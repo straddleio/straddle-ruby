@@ -38,6 +38,9 @@ module Straddle
           device: Straddle::DeviceInfoV1,
           external_id: String,
           funding_ids: ::Array[String],
+          has_refund: bool,
+          has_resubmit: bool,
+          is_resubmit: bool,
           paykey: String,
           payment_date: Date,
           status: Straddle::Models::ChargeV1::Data::status,
@@ -74,6 +77,12 @@ module Straddle
         attr_accessor external_id: String
 
         attr_accessor funding_ids: ::Array[String]
+
+        attr_accessor has_refund: bool
+
+        attr_accessor has_resubmit: bool
+
+        attr_accessor is_resubmit: bool
 
         attr_accessor paykey: String
 
@@ -126,6 +135,9 @@ module Straddle
           device: Straddle::DeviceInfoV1,
           external_id: String,
           funding_ids: ::Array[String],
+          has_refund: bool,
+          has_resubmit: bool,
+          is_resubmit: bool,
           paykey: String,
           payment_date: Date,
           status: Straddle::Models::ChargeV1::Data::status,
@@ -153,6 +165,9 @@ module Straddle
           device: Straddle::DeviceInfoV1,
           external_id: String,
           funding_ids: ::Array[String],
+          has_refund: bool,
+          has_resubmit: bool,
+          is_resubmit: bool,
           paykey: String,
           payment_date: Date,
           status: Straddle::Models::ChargeV1::Data::status,
