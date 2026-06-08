@@ -35,6 +35,10 @@ module Straddle
           description: String?,
           external_id: String,
           funding_ids: ::Array[String],
+          has_refund: bool,
+          has_resubmit: bool,
+          is_refund: bool,
+          is_resubmit: bool,
           paykey: String,
           payment_date: Date,
           payment_type: Straddle::Models::PaymentSummaryPagedV1::Data::payment_type,
@@ -46,7 +50,8 @@ module Straddle
           effective_at: Time?,
           funding_id: String?,
           metadata: ::Hash[Symbol, String]?,
-          paykey_details: Straddle::PaykeyDetailsV1
+          paykey_details: Straddle::PaykeyDetailsV1,
+          related_payments: ::Array[Straddle::PaymentSummaryPagedV1::Data::RelatedPayment]?
         }
 
       class Data < Straddle::Internal::Type::BaseModel
@@ -63,6 +68,14 @@ module Straddle
         attr_accessor external_id: String
 
         attr_accessor funding_ids: ::Array[String]
+
+        attr_accessor has_refund: bool
+
+        attr_accessor has_resubmit: bool
+
+        attr_accessor is_refund: bool
+
+        attr_accessor is_resubmit: bool
 
         attr_accessor paykey: String
 
@@ -96,6 +109,8 @@ module Straddle
           Straddle::PaykeyDetailsV1
         ) -> Straddle::PaykeyDetailsV1
 
+        attr_accessor related_payments: ::Array[Straddle::PaymentSummaryPagedV1::Data::RelatedPayment]?
+
         def initialize: (
           id: String,
           amount: Integer,
@@ -104,6 +119,10 @@ module Straddle
           description: String?,
           external_id: String,
           funding_ids: ::Array[String],
+          has_refund: bool,
+          has_resubmit: bool,
+          is_refund: bool,
+          is_resubmit: bool,
           paykey: String,
           payment_date: Date,
           payment_type: Straddle::Models::PaymentSummaryPagedV1::Data::payment_type,
@@ -115,7 +134,8 @@ module Straddle
           ?effective_at: Time?,
           ?funding_id: String?,
           ?metadata: ::Hash[Symbol, String]?,
-          ?paykey_details: Straddle::PaykeyDetailsV1
+          ?paykey_details: Straddle::PaykeyDetailsV1,
+          ?related_payments: ::Array[Straddle::PaymentSummaryPagedV1::Data::RelatedPayment]?
         ) -> void
 
         def to_hash: -> {
@@ -126,6 +146,10 @@ module Straddle
           description: String?,
           external_id: String,
           funding_ids: ::Array[String],
+          has_refund: bool,
+          has_resubmit: bool,
+          is_refund: bool,
+          is_resubmit: bool,
           paykey: String,
           payment_date: Date,
           payment_type: Straddle::Models::PaymentSummaryPagedV1::Data::payment_type,
@@ -137,7 +161,8 @@ module Straddle
           effective_at: Time?,
           funding_id: String?,
           metadata: ::Hash[Symbol, String]?,
-          paykey_details: Straddle::PaykeyDetailsV1
+          paykey_details: Straddle::PaykeyDetailsV1,
+          related_payments: ::Array[Straddle::PaymentSummaryPagedV1::Data::RelatedPayment]?
         }
 
         type payment_type = :charge | :payout
@@ -176,6 +201,56 @@ module Straddle
           VALIDATING: :validating
 
           def self?.values: -> ::Array[Straddle::Models::PaymentSummaryPagedV1::Data::status]
+        end
+
+        type related_payment =
+          {
+            id: String,
+            payment_type: Straddle::Models::PaymentSummaryPagedV1::Data::RelatedPayment::payment_type,
+            relationship: Straddle::Models::PaymentSummaryPagedV1::Data::RelatedPayment::relationship
+          }
+
+        class RelatedPayment < Straddle::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor payment_type: Straddle::Models::PaymentSummaryPagedV1::Data::RelatedPayment::payment_type
+
+          attr_accessor relationship: Straddle::Models::PaymentSummaryPagedV1::Data::RelatedPayment::relationship
+
+          def initialize: (
+            id: String,
+            payment_type: Straddle::Models::PaymentSummaryPagedV1::Data::RelatedPayment::payment_type,
+            relationship: Straddle::Models::PaymentSummaryPagedV1::Data::RelatedPayment::relationship
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            payment_type: Straddle::Models::PaymentSummaryPagedV1::Data::RelatedPayment::payment_type,
+            relationship: Straddle::Models::PaymentSummaryPagedV1::Data::RelatedPayment::relationship
+          }
+
+          type payment_type = :charge | :payout
+
+          module PaymentType
+            extend Straddle::Internal::Type::Enum
+
+            CHARGE: :charge
+            PAYOUT: :payout
+
+            def self?.values: -> ::Array[Straddle::Models::PaymentSummaryPagedV1::Data::RelatedPayment::payment_type]
+          end
+
+          type relationship = :original | :resubmit | :refund
+
+          module Relationship
+            extend Straddle::Internal::Type::Enum
+
+            ORIGINAL: :original
+            RESUBMIT: :resubmit
+            REFUND: :refund
+
+            def self?.values: -> ::Array[Straddle::Models::PaymentSummaryPagedV1::Data::RelatedPayment::relationship]
+          end
         end
       end
 

@@ -15,6 +15,12 @@ module Straddle
             )
           end
 
+        sig { returns(T.nilable(String)) }
+        attr_reader :external_id
+
+        sig { params(external_id: String).void }
+        attr_writer :external_id
+
         # Results page number. Starts at page 1. Default value: 1
         sig { returns(T.nilable(Integer)) }
         attr_reader :page_number
@@ -95,6 +101,7 @@ module Straddle
 
         sig do
           params(
+            external_id: String,
             page_number: Integer,
             page_size: Integer,
             search_text: String,
@@ -108,6 +115,7 @@ module Straddle
           ).returns(T.attached_class)
         end
         def self.new(
+          external_id: nil,
           # Results page number. Starts at page 1. Default value: 1
           page_number: nil,
           # Page size. Default value: 100. Max value: 1000
@@ -128,6 +136,7 @@ module Straddle
         sig do
           override.returns(
             {
+              external_id: String,
               page_number: Integer,
               page_size: Integer,
               search_text: String,
