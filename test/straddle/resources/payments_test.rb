@@ -26,6 +26,10 @@ class Straddle::Test::Resources::PaymentsTest < Straddle::Test::ResourceTest
         description: String | nil,
         external_id: String,
         funding_ids: ^(Straddle::Internal::Type::ArrayOf[String]),
+        has_refund: Straddle::Internal::Type::Boolean,
+        has_resubmit: Straddle::Internal::Type::Boolean,
+        is_refund: Straddle::Internal::Type::Boolean,
+        is_resubmit: Straddle::Internal::Type::Boolean,
         paykey: String,
         payment_date: Date,
         payment_type: Straddle::PaymentSummaryPagedV1::Data::PaymentType,
@@ -37,7 +41,8 @@ class Straddle::Test::Resources::PaymentsTest < Straddle::Test::ResourceTest
         effective_at: Time | nil,
         funding_id: String | nil,
         metadata: ^(Straddle::Internal::Type::HashOf[String]) | nil,
-        paykey_details: Straddle::PaykeyDetailsV1 | nil
+        paykey_details: Straddle::PaykeyDetailsV1 | nil,
+        related_payments: ^(Straddle::Internal::Type::ArrayOf[Straddle::PaymentSummaryPagedV1::Data::RelatedPayment]) | nil
       }
     end
   end

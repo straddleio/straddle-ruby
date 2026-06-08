@@ -2,6 +2,8 @@ module Straddle
   module Models
     type paykey_list_params =
       {
+        created_from: Time,
+        created_to: Time,
         customer_id: String,
         page_number: Integer,
         page_size: Integer,
@@ -20,6 +22,14 @@ module Straddle
     class PaykeyListParams < Straddle::Internal::Type::BaseModel
       extend Straddle::Internal::Type::RequestParameters::Converter
       include Straddle::Internal::Type::RequestParameters
+
+      attr_reader created_from: Time?
+
+      def created_from=: (Time) -> Time
+
+      attr_reader created_to: Time?
+
+      def created_to=: (Time) -> Time
 
       attr_reader customer_id: String?
 
@@ -78,6 +88,8 @@ module Straddle
       def straddle_account_id=: (String) -> String
 
       def initialize: (
+        ?created_from: Time,
+        ?created_to: Time,
         ?customer_id: String,
         ?page_number: Integer,
         ?page_size: Integer,
@@ -94,6 +106,8 @@ module Straddle
       ) -> void
 
       def to_hash: -> {
+        created_from: Time,
+        created_to: Time,
         customer_id: String,
         page_number: Integer,
         page_size: Integer,

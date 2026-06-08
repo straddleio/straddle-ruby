@@ -111,7 +111,9 @@ module Straddle
         # created accounts appearing first. This endpoint supports advanced sorting and
         # filtering options.
         #
-        # @overload list(page_number: nil, page_size: nil, search_text: nil, sort_by: nil, sort_order: nil, status: nil, type: nil, correlation_id: nil, request_id: nil, request_options: {})
+        # @overload list(external_id: nil, page_number: nil, page_size: nil, search_text: nil, sort_by: nil, sort_order: nil, status: nil, type: nil, correlation_id: nil, request_id: nil, request_options: {})
+        #
+        # @param external_id [String] Query param
         #
         # @param page_number [Integer] Query param: Results page number. Starts at page 1. Default value: 1
         #
@@ -137,7 +139,8 @@ module Straddle
         #
         # @see Straddle::Models::Embed::AccountListParams
         def list(params = {})
-          query_params = [:page_number, :page_size, :search_text, :sort_by, :sort_order, :status, :type]
+          query_params =
+            [:external_id, :page_number, :page_size, :search_text, :sort_by, :sort_order, :status, :type]
           parsed, options = Straddle::Embed::AccountListParams.dump_request(params)
           query = Straddle::Internal::Util.encode_query_params(parsed.slice(*query_params))
           @client.request(
