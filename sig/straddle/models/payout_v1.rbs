@@ -47,7 +47,6 @@ module Straddle
           trace_ids: ::Hash[Symbol, String],
           created_at: Time?,
           customer_details: Straddle::CustomerDetailsV1,
-          documents: ::Array[Straddle::PayoutV1::Data::Document]?,
           effective_at: Time?,
           metadata: ::Hash[Symbol, String]?,
           paykey_details: Straddle::PaykeyDetailsV1,
@@ -100,8 +99,6 @@ module Straddle
           Straddle::CustomerDetailsV1
         ) -> Straddle::CustomerDetailsV1
 
-        attr_accessor documents: ::Array[Straddle::PayoutV1::Data::Document]?
-
         attr_accessor effective_at: Time?
 
         attr_accessor metadata: ::Hash[Symbol, String]?
@@ -144,7 +141,6 @@ module Straddle
           trace_ids: ::Hash[Symbol, String],
           ?created_at: Time?,
           ?customer_details: Straddle::CustomerDetailsV1,
-          ?documents: ::Array[Straddle::PayoutV1::Data::Document]?,
           ?effective_at: Time?,
           ?metadata: ::Hash[Symbol, String]?,
           ?paykey_details: Straddle::PaykeyDetailsV1,
@@ -174,7 +170,6 @@ module Straddle
           trace_ids: ::Hash[Symbol, String],
           created_at: Time?,
           customer_details: Straddle::CustomerDetailsV1,
-          documents: ::Array[Straddle::PayoutV1::Data::Document]?,
           effective_at: Time?,
           metadata: ::Hash[Symbol, String]?,
           paykey_details: Straddle::PaykeyDetailsV1,
@@ -421,53 +416,6 @@ module Straddle
             VALIDATING: :validating
 
             def self?.values: -> ::Array[Straddle::Models::PayoutV1::Data::StatusHistory::status]
-          end
-        end
-
-        type document =
-          {
-            document_id: String,
-            document_name: String,
-            document_size: Integer,
-            document_type: Straddle::Models::PayoutV1::Data::Document::document_type,
-            uploaded_at: Time
-          }
-
-        class Document < Straddle::Internal::Type::BaseModel
-          attr_accessor document_id: String
-
-          attr_accessor document_name: String
-
-          attr_accessor document_size: Integer
-
-          attr_accessor document_type: Straddle::Models::PayoutV1::Data::Document::document_type
-
-          attr_accessor uploaded_at: Time
-
-          def initialize: (
-            document_id: String,
-            document_name: String,
-            document_size: Integer,
-            document_type: Straddle::Models::PayoutV1::Data::Document::document_type,
-            uploaded_at: Time
-          ) -> void
-
-          def to_hash: -> {
-            document_id: String,
-            document_name: String,
-            document_size: Integer,
-            document_type: Straddle::Models::PayoutV1::Data::Document::document_type,
-            uploaded_at: Time
-          }
-
-          type document_type = :payment_authorization
-
-          module DocumentType
-            extend Straddle::Internal::Type::Enum
-
-            PAYMENT_AUTHORIZATION: :payment_authorization
-
-            def self?.values: -> ::Array[Straddle::Models::PayoutV1::Data::Document::document_type]
           end
         end
 

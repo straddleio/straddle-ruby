@@ -161,11 +161,6 @@ module Straddle
         end
         attr_writer :customer_details
 
-        # Documents uploaded for this payout (e.g. proof of authorization), in the order
-        # they were uploaded.
-        sig { returns(T.nilable(T::Array[Straddle::PayoutV1::Data::Document])) }
-        attr_accessor :documents
-
         # The actual date on which the payment occurred. For payouts, this is the date the
         # funds were sent from your bank account.
         sig { returns(T.nilable(Time)) }
@@ -235,8 +230,6 @@ module Straddle
             trace_ids: T::Hash[Symbol, String],
             created_at: T.nilable(Time),
             customer_details: Straddle::CustomerDetailsV1::OrHash,
-            documents:
-              T.nilable(T::Array[Straddle::PayoutV1::Data::Document::OrHash]),
             effective_at: T.nilable(Time),
             metadata: T.nilable(T::Hash[Symbol, String]),
             paykey_details: Straddle::PaykeyDetailsV1::OrHash,
@@ -290,9 +283,6 @@ module Straddle
           created_at: nil,
           # Information about the customer associated with the payout.
           customer_details: nil,
-          # Documents uploaded for this payout (e.g. proof of authorization), in the order
-          # they were uploaded.
-          documents: nil,
           # The actual date on which the payment occurred. For payouts, this is the date the
           # funds were sent from your bank account.
           effective_at: nil,
@@ -335,8 +325,6 @@ module Straddle
               trace_ids: T::Hash[Symbol, String],
               created_at: T.nilable(Time),
               customer_details: Straddle::CustomerDetailsV1,
-              documents:
-                T.nilable(T::Array[Straddle::PayoutV1::Data::Document]),
               effective_at: T.nilable(Time),
               metadata: T.nilable(T::Hash[Symbol, String]),
               paykey_details: Straddle::PaykeyDetailsV1,
@@ -890,103 +878,6 @@ module Straddle
               override.returns(
                 T::Array[
                   Straddle::PayoutV1::Data::StatusHistory::Status::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
-          end
-        end
-
-        class Document < Straddle::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Straddle::PayoutV1::Data::Document,
-                Straddle::Internal::AnyHash
-              )
-            end
-
-          # Unique identifier for this document.
-          sig { returns(String) }
-          attr_accessor :document_id
-
-          # The file name of this document as uploaded.
-          sig { returns(String) }
-          attr_accessor :document_name
-
-          # The size of this document in bytes.
-          sig { returns(Integer) }
-          attr_accessor :document_size
-
-          sig do
-            returns(
-              Straddle::PayoutV1::Data::Document::DocumentType::TaggedSymbol
-            )
-          end
-          attr_accessor :document_type
-
-          # The UTC timestamp when this document was uploaded.
-          sig { returns(Time) }
-          attr_accessor :uploaded_at
-
-          sig do
-            params(
-              document_id: String,
-              document_name: String,
-              document_size: Integer,
-              document_type:
-                Straddle::PayoutV1::Data::Document::DocumentType::OrSymbol,
-              uploaded_at: Time
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            # Unique identifier for this document.
-            document_id:,
-            # The file name of this document as uploaded.
-            document_name:,
-            # The size of this document in bytes.
-            document_size:,
-            document_type:,
-            # The UTC timestamp when this document was uploaded.
-            uploaded_at:
-          )
-          end
-
-          sig do
-            override.returns(
-              {
-                document_id: String,
-                document_name: String,
-                document_size: Integer,
-                document_type:
-                  Straddle::PayoutV1::Data::Document::DocumentType::TaggedSymbol,
-                uploaded_at: Time
-              }
-            )
-          end
-          def to_hash
-          end
-
-          module DocumentType
-            extend Straddle::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(Symbol, Straddle::PayoutV1::Data::Document::DocumentType)
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            PAYMENT_AUTHORIZATION =
-              T.let(
-                :payment_authorization,
-                Straddle::PayoutV1::Data::Document::DocumentType::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Straddle::PayoutV1::Data::Document::DocumentType::TaggedSymbol
                 ]
               )
             end
