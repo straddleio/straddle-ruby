@@ -247,6 +247,39 @@ module Straddle
       )
       end
 
+      # Uploads a document as proof of authorization for a payout. Uploading again adds
+      # another entry to documents rather than replacing the previous one.
+      sig do
+        params(
+          id: String,
+          file: Straddle::Internal::FileInput,
+          correlation_id: String,
+          idempotency_key: String,
+          request_id: String,
+          straddle_account_id: String,
+          request_options: Straddle::RequestOptions::OrHash
+        ).returns(Straddle::PayoutV1)
+      end
+      def upload_authorization_document(
+        # Path param
+        id,
+        # Body param: The document file to upload as proof of authorization for this
+        # payout.
+        file:,
+        # Header param: Optional client generated identifier to trace and debug a series
+        # of requests.
+        correlation_id: nil,
+        # Header param: Optional client generated value to use for idempotent requests.
+        idempotency_key: nil,
+        # Header param: Optional client generated identifier to trace and debug a request.
+        request_id: nil,
+        # Header param: For use by platforms to specify an account id and set scope of a
+        # request.
+        straddle_account_id: nil,
+        request_options: {}
+      )
+      end
+
       # @api private
       sig { params(client: Straddle::Client).returns(T.attached_class) }
       def self.new(client:)

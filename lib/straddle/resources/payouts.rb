@@ -311,6 +311,55 @@ module Straddle
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Straddle::Models::PayoutUploadAuthorizationDocumentParams} for more details.
+      #
+      # Uploads a document as proof of authorization for a payout. Uploading again adds
+      # another entry to documents rather than replacing the previous one.
+      #
+      # @overload upload_authorization_document(id, file:, correlation_id: nil, idempotency_key: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      #
+      # @param id [String] Path param
+      #
+      # @param file [Pathname, StringIO, IO, String, Straddle::FilePart] Body param: The document file to upload as proof of authorization for this payou
+      #
+      # @param correlation_id [String] Header param: Optional client generated identifier to trace and debug a series o
+      #
+      # @param idempotency_key [String] Header param: Optional client generated value to use for idempotent requests.
+      #
+      # @param request_id [String] Header param: Optional client generated identifier to trace and debug a request.
+      #
+      # @param straddle_account_id [String] Header param: For use by platforms to specify an account id and set scope of a r
+      #
+      # @param request_options [Straddle::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Straddle::Models::PayoutV1]
+      #
+      # @see Straddle::Models::PayoutUploadAuthorizationDocumentParams
+      def upload_authorization_document(id, params)
+        parsed, options = Straddle::PayoutUploadAuthorizationDocumentParams.dump_request(params)
+        header_params =
+          {
+            correlation_id: "correlation-id",
+            idempotency_key: "idempotency-key",
+            request_id: "request-id",
+            straddle_account_id: "straddle-account-id"
+          }
+        @client.request(
+          method: :post,
+          path: ["v1/payouts/%1$s/authorization", id],
+          headers: {
+            "content-type" => "multipart/form-data",
+            **parsed.slice(*header_params.keys)
+          }.transform_keys(
+            header_params
+          ),
+          body: parsed.except(*header_params.keys),
+          model: Straddle::PayoutV1,
+          options: options
+        )
+      end
+
       # @api private
       #
       # @param client [Straddle::Client]

@@ -77,6 +77,16 @@ module Straddle
         ?request_options: Straddle::request_opts
       ) -> Straddle::Models::PayoutUnmaskResponse
 
+      def upload_authorization_document: (
+        String id,
+        file: Straddle::Internal::file_input,
+        ?correlation_id: String,
+        ?idempotency_key: String,
+        ?request_id: String,
+        ?straddle_account_id: String,
+        ?request_options: Straddle::request_opts
+      ) -> Straddle::PayoutV1
+
       def initialize: (client: Straddle::Client) -> void
     end
   end
