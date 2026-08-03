@@ -1,0 +1,59 @@
+module Straddle
+  module Models
+    type payout_upload_authorization_document_params =
+      {
+        id: String,
+        file: Straddle::Internal::file_input,
+        correlation_id: String,
+        idempotency_key: String,
+        request_id: String,
+        straddle_account_id: String
+      }
+      & Straddle::Internal::Type::request_parameters
+
+    class PayoutUploadAuthorizationDocumentParams < Straddle::Internal::Type::BaseModel
+      extend Straddle::Internal::Type::RequestParameters::Converter
+      include Straddle::Internal::Type::RequestParameters
+
+      attr_accessor id: String
+
+      attr_accessor file: Straddle::Internal::file_input
+
+      attr_reader correlation_id: String?
+
+      def correlation_id=: (String) -> String
+
+      attr_reader idempotency_key: String?
+
+      def idempotency_key=: (String) -> String
+
+      attr_reader request_id: String?
+
+      def request_id=: (String) -> String
+
+      attr_reader straddle_account_id: String?
+
+      def straddle_account_id=: (String) -> String
+
+      def initialize: (
+        id: String,
+        file: Straddle::Internal::file_input,
+        ?correlation_id: String,
+        ?idempotency_key: String,
+        ?request_id: String,
+        ?straddle_account_id: String,
+        ?request_options: Straddle::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        file: Straddle::Internal::file_input,
+        correlation_id: String,
+        idempotency_key: String,
+        request_id: String,
+        straddle_account_id: String,
+        request_options: Straddle::RequestOptions
+      }
+    end
+  end
+end
