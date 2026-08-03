@@ -9,10 +9,6 @@ module Straddle
             T.any(Straddle::Embed::AddressV1, Straddle::Internal::AnyHash)
           end
 
-        # Primary address line (e.g., street, PO Box).
-        sig { returns(String) }
-        attr_accessor :address1
-
         # City, district, suburb, town, or village.
         sig { returns(T.nilable(String)) }
         attr_accessor :city
@@ -29,14 +25,6 @@ module Straddle
         sig { returns(T.nilable(String)) }
         attr_accessor :state
 
-        # Zip or postal code.
-        sig { returns(String) }
-        attr_accessor :zip
-
-        # Secondary address line (e.g., apartment, suite, unit, or building).
-        sig { returns(T.nilable(String)) }
-        attr_accessor :address2
-
         # The country of the address, in ISO 3166-1 alpha-2 format.
         sig { returns(T.nilable(String)) }
         attr_accessor :country
@@ -48,20 +36,15 @@ module Straddle
         # The address object is optional. If provided, it must be a valid address.
         sig do
           params(
-            address1: String,
             city: T.nilable(String),
             line1: T.nilable(String),
             postal_code: T.nilable(String),
             state: T.nilable(String),
-            zip: String,
-            address2: T.nilable(String),
             country: T.nilable(String),
             line2: T.nilable(String)
           ).returns(T.attached_class)
         end
         def self.new(
-          # Primary address line (e.g., street, PO Box).
-          address1:,
           # City, district, suburb, town, or village.
           city:,
           # Primary address line (e.g., street, PO Box).
@@ -70,10 +53,6 @@ module Straddle
           postal_code:,
           # Two-letter state code.
           state:,
-          # Zip or postal code.
-          zip:,
-          # Secondary address line (e.g., apartment, suite, unit, or building).
-          address2: nil,
           # The country of the address, in ISO 3166-1 alpha-2 format.
           country: nil,
           # Secondary address line (e.g., apartment, suite, unit, or building).
@@ -84,13 +63,10 @@ module Straddle
         sig do
           override.returns(
             {
-              address1: String,
               city: T.nilable(String),
               line1: T.nilable(String),
               postal_code: T.nilable(String),
               state: T.nilable(String),
-              zip: String,
-              address2: T.nilable(String),
               country: T.nilable(String),
               line2: T.nilable(String)
             }
