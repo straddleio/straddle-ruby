@@ -141,6 +141,8 @@ module Straddle
 
   PayoutUpdateParams = Straddle::Models::PayoutUpdateParams
 
+  PayoutUploadAuthorizationDocumentParams = Straddle::Models::PayoutUploadAuthorizationDocumentParams
+
   PayoutV1 = Straddle::Models::PayoutV1
 
   ReportCreateTotalCustomersByStatusParams = Straddle::Models::ReportCreateTotalCustomersByStatusParams

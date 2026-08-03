@@ -129,4 +129,24 @@ class Straddle::Test::Resources::PayoutsTest < Straddle::Test::ResourceTest
       }
     end
   end
+
+  def test_upload_authorization_document_required_params
+    response =
+      @straddle.payouts.upload_authorization_document(
+        "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        file: StringIO.new("Example data")
+      )
+
+    assert_pattern do
+      response => Straddle::PayoutV1
+    end
+
+    assert_pattern do
+      response => {
+        data: Straddle::PayoutV1::Data,
+        meta: Straddle::ResponseMetadata,
+        response_type: Straddle::PayoutV1::ResponseType
+      }
+    end
+  end
 end
