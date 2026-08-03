@@ -169,7 +169,7 @@ module Straddle
           sig { returns(T::Boolean) }
           attr_accessor :control
 
-          # Whether the representative owns any percentage of of the equity interests of the
+          # Whether the representative owns any percentage of the equity interests of the
           # legal entity.
           sig { returns(T::Boolean) }
           attr_accessor :owner
@@ -205,7 +205,7 @@ module Straddle
             # direct the organization. One representative must be identified under the control
             # prong for each legal entity.
             control:,
-            # Whether the representative owns any percentage of of the equity interests of the
+            # Whether the representative owns any percentage of the equity interests of the
             # legal entity.
             owner:,
             # Whether the person is authorized as the primary representative of the account.

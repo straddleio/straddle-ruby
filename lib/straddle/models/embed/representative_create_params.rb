@@ -126,7 +126,7 @@ module Straddle
           required :control, Straddle::Internal::Type::Boolean
 
           # @!attribute owner
-          #   Whether the representative owns any percentage of of the equity interests of the
+          #   Whether the representative owns any percentage of the equity interests of the
           #   legal entity.
           #
           #   @return [Boolean]
@@ -162,7 +162,7 @@ module Straddle
           #
           #   @param control [Boolean] Whether the representative has significant responsibility to control, manage, or
           #
-          #   @param owner [Boolean] Whether the representative owns any percentage of of the equity interests of the
+          #   @param owner [Boolean] Whether the representative owns any percentage of the equity interests of the le
           #
           #   @param primary [Boolean] Whether the person is authorized as the primary representative of the account. T
           #
