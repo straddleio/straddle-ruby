@@ -151,6 +151,15 @@ module Straddle
         #   @return [Straddle::Models::CustomerDetailsV1, nil]
         optional :customer_details, -> { Straddle::CustomerDetailsV1 }
 
+        # @!attribute documents
+        #   Documents uploaded for this payout (e.g. proof of authorization), in the order
+        #   they were uploaded.
+        #
+        #   @return [Array<Straddle::Models::PayoutUnmaskResponse::Data::Document>, nil]
+        optional :documents,
+                 -> { Straddle::Internal::Type::ArrayOf[Straddle::Models::PayoutUnmaskResponse::Data::Document] },
+                 nil?: true
+
         # @!attribute effective_at
         #   Effective at.
         #
@@ -194,7 +203,10 @@ module Straddle
         #   @return [Time, nil]
         optional :updated_at, Time, nil?: true
 
-        # @!method initialize(id:, amount:, config:, currency:, description:, device:, external_id:, funding_ids:, has_resubmit:, is_refund:, is_resubmit:, paykey:, payment_date:, status:, status_details:, status_history:, trace_ids:, created_at: nil, customer_details: nil, effective_at: nil, metadata: nil, paykey_details: nil, payment_rail: nil, processed_at: nil, related_payments: nil, updated_at: nil)
+        # @!method initialize(id:, amount:, config:, currency:, description:, device:, external_id:, funding_ids:, has_resubmit:, is_refund:, is_resubmit:, paykey:, payment_date:, status:, status_details:, status_history:, trace_ids:, created_at: nil, customer_details: nil, documents: nil, effective_at: nil, metadata: nil, paykey_details: nil, payment_rail: nil, processed_at: nil, related_payments: nil, updated_at: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Straddle::Models::PayoutUnmaskResponse::Data} for more details.
+        #
         #   @param id [String] Id.
         #
         #   @param amount [Integer] Amount.
@@ -232,6 +244,8 @@ module Straddle
         #   @param created_at [Time, nil] Created at.
         #
         #   @param customer_details [Straddle::Models::CustomerDetailsV1] Information about the customer associated with the charge or payout.
+        #
+        #   @param documents [Array<Straddle::Models::PayoutUnmaskResponse::Data::Document>, nil] Documents uploaded for this payout (e.g. proof of authorization), in the order t
         #
         #   @param effective_at [Time, nil] Effective at.
         #
@@ -456,6 +470,58 @@ module Straddle
             PAID = :paid
             REVERSED = :reversed
             VALIDATING = :validating
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
+        class Document < Straddle::Internal::Type::BaseModel
+          # @!attribute document_id
+          #   Unique identifier for this document.
+          #
+          #   @return [String]
+          required :document_id, String
+
+          # @!attribute document_name
+          #   The file name of this document as uploaded.
+          #
+          #   @return [String]
+          required :document_name, String
+
+          # @!attribute document_size
+          #   The size of this document in bytes.
+          #
+          #   @return [Integer]
+          required :document_size, Integer
+
+          # @!attribute document_type
+          #
+          #   @return [Symbol, Straddle::Models::PayoutUnmaskResponse::Data::Document::DocumentType]
+          required :document_type, enum: -> { Straddle::Models::PayoutUnmaskResponse::Data::Document::DocumentType }
+
+          # @!attribute uploaded_at
+          #   The UTC timestamp when this document was uploaded.
+          #
+          #   @return [Time]
+          required :uploaded_at, Time
+
+          # @!method initialize(document_id:, document_name:, document_size:, document_type:, uploaded_at:)
+          #   @param document_id [String] Unique identifier for this document.
+          #
+          #   @param document_name [String] The file name of this document as uploaded.
+          #
+          #   @param document_size [Integer] The size of this document in bytes.
+          #
+          #   @param document_type [Symbol, Straddle::Models::PayoutUnmaskResponse::Data::Document::DocumentType]
+          #
+          #   @param uploaded_at [Time] The UTC timestamp when this document was uploaded.
+
+          # @see Straddle::Models::PayoutUnmaskResponse::Data::Document#document_type
+          module DocumentType
+            extend Straddle::Internal::Type::Enum
+
+            PAYMENT_AUTHORIZATION = :payment_authorization
 
             # @!method self.values
             #   @return [Array<Symbol>]
