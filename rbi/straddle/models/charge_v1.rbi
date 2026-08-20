@@ -548,16 +548,6 @@ module Straddle
                 :reversed_closed_bank_account,
                 Straddle::ChargeV1::Data::Config::SandboxOutcome::TaggedSymbol
               )
-            FAILED_NOT_AUTHORIZED =
-              T.let(
-                :failed_not_authorized,
-                Straddle::ChargeV1::Data::Config::SandboxOutcome::TaggedSymbol
-              )
-            REVERSED_NOT_AUTHORIZED =
-              T.let(
-                :reversed_not_authorized,
-                Straddle::ChargeV1::Data::Config::SandboxOutcome::TaggedSymbol
-              )
 
             sig do
               override.returns(

@@ -130,13 +130,6 @@ module Straddle
       sig { params(max_payment_date: Date).void }
       attr_writer :max_payment_date
 
-      # Filter to payments last updated on or before this timestamp.
-      sig { returns(T.nilable(Time)) }
-      attr_reader :max_updated_at
-
-      sig { params(max_updated_at: Time).void }
-      attr_writer :max_updated_at
-
       # Search using the minimum `amount of a `charge`or`payout`.
       sig { returns(T.nilable(Integer)) }
       attr_reader :min_amount
@@ -164,13 +157,6 @@ module Straddle
 
       sig { params(min_payment_date: Date).void }
       attr_writer :min_payment_date
-
-      # Filter to payments last updated on or after this timestamp.
-      sig { returns(T.nilable(Time)) }
-      attr_reader :min_updated_at
-
-      sig { params(min_updated_at: Time).void }
-      attr_writer :min_updated_at
 
       # Results page number. Starts at page 1.
       sig { returns(T.nilable(Integer)) }
@@ -343,12 +329,10 @@ module Straddle
           max_created_at: Time,
           max_effective_at: Time,
           max_payment_date: Date,
-          max_updated_at: Time,
           min_amount: Integer,
           min_created_at: Time,
           min_effective_at: Time,
           min_payment_date: Date,
-          min_updated_at: Time,
           page_number: Integer,
           page_size: Integer,
           paykey: String,
@@ -401,8 +385,6 @@ module Straddle
         max_effective_at: nil,
         # Search using the latest `payment_date` of a `charge` or `payout`.
         max_payment_date: nil,
-        # Filter to payments last updated on or before this timestamp.
-        max_updated_at: nil,
         # Search using the minimum `amount of a `charge`or`payout`.
         min_amount: nil,
         # Search using the earliest `created_at` date of a `charge` or `payout`.
@@ -411,8 +393,6 @@ module Straddle
         min_effective_at: nil,
         # Search using the earliest ` `of a `charge` or `payout`.
         min_payment_date: nil,
-        # Filter to payments last updated on or after this timestamp.
-        min_updated_at: nil,
         # Results page number. Starts at page 1.
         page_number: nil,
         # Results page size. Max value: 1000
@@ -462,12 +442,10 @@ module Straddle
             max_created_at: Time,
             max_effective_at: Time,
             max_payment_date: Date,
-            max_updated_at: Time,
             min_amount: Integer,
             min_created_at: Time,
             min_effective_at: Time,
             min_payment_date: Date,
-            min_updated_at: Time,
             page_number: Integer,
             page_size: Integer,
             paykey: String,
@@ -522,11 +500,6 @@ module Straddle
         ID = T.let(:id, Straddle::PaymentListParams::DefaultSort::TaggedSymbol)
         AMOUNT =
           T.let(:amount, Straddle::PaymentListParams::DefaultSort::TaggedSymbol)
-        UPDATED_AT =
-          T.let(
-            :updated_at,
-            Straddle::PaymentListParams::DefaultSort::TaggedSymbol
-          )
 
         sig do
           override.returns(
@@ -677,8 +650,6 @@ module Straddle
         ID = T.let(:id, Straddle::PaymentListParams::SortBy::TaggedSymbol)
         AMOUNT =
           T.let(:amount, Straddle::PaymentListParams::SortBy::TaggedSymbol)
-        UPDATED_AT =
-          T.let(:updated_at, Straddle::PaymentListParams::SortBy::TaggedSymbol)
 
         sig do
           override.returns(
