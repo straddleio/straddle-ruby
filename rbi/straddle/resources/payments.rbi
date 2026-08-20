@@ -25,10 +25,12 @@ module Straddle
           max_created_at: Time,
           max_effective_at: Time,
           max_payment_date: Date,
+          max_updated_at: Time,
           min_amount: Integer,
           min_created_at: Time,
           min_effective_at: Time,
           min_payment_date: Date,
+          min_updated_at: Time,
           page_number: Integer,
           page_size: Integer,
           paykey: String,
@@ -89,6 +91,8 @@ module Straddle
         max_effective_at: nil,
         # Query param: Search using the latest `payment_date` of a `charge` or `payout`.
         max_payment_date: nil,
+        # Query param: Filter to payments last updated on or before this timestamp.
+        max_updated_at: nil,
         # Query param: Search using the minimum `amount of a `charge`or`payout`.
         min_amount: nil,
         # Query param: Search using the earliest `created_at` date of a `charge` or
@@ -99,6 +103,8 @@ module Straddle
         min_effective_at: nil,
         # Query param: Search using the earliest ` `of a `charge` or `payout`.
         min_payment_date: nil,
+        # Query param: Filter to payments last updated on or after this timestamp.
+        min_updated_at: nil,
         # Query param: Results page number. Starts at page 1.
         page_number: nil,
         # Query param: Results page size. Max value: 1000
