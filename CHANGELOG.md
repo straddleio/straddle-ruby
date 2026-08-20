@@ -1,5 +1,58 @@
 # Changelog
 
+## 0.5.0 (2026-08-20)
+
+Full Changelog: [v0.4.0...v0.5.0](https://github.com/straddleio/straddle-ruby/compare/v0.4.0...v0.5.0)
+
+### Features
+
+* **docs:** Preliminary update to SDK Spec ([e7b29ac](https://github.com/straddleio/straddle-ruby/commit/e7b29ac6f7e7f724df5efe7363b660e8f9a89cfa))
+* **docs:** Preliminary update to SDK Spec ([ed5e050](https://github.com/straddleio/straddle-ruby/commit/ed5e05094ff6f4a235ef5391e2f703fb407f6d3b))
+* **docs:** Preliminary update to SDK Spec ([7c0bb4e](https://github.com/straddleio/straddle-ruby/commit/7c0bb4ef05b1a44561b64fb5a79c630872749059))
+* **docs:** Preliminary update to SDK Spec ([7002bf6](https://github.com/straddleio/straddle-ruby/commit/7002bf6fac839b1dc36efb16dd314de81233989d))
+* **docs:** Preliminary update to SDK Spec ([c47e7c8](https://github.com/straddleio/straddle-ruby/commit/c47e7c8b792f4ad29d58c0de1ed0b0b798387bb1))
+* **docs:** Preliminary update to SDK Spec ([26c3cb7](https://github.com/straddleio/straddle-ruby/commit/26c3cb7493ee9dbfc74d6ca50957ec389e17b6e3))
+* **docs:** Preliminary update to SDK Spec ([e0cc45e](https://github.com/straddleio/straddle-ruby/commit/e0cc45ee2fa2e92222c197a5f623c4646db4a150))
+* **docs:** Preliminary update to SDK Spec ([f6ff7e9](https://github.com/straddleio/straddle-ruby/commit/f6ff7e965acc866271017a12571d9cd9cbe3555e))
+* **docs:** Preliminary update to SDK Spec ([069900e](https://github.com/straddleio/straddle-ruby/commit/069900e9afbc11761aaaba9bf2da9ca483eb91b9))
+* **docs:** Preliminary update to SDK Spec ([b75c086](https://github.com/straddleio/straddle-ruby/commit/b75c08610abfb58987d3e4f967e86fec6d0858f1))
+* **docs:** Release Updates to SDK based on Open API Spec (Final) ([a22c44c](https://github.com/straddleio/straddle-ruby/commit/a22c44c216033b0e7139e2a7a145aff4306f5aab))
+* **docs:** Release Updates to SDK based on Open API Spec (Final) ([288cb36](https://github.com/straddleio/straddle-ruby/commit/288cb36bc01644ad79b36a74a51bca05823e601d))
+* **docs:** Release Updates to SDK based on Open API Spec (Final) ([2054d2d](https://github.com/straddleio/straddle-ruby/commit/2054d2d6013b2a5e9590b9c367691940dad6a35a))
+* **docs:** Release Updates to SDK based on Open API Spec (Final) ([00ed553](https://github.com/straddleio/straddle-ruby/commit/00ed5533f68d5a5544bdad919cad27f4c7cffcd1))
+* **docs:** Release Updates to SDK based on Open API Spec (Final) ([7002e3b](https://github.com/straddleio/straddle-ruby/commit/7002e3b61de10383548251a079dee909e012b5d7))
+* **docs:** Release Updates to SDK based on Open API Spec (Final) ([400fba0](https://github.com/straddleio/straddle-ruby/commit/400fba0874ab2c2cab4f5c563c70c1b5133a8d9c))
+* **docs:** Release Updates to SDK based on Open API Spec (Final) ([0b6a3e6](https://github.com/straddleio/straddle-ruby/commit/0b6a3e62ce018a034b1a22f52be0c541d9db8aa6))
+* **docs:** Release Updates to SDK based on Open API Spec (Final) ([1a6840c](https://github.com/straddleio/straddle-ruby/commit/1a6840c843dba1f817dcbac2b224536ae69810cb))
+* **docs:** Release Updates to SDK based on Open API Spec (Final) ([c9e050b](https://github.com/straddleio/straddle-ruby/commit/c9e050b1e63ae60c5946bcd96523fdc9101529ef))
+* **docs:** Release Updates to SDK based on Open API Spec (Final) ([dc39609](https://github.com/straddleio/straddle-ruby/commit/dc39609d6658b6e2c137047eaa07d09e03fe3bbe))
+* **docs:** Release Updates to SDK based on Open API Spec (Final) ([efed5dd](https://github.com/straddleio/straddle-ruby/commit/efed5ddd1f6b99bf5eddaf61e169682c1dd6eee9))
+* **docs:** Release Updates to SDK based on Open API Spec (Final) ([977268e](https://github.com/straddleio/straddle-ruby/commit/977268e0e20e577961ab293ef45742e6b1f225aa))
+* **docs:** Release Updates to SDK based on Open API Spec (Final) ([0ffc081](https://github.com/straddleio/straddle-ruby/commit/0ffc081971f6bb4097bc432c2851064842a31d78))
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([8510658](https://github.com/straddleio/straddle-ruby/commit/85106582fe5e52651f06179d95406fdfbe01514e))
+* support setting headers via env ([1035a65](https://github.com/straddleio/straddle-ruby/commit/1035a65355f65811ae5a5e93ef3fb8fed7d64061))
+
+
+### Bug Fixes
+
+* align path encoding with RFC 3986 section 3.3 ([a1c1ca0](https://github.com/straddleio/straddle-ruby/commit/a1c1ca05b98340a96927e521646b98ec7127c388))
+* **client:** elide content type header on requests without body ([f8b0052](https://github.com/straddleio/straddle-ruby/commit/f8b0052437d42a064e2f99eb3369d83253bd0020))
+* **client:** send content-type header for requests with an omitted optional body ([c7d6ae5](https://github.com/straddleio/straddle-ruby/commit/c7d6ae5c76e1688bf57b094759c95d5f99c3d993))
+* **internal:** correct multipart form field name encoding ([c3fe8ba](https://github.com/straddleio/straddle-ruby/commit/c3fe8baca80d691689f17cf3ff465094bfe86fd9))
+* multipart encoding for file arrays ([b45ee2f](https://github.com/straddleio/straddle-ruby/commit/b45ee2ff796e02cc8f2386219fb6d7c2716cd03a))
+* variable name typo ([3840f23](https://github.com/straddleio/straddle-ruby/commit/3840f23f47dead5d75012c9071a06b1a33dc92ec))
+
+
+### Chores
+
+* **ci:** support opting out of skipping builds on metadata-only commits ([d92ad12](https://github.com/straddleio/straddle-ruby/commit/d92ad12b3d78aa92e5aeba1c39d12bfc7917420b))
+* **internal:** allow the mock server port to be set with STAINLESS_MOCK_PORT ([c45511c](https://github.com/straddleio/straddle-ruby/commit/c45511c71f985869840a1f41a178e759ee6038d4))
+* **internal:** bound formatter parallelism to CPU count ([6434980](https://github.com/straddleio/straddle-ruby/commit/64349804ab8b9ad6263e156c7007136dda591c4c))
+* **internal:** more robust bootstrap script ([1a07668](https://github.com/straddleio/straddle-ruby/commit/1a076684b8e059d19bc70380ac4ffc7719fa8b61))
+* **tests:** bump steady to v0.20.1 ([b415e2c](https://github.com/straddleio/straddle-ruby/commit/b415e2c8779f8fefb4190303d42e624ce7d32b7d))
+* **tests:** bump steady to v0.20.2 ([0b8bd79](https://github.com/straddleio/straddle-ruby/commit/0b8bd793d05c72366b45bbeee667897d0675bf45))
+* **tests:** bump steady to v0.22.1 ([acfadaa](https://github.com/straddleio/straddle-ruby/commit/acfadaaf986ebd3eca6851eee5617345e061865c))
+
 ## 0.4.0 (2026-03-25)
 
 Full Changelog: [v0.3.0...v0.4.0](https://github.com/straddleio/straddle-ruby/compare/v0.3.0...v0.4.0)
