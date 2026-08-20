@@ -349,8 +349,6 @@ module Straddle
             REVERSED_CUSTOMER_DISPUTE = :reversed_customer_dispute
             FAILED_CLOSED_BANK_ACCOUNT = :failed_closed_bank_account
             REVERSED_CLOSED_BANK_ACCOUNT = :reversed_closed_bank_account
-            FAILED_NOT_AUTHORIZED = :failed_not_authorized
-            REVERSED_NOT_AUTHORIZED = :reversed_not_authorized
 
             # @!method self.values
             #   @return [Array<Symbol>]
