@@ -96,12 +96,6 @@ module Straddle
       #   @return [Date, nil]
       optional :max_payment_date, Date
 
-      # @!attribute max_updated_at
-      #   Filter to payments last updated on or before this timestamp.
-      #
-      #   @return [Time, nil]
-      optional :max_updated_at, Time
-
       # @!attribute min_amount
       #   Search using the minimum `amount of a `charge`or`payout`.
       #
@@ -125,12 +119,6 @@ module Straddle
       #
       #   @return [Date, nil]
       optional :min_payment_date, Date
-
-      # @!attribute min_updated_at
-      #   Filter to payments last updated on or after this timestamp.
-      #
-      #   @return [Time, nil]
-      optional :min_updated_at, Time
 
       # @!attribute page_number
       #   Results page number. Starts at page 1.
@@ -222,7 +210,7 @@ module Straddle
       #   @return [String, nil]
       optional :straddle_account_id, String
 
-      # @!method initialize(customer_id: nil, default_page_size: nil, default_sort: nil, default_sort_order: nil, external_id: nil, funding_id: nil, has_refund: nil, has_resubmit: nil, include_metadata: nil, is_refund: nil, is_resubmit: nil, max_amount: nil, max_created_at: nil, max_effective_at: nil, max_payment_date: nil, max_updated_at: nil, min_amount: nil, min_created_at: nil, min_effective_at: nil, min_payment_date: nil, min_updated_at: nil, page_number: nil, page_size: nil, paykey: nil, paykey_id: nil, payment_id: nil, payment_status: nil, payment_type: nil, search_text: nil, sort_by: nil, sort_order: nil, status_reason: nil, status_source: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @!method initialize(customer_id: nil, default_page_size: nil, default_sort: nil, default_sort_order: nil, external_id: nil, funding_id: nil, has_refund: nil, has_resubmit: nil, include_metadata: nil, is_refund: nil, is_resubmit: nil, max_amount: nil, max_created_at: nil, max_effective_at: nil, max_payment_date: nil, min_amount: nil, min_created_at: nil, min_effective_at: nil, min_payment_date: nil, page_number: nil, page_size: nil, paykey: nil, paykey_id: nil, payment_id: nil, payment_status: nil, payment_type: nil, search_text: nil, sort_by: nil, sort_order: nil, status_reason: nil, status_source: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Straddle::Models::PaymentListParams} for more details.
       #
@@ -256,8 +244,6 @@ module Straddle
       #
       #   @param max_payment_date [Date] Search using the latest `payment_date` of a `charge` or `payout`.
       #
-      #   @param max_updated_at [Time] Filter to payments last updated on or before this timestamp.
-      #
       #   @param min_amount [Integer] Search using the minimum `amount of a `charge`or`payout`.
       #
       #   @param min_created_at [Time] Search using the earliest `created_at` date of a `charge` or `payout`.
@@ -265,8 +251,6 @@ module Straddle
       #   @param min_effective_at [Time] Search using the earliest `effective_date` of a `charge` or `payout`.
       #
       #   @param min_payment_date [Date] Search using the earliest ` `of a `charge` or `payout`.
-      #
-      #   @param min_updated_at [Time] Filter to payments last updated on or after this timestamp.
       #
       #   @param page_number [Integer] Results page number. Starts at page 1.
       #
@@ -309,7 +293,6 @@ module Straddle
         EFFECTIVE_AT = :effective_at
         ID = :id
         AMOUNT = :amount
-        UPDATED_AT = :updated_at
 
         # @!method self.values
         #   @return [Array<Symbol>]
@@ -363,7 +346,6 @@ module Straddle
         EFFECTIVE_AT = :effective_at
         ID = :id
         AMOUNT = :amount
-        UPDATED_AT = :updated_at
 
         # @!method self.values
         #   @return [Array<Symbol>]

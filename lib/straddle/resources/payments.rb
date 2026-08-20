@@ -11,7 +11,7 @@ module Straddle
       # Search for payments, including `charges` and `payouts`, using a variety of
       # criteria. This endpoint supports advanced sorting and filtering options.
       #
-      # @overload list(customer_id: nil, default_page_size: nil, default_sort: nil, default_sort_order: nil, external_id: nil, funding_id: nil, has_refund: nil, has_resubmit: nil, include_metadata: nil, is_refund: nil, is_resubmit: nil, max_amount: nil, max_created_at: nil, max_effective_at: nil, max_payment_date: nil, max_updated_at: nil, min_amount: nil, min_created_at: nil, min_effective_at: nil, min_payment_date: nil, min_updated_at: nil, page_number: nil, page_size: nil, paykey: nil, paykey_id: nil, payment_id: nil, payment_status: nil, payment_type: nil, search_text: nil, sort_by: nil, sort_order: nil, status_reason: nil, status_source: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
+      # @overload list(customer_id: nil, default_page_size: nil, default_sort: nil, default_sort_order: nil, external_id: nil, funding_id: nil, has_refund: nil, has_resubmit: nil, include_metadata: nil, is_refund: nil, is_resubmit: nil, max_amount: nil, max_created_at: nil, max_effective_at: nil, max_payment_date: nil, min_amount: nil, min_created_at: nil, min_effective_at: nil, min_payment_date: nil, page_number: nil, page_size: nil, paykey: nil, paykey_id: nil, payment_id: nil, payment_status: nil, payment_type: nil, search_text: nil, sort_by: nil, sort_order: nil, status_reason: nil, status_source: nil, correlation_id: nil, request_id: nil, straddle_account_id: nil, request_options: {})
       #
       # @param customer_id [String] Query param: Search using the `customer_id` of a `charge` or `payout`.
       #
@@ -43,8 +43,6 @@ module Straddle
       #
       # @param max_payment_date [Date] Query param: Search using the latest `payment_date` of a `charge` or `payout`.
       #
-      # @param max_updated_at [Time] Query param: Filter to payments last updated on or before this timestamp.
-      #
       # @param min_amount [Integer] Query param: Search using the minimum `amount of a `charge`or`payout`.
       #
       # @param min_created_at [Time] Query param: Search using the earliest `created_at` date of a `charge` or `payou
@@ -52,8 +50,6 @@ module Straddle
       # @param min_effective_at [Time] Query param: Search using the earliest `effective_date` of a `charge` or `payout
       #
       # @param min_payment_date [Date] Query param: Search using the earliest ` `of a `charge` or `payout`.
-      #
-      # @param min_updated_at [Time] Query param: Filter to payments last updated on or after this timestamp.
       #
       # @param page_number [Integer] Query param: Results page number. Starts at page 1.
       #
@@ -108,12 +104,10 @@ module Straddle
             :max_created_at,
             :max_effective_at,
             :max_payment_date,
-            :max_updated_at,
             :min_amount,
             :min_created_at,
             :min_effective_at,
             :min_payment_date,
-            :min_updated_at,
             :page_number,
             :page_size,
             :paykey,
