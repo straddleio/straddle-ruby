@@ -17,10 +17,12 @@ module Straddle
         max_created_at: Time,
         max_effective_at: Time,
         max_payment_date: Date,
+        max_updated_at: Time,
         min_amount: Integer,
         min_created_at: Time,
         min_effective_at: Time,
         min_payment_date: Date,
+        min_updated_at: Time,
         page_number: Integer,
         page_size: Integer,
         paykey: String,
@@ -107,6 +109,10 @@ module Straddle
 
       def max_payment_date=: (Date) -> Date
 
+      attr_reader max_updated_at: Time?
+
+      def max_updated_at=: (Time) -> Time
+
       attr_reader min_amount: Integer?
 
       def min_amount=: (Integer) -> Integer
@@ -122,6 +128,10 @@ module Straddle
       attr_reader min_payment_date: Date?
 
       def min_payment_date=: (Date) -> Date
+
+      attr_reader min_updated_at: Time?
+
+      def min_updated_at=: (Time) -> Time
 
       attr_reader page_number: Integer?
 
@@ -211,10 +221,12 @@ module Straddle
         ?max_created_at: Time,
         ?max_effective_at: Time,
         ?max_payment_date: Date,
+        ?max_updated_at: Time,
         ?min_amount: Integer,
         ?min_created_at: Time,
         ?min_effective_at: Time,
         ?min_payment_date: Date,
+        ?min_updated_at: Time,
         ?page_number: Integer,
         ?page_size: Integer,
         ?paykey: String,
@@ -249,10 +261,12 @@ module Straddle
         max_created_at: Time,
         max_effective_at: Time,
         max_payment_date: Date,
+        max_updated_at: Time,
         min_amount: Integer,
         min_created_at: Time,
         min_effective_at: Time,
         min_payment_date: Date,
+        min_updated_at: Time,
         page_number: Integer,
         page_size: Integer,
         paykey: String,
@@ -272,7 +286,12 @@ module Straddle
       }
 
       type default_sort =
-        :created_at | :payment_date | :effective_at | :id | :amount
+        :created_at
+        | :payment_date
+        | :effective_at
+        | :id
+        | :amount
+        | :updated_at
 
       module DefaultSort
         extend Straddle::Internal::Type::Enum
@@ -282,6 +301,7 @@ module Straddle
         EFFECTIVE_AT: :effective_at
         ID: :id
         AMOUNT: :amount
+        UPDATED_AT: :updated_at
 
         def self?.values: -> ::Array[Straddle::Models::PaymentListParams::default_sort]
       end
@@ -335,7 +355,13 @@ module Straddle
         def self?.values: -> ::Array[Straddle::Models::PaymentListParams::payment_type]
       end
 
-      type sort_by = :created_at | :payment_date | :effective_at | :id | :amount
+      type sort_by =
+        :created_at
+        | :payment_date
+        | :effective_at
+        | :id
+        | :amount
+        | :updated_at
 
       module SortBy
         extend Straddle::Internal::Type::Enum
@@ -345,6 +371,7 @@ module Straddle
         EFFECTIVE_AT: :effective_at
         ID: :id
         AMOUNT: :amount
+        UPDATED_AT: :updated_at
 
         def self?.values: -> ::Array[Straddle::Models::PaymentListParams::sort_by]
       end
