@@ -136,6 +136,8 @@ module Straddle
           | :reversed_customer_dispute
           | :failed_closed_bank_account
           | :reversed_closed_bank_account
+          | :failed_not_authorized
+          | :reversed_not_authorized
 
         module SandboxOutcome
           extend Straddle::Internal::Type::Enum
@@ -151,6 +153,8 @@ module Straddle
           REVERSED_CUSTOMER_DISPUTE: :reversed_customer_dispute
           FAILED_CLOSED_BANK_ACCOUNT: :failed_closed_bank_account
           REVERSED_CLOSED_BANK_ACCOUNT: :reversed_closed_bank_account
+          FAILED_NOT_AUTHORIZED: :failed_not_authorized
+          REVERSED_NOT_AUTHORIZED: :reversed_not_authorized
 
           def self?.values: -> ::Array[Straddle::Models::PayoutCreateParams::Config::sandbox_outcome]
         end
