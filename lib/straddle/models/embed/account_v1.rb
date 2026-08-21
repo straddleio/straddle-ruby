@@ -106,6 +106,12 @@ module Straddle
           #   @return [Hash{Symbol=>String, nil}, nil]
           optional :metadata, Straddle::Internal::Type::HashOf[String, nil?: true], nil?: true
 
+          # @!attribute plan_id
+          #   The unique identifier of the pricing plan currently assigned to this account.
+          #
+          #   @return [String, nil]
+          optional :plan_id, String, nil?: true
+
           # @!attribute settings
           #
           #   @return [Straddle::Models::Embed::AccountV1::Data::Settings, nil]
@@ -122,7 +128,7 @@ module Straddle
           #   @return [Time, nil]
           optional :updated_at, Time, nil?: true
 
-          # @!method initialize(id:, access_level:, organization_id:, status:, status_detail:, type:, business_profile: nil, capabilities: nil, created_at: nil, external_id: nil, metadata: nil, settings: nil, terms_of_service: nil, updated_at: nil)
+          # @!method initialize(id:, access_level:, organization_id:, status:, status_detail:, type:, business_profile: nil, capabilities: nil, created_at: nil, external_id: nil, metadata: nil, plan_id: nil, settings: nil, terms_of_service: nil, updated_at: nil)
           #   Some parameter documentations has been truncated, see
           #   {Straddle::Models::Embed::AccountV1::Data} for more details.
           #
@@ -147,6 +153,8 @@ module Straddle
           #   @param external_id [String, nil] Unique identifier for the account in your database, used for cross-referencing b
           #
           #   @param metadata [Hash{Symbol=>String, nil}, nil] Up to 20 additional user-defined key-value pairs. Useful for storing additional
+          #
+          #   @param plan_id [String, nil] The unique identifier of the pricing plan currently assigned to this account.
           #
           #   @param settings [Straddle::Models::Embed::AccountV1::Data::Settings]
           #
