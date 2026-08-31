@@ -571,6 +571,11 @@ module Straddle
                   :quiltt,
                   Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Source::TaggedSymbol
                 )
+              MASTERCARD =
+                T.let(
+                  :mastercard,
+                  Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::Source::TaggedSymbol
+                )
 
               sig do
                 override.returns(
