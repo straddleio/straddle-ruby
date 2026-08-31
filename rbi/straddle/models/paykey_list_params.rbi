@@ -262,6 +262,8 @@ module Straddle
         TAN = T.let(:tan, Straddle::PaykeyListParams::Source::TaggedSymbol)
         QUILTT =
           T.let(:quiltt, Straddle::PaykeyListParams::Source::TaggedSymbol)
+        MASTERCARD =
+          T.let(:mastercard, Straddle::PaykeyListParams::Source::TaggedSymbol)
 
         sig do
           override.returns(

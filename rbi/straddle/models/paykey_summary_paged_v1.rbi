@@ -435,6 +435,11 @@ module Straddle
               :quiltt,
               Straddle::PaykeySummaryPagedV1::Data::Source::TaggedSymbol
             )
+          MASTERCARD =
+            T.let(
+              :mastercard,
+              Straddle::PaykeySummaryPagedV1::Data::Source::TaggedSymbol
+            )
 
           sig do
             override.returns(

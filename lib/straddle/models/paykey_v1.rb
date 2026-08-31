@@ -230,6 +230,7 @@ module Straddle
           PLAID = :plaid
           TAN = :tan
           QUILTT = :quiltt
+          MASTERCARD = :mastercard
 
           # @!method self.values
           #   @return [Array<Symbol>]
