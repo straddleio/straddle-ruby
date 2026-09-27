@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.6.0 (2026-08-31)
+
+Full Changelog: [v0.5.0...v0.6.0](https://github.com/straddleio/straddle-ruby/compare/v0.5.0...v0.6.0)
+
+### Features
+
+* **docs:** Preliminary update to SDK Spec ([dd52716](https://github.com/straddleio/straddle-ruby/commit/dd52716068ca96a10b1e7ce077983f32921ac929))
+* **docs:** Preliminary update to SDK Spec ([c1c90fb](https://github.com/straddleio/straddle-ruby/commit/c1c90fb7225393b323cf6a1b565fc44dba44b74c))
+* **docs:** Preliminary update to SDK Spec ([b110afc](https://github.com/straddleio/straddle-ruby/commit/b110afc2f325b35b8cbe869822fe31ede16a26da))
+* **docs:** Preliminary update to SDK Spec ([8dc0da7](https://github.com/straddleio/straddle-ruby/commit/8dc0da7d1405dca28a87ce40e0a75ef164477de4))
+* **docs:** Release Updates to SDK based on Open API Spec (Final) ([2165eed](https://github.com/straddleio/straddle-ruby/commit/2165eed738d31b31bd01916a0a034f5e532951d2))
+* **docs:** Release Updates to SDK based on Open API Spec (Final) ([300ccf4](https://github.com/straddleio/straddle-ruby/commit/300ccf4f3ba4eb2e51e94ca3fe1d62106be03807))
+* **docs:** Release Updates to SDK based on Open API Spec (Final) ([38369e5](https://github.com/straddleio/straddle-ruby/commit/38369e5e5a5ea19c4dbfc55b444eb290b67224b0))
+
 ## 0.5.0 (2026-08-20)
 
 Full Changelog: [v0.4.0...v0.5.0](https://github.com/straddleio/straddle-ruby/compare/v0.4.0...v0.5.0)

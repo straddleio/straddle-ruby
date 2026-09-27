@@ -496,6 +496,11 @@ module Straddle
                 :quiltt,
                 Straddle::Models::Bridge::LinkCreateTanResponse::Data::Source::TaggedSymbol
               )
+            MASTERCARD =
+              T.let(
+                :mastercard,
+                Straddle::Models::Bridge::LinkCreateTanResponse::Data::Source::TaggedSymbol
+              )
 
             sig do
               override.returns(

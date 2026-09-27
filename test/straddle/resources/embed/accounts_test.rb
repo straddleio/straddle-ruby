@@ -72,6 +72,7 @@ class Straddle::Test::Resources::Embed::AccountsTest < Straddle::Test::ResourceT
         created_at: Time | nil,
         external_id: String | nil,
         metadata: ^(Straddle::Internal::Type::HashOf[String, nil?: true]) | nil,
+        plan_id: String | nil,
         settings: Straddle::Embed::AccountPagedV1::Data::Settings | nil,
         terms_of_service: Straddle::Embed::TermsOfServiceV1 | nil,
         updated_at: Time | nil

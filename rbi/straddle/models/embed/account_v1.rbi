@@ -149,6 +149,10 @@ module Straddle
           sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
           attr_accessor :metadata
 
+          # The unique identifier of the pricing plan currently assigned to this account.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :plan_id
+
           sig { returns(T.nilable(Straddle::Embed::AccountV1::Data::Settings)) }
           attr_reader :settings
 
@@ -189,6 +193,7 @@ module Straddle
               created_at: T.nilable(Time),
               external_id: T.nilable(String),
               metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+              plan_id: T.nilable(String),
               settings: Straddle::Embed::AccountV1::Data::Settings::OrHash,
               terms_of_service: Straddle::Embed::TermsOfServiceV1::OrHash,
               updated_at: T.nilable(Time)
@@ -217,6 +222,8 @@ module Straddle
             # Up to 20 additional user-defined key-value pairs. Useful for storing additional
             # information about the account in a structured format.
             metadata: nil,
+            # The unique identifier of the pricing plan currently assigned to this account.
+            plan_id: nil,
             settings: nil,
             terms_of_service: nil,
             # Timestamp of the most recent update to the account.
@@ -239,6 +246,7 @@ module Straddle
                 created_at: T.nilable(Time),
                 external_id: T.nilable(String),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                plan_id: T.nilable(String),
                 settings: Straddle::Embed::AccountV1::Data::Settings,
                 terms_of_service: Straddle::Embed::TermsOfServiceV1,
                 updated_at: T.nilable(Time)

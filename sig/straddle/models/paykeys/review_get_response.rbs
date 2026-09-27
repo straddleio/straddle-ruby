@@ -216,7 +216,13 @@ module Straddle
             end
 
             type source =
-              :bank_account | :straddle | :mx | :plaid | :tan | :quiltt
+              :bank_account
+              | :straddle
+              | :mx
+              | :plaid
+              | :tan
+              | :quiltt
+              | :mastercard
 
             module Source
               extend Straddle::Internal::Type::Enum
@@ -227,6 +233,7 @@ module Straddle
               PLAID: :plaid
               TAN: :tan
               QUILTT: :quiltt
+              MASTERCARD: :mastercard
 
               def self?.values: -> ::Array[Straddle::Models::Paykeys::ReviewGetResponse::Data::PaykeyDetails::source]
             end

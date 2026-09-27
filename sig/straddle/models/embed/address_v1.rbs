@@ -3,15 +3,20 @@ module Straddle
     module Embed
       type address_v1 =
         {
+          :address1 => String,
           city: String?,
           :line1 => String?,
           postal_code: String?,
           state: String?,
+          zip: String,
+          :address2 => String?,
           country: String?,
           :line2 => String?
         }
 
       class AddressV1 < Straddle::Internal::Type::BaseModel
+        attr_accessor address1: String
+
         attr_accessor city: String?
 
         attr_accessor line1: String?
@@ -20,24 +25,34 @@ module Straddle
 
         attr_accessor state: String?
 
+        attr_accessor zip: String
+
+        attr_accessor address2: String?
+
         attr_accessor country: String?
 
         attr_accessor line2: String?
 
         def initialize: (
+          address1: String,
           city: String?,
           line1: String?,
           postal_code: String?,
           state: String?,
+          zip: String,
+          ?address2: String?,
           ?country: String?,
           ?line2: String?
         ) -> void
 
         def to_hash: -> {
+          :address1 => String,
           city: String?,
           :line1 => String?,
           postal_code: String?,
           state: String?,
+          zip: String,
+          :address2 => String?,
           country: String?,
           :line2 => String?
         }

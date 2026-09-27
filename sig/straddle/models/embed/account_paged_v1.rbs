@@ -40,6 +40,7 @@ module Straddle
             created_at: Time?,
             external_id: String?,
             metadata: ::Hash[Symbol, String?]?,
+            plan_id: String?,
             settings: Straddle::Embed::AccountPagedV1::Data::Settings,
             terms_of_service: Straddle::Embed::TermsOfServiceV1,
             updated_at: Time?
@@ -76,6 +77,8 @@ module Straddle
 
           attr_accessor metadata: ::Hash[Symbol, String?]?
 
+          attr_accessor plan_id: String?
+
           attr_reader settings: Straddle::Embed::AccountPagedV1::Data::Settings?
 
           def settings=: (
@@ -102,6 +105,7 @@ module Straddle
             ?created_at: Time?,
             ?external_id: String?,
             ?metadata: ::Hash[Symbol, String?]?,
+            ?plan_id: String?,
             ?settings: Straddle::Embed::AccountPagedV1::Data::Settings,
             ?terms_of_service: Straddle::Embed::TermsOfServiceV1,
             ?updated_at: Time?
@@ -119,6 +123,7 @@ module Straddle
             created_at: Time?,
             external_id: String?,
             metadata: ::Hash[Symbol, String?]?,
+            plan_id: String?,
             settings: Straddle::Embed::AccountPagedV1::Data::Settings,
             terms_of_service: Straddle::Embed::TermsOfServiceV1,
             updated_at: Time?
