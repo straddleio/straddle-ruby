@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> This SDK has moved to [straddle-build/straddle-ruby](https://github.com/straddle-build/straddle-ruby). New development and releases happen there. The gem name is unchanged, [`straddle`](https://rubygems.org/gems/straddle), and versions 1.0.0 and later are published from the new repository. The rest of this README describes the SDK as released from this repository and has not been updated for the new one.
+
 # Straddle Ruby API library
 
 The Straddle Ruby library provides convenient access to the Straddle REST API from any Ruby 3.2.0+ application. It ships with comprehensive types & docstrings in Yard, RBS, and RBI – [see below](https://github.com/straddleio/straddle-ruby#Sorbet) for usage with Sorbet. The standard library's `net/http` is used as the HTTP transport, with connection pooling via the `connection_pool` gem.
